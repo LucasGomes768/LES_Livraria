@@ -1,0 +1,368 @@
+.header1 {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    background-color: rgb(100, 109, 197);
+    height: 11vh;
+    padding: 1.2%;
+    padding-bottom: 0.5%;
+}
+
+    .header1 h1 {
+        color: white;
+        font-weight: 500;
+        font-size: 5vh;
+    }
+
+.backBtn {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 0.5%;
+    margin-left: 2.5vw;
+    margin-bottom: 1vw;
+    font-weight: 400;
+
+    transition-duration: 0.2s;
+}
+
+    .backBtn:hover {
+        background-color: black;
+        color: white;
+    }
+
+.noStep::-webkit-outer-spin-button,
+.noStep::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.profileBtn button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    height: 50px;
+    font-size: 15px;
+    font-weight: 500;
+
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.searchbar {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+}
+
+    .searchbar input {
+        font-size: 2.5vh;
+        padding: 1.1%;
+        width: 60vw;
+        height: 6vh;
+    }
+
+    .searchbar button {
+        display: flex;
+        height: 100%;
+
+        background-color: white;
+        border: 1px solid gray;
+    }
+
+.cart button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    height: 6vh;
+    font-size: 15px;
+    font-weight: 500;
+
+    background-color: rgb(100, 109, 197);
+    border: none;
+}
+
+    .cart button img {
+        height: 100%;
+        filter: invert(1);
+    }
+
+.chatbotBtn button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    height: 6vh;
+    font-size: 15px;
+    font-weight: 500;
+
+    background-color: rgb(100, 109, 197);
+    border: none;
+}
+
+    .chatbotBtn button img {
+        height: 100%;
+        filter: invert(1);
+    }
+
+.profileBtn button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    height: 6vh;
+    font-size: 15px;
+    font-weight: 500;
+
+    background-color: rgb(100, 109, 197);
+    border: none;
+}
+
+    .profileBtn button img {
+        height: 100%;
+        filter: invert(1);
+    }
+
+/* FUNDO DO POP UP */
+.backgroundPopUp {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+/* PERFIL */
+.profilePanel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    min-width: 25vw;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+    .profileTitle {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(100, 109, 197);
+        padding: 1.2%;
+        height: 13.5vh;
+    }
+
+    .profileTitle h1 {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+
+        font-size: 2.5vw;
+        color: white;
+    }
+
+    .profileTitle .close {
+        display: flex;
+        align-self: flex-start;
+        margin-left: 5px;
+        color: white;
+        font-weight: bolder;
+        font-size: 1.5vw;
+        background-color: rgba(255, 255, 255, 0);
+        height: 5vh;
+        border: none;
+    }
+
+    .profileTitle .close:hover {
+        color: black;
+    }
+
+    .profileSection {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 2%;
+
+        border-bottom: 2px solid gray;
+    }
+
+        .profileSection a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .profileSection h2 {
+            text-align: center;
+            padding: 2%;
+            padding-bottom: 1%;
+
+            font-size: 1.7vw;
+        }
+
+            .profileSection a h2:hover {
+                color: goldenrod;
+            }
+
+        .subsection {
+            display: inherit;
+            align-content: inherit;
+            justify-content: inherit;
+            background-color: rgb(219, 219, 219);
+            border-bottom: 2px solid rgb(199, 199, 199);
+            padding: 1.5%;
+            padding-bottom: 0%;
+        }
+
+        .subsection h3 {
+            text-align: center;
+
+            color: black;
+            font-size: 1.5vw;
+        }
+
+        .subsection a {
+            text-decoration: none;
+        }
+
+            .subsection a h3:hover {
+                color: goldenrod;
+            }
+
+/* CHATBOT */
+.chatbotPanel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    min-width: 33vw;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+    .chatbotTitle {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(100, 109, 197);
+        padding: 1.2%;
+        height: 13.5vh;
+    }
+
+    .chatbotTitle h1 {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+
+        font-size: 2.5vw;
+        color: white;
+    }
+
+        .chatbotTitle .close {
+            display: flex;
+            align-self: flex-start;
+            margin-left: 5px;
+            color: white;
+            font-weight: bolder;
+            font-size: 1.5vw;
+            background-color: rgba(255, 255, 255, 0);
+            height: 5vh;
+            border: none;
+        }
+
+    .chatbotTitle .close:hover {
+        color: black;
+    }
+
+    .userTextfield {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 5px;
+
+        padding: 1.25%;
+        height: 13.5vh;
+    }
+
+        .userTextfield textarea{
+            width: 80%;
+        }
+
+        .userTextfield button {
+            border: 2px solid gray;
+            background-color: white;
+        }
+
+        .userTextfield img {
+            width: 5vw;
+        }
+
+/* MENSAGENS */
+.messages {
+    height: 73vh;
+    overflow-y: scroll;
+    overflow: auto;
+    padding: 2%;
+    font-weight: 450;
+
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+    .botMsg {
+        display: flex;
+        align-self: center;
+        justify-self: left;
+
+        background-color: rgb(202, 253, 125);
+        border-radius: 8px;
+        padding: 2%;
+        padding-right: 3%;
+        padding-bottom: 0.5%;
+        width: fit-content;
+        position: relative;
+        margin-bottom: 3vh;
+    }
+
+        .botMsg::before {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 6px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #ccff80 transparent transparent transparent;
+        }
+    
+    .userMsg {
+        display: flex;
+        align-self: center;
+        justify-self: right;
+
+        background-color: rgb(125, 191, 253);
+        border-radius: 8px;
+        padding: 2%;
+        padding-left: 3%;
+        padding-bottom: 0.5%;
+        width: fit-content;
+        position: relative;
+        margin-bottom: 3vh;
+    }
+
+        .userMsg::before {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            right: 6px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #7dbffd transparent transparent transparent;
+        }

@@ -1,0 +1,67 @@
+.preparedFilters {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-self: center;
+    flex-direction: column;
+    gap: 5px;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding: 2%;
+
+    width: 90vw;
+    margin-bottom: 4%;
+
+    background-color: rgb(231, 231, 231);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .preparedFilters .rows .sectionTitle {
+        font-size: 3vw;
+        font-weight: 600;
+        margin-bottom: 1.5%;
+        text-align: center;
+    }
+
+    .preparedFilters .rows .items {
+        display: flex;
+        align-content: center;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+
+        .preparedFilters .rows .items .section {
+            max-width: 20vw;
+            padding: 1%;
+            transition-duration: 0.2s;
+        }
+
+            .preparedFilters .rows .items .section:hover {
+                background-color: lightblue;
+            }
+
+            .preparedFilters .rows .items .section img {
+                display: flex;
+                align-self: center;
+                justify-self: center;
+                height: 30vh;
+                margin-bottom: 2%;
+            }
+
+            .preparedFilters .rows .items .section a {
+                color: black;
+                text-decoration: none;
+            }
+
+            .preparedFilters .rows .items .section h1 {
+                text-align: center;
+                font-size: 1.75vw;
+                font-weight: 300;
+            }
+
+            .preparedFilters .rows .items .section h2 {
+                text-align: center;
+                font-size: 1.5vw;
+                font-weight: 300;
+            }

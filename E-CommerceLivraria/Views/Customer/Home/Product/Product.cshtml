@@ -1,0 +1,64 @@
+﻿@model E_CommerceLivraria.Models.ModelsStructGroups.StockSG.ProductDataGroup
+@{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewData["Title"] = "Tela Inicial";
+    ViewData["CSSFile"] = "~/css/customer/home/product/product.css";
+}
+<br>
+<div class="productBody">
+    <div class="itemImg">
+        <img src="@Url.Content(Model.Stock.StcBok.BokImgAddress)" alt="">
+    </div>
+    <div class="dataPay">
+        <div class="basicData">
+            <div class="title">
+                <h1>@Model.Stock.StcBok.BokTitle</h1>
+            </div>
+            <div class="credits">
+                <h3>Por @Model.Stock.StcBok.BokBat.BatName, publicado por @Model.Stock.StcBok.BokPbl.PblName</h3>
+            </div>
+            <div class="synopsis">
+                <p>
+                    @Model.Stock.StcBok.BokSinopsis
+                </p>
+            </div>
+        </div>
+        <div class="buyPlease">
+            @if (Model.InCart == true)
+            {
+                <p>Este livro já está no seu carrinho.</p>
+            } else
+            {
+            <form asp-controller="Cart" asp-action="addItemToCart">
+                <input type="number" asp-for="CtmId" value="@Model.CtmId" hidden/>
+                <input type="number" asp-for="StockId" value="@Model.Stock.StcId" hidden />
+                <p><b>Preço: </b>R$@Model.Stock.StcSalePrice.ToString("F2")</p>
+                <div class="quantity">
+                    <label for="quantity">Quantidade:</label>
+                    <input type="number" asp-for="Quantity" min="1" max="@Model.Stock.StcAvailableAmount" step="1" value="1">
+                </div>
+                <div class="buttons">
+                    <button>Adicionar ao carrinho</button>
+                </div>  
+            </form>
+            }
+        </div>
+    </div>
+</div>
+<div class="extraData">
+    <h1>Informações extra</h1>
+    <div class="row">
+        <div class="col-6">
+            <p><b>Edição: </b>@(Model.Stock.StcBok.BokEdition)º</p>
+            <p><b>Número de páginas: </b>@Model.Stock.StcBok.BokPagesAmount páginas</p>
+            <p><b>ISBN: </b>@Model.Stock.StcBok.BokIsbn</p>
+            <p><b>Código de Barra: </b>@Model.Stock.StcBok.BokBarcode</p>
+        </div>
+        <div class="col-6">
+            <p><b>Altura: </b>@(Model.Stock.StcBok.BokHeight)cm</p>
+            <p><b>Largura: </b>@(Model.Stock.StcBok.BokDepth)cm</p>
+            <p><b>Comprimento: </b>@(Model.Stock.StcBok.BokLength)cm</p>
+            <p><b>Peso: </b>@(Model.Stock.StcBok.BokWeight)g</p>
+        </div>
+    </div>
+</div>

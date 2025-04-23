@@ -1,0 +1,168 @@
+.cartBody {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    padding: 2.5vw;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+    .items .item {
+        display: flex;
+        flex-direction: row;
+
+        height: 30vh;
+        width: 60vw;
+        background-color: lightgray;
+        border: 2px solid black;
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+        .item .imgDiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 20%;
+            background-color: whitesmoke;
+            border-right: 2px solid black;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+            .item .imgDiv img {
+                max-width: 90%;
+                height: 80%;
+            }
+    
+        .item .titleActions {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            padding-top: 1%;
+        }
+
+            .item .titleActions .title {
+                border-bottom: 2px solid black;
+                height: 20%;
+            }
+
+            .item .titleActions .title h1 {
+                text-align: center;
+                font-weight: 400;
+                font-size: 1.75vw;
+                padding: 0%;
+            }
+        
+        .item .actions {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            height: 100% ;
+            padding: 1%;
+        }
+
+            .item .actions .quantity {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 33%;
+                padding-bottom: 2%;
+            }
+
+                .item .actions .quantity label {
+                    font-size: 1.33vw;
+                }
+
+                .item .actions .quantity input {
+                    font-size: 1.33vw;
+                    width: 50%;
+                }
+            
+            .item .actions .totalPrice {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 33%;
+            }
+            
+                .item .actions .totalPrice h2 {
+                    font-size: 2.5vw;
+                    font-weight: 300;
+                }
+
+            .item .actions .remove {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 33%;
+            }
+
+                .item .actions .remove button {
+                    background-color: white;
+                    border: 3px solid red;
+                    border-radius: 5px;
+                    color: red;
+                    font-weight: bolder;
+                    font-size: 1.3vw;
+                    height: 6vh;
+
+                    transition-duration: 0.2s;
+                }
+
+                    .item .actions .remove button:hover {
+                        background-color: red;
+                        color: white;
+
+                        transition-duration: 0.2s;
+                    }
+
+.priceData {
+    display: flex;
+    align-items: center;
+
+    height: 40vh;
+    width: 30vw;
+    padding: 2%;
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .priceData h2 {
+        font-size: 2vw;
+        font-weight: 400;
+    }
+
+    .priceData h1 {
+        font-size: 2.5vw;
+        font-weight: 300;
+    }
+
+    .priceData .goPay {
+        margin-top: 2vh;
+    }
+
+        .priceData .goPay button {
+            border: 3px solid black;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            font-size: 1.4vw;
+
+            transition-duration: 0.2s;
+        }
+
+            .priceData .goPay button:hover {
+                background-color: black;
+                color: white;
+            }
+

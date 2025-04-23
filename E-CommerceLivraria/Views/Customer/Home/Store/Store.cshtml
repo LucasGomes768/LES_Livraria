@@ -1,0 +1,69 @@
+﻿@model E_CommerceLivraria.Models.ModelsStructGroups.StockSG.StoreDataGroup
+@{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewData["Title"] = "Loja";
+    ViewData["CSSFile"] = "~/css/customer/home/store/store.css";
+}
+<br>
+<div class="storeBody">
+    <div class="filter">
+        <h1>Filtro</h1>
+        <form asp-controller="Home" asp-action="filteredStore" method="get">
+            <div class="title">
+                <label for="title">Título:</label><br>
+                <input type="text" asp-for="Title" value="@Model.Title">
+            </div>
+            <div class="author">
+                <label for="author">Autor:</label><br>
+                <input type="text" asp-for="Author" value="@Model.Author">
+            </div>
+            <div class="publisher">
+                <label for="publisher">Editora:</label><br>
+                <input type="text" asp-for="Publisher" value="@Model.Publisher">
+            </div>
+            <div class="category">
+                <label for="category">Categoria:</label><br>
+                <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories, "BctId", "BctName"))">
+                    <option value="" selected>-</option>
+                </select>
+            </div>
+            <div class="price">
+                <label for="priceMin">Preço mín.:</label>
+                <input type="number" step="00.01" min="0" asp-for="PriceMin" value="@Model.PriceMin">
+            </div>
+            <div class="price">
+                <label for="priceMin">Preço máx.:</label>
+                <input type="number" step="00.01" min="0" asp-for="PriceMax" value="@Model.PriceMax">
+            </div>
+            <button>Filtrar</button>
+        </form>
+    </div>
+    <div class="items">
+        @for (int i = 0; i < Model.Stocks.Count; i += 2)
+        {
+        <div class="row">
+            @for (int j = i; j < i + 2 && j < Model.Stocks.Count; j++)
+            {
+            <div class="item">
+                <img src="@Url.Content(Model.Stocks[j].StcBok.BokImgAddress)">
+                <div class="textInfo">
+                    <div>
+                        <h2>@Model.Stocks[j].StcBok.BokTitle</h2>
+                        <h3>Por @Model.Stocks[j].StcBok.BokBat.BatName</h3>
+                    </div>
+                    <div class="price">
+                        <p class="txtPrice"><b>R$</b>@((Model.Stocks[j].StcCost * (1 + Model.Stocks[j].StcBok.BokPrg.PrgProfitMargin)).ToString("F2"))</p>
+                    </div>
+                    <div>
+                        <a asp-route-id="@Model.Stocks[j].StcId" asp-controller="Home" asp-action="productPage">
+                            <button type="button">Visualizar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+</div>
+<br>

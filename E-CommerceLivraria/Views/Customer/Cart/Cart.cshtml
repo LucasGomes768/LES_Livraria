@@ -1,0 +1,55 @@
+﻿@using System.Globalization
+@model E_CommerceLivraria.Models.ModelsStructGroups.CartSG.CartDataGroup
+@{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewData["Title"] = "Carrinho";
+    ViewData["CSSFile"] = "~/css/customer/cart/cart.css";
+}
+<div class="cartBody">
+    <div class="items">
+        @for (int i = 0; i < Model.Items.Count; i++)
+        {
+            <div class="item">
+                <div class="imgDiv">
+                    <img src="@Url.Content(Model.Items[i].CriStc.StcBok.BokImgAddress)" alt="">
+                </div>
+                <div class="titleActions">
+                    <div class="title">
+                        <h1>@Model.Items[i].CriStc.StcBok.BokTitle</h1>
+                    </div>
+                    <div class="actions">
+                        <div class="quantity">
+                            <label for="quantity">Quantidade:</label>
+                            <input type="number" class="quantityInput" data-index="@(i + 1)" onblur="updatePrice(this)" min="1" max="@(Model.Items[i].CriStc.StcAvailableAmount + Model.Items[i].CriQuantity)" value="@Model.Items[i].CriQuantity">
+                        </div>
+                        <div class="totalPrice">
+                            <input type="hidden" class="basePrice" data-index="@(i + 1)" value="@(Model.Items[i].CriTotalprice / Model.Items[i].CriQuantity)"/>
+                            <input type="hidden" class="curPrice" data-index="@(i + 1)" value="@(Model.Items[i].CriTotalprice)" />
+                            <h2 class="itemTotal" data-index="@(i + 1)"><b>R$</b>@Model.Items[i].CriTotalprice</h2>
+                        </div>
+                        <div class="remove">
+                            <form asp-controller="Cart" asp-action="removeItemFromCart">
+                                <input type="number" value="@Model.Items[i].CriStcId" asp-for="removedStockId" hidden />
+                                <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
+                                <button>Remover</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="priceData">
+        <div>
+            <h2>Total:</h2>
+            <input type="hidden" class="totalPriceInp" value="@Model.Items.Sum(x => x.CriTotalprice)" />
+            <h1 id="totalPriceTxt"><b>R$</b>@Model.Items.Sum(x => x.CriTotalprice)</h1>
+            <div class="goPay">
+                <a href="addressPayment/addressPayment.html">
+                    <button>Definir endereço de entrega</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/customer/cart/cart.js"></script>

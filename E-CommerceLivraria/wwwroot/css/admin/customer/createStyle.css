@@ -1,0 +1,118 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.divCreateClient {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    min-width: 80%;
+    background-color: gold;
+    padding: 2%;
+    border-radius: 7.5px;
+}
+
+.txtCrtClientTitle {
+    text-align: center;
+    font-size: 6vh;
+    background-color: rgb(255, 234, 112);
+    padding: 5px;
+    border-radius: 15px;
+
+    max-width: 40%;
+    margin-left: 30%;
+}
+
+.txtCrtSection {
+    font-size: 2.5vw;
+    margin-top: 2%;
+    border-bottom: 3px solid rgb(255, 234, 112);
+    text-align: center;
+}
+
+.btnSaveClient {
+    width: 33%;
+    font-size: 5vh;
+    font-weight: bold;
+    margin-left: 33.5%;
+    text-align: center;
+    border: 4px solid goldenrod;
+    border-radius: 7.5px;
+
+    transition-duration: 0.2s;
+    background-color: white;
+    color: black;
+}
+
+.btnSaveClient:hover {
+    transition-duration: 0.2s;
+
+    background-color: goldenrod;
+    color: white;
+}
+
+.lblCreate {
+    font-size: 1.2vw;
+}
+
+/* DADOS PESSOAIS DO USUÁRIO */
+
+.inpName {
+    width: 27.5%;
+    min-height: 1%;
+}
+
+.inpBirthdate {
+    width: 11.5%;
+    min-height: 1%;
+}
+
+.inpCpf{
+    width: 10%;
+}
+
+.inpTelephone {
+    width: 9%;
+}
+
+/* DADOS DA CONTA */
+
+.inpEmail{
+    width: 23%;
+}
+
+.inpPassReveal {
+    transform: scale(2);
+    margin-left: 6px;
+    margin-right: 7px;
+}
+
+.inpActive {
+    transform: scale(2);
+    margin-left: 6px;
+}
+
+/* ENDEREÇOS */
+.inpResidenceType{
+    width: 12.5%;
+}
+
+.inpPublicPlaceType{
+    width: 12.5%;
+}
+
+.inpPublicPlace{
+    width: 22.5%;
+}
+
+.inpNum {
+    width: 7%;
+}
+
+.inpCep {
+    width: 7.3%;
+}
+
+.inpObservations{
+    width: 100%;
+    resize: none;
+}

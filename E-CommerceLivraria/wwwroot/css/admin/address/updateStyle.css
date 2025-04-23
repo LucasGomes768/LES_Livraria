@@ -1,0 +1,106 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.divCreateAddress {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    min-width: 80%;
+    background-color: gold;
+    padding: 2%;
+    border-radius: 7.5px;
+}
+
+.txtCrtAddressTitle {
+    text-align: center;
+    font-size: 4vh;
+    background-color: rgb(255, 234, 112);
+    padding: 5px;
+    border-radius: 15px;
+
+    max-width: 70%;
+    margin-left: 15%;
+}
+
+.txtCrtSection {
+    font-size: 2.5vw;
+    margin-top: 2%;
+    border-bottom: 3px solid rgb(255, 234, 112);
+    text-align: center;
+}
+
+.btnSaveAddress {
+    width: 33%;
+    font-size: 5vh;
+    font-weight: bold;
+    margin-left: 33.5%;
+    text-align: center;
+    border: 4px solid goldenrod;
+    border-radius: 7.5px;
+
+    transition-duration: 0.2s;
+    background-color: white;
+    color: black;
+}
+
+.btnSaveAddress:hover {
+    transition-duration: 0.2s;
+
+    background-color: goldenrod;
+    color: white;
+}
+
+.lblCreate {
+    font-size: 1.2vw;
+}
+
+.btnBack {
+    font-size: 3vh;
+    font-weight: bold;
+    text-align: center;
+    border: 4px solid goldenrod;
+    border-radius: 7.5px;
+
+    transition-duration: 0.2s;
+    background-color: white;
+    color: black;
+}
+
+.btnBack:hover {
+    transition-duration: 0.2s;
+
+    background-color: goldenrod;
+    color: white;
+}
+
+.noStep::-webkit-outer-spin-button,
+.noStep::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ENDEREÇOS */
+.inpResidenceType{
+    width: 12.5%;
+}
+
+.inpPublicPlaceType{
+    width: 12.5%;
+}
+
+.inpPublicPlace{
+    width: 22.5%;
+}
+
+.inpNum {
+    width: 7%;
+}
+
+.inpCep {
+    width: 7.3%;
+}
+
+.inpObservations{
+    width: 100%;
+    resize: none;
+}
