@@ -98,6 +98,10 @@ public partial class ECommerceDbContext : DbContext
                 .HasMaxLength(300)
                 .HasComment("Represents an optional text containing observations regarding an address.")
                 .HasColumnName("add_observations");
+            entity.Property(e => e.AddShipping)
+                .HasPrecision(6, 2)
+                .HasComment("Represents the shipping price of an address")
+                .HasColumnName("add_shipping");
             entity.Property(e => e.AddPptId)
                 .HasPrecision(3)
                 .HasColumnName("add_ppt_id");

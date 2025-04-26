@@ -11,8 +11,8 @@ namespace E_CommerceLivraria.Services.AddressS.RegionsS {
 
         public City CreateIfNew(City city, State state) {
             var query = _cityRepository.GetAll();
-            var result = query.Where(x => x.CtyName == city.CtyName)
-                .FirstOrDefault(x => x.CtyStt == state);
+            var result = query.Where(x => x.CtyName.ToLower() == city.CtyName.ToLower())
+                .FirstOrDefault(x => x.CtyStt.SttName.ToLower() == state.SttName.ToLower());
 
             if (result == null) {
                 city.CtySttId = city.CtyStt.SttId;

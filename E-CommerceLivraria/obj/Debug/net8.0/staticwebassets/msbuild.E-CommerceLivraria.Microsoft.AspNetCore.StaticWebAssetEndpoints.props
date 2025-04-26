@@ -96,17 +96,29 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"oux2daomzz"},{"Name":"integrity","Value":"sha256-4KwbQxs52m8/eC1ccgVLmPUp/O7p8y29qSVomV36TvM="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/admin/customer/updateStyle.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2195"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00224KwbQxs52m8/eC1ccgVLmPUp/O7p8y29qSVomV36TvM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:51 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/addressPay/addressPayment.418w1l73sr.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\addressPayment.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/address/createAddress.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\address\createAddress.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"418w1l73sr"},{"Name":"integrity","Value":"sha256-WMqTL8oZGkTpjUlw8T\u002BXGeaItbb/Ph9JG46v3zsV6PM="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/cart/addressPay/addressPayment.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2903"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022WMqTL8oZGkTpjUlw8T\u002BXGeaItbb/Ph9JG46v3zsV6PM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:52 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2DJ43hyK3V3j4HR/PgM447mkaI4jCt/N5dKY5XhMaK0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2868"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222DJ43hyK3V3j4HR/PgM447mkaI4jCt/N5dKY5XhMaK0=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:40 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/address/createAddress.ow5dirhblc.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\address\createAddress.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ow5dirhblc"},{"Name":"integrity","Value":"sha256-2DJ43hyK3V3j4HR/PgM447mkaI4jCt/N5dKY5XhMaK0="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/address/createAddress.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2868"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222DJ43hyK3V3j4HR/PgM447mkaI4jCt/N5dKY5XhMaK0=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:40 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/addressPay/addressPayment.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\addressPayment.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-WMqTL8oZGkTpjUlw8T\u002BXGeaItbb/Ph9JG46v3zsV6PM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2903"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022WMqTL8oZGkTpjUlw8T\u002BXGeaItbb/Ph9JG46v3zsV6PM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:52 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-vF20NIsLqHDstur1T5oAKZvI0sAQLYzAyrBpFbgDszU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3079"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022vF20NIsLqHDstur1T5oAKZvI0sAQLYzAyrBpFbgDszU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 26 Apr 2025 01:48:23 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/addressPay/addressPayment.gtm738j0yh.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\addressPayment.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gtm738j0yh"},{"Name":"integrity","Value":"sha256-vF20NIsLqHDstur1T5oAKZvI0sAQLYzAyrBpFbgDszU="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/cart/addressPay/addressPayment.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3079"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022vF20NIsLqHDstur1T5oAKZvI0sAQLYzAyrBpFbgDszU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 26 Apr 2025 01:48:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/addressPay/methodPay/methodPayment.26c1f42pwt.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\methodPay\methodPayment.css'))</AssetFile>

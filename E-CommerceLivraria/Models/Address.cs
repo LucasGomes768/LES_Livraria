@@ -30,9 +30,19 @@ public partial class Address
     public string AddCepStyled {
         get {
             string cep = AddCep.ToString();
-            return cep.Substring(0, 2) + "."
-                + cep.Substring(2, 3) + "-"
-                + cep.Substring(5);
+
+            if (cep.Length != 8)
+                return "";
+            else
+                return cep.Substring(0, 5) + "-"
+                    + cep.Substring(5);
+        }
+        set
+        {
+            string cep = value;
+            cep = cep.Trim().Replace("-","");
+
+            AddCep = decimal.Parse(cep);
         }
     }
 
@@ -45,6 +55,11 @@ public partial class Address
     /// Represents an optional text containing observations regarding an address.
     /// </summary>
     public string? AddObservations { get; set; }
+
+    /// <summary>
+    /// Represents the shipping price of an address
+    /// </summary>
+    public decimal AddShipping { get; set; }
 
     public decimal AddPptId { get; set; }
 

@@ -6,6 +6,7 @@ wwwroot\css\admin\customer\detailedStyle.css
 wwwroot\css\admin\customer\headerStyle.css
 wwwroot\css\admin\customer\readStyle.css
 wwwroot\css\admin\customer\updateStyle.css
+wwwroot\css\customer\address\createAddress.css
 wwwroot\css\customer\cart\addressPay\addressPayment.css
 wwwroot\css\customer\cart\addressPay\methodPay\methodPayment.css
 wwwroot\css\customer\cart\cart.css

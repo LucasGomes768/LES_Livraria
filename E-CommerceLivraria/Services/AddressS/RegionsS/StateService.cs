@@ -12,7 +12,7 @@ namespace E_CommerceLivraria.Services.AddressS.RegionsS {
         public State CreateIfNew(State state, Country country) {
             var query = _stateRepository.GetAll();
             var result = query.Where(x => x.SttName.ToLower() == state.SttName.ToLower())
-                .FirstOrDefault(x => x.SttCtr == country);
+                .FirstOrDefault(x => x.SttCtr.CtrName.ToLower() == country.CtrName.ToLower());
 
             if (!(result is State)) {
                 state.SttCtrId = state.SttCtr.CtrId;

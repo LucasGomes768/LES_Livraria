@@ -144,6 +144,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin\customer\updateStyle.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\address\createAddress.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>E-CommerceLivraria</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/E-CommerceLivraria</BasePath>
+      <RelativePath>css/customer/address/createAddress.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ow5dirhblc</Fingerprint>
+      <Integrity>2DJ43hyK3V3j4HR/PgM447mkaI4jCt/N5dKY5XhMaK0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\address\createAddress.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\addressPayment.css'))">
       <SourceType>Package</SourceType>
       <SourceId>E-CommerceLivraria</SourceId>
@@ -156,8 +174,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>418w1l73sr</Fingerprint>
-      <Integrity>WMqTL8oZGkTpjUlw8T+XGeaItbb/Ph9JG46v3zsV6PM=</Integrity>
+      <Fingerprint>gtm738j0yh</Fingerprint>
+      <Integrity>vF20NIsLqHDstur1T5oAKZvI0sAQLYzAyrBpFbgDszU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\addressPayment.css'))</OriginalItemSpec>

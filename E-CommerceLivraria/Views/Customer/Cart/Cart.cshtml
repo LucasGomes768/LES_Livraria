@@ -41,14 +41,15 @@
     </div>
     <div class="priceData">
         <div>
-            <h2>Total:</h2>
-            <input type="hidden" class="totalPriceInp" value="@Model.Items.Sum(x => x.CriTotalprice)" />
-            <h1 id="totalPriceTxt"><b>R$</b>@Model.Items.Sum(x => x.CriTotalprice)</h1>
-            <div class="goPay">
-                <a href="addressPayment/addressPayment.html">
+            <form asp-controller="Payment" asp-action="DeliveryAddressPage">
+                <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
+                <h2>Total:</h2>
+                <input type="hidden" class="totalPriceInp" value="@Model.Items.Sum(x => x.CriTotalprice)" />
+                <h1 id="totalPriceTxt"><b>R$</b>@Model.Items.Sum(x => x.CriTotalprice)</h1>
+                <div class="goPay">
                     <button>Definir endereço de entrega</button>
-                </a>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

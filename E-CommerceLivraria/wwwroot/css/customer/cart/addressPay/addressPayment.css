@@ -100,14 +100,20 @@
         transition-duration: 0.2s;
     }
 
-        .addressBody button:hover {
+        .addressBody button:disabled {
+            border-style: revert;
+            border-color: gray;
+            background-color: gray;
+            color: white;
+        }
+
+        .addressBody button:hover:not(:disabled) {
             color: white;
             background-color: black;
         }
 
 .price {
     display: flex;
-    align-items: left;
     flex-direction: column;
     gap: 1.5vh;
 

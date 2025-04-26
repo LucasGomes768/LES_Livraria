@@ -1,4 +1,5 @@
 using E_CommerceLivraria.Data;
+using E_CommerceLivraria.Extra;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.AddressR.RegionsR;
 using E_CommerceLivraria.Repository.CustomerR;
@@ -19,6 +20,7 @@ using E_CommerceLivraria.Services.StockS.BookS.AuthorS;
 using E_CommerceLivraria.Services.StockS.BookS.CategoryS;
 using E_CommerceLivraria.Services.StockS.BookS.PricingGroupS;
 using E_CommerceLivraria.Services.StockS.BookS.PublisherS;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,14 @@ builder.Services.AddDbContext<ECommerceDbContext>(options => options.UseNpgsql(
     builder.Configuration.GetConnectionString("DefaultConnection")),
     ServiceLifetime.Scoped
 );
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Conventions.Add(new RouteTokenTransformerConvention(
+        new NamespaceRoutingConvention()
+    ));
+});
+
 // Repositórios e Serviços
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
@@ -79,13 +89,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ECommerceDbContext>();
-    db.Database.Migrate(); // Isso cria as tabelas se não existirem
-}
-
 
 app.MapControllerRoute(
     name: "default",

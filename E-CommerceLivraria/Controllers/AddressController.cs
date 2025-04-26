@@ -54,10 +54,10 @@ namespace E_CommerceLivraria.Controllers
         [HttpGet("Address/Create/{dataGroup}")]
         public IActionResult Create([FromRoute] string dataGroup) {
             string[] vet = dataGroup.Split(",");
-            decimal id = decimal.Parse(vet[0]);
+            decimal ctmId = decimal.Parse(vet[0]);
             EAddressType addType = (EAddressType)int.Parse(vet[1]);
 
-            var ctm = _customerService.Get(id);
+            var ctm = _customerService.Get(ctmId);
             if (ctm == null) return NotFound();
 
             CreateAddressGroup cag = new CreateAddressGroup {

@@ -1,0 +1,114 @@
+﻿@using System.Globalization
+@using E_CommerceLivraria.Enums.Customer
+@model E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG.PayAddressPageData
+@{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewData["Title"] = "Endereço de entrega";
+    ViewData["CSSFile"] = "~/css/customer/cart/addressPay/addressPayment.css";
+}
+<br>
+<button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
+<div class="bigBody">
+    <div class="addressBody">
+        <h1>Selecione o endereço de entrega</h1>
+        <div class="firstLine">
+            <div class="cep">
+                <form method="get" asp-controller="Payment" id="itemForm">
+                    <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
+                    <label for="cep">CEP:</label>
+                    <select id="cep" asp-for="ChoosenAddId"
+                    asp-items="@(new SelectList(Model.Addresses, "AddId", "AddCepStyled"))"
+                    onchange="document.getElementById('itemForm').submit()">
+                        @if (Model.tempAdded == false)
+                        {
+                            <option value="" selected>- Selecione -</option>
+                        } else
+                        {
+                            <option value="@Model.ChoosenAddId" selected>@Model.ChoosenAdd.AddCepStyled</option>
+                            <option value="">- Selecione -</option>
+                        }
+                    </select>
+                </form>
+            </div>
+            <a asp-controller="CtmPayment" asp-action="CreateAddressPage" asp-route-ctmId="@Model.CtmId" asp-route-origin="@nameof(ECtmAddressCreate.PAYMENT)">
+                <button type="button">Adicionar novo endereço</button>
+            </a>
+        </div>
+        <form>
+            <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
+            <input type="number" value="@(Model.ChoosenAddId.HasValue ? Model.ChoosenAddId : null)" asp-for="ChoosenAddId" hidden/>
+            <div class="addressData">
+                <div class="line sp_between">
+                    <div class="number">
+                        <label for="num">Nº:</label>
+                        <input type="number" id="num" min="1" max="9999" required readonly value="@(Model.ChoosenAdd == null? null : Model.ChoosenAdd.AddNumber)" >
+                    </div>
+                    <div class="neighborhood">
+                        <label for="neigh">Bairro:</label>
+                        <input type="text" id="neigh" required readonly value="@(Model.ChoosenAdd == null? null : Model.ChoosenAdd.AddNbh.NbhName)">
+                    </div>
+                    <div class="city">
+                        <label for="city">Cidade:</label>
+                        <input type="text" id="city" required readonly value="@(Model.ChoosenAdd == null? null : Model.ChoosenAdd.AddNbh.NbhCty.CtyName)">
+                    </div>
+                    <div class="state">
+                        <label for="state">Estado:</label>
+                        <input type="text" id="state" required readonly value="@(Model.ChoosenAdd == null? null : Model.ChoosenAdd.AddNbh.NbhCty.CtyStt.SttName)">
+                    </div>
+                    <div class="country">
+                        <label for="country">País:</label>
+                        <input type="text" id="country" required readonly value="@(Model.ChoosenAdd == null? null : Model.ChoosenAdd.AddNbh.NbhCty.CtyStt.SttCtr.CtrName)">
+                    </div>
+                </div>
+                <div class="line r_gap">
+                    <div class="rType">
+                        <label for="rType">Tipo de Residência:</label>
+                        <input type="text" id="rType" required readonly value="@(Model.ChoosenAdd == null? null : Model.ChoosenAdd.AddRst.RstName)">
+                    </div>
+                    <div class="ppType">
+                        <label for="ppType">Tipo de Logradouro:</label>
+                        <input type="text" id="ppType" required readonly value="@(Model.ChoosenAdd == null ? null : Model.ChoosenAdd.AddPpt.PptName)">
+                    </div>
+                    <div class="pp">
+                        <label for="pp">Logradouro:</label>
+                        <input type="text" id="pp" required readonly value="@(Model.ChoosenAdd == null ? null : Model.ChoosenAdd.AddPublicPlace)">
+                    </div>
+                </div>
+                <div class="line observationsDiv">
+                    <div>
+                        <label for="obs">Observações:</label>
+                        <textarea id="obs" class="observationsTxt" readonly> @(Model.ChoosenAdd == null ? null : Model.ChoosenAdd.AddObservations) </textarea>
+                    </div>
+                </div>
+            </div>
+            <br>
+            @if (Model.ChoosenAdd == null)
+            {
+                <button type="button" disabled>Escolha um endereço</button>
+            } else
+            {
+                <button type="button">Continuar para forma de pagamento</button>
+            }
+        </form>
+    </div>
+    <div class="price">
+        <div>
+            <h2>Valor Atual:</h2>
+            <h1><b>R$</b>@Model.Total</h1>
+        </div>
+        <div>
+            <h2>Frete:</h2>
+            <h1><b>R$</b>@(Model.ChoosenAdd == null ? 0.ToString("F2") : Model.ChoosenAdd.AddShipping)</h1>
+        </div>
+        <div class="finalPrice">
+            <h2>Valor Total:</h2>
+            @if (Model.ChoosenAdd == null)
+            {
+                <h1><b>R$</b>@Model.Total</h1>
+            } else
+            {
+                <h1><b>R$</b>@(Model.Total + Model.ChoosenAdd.AddShipping)</h1>
+            }
+        </div>
+    </div>
+</div>

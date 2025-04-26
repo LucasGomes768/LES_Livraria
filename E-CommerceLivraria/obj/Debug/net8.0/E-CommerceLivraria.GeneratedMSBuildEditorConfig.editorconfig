@@ -22,11 +22,23 @@ build_property.EnableComHosting =
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Address/CreateAdd/createAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQWRkcmVzc1xDcmVhdGVBZGRcY3JlYXRlQWRkcmVzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Cart/addressPayment/addressPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ2FydFxhZGRyZXNzUGF5bWVudFxhZGRyZXNzUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Cart/addressPayment/methodPayment/methodPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ2FydFxhZGRyZXNzUGF5bWVudFxtZXRob2RQYXltZW50XG1ldGhvZFBheW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Cart/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ2FydFxDYXJ0LmNzaHRtbA==

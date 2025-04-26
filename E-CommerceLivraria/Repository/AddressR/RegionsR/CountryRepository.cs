@@ -12,15 +12,12 @@ namespace E_CommerceLivraria.Repository.AddressR.RegionsR {
 
         public Country Add(Country country) {
             _dbContext.Countries.Add(country);
-            _dbContext.SaveChanges();
 
-            _dbContext.Entry(country).State = EntityState.Detached;
-
-            return _dbContext.Countries.AsNoTracking().FirstOrDefault(x => x.CtrId == country.CtrId);
+            return country;
         }
 
         public Country? Get(decimal id) {
-            return _dbContext.Countries.Where(x => x.CtrId == id).SingleOrDefault();
+            return _dbContext.Countries.FirstOrDefault(x => x.CtrId == id);
         }
 
         public List<Country> GetAll() {

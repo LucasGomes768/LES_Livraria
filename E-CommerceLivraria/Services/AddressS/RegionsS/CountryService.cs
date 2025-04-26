@@ -11,7 +11,7 @@ namespace E_CommerceLivraria.Services.AddressS.RegionsS {
 
         public Country CreateIfNew(Country country) {
             var query = _countryRepository.GetAll();
-            var result = query.FirstOrDefault(x => x.CtrName == country.CtrName);
+            var result = query.FirstOrDefault(x => x.CtrName.ToLower() == country.CtrName.ToLower());
 
             if (result is null) {
                 return _countryRepository.Add(country);

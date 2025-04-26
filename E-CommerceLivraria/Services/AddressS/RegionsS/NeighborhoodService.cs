@@ -11,8 +11,8 @@ namespace E_CommerceLivraria.Services.AddressS.RegionsS {
 
         public Neighborhood CreateIfNew(Neighborhood neighborhood, City city) {
             var query = _neighborhoodRepository.GetAll();
-            var result = query.Where(x => x.NbhName == neighborhood.NbhName)
-                .FirstOrDefault(x => x.NbhCty == city);
+            var result = query.Where(x => x.NbhName.ToLower() == neighborhood.NbhName.ToLower())
+                .FirstOrDefault(x => x.NbhCty.CtyName.ToLower() == city.CtyName.ToLower());
 
             if (result == null) {
                 neighborhood.NbhCtyId = neighborhood.NbhCty.CtyId;

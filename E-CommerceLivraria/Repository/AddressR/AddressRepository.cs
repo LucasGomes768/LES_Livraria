@@ -14,8 +14,8 @@ namespace E_CommerceLivraria.Repository.AddressR {
             _dbContext.Addresses.Add(address);
             _dbContext.SaveChanges();
 
-            var add = _dbContext.Addresses.AsNoTracking().FirstOrDefault(x => x.AddId == address.AddId);
-            _dbContext.Entry(address).State = EntityState.Detached;
+            var add = Get(address.AddId);
+            _dbContext.Entry(add).State = EntityState.Detached;
             _dbContext.Entry(add).State = EntityState.Detached;
 
             return add;

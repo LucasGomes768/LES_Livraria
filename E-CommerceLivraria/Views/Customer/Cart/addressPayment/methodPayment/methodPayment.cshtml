@@ -1,0 +1,134 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<br>
+<button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
+<div class="paymentBody">
+    <div class="bigPayBody">
+        <div class="payTitle">
+            <h1>Método de pagamento:</h1>
+        </div>
+        <div class="promoCoupon">
+            <div>
+                <label>Código do cupom promocional:</label>
+                <input type="text" id="promoCoupon">
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>Valor:</th>
+                        <td>-</td>
+                        <td class="rm"><button>X</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="choosenInfo">
+            <div class="choosenData">
+                <div class="choosenCards">
+                    <div class="title">
+                        <h2>Cartões</h2>
+                        <select id="userCards">
+                            <option value="">-</option>
+                            <option value="1">****.****.****.1123 **3 (Mastercard)</option>
+                            <option value="2">****.****.****.3396 **1 (Visa)</option>
+                            <option value="3">****.****.****.1423 **9 (Visa)</option>
+                        </select>
+                    </div>
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <th>Número</th>
+                                <th>Cód.</th>
+                                <th>Bandeira</th>
+                                <th>Valor</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>****.****.****.1123</td>
+                                <td>**3</td>
+                                <td>Mastercard</td>
+                                <td>
+                                    R$
+                                    <input type="number" min="10.00" max="9999.99" step="00.01" value="249.79" required>
+                                </td>
+                                <td>
+                                    <button>X</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>****.****.****.3396</td>
+                                <td>**1</td>
+                                <td>Visa</td>
+                                <td>
+                                    R$
+                                    <input type="number" min="10.00" max="9999.99" step="00.01" value="310.00" required>
+                                </td>
+                                <td>
+                                    <button>X</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="addCard">Adicionar novo cartão de crédito</button>
+            </div>
+            <div class="choosenCoupons choosenData">
+                <div class="title">
+                    <h2>Cupons</h2>
+                    <select id="userCoupons">
+                        <option value="">-</option>
+                        <option value="1">R$12,00</option>
+                        <option value="2">R$8,00</option>
+                        <option value="3">R$120,00</option>
+                        <option value="4">R$49,99</option>
+                    </select>
+                </div>
+                <div class="table">
+                    <table>
+                        <tr>
+                            <th>Código</th>
+                            <th>Data de Geração</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>R$12,00</td>
+                            <td>14/05/2024</td>
+                            <td>
+                                <button>X</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>R$8,00</td>
+                            <td>06/01/2025</td>
+                            <td>
+                                <button>X</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price">
+        <div>
+            <h2>Valor Total:</h2>
+            <h1><b>R$</b>579,79</h1>
+        </div>
+        <div>
+            <h2>Frete:</h2>
+            <h1><b>R$</b>32,58</h1>
+        </div>
+        <div class="finalPrice">
+            <h2>Cupons:</h2>
+            <h1><b>R$</b>20,00</h1>
+        </div>
+        <div class="finalPrice">
+            <h2>Valor Total:</h2>
+            <h1><b>R$</b>549,79</h1>
+        </div>
+        <button>Finalizar compra</button>
+    </div>
+</div>

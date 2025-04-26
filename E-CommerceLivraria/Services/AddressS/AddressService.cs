@@ -45,6 +45,9 @@ namespace E_CommerceLivraria.Services.AddressS {
             var rstTemp = _residenceTypeRepository.Get(address.AddRstId);
             address.AddRst = rstTemp;
 
+            Random rng = new Random();
+            address.AddShipping = (decimal)rng.NextDouble() * 200;
+
             return _addressRepository.Add(address);
         }
 

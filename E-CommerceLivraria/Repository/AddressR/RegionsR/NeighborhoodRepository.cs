@@ -12,19 +12,20 @@ namespace E_CommerceLivraria.Repository.AddressR.RegionsR {
 
         public Neighborhood Add(Neighborhood neighborhood) {
             _dbContext.Neighborhoods.Add(neighborhood);
-            _dbContext.SaveChanges();
 
-            _dbContext.Entry(neighborhood).State = EntityState.Detached;
-
-            return _dbContext.Neighborhoods.AsNoTracking().FirstOrDefault(x => x.NbhId == neighborhood.NbhId);
+            return neighborhood;
         }
 
         public Neighborhood? Get(decimal id) {
-            return _dbContext.Neighborhoods.Where(x => x.NbhId == id).SingleOrDefault();
+            return _dbContext.Neighborhoods
+                .Include(x => x.NbhCty)
+                .FirstOrDefault(x => x.NbhId == id);
         }
 
         public List<Neighborhood> GetAll() {
-            return _dbContext.Neighborhoods.ToList();
+            return _dbContext.Neighborhoods
+                .Include(x => x.NbhCty)
+                .ToList();
         }
     }
 }
