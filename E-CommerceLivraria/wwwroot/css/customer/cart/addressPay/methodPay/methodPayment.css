@@ -4,6 +4,7 @@
 
     padding-left: 2.5vw;
     padding-right: 2.5vw;
+    padding-bottom: 1.5vw;
 }
 
 .bigPayBody {
@@ -87,13 +88,14 @@
 .choosenInfo {
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 20px;
 
     width: 100%;
 }
 
     .choosenInfo .choosenData {
-        width: 47.5%;
+        width: 100%;
     }
 
         .choosenInfo .choosenCoupons {
@@ -229,7 +231,14 @@
         transition-duration: 0.2s;
     }
 
-        .price button:hover {
+        .price button:disabled {
+            border-style: revert;
+            border-color: gray;
+            background-color: gray;
+            color: white;
+        }
+
+        .price button:hover:not(:disabled) {
             background-color: black;
             color: white;
         }

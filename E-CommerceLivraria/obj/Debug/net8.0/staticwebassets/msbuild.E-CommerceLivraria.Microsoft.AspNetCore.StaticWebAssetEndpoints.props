@@ -120,17 +120,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gtm738j0yh"},{"Name":"integrity","Value":"sha256-vF20NIsLqHDstur1T5oAKZvI0sAQLYzAyrBpFbgDszU="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/cart/addressPay/addressPayment.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3079"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022vF20NIsLqHDstur1T5oAKZvI0sAQLYzAyrBpFbgDszU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 26 Apr 2025 01:48:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/addressPay/methodPay/methodPayment.26c1f42pwt.css">
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/addressPay/methodPay/methodPayment.5215df42th.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\methodPay\methodPayment.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"26c1f42pwt"},{"Name":"integrity","Value":"sha256-2lKCAIkt839VFj6QMt0VJhX7o0m49JkmknOxGJGuPOE="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/cart/addressPay/methodPay/methodPayment.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5320"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222lKCAIkt839VFj6QMt0VJhX7o0m49JkmknOxGJGuPOE=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:52 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5215df42th"},{"Name":"integrity","Value":"sha256-nR1KPW688HlL/ekX74jsuTLkid9K0/RZE6d4hbR4h4o="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/cart/addressPay/methodPay/methodPayment.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5560"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022nR1KPW688HlL/ekX74jsuTLkid9K0/RZE6d4hbR4h4o=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Apr 2025 16:30:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/addressPay/methodPay/methodPayment.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\addressPay\methodPay\methodPayment.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2lKCAIkt839VFj6QMt0VJhX7o0m49JkmknOxGJGuPOE="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5320"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222lKCAIkt839VFj6QMt0VJhX7o0m49JkmknOxGJGuPOE=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:52 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-nR1KPW688HlL/ekX74jsuTLkid9K0/RZE6d4hbR4h4o="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5560"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022nR1KPW688HlL/ekX74jsuTLkid9K0/RZE6d4hbR4h4o=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Apr 2025 16:30:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/cart.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\cart.css'))</AssetFile>
@@ -299,6 +299,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"noiwijf7kj"},{"Name":"integrity","Value":"sha256-aatroSGe1XrJNjAYp\u002B1W/Ac1PjbVRoq8KyErcgVLaWk="},{"Name":"label","Value":"_content/E-CommerceLivraria/js/admin/customer/verifyPassword.js"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"922"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022aatroSGe1XrJNjAYp\u002B1W/Ac1PjbVRoq8KyErcgVLaWk=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:52 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/js/customer/cart/addressPay/methodPay/methodPayment.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\methodPay\methodPayment.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq\u002B0DXg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4491"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq\u002B0DXg=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Apr 2025 16:58:10 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/js/customer/cart/addressPay/methodPay/methodPayment.xnoti7z453.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\methodPay\methodPayment.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xnoti7z453"},{"Name":"integrity","Value":"sha256-HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq\u002B0DXg="},{"Name":"label","Value":"_content/E-CommerceLivraria/js/customer/cart/addressPay/methodPay/methodPayment.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4491"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq\u002B0DXg=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Apr 2025 16:58:10 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/js/customer/cart/cart.2q2lsspzzr.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\cart.js'))</AssetFile>

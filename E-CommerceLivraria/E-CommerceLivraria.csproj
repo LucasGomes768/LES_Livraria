@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\css\customer\address\createAddress.css" />
+    <None Include="wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js" />
   </ItemGroup>
 
 </Project>

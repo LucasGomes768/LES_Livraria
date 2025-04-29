@@ -15,6 +15,7 @@ public partial class CreditCard
     /// Represents a credit cards number.
     /// </summary>
     public decimal CrdNumber { get; set; }
+
     [NotMapped]
     public string CrdNumberStyled {
         get {
@@ -23,6 +24,18 @@ public partial class CreditCard
                 + cn.Substring(4, 4) + "."
                 + cn.Substring(8, 4) + "."
                 + cn.Substring(12);
+        }
+    }
+
+    [NotMapped]
+    public string CrdNumberHidden
+    {
+        get
+        {
+            string cn = CrdNumber.ToString();
+            return "****.****.****."
+                + cn.Substring(12)
+                + " (" + CrdCcf.CcfName + ")";
         }
     }
 
@@ -42,7 +55,7 @@ public partial class CreditCard
 
     public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
 
-    public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
+    public virtual ICollection<CreditCardsPurchase> Purchases { get; set; } = new List<CreditCardsPurchase>();
 
     public virtual ICollection<Customer> CtcCtms { get; set; } = new List<Customer>();
 }

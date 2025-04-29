@@ -418,6 +418,19 @@ public partial class ECommerceDbContext : DbContext
                 .HasConstraintName("city_state_fk");
         });
 
+        modelBuilder.Entity<CreditCardsPurchase>(entity =>
+        {
+            entity.HasKey(e => new { e.CcpPrcId, e.CcpCrdId });
+
+            entity.HasOne(e => e.CcpCrd)
+                .WithMany(e => e.Purchases)
+                .HasForeignKey(e => e.CcpCrdId);
+
+            entity.HasOne(e => e.CcpPrc)
+                .WithMany(e => e.CreditCards)
+                .HasForeignKey(e => e.CcpPrcId);
+        });
+
         modelBuilder.Entity<Country>(entity =>
         {
             entity.HasKey(e => e.CtrId).HasName("country_pk");
@@ -827,9 +840,6 @@ public partial class ECommerceDbContext : DbContext
                 .HasPrecision(5)
                 .HasComment("Represents a promotional coupons foreign key.")
                 .HasColumnName("prc_cpp_id");
-            entity.Property(e => e.PrcCrdId)
-                .HasPrecision(5)
-                .HasColumnName("prc_crd_id");
             entity.Property(e => e.PrcCtmId)
                 .HasPrecision(5)
                 .HasColumnName("prc_ctm_id");
@@ -854,10 +864,6 @@ public partial class ECommerceDbContext : DbContext
             entity.HasOne(d => d.PrcCpp).WithMany(p => p.Purchases)
                 .HasForeignKey(d => d.PrcCppId)
                 .HasConstraintName("purchase_promotional_coupon_fk");
-
-            entity.HasOne(d => d.PrcCrd).WithMany(p => p.Purchases)
-                .HasForeignKey(d => d.PrcCrdId)
-                .HasConstraintName("purchase_credit_card_fk");
 
             entity.HasOne(d => d.PrcCtm).WithMany(p => p.Purchases)
                 .HasForeignKey(d => d.PrcCtmId)

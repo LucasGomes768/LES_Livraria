@@ -5,6 +5,7 @@ using E_CommerceLivraria.Repository.AddressR.RegionsR;
 using E_CommerceLivraria.Repository.CustomerR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
 using E_CommerceLivraria.Repository.CustomerR.TelephoneR;
+using E_CommerceLivraria.Repository.PurchaseR;
 using E_CommerceLivraria.Repository.StockR;
 using E_CommerceLivraria.Repository.StockR.BookR;
 using E_CommerceLivraria.Repository.StockR.BookR.AuthorR;
@@ -76,6 +77,15 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<IStockService, StockService>();
+
+builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.IdleTimeout = TimeSpan.FromMinutes(20);
+});
 
 var app = builder.Build();
 

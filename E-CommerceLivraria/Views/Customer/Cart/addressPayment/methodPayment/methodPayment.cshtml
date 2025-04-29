@@ -1,7 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using E_CommerceLivraria.Models.ModelsStructGroups.MethodPaymentSG
+@using E_CommerceLivraria.Models.ModelsStructGroups.CreditCardSG
+@using System.Globalization
+@model MethodPaymentData
 @{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewData["Title"] = "Método de pagamento";
+    ViewData["CSSFile"] = "~/css/customer/cart/addressPay/methodPay/methodPayment.css";
 }
 <br>
 <button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
@@ -30,46 +34,13 @@
                 <div class="choosenCards">
                     <div class="title">
                         <h2>Cartões</h2>
-                        <select id="userCards">
-                            <option value="">-</option>
-                            <option value="1">****.****.****.1123 **3 (Mastercard)</option>
-                            <option value="2">****.****.****.3396 **1 (Visa)</option>
-                            <option value="3">****.****.****.1423 **9 (Visa)</option>
+                        <select id="userCards" asp-items="@(new SelectList(Model.CreditCards, "CrdId", "CrdNumberHidden"))" onchange="salvarCartao()">
+                            <option value="N" selected>- Selecione -</option>
                         </select>
                     </div>
                     <div class="table">
-                        <table>
-                            <tr>
-                                <th>Número</th>
-                                <th>Cód.</th>
-                                <th>Bandeira</th>
-                                <th>Valor</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>****.****.****.1123</td>
-                                <td>**3</td>
-                                <td>Mastercard</td>
-                                <td>
-                                    R$
-                                    <input type="number" min="10.00" max="9999.99" step="00.01" value="249.79" required>
-                                </td>
-                                <td>
-                                    <button>X</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>****.****.****.3396</td>
-                                <td>**1</td>
-                                <td>Visa</td>
-                                <td>
-                                    R$
-                                    <input type="number" min="10.00" max="9999.99" step="00.01" value="310.00" required>
-                                </td>
-                                <td>
-                                    <button>X</button>
-                                </td>
-                            </tr>
+                        <table id="cardsUsedTable">
+                            
                         </table>
                     </div>
                 </div>
@@ -79,11 +50,7 @@
                 <div class="title">
                     <h2>Cupons</h2>
                     <select id="userCoupons">
-                        <option value="">-</option>
-                        <option value="1">R$12,00</option>
-                        <option value="2">R$8,00</option>
-                        <option value="3">R$120,00</option>
-                        <option value="4">R$49,99</option>
+                        <option value="">- Selecione -</option>
                     </select>
                 </div>
                 <div class="table">
@@ -93,20 +60,6 @@
                             <th>Data de Geração</th>
                             <th></th>
                         </tr>
-                        <tr>
-                            <td>R$12,00</td>
-                            <td>14/05/2024</td>
-                            <td>
-                                <button>X</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>R$8,00</td>
-                            <td>06/01/2025</td>
-                            <td>
-                                <button>X</button>
-                            </td>
-                        </tr>
                     </table>
                 </div>
             </div>
@@ -114,21 +67,32 @@
     </div>
     <div class="price">
         <div>
-            <h2>Valor Total:</h2>
-            <h1><b>R$</b>579,79</h1>
+            <h2>Preço dos itens:</h2>
+            <h1><b>R$</b>@Model.Total.ToString("F2")</h1>
         </div>
         <div>
             <h2>Frete:</h2>
-            <h1><b>R$</b>32,58</h1>
+            <h1><b>R$</b>@Model.Address.AddShipping</h1>
         </div>
-        <div class="finalPrice">
+        <div>
+            <h2>Preço total:</h2>
+            <input type="number" id="totalPrice" value="@((Model.Total + Model.Address.AddShipping).ToString("F2", CultureInfo.InvariantCulture))" hidden />
+            <h1><b>R$</b>@((Model.Total + Model.Address.AddShipping).ToString("F2"))</h1>
+        </div>
+        <div>
             <h2>Cupons:</h2>
-            <h1><b>R$</b>20,00</h1>
+            <h1><b>R$</b>0,00</h1>
         </div>
-        <div class="finalPrice">
-            <h2>Valor Total:</h2>
-            <h1><b>R$</b>549,79</h1>
+        <div>
+            <h2>Cartões:</h2>
+            <h1 id="cardsValue"><b>R$</b>0,00</h1>
         </div>
-        <button>Finalizar compra</button>
+        <form action="/" method="post">
+            <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
+            <input type="number" value="@Model.Address.AddId" asp-for="Address.AddId" hidden />
+            <div id="finishButton">
+            </div>
+        </form>
     </div>
 </div>
+<script src="~/js/customer/cart/addressPay/methodPay/methodPayment.js"></script>

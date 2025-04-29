@@ -34,9 +34,9 @@
                 <button type="button">Adicionar novo endereço</button>
             </a>
         </div>
-        <form>
+        <form asp-controller="Payment" asp-action="RedirectPaymentMethodPage">
             <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
-            <input type="number" value="@(Model.ChoosenAddId.HasValue ? Model.ChoosenAddId : null)" asp-for="ChoosenAddId" hidden/>
+            <input type="number" value="@(Model.ChoosenAddId.HasValue ? Model.ChoosenAddId : null)" asp-for="ChoosenAddId" hidden />
             <div class="addressData">
                 <div class="line sp_between">
                     <div class="number">
@@ -87,7 +87,7 @@
                 <button type="button" disabled>Escolha um endereço</button>
             } else
             {
-                <button type="button">Continuar para forma de pagamento</button>
+                <button type="submit">Continuar para forma de pagamento</button>
             }
         </form>
     </div>

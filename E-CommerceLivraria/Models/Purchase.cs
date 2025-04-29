@@ -34,15 +34,13 @@ public partial class Purchase
 
     public decimal PrcCtmId { get; set; }
 
-    public decimal? PrcCrdId { get; set; }
-
     public virtual Address PrcAdd { get; set; } = null!;
 
     public virtual PromotionalCoupon? PrcCpp { get; set; }
 
-    public virtual CreditCard? PrcCrd { get; set; }
-
     public virtual Customer PrcCtm { get; set; } = null!;
+
+    public virtual ICollection<CreditCardsPurchase> CreditCards { get; set; } = new List<CreditCardsPurchase>();
 
     public virtual ICollection<PurchaseItem> PurchaseItems { get; set; } = new List<PurchaseItem>();
 
