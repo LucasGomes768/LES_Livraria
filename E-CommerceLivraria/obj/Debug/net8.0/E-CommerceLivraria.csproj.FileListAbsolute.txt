@@ -583,3 +583,4 @@ C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivr
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\E-CommerceLivraria.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

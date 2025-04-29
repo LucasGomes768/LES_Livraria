@@ -1,8 +1,8 @@
 ﻿using E_CommerceLivraria.Models;
 
-namespace E_CommerceLivraria.Repository.PurchaseR
+namespace E_CommerceLivraria.Services.PurchaseS
 {
-    public interface IPurchaseItemRepository
+    public interface IPurchaseItemService
     {
         public PurchaseItem Add(PurchaseItem purchaseItem);
         public PurchaseItem Update(PurchaseItem purchaseItem);

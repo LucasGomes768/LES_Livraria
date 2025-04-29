@@ -15,6 +15,7 @@ using E_CommerceLivraria.Repository.StockR.BookR.PublisherR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.AddressS.RegionsS;
 using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Services.PurchaseS;
 using E_CommerceLivraria.Services.StockS;
 using E_CommerceLivraria.Services.StockS.BookS;
 using E_CommerceLivraria.Services.StockS.BookS.AuthorS;
@@ -79,6 +80,9 @@ builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<IStockService, StockService>();
 
 builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+builder.Services.AddScoped<IPurchaseItemRepository, PurchaseItemRepository>();
+builder.Services.AddScoped<IPurchaseItemService, PurchaseItemService>();
 
 builder.Services.AddSession(options =>
 {
