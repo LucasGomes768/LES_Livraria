@@ -45,5 +45,14 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public Customer Update(Customer customer) {
             return _customerRepository.Update(customer);
         }
+
+        public void ClearCart(Customer customer)
+        {
+            if (Exists(customer.CtmId)) return;
+            if (customer.Cart.CartItems.Count < 1 || !customer.Cart.CartItems.Any()) return;
+
+            customer.Cart.CartItems.Clear();
+            Update(customer);
+        }
     }
 }

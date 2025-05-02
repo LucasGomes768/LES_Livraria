@@ -90,7 +90,7 @@ namespace E_CommerceLivraria.Controllers
             customer.CtmCrt.CartItems.Remove(cri);
             _customerService.Update(customer);
 
-            return cartPage();
+            return RedirectToAction("cartPage", "Cart");
         }
     }
 }

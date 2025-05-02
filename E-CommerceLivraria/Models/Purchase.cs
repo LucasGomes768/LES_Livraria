@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace E_CommerceLivraria.Models;
 
@@ -9,16 +10,6 @@ public partial class Purchase
     /// Represents a purchases unique identifying value.
     /// </summary>
     public decimal PrcId { get; set; }
-
-    /// <summary>
-    /// Represents the total price of all products in a purchase.
-    /// </summary>
-    public decimal PrcTotalValue { get; set; }
-
-    /// <summary>
-    /// Represents the shipping fee of a purchase.
-    /// </summary>
-    public decimal PrcShipping { get; set; }
 
     /// <summary>
     /// Represents when a purchase was made.
@@ -33,6 +24,18 @@ public partial class Purchase
     public decimal PrcAddId { get; set; }
 
     public decimal PrcCtmId { get; set; }
+
+    /// <summary>
+    /// Represents the total price of all products in a purchase.
+    /// </summary>
+    [NotMapped]
+    public decimal PrcTotalValue
+    {
+        get
+        {
+            return PurchaseItems.Sum(x => x.PciTotalPrice);
+        }
+    }
 
     public virtual Address PrcAdd { get; set; } = null!;
 

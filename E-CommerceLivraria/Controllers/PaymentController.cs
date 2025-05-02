@@ -6,7 +6,8 @@ using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Models.ModelsStructGroups.MethodPaymentSG;
-using E_CommerceLivraria.Models.ModelsStructGroups.CreditCardSG;
+using E_CommerceLivraria.DTO.PaymentDTO;
+using E_CommerceLivraria.Services.PurchaseS;
 
 namespace E_CommerceLivraria.Controllers
 {
@@ -14,12 +15,15 @@ namespace E_CommerceLivraria.Controllers
     {
         private ICustomerService _customerService;
         private IAddressService _addressService;
+        private IPurchaseService _purchaseService;
 
         public PaymentController(ICustomerService customerService,
-            IAddressService addressService)
+            IAddressService addressService,
+            IPurchaseService purchaseService)
         {
             _customerService = customerService;
             _addressService = addressService;
+            _purchaseService = purchaseService;
         }
 
         // ENDEREÇO
@@ -86,34 +90,41 @@ namespace E_CommerceLivraria.Controllers
             return View("~/Views/Customer/Cart/addressPayment/methodPayment/methodPayment.cshtml", mpd);
         }
 
-        public IActionResult PaymentMethodPage(MethodPaymentData mpd)
+        [HttpPost("Payment/ProcessPurchase")]
+        public IActionResult ProcessPurchase([FromBody] FinishPurchaseRequestDTO request)
         {
-            if (!_customerService.Exists(mpd.CtmId)) return BadRequest();
-
-            var add = _addressService.Get(mpd.Address.AddId);
-            if (add == null) return BadRequest();
-
-            mpd.Address = add;
-
-            return View("~/Views/Customer/Cart/addressPayment/methodPayment/methodPayment.cshtml", mpd);
-        }
-
-        [HttpGet]
-        public IActionResult AddCreditCard(MethodPaymentData mpd)
-        {
-            var ctm = _customerService.Get(mpd.CtmId);
-            if (ctm == null) return BadRequest();
-
-            var ccp = new CreditCardPurchaseData()
+            try
             {
-                CreditCard = ctm.CtcCrds.First(x => x.CrdId == mpd.ChoosenCardId),
-                PurchaseValue = 10
-            };
+                var ctm = _customerService.Get(request.CtmId);
+                if (ctm == null) return BadRequest("O cliente não foi encontrado");
 
-            if (!mpd.CreditCardsUsed.Contains(ccp))
-                mpd.CreditCardsUsed.Add(ccp);
+                var deliveryAdd = _addressService.Get(request.AddressId);
+                if (deliveryAdd == null) return BadRequest("O endereço de entrega não foi encontrado");
 
-            return RedirectToAction("PaymentMethodPage", "Payment", mpd);
+                var purchaseData = new PurchaseDataDTO
+                {
+                    Request = request,
+                    DeliveryAddress = deliveryAdd,
+                    Customer = ctm
+                };
+                var addedPurchase = _purchaseService.Add(purchaseData);
+
+                ctm.Purchases.Add(addedPurchase);
+                ctm.Cart.CartItems.Clear();
+                _customerService.Update(ctm);
+
+                return Ok(new {
+                    Sucess = true,
+                    Message = "Compra processada com sucesso"
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { 
+                    Sucess = false,
+                    Message = $"Erro ao processar compra: {ex.Message}"
+                });
+            }
         }
     }
 }

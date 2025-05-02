@@ -106,6 +106,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=homePage}/{id?}");
+    pattern: "{controller=Home}/{action=HomePage}/");
 
 app.Run();

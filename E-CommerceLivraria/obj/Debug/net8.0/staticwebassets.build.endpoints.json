@@ -2067,7 +2067,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4491"
+          "Value": "2813"
         },
         {
           "Name": "Content-Type",
@@ -2075,22 +2075,22 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq+0DXg=\""
+          "Value": "\"x3lKFw033Jl8qOiIek7hqywlgbAbqLo9wn2007hcLs8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:58:10 GMT"
+          "Value": "Thu, 01 May 2025 23:09:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq+0DXg="
+          "Value": "sha256-x3lKFw033Jl8qOiIek7hqywlgbAbqLo9wn2007hcLs8="
         }
       ]
     },
     {
-      "Route": "js/customer/cart/addressPay/methodPay/methodPayment.xnoti7z453.js",
+      "Route": "js/customer/cart/addressPay/methodPay/methodPayment.v22pz0m5lo.js",
       "AssetFile": "js/customer/cart/addressPay/methodPay/methodPayment.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2104,7 +2104,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4491"
+          "Value": "2813"
         },
         {
           "Name": "Content-Type",
@@ -2112,25 +2112,107 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq+0DXg=\""
+          "Value": "\"x3lKFw033Jl8qOiIek7hqywlgbAbqLo9wn2007hcLs8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:58:10 GMT"
+          "Value": "Thu, 01 May 2025 23:09:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xnoti7z453"
+          "Value": "v22pz0m5lo"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-HSB2e13YEL0zZ724lJyyON7IRwiYhk0jlL6Zbq+0DXg="
+          "Value": "sha256-x3lKFw033Jl8qOiIek7hqywlgbAbqLo9wn2007hcLs8="
         },
         {
           "Name": "label",
           "Value": "js/customer/cart/addressPay/methodPay/methodPayment.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/customer/cart/addressPay/methodPay/paymentLoader.js",
+      "AssetFile": "js/customer/cart/addressPay/methodPay/paymentLoader.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "580"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xxgVExvyrUeL5PwlIN6zGW0aLoQCkigDz7jsmnkTLuk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 01 May 2025 22:58:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xxgVExvyrUeL5PwlIN6zGW0aLoQCkigDz7jsmnkTLuk="
+        }
+      ]
+    },
+    {
+      "Route": "js/customer/cart/addressPay/methodPay/paymentLoader.p4dzyy1u6w.js",
+      "AssetFile": "js/customer/cart/addressPay/methodPay/paymentLoader.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "580"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xxgVExvyrUeL5PwlIN6zGW0aLoQCkigDz7jsmnkTLuk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 01 May 2025 22:58:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p4dzyy1u6w"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xxgVExvyrUeL5PwlIN6zGW0aLoQCkigDz7jsmnkTLuk="
+        },
+        {
+          "Name": "label",
+          "Value": "js/customer/cart/addressPay/methodPay/paymentLoader.js"
         }
       ]
     },

@@ -9,7 +9,7 @@
 <button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
 <div class="bigBody">
     <div class="addressBody">
-        <h1>Selecione o endereço de entrega</h1>
+        <h1>Cadastre o novo endereço de entrega</h1>
         <form asp-controller="CtmPayment" asp-action="CreateAddress">
             <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
             <input type="text" value="@Model.RedirectTo" asp-for="RedirectTo" hidden />

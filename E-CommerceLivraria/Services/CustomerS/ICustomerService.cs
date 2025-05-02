@@ -9,5 +9,6 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public bool Remove(decimal id);
         public Customer Update(Customer customer);
         public bool Exists(decimal id);
+        public void ClearCart(Customer customer);
     }
 }

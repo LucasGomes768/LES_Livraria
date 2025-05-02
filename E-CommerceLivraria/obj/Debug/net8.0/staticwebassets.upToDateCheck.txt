@@ -23,6 +23,7 @@ wwwroot\js\admin\customer\removeClient.js
 wwwroot\js\admin\customer\updateClient.js
 wwwroot\js\admin\customer\verifyPassword.js
 wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
+wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
 wwwroot\js\customer\cart\cart.js
 wwwroot\js\customer\layout.js
 wwwroot\js\site.js

@@ -1,5 +1,4 @@
 ﻿@using E_CommerceLivraria.Models.ModelsStructGroups.MethodPaymentSG
-@using E_CommerceLivraria.Models.ModelsStructGroups.CreditCardSG
 @using System.Globalization
 @model MethodPaymentData
 @{
@@ -34,7 +33,7 @@
                 <div class="choosenCards">
                     <div class="title">
                         <h2>Cartões</h2>
-                        <select id="userCards" asp-items="@(new SelectList(Model.CreditCards, "CrdId", "CrdNumberHidden"))" onchange="salvarCartao()">
+                        <select id="userCards" asp-items="@(new SelectList(Model.CreditCards, "CrdId", "CrdNumberHidden"))" onchange="window.PaymentFunctions.salvarCartao()">
                             <option value="N" selected>- Selecione -</option>
                         </select>
                     </div>
@@ -68,10 +67,12 @@
     <div class="price">
         <div>
             <h2>Preço dos itens:</h2>
+            <input type="number" id="productsPrice" value="@((Model.Total).ToString("F2", CultureInfo.InvariantCulture))" hidden />
             <h1><b>R$</b>@Model.Total.ToString("F2")</h1>
         </div>
         <div>
             <h2>Frete:</h2>
+            <input type="number" id="shipping" value="@((Model.Address.AddShipping).ToString("F2", CultureInfo.InvariantCulture))" hidden />
             <h1><b>R$</b>@Model.Address.AddShipping</h1>
         </div>
         <div>
@@ -87,12 +88,13 @@
             <h2>Cartões:</h2>
             <h1 id="cardsValue"><b>R$</b>0,00</h1>
         </div>
-        <form action="/" method="post">
-            <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
-            <input type="number" value="@Model.Address.AddId" asp-for="Address.AddId" hidden />
+        <form>
+            <input type="number" id="ctmId" value="@Model.CtmId" hidden />
+            <input type="number" value="@Model.Address.AddId" id="deliveryAddress" hidden />
             <div id="finishButton">
             </div>
         </form>
     </div>
 </div>
-<script src="~/js/customer/cart/addressPay/methodPay/methodPayment.js"></script>
+<!-- Substitua a chamada do script por: -->
+<script type="module" src="~/js/customer/cart/addressPay/methodPay/paymentLoader.js"></script>

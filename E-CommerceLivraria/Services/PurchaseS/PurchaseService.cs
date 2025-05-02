@@ -1,5 +1,8 @@
-﻿using E_CommerceLivraria.Models;
+﻿using E_CommerceLivraria.DTO.PaymentDTO;
+using E_CommerceLivraria.Models;
+using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Repository.PurchaseR;
+using static E_CommerceLivraria.DTO.PaymentDTO.FinishPurchaseRequestDTO;
 
 namespace E_CommerceLivraria.Services.PurchaseS
 {
@@ -14,10 +17,40 @@ namespace E_CommerceLivraria.Services.PurchaseS
             _purchaseItemService = purchaseItemService;
         }
 
-        public Purchase Add(Purchase purchase)
+        public Purchase Add(PurchaseDataDTO purchaseData)
         {
-            if (!purchase.PurchaseItems.Any() || purchase.PurchaseItems.Count < 1)
-                throw new Exception("Compra sem itens");
+            decimal valuePayed = purchaseData.Request.CreditCards.Sum(x => x.value);
+
+            if (valuePayed < purchaseData.Request.FinalPrice)
+                throw new Exception("Saldo insuficiente para realizar pagamento");
+
+            var purchase = new Purchase();
+
+            foreach (CreditCardPaymentData data in purchaseData.Request.CreditCards)
+            {
+                var ccp = new CreditCardsPurchase
+                {
+                    CcpCrdId = data.id,
+                    CcpAmount = data.value
+                };
+                purchase.CreditCards.Add(ccp);
+            }
+
+            foreach (CartItem item in purchaseData.Customer.Cart.CartItems)
+            {
+                var purchaseItem = new PurchaseItem()
+                {
+                    PciStc = item.CriStc,
+                    PciQuantity = item.CriQuantity,
+                    PciTotalPrice = item.CriTotalprice
+                };
+
+                purchase.PurchaseItems.Add(purchaseItem);
+            }
+
+            purchase.PrcDate = DateTime.Now;
+            purchase.PrcCtm = purchaseData.Customer;
+            purchase.PrcAdd = purchaseData.DeliveryAddress;
 
             return _purchaseRepository.Add(purchase);
         }

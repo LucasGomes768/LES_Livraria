@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\customer\cart\addressPay\methodPay\cardsPayment.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Views\Customer\Cart\addressPayment\addressPayment.css" />
   </ItemGroup>
 
@@ -28,10 +32,12 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="DTO\PaymentDTO\Method\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\css\customer\address\createAddress.css" />
+    <None Include="wwwroot\js\customer\cart\addressPay\methodPay\cardsPayment.js" />
     <None Include="wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js" />
   </ItemGroup>
 

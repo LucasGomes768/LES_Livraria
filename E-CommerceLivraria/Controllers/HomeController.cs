@@ -28,6 +28,7 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
+    [Route("Home/HomePage")]
     public IActionResult homePage() {
         return searchbar("");
     }

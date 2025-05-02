@@ -105,6 +105,10 @@
       "PackagePath": "staticwebassets\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js"
     },
     {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\paymentLoader.js",
+      "PackagePath": "staticwebassets\\js\\customer\\cart\\addressPay\\methodPay\\paymentLoader.js"
+    },
+    {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\cart.js",
       "PackagePath": "staticwebassets\\js\\customer\\cart\\cart.js"
     },

@@ -34,6 +34,8 @@ public partial class ECommerceDbContext : DbContext
 
     public virtual DbSet<Coupon> Coupons { get; set; }
 
+    public virtual DbSet<CreditCardsPurchase> CreditCardsPurchases {  get; set; }
+
     public virtual DbSet<CreditCard> CreditCards { get; set; }
 
     public virtual DbSet<CreditCardFlag> CreditCardFlags { get; set; }
@@ -422,13 +424,27 @@ public partial class ECommerceDbContext : DbContext
         {
             entity.HasKey(e => new { e.CcpPrcId, e.CcpCrdId });
 
-            entity.HasOne(e => e.CcpCrd)
-                .WithMany(e => e.Purchases)
-                .HasForeignKey(e => e.CcpCrdId);
+            entity.ToTable("credit_cards_purchase");
 
-            entity.HasOne(e => e.CcpPrc)
-                .WithMany(e => e.CreditCards)
-                .HasForeignKey(e => e.CcpPrcId);
+            entity.Property(e => e.CcpPrcId)
+                .HasPrecision(5)
+                .HasColumnName("ccp_prc_id");
+
+            entity.Property(e => e.CcpCrdId)
+                .HasPrecision(5)
+                .HasColumnName("ccp_crd_id");
+
+            entity.Property(e => e.CcpAmount)
+                .HasPrecision(6,2)
+                .HasColumnName("ccp_amount");
+
+            entity.HasOne(d => d.CcpPrc).WithMany(p => p.CreditCards)
+                .HasForeignKey(d => d.CcpPrcId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.CcpCrd).WithMany(p => p.Purchases)
+                .HasForeignKey(d => d.CcpCrdId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -847,14 +863,6 @@ public partial class ECommerceDbContext : DbContext
                 .HasComment("Represents when a purchase was made.")
                 .HasColumnType("timestamp(0) without time zone")
                 .HasColumnName("prc_date");
-            entity.Property(e => e.PrcShipping)
-                .HasPrecision(6, 2)
-                .HasComment("Represents the shipping fee of a purchase.")
-                .HasColumnName("prc_shipping");
-            entity.Property(e => e.PrcTotalValue)
-                .HasPrecision(6, 2)
-                .HasComment("Represents the total price of all products in a purchase.")
-                .HasColumnName("prc_total_value");
 
             entity.HasOne(d => d.PrcAdd).WithMany(p => p.Purchases)
                 .HasForeignKey(d => d.PrcAddId)
