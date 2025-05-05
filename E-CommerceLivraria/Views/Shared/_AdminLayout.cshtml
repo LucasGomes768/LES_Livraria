@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/admin/layout.css" asp-append-version="true">
+    <link rel="stylesheet" href="@ViewData["CSSFile"]" asp-append-version="true">
+
+    <title>@ViewData["Title"] - Admin</title>
+</head>
+<body>
+    <header>
+        <div id="headerContent" class="header1">
+            <div>
+                <a href="/customer/home/home.html"><h1>Título (Adiministrador)</h1></a>
+            </div>
+            <div class="logout">
+                <img src="/admin/layout/resources/icons8-sair-96.png" alt="">
+            </div>
+        </div>
+        <div class="navbarOptions">
+            <div class="menuItem">
+                <div class="trigger">Cliente</div>
+                <div class="hidden-links">
+                    <a href="/admin/crud/customer/readAll/admAllCustomers.html" class="link">Consultar</a>
+                    <a href="lol.html" class="link">Cadastrar</a>
+                </div>
+            </div>
+            <div class="menuItem">
+                <div class="trigger">Pedidos</div>
+                <div class="hidden-links">
+                    <a href="/admin/ctmRequests/purchases/purchases.html" class="link">Compras</a>
+                    <a href="lol.html" class="link">Trocas</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main role="main">
+        @RenderBody()
+    </main>
+    <script src="~/js/admin/layout.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

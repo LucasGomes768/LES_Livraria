@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\E-CommerceLivraria.bundle.scp.css",
-      "PackagePath": "staticwebassets\\E-CommerceLivraria.zstlzcokm5.bundle.scp.css"
+      "PackagePath": "staticwebassets\\E-CommerceLivraria.bd9no756m5.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\address\\createStyle.css",
@@ -17,24 +17,12 @@
       "PackagePath": "staticwebassets\\css\\admin\\address\\updateStyle.css"
     },
     {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\customer\\createStyle.css",
-      "PackagePath": "staticwebassets\\css\\admin\\customer\\createStyle.css"
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\customer\\crud\\AllCustomers.css",
+      "PackagePath": "staticwebassets\\css\\admin\\customer\\crud\\AllCustomers.css"
     },
     {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\customer\\detailedStyle.css",
-      "PackagePath": "staticwebassets\\css\\admin\\customer\\detailedStyle.css"
-    },
-    {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\customer\\headerStyle.css",
-      "PackagePath": "staticwebassets\\css\\admin\\customer\\headerStyle.css"
-    },
-    {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\customer\\readStyle.css",
-      "PackagePath": "staticwebassets\\css\\admin\\customer\\readStyle.css"
-    },
-    {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\customer\\updateStyle.css",
-      "PackagePath": "staticwebassets\\css\\admin\\customer\\updateStyle.css"
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\layout.css",
+      "PackagePath": "staticwebassets\\css\\admin\\layout.css"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\address\\createAddress.css",
@@ -81,24 +69,16 @@
       "PackagePath": "staticwebassets\\js\\admin\\address\\removeAddress.js"
     },
     {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\customer\\createClient.js",
-      "PackagePath": "staticwebassets\\js\\admin\\customer\\createClient.js"
-    },
-    {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\customer\\detailedClient.js",
-      "PackagePath": "staticwebassets\\js\\admin\\customer\\detailedClient.js"
-    },
-    {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\customer\\removeClient.js",
-      "PackagePath": "staticwebassets\\js\\admin\\customer\\removeClient.js"
-    },
-    {
-      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\customer\\updateClient.js",
-      "PackagePath": "staticwebassets\\js\\admin\\customer\\updateClient.js"
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\customer\\crud\\AllCustomers.js",
+      "PackagePath": "staticwebassets\\js\\admin\\customer\\crud\\AllCustomers.js"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\customer\\verifyPassword.js",
       "PackagePath": "staticwebassets\\js\\admin\\customer\\verifyPassword.js"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\layout.js",
+      "PackagePath": "staticwebassets\\js\\admin\\layout.js"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js",

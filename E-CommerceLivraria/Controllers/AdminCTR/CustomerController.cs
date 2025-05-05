@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace E_CommerceLivraria.Controllers
+namespace E_CommerceLivraria.Controllers.AdminCTR
 {
     public class CustomerController : Controller
     {
@@ -45,7 +45,7 @@ namespace E_CommerceLivraria.Controllers
                 TlpTypes = _telephoneTypeService.GetAll()
             };
 
-            return View("~/Views/Admin/Customer/Read.cshtml", rdg);
+            return View("~/Views/Admin/crud/customer/readAll/AllCustomers.cshtml", rdg);
         }
 
         public IActionResult FilterRead(ReadDataGroup rdg) {
@@ -79,11 +79,11 @@ namespace E_CommerceLivraria.Controllers
             }
             // Idade Mínima
             if ((filter.MinAge != null || filter.MinAge > 0) && query.Count() != 0) {
-                query = query.Where(x => filter.MinAge <= (DateTime.Now.Year - x.CtmBirthdate.Year));
+                query = query.Where(x => filter.MinAge <= DateTime.Now.Year - x.CtmBirthdate.Year);
             }
             // Idade Máxima
             if ((filter.MaxAge != null || filter.MaxAge > 0) && query.Count() != 0) {
-                query = query.Where(x => (DateTime.Now.Year - x.CtmBirthdate.Year) <= filter.MaxAge);
+                query = query.Where(x => DateTime.Now.Year - x.CtmBirthdate.Year <= filter.MaxAge);
             }
             // Ranking
             if ((filter.Ranking != null || filter.Ranking > 0) && query.Count() != 0) {

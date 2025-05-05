@@ -213,6 +213,14 @@
                 color: goldenrod;
             }
 
+        .logout a h2 {
+            color: red;
+        }
+
+            .logout a h2:hover {
+                color: darkred;
+            }
+
         .subsection {
             display: inherit;
             align-content: inherit;

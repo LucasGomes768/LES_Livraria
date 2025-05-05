@@ -33,10 +33,13 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="DTO\PaymentDTO\Method\" />
+    <Folder Include="Views\Admin\crud\customer\create\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\admin\customer\crud\AllCustomers.css" />
     <None Include="wwwroot\css\customer\address\createAddress.css" />
+    <None Include="wwwroot\js\admin\customer\crud\AllCustomers.js" />
     <None Include="wwwroot\js\customer\cart\addressPay\methodPay\cardsPayment.js" />
     <None Include="wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js" />
   </ItemGroup>

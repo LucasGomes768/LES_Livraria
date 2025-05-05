@@ -1,11 +1,8 @@
 wwwroot\css\admin\address\createStyle.css
 wwwroot\css\admin\address\detailedStyle.css
 wwwroot\css\admin\address\updateStyle.css
-wwwroot\css\admin\customer\createStyle.css
-wwwroot\css\admin\customer\detailedStyle.css
-wwwroot\css\admin\customer\headerStyle.css
-wwwroot\css\admin\customer\readStyle.css
-wwwroot\css\admin\customer\updateStyle.css
+wwwroot\css\admin\customer\crud\AllCustomers.css
+wwwroot\css\admin\layout.css
 wwwroot\css\customer\address\createAddress.css
 wwwroot\css\customer\cart\addressPay\addressPayment.css
 wwwroot\css\customer\cart\addressPay\methodPay\methodPayment.css
@@ -17,11 +14,9 @@ wwwroot\css\customer\layout.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\admin\address\removeAddress.js
-wwwroot\js\admin\customer\createClient.js
-wwwroot\js\admin\customer\detailedClient.js
-wwwroot\js\admin\customer\removeClient.js
-wwwroot\js\admin\customer\updateClient.js
+wwwroot\js\admin\customer\crud\AllCustomers.js
 wwwroot\js\admin\customer\verifyPassword.js
+wwwroot\js\admin\layout.js
 wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
 wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
 wwwroot\js\customer\cart\cart.js

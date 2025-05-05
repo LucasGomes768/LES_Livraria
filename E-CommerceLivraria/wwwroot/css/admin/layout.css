@@ -1,0 +1,130 @@
+:root {
+    --gray1: rgb(186, 188, 211);
+    --grayborder1: rgb(196, 198, 219);
+    --gray2: rgb(206, 208, 231);
+    --gray3: rgb(241, 242, 250);
+    --blue1: rgb(159, 159, 211);
+    --blue2: rgb(207, 207, 245);
+    --ourple: rgb(129, 129, 199);
+    --darkourple: rgb(108, 108, 165);
+}
+
+.header1 {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    background-color: var(--blue1);
+    height: 11vh;
+    padding: 1.2%;
+    padding-bottom: 0.5%;
+}
+
+    .header1 a {
+        text-decoration: none;
+    }
+
+    .header1 h1 {
+        color: rgb(71, 71, 71);
+        font-weight: 500;
+        font-size: 5vh;
+        font-style: normal;
+    }
+
+.backBtn {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 0.5%;
+    margin-left: 2.5vw;
+    margin-bottom: 1vw;
+    font-weight: 400;
+
+    transition-duration: 0.2s;
+}
+
+    .backBtn:hover {
+        background-color: black;
+        color: white;
+    }
+
+.noStep::-webkit-outer-spin-button,
+.noStep::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.logout img {
+    padding: 3px;
+    width: 3.5vw;
+    background-color: red;
+    border: 3px solid darkred;
+    border-radius: 5px;
+
+    transition-duration: 0.2s;
+}
+
+    .logout img:hover {
+        background-color: darkred;
+
+    }
+
+.navbarOptions {
+    display: flex;
+    justify-items: left;
+    align-content: center;
+    flex-direction: row;
+    gap: 0.75vw;
+
+    padding: 0.6vw;
+    min-height: 5vh;
+    background-color: var(--gray2);
+    border-bottom: 4px solid var(--grayborder1);
+    border-top: 4px solid var(--grayborder1);
+}
+
+.menuItem {
+    position: relative;
+}
+
+.trigger {
+    background-color: var(--ourple);
+    color: white;
+    width: 7vw;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.hidden-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 7vw;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+    .hidden-links .link {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        text-align: center;
+    }
+
+    .hidden-links .link:hover {
+        background-color: #ddd;
+    }
+
+    .trigger:hover + .hidden-links, .hidden-links:hover {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
