@@ -1,0 +1,49 @@
+﻿@using E_CommerceLivraria.Models.ModelsStructGroups.PurchasesSG
+@using E_CommerceLivraria.Enums
+@model AdmPurchaseListData
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Compras";
+    ViewData["CSSFile"] = "~/css/admin/ctmRequests/purchases/purchases.css";
+}
+<div class="purchasesBody">
+    <div class="filter">
+        <div class="field">
+            <form method="get" asp-controller="AdmPurchases" asp-action="PurchasesListFilter" id="statusForm">
+                <label for="status">Status das compras</label>
+                <select id="status" asp-for="StatusId" onchange="this.form.submit()">
+                    <option value="">Qualquer status</option>
+                    <option value="0.0">Em Processamento</option>
+                    <option value="1.0">Compra aprovada</option>
+                    <option value="2.0">Compra reprovada</option>
+                    <option value="3.0">Em transporte</option>
+                    <option value="4.0">Entregue</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <div class="purchases">
+        @if (Model.Purchases.Count > 0 && Model.Purchases.Any())
+        {
+            <table>
+                <tr>
+                    <th>Status</th>
+                    <th>Visualizar</th>
+                    <th>Cliente</th>
+                    <th>Preço</th>
+                    <th>Última vez atualizado:</th>
+                </tr>
+                @foreach (Purchase prc in Model.Purchases)
+                {
+                    <tr>
+                        <td>@(((EStatus)(int)prc.PrcStatus).ToString().Replace('_',' '))</td>
+                        <td><a asp-controller="AdmPurchases" asp-action="DetailedPurchase" asp-route-id="@prc.PrcId"><button type="button">+</button></a></td>
+                        <td>@prc.PrcCtm.CtmName</td>
+                        <td>R$@prc.PrcTotalPrice</td>
+                        <td>@prc.PrcDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

@@ -39,7 +39,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
 
         public IActionResult Read()
         {
-            ReadDataGroup rdg = new ReadDataGroup {
+            ReadData rdg = new ReadData {
                 Customers = _customerService.GetAll(),
                 Genders = _genderRepository.GetAll(),
                 TlpTypes = _telephoneTypeService.GetAll()
@@ -48,10 +48,10 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             return View("~/Views/Admin/crud/customer/readAll/AllCustomers.cshtml", rdg);
         }
 
-        public IActionResult FilterRead(ReadDataGroup rdg) {
+        public IActionResult FilterRead(ReadData rdg) {
             IEnumerable<Customer> query = _customerService.GetAll();
 
-            CustomerFilter filter = rdg.FilterData;
+            CustomerFilterData filter = rdg.FilterData;
 
             // Nome
             if (filter.Name != null && query.Count() != 0) {
@@ -90,7 +90,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                 query = query.Where(x => x.CtmRanking == filter.Ranking);
             }
 
-            ReadDataGroup newRdg = new ReadDataGroup {
+            ReadData newRdg = new ReadData {
                 Customers = query.ToList(),
                 Genders = _genderRepository.GetAll(),
                 TlpTypes = _telephoneTypeService.GetAll()
@@ -100,7 +100,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         }
 
         public IActionResult Create() {
-            CreateDataGroup cdg = new CreateDataGroup {
+            CreateData cdg = new CreateData {
                 Genders = _genderRepository.GetAll(),
                 PublicplaceTypes = _publicPlaceTypeRepository.GetAll(),
                 ResidenceTypes = _residenceTypeRepository.GetAll()
@@ -117,7 +117,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                 return NotFound();
             }
 
-            UpdateDataGroup udg = new UpdateDataGroup {
+            UpdateData udg = new UpdateData {
                 Ctm = ctm,
                 Genders = _genderRepository.GetAll(),
                 PublicplaceTypes = _publicPlaceTypeRepository.GetAll(),
@@ -149,7 +149,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         }
 
         [HttpPost]
-        public IActionResult Create(CreateDataGroup createDataGroup) {
+        public IActionResult Create(CreateData createDataGroup) {
 
             Customer newCtm = createDataGroup.Ctm;
 
@@ -180,7 +180,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         }
 
         [HttpPost]
-        public IActionResult Update(UpdateDataGroup udg) {
+        public IActionResult Update(UpdateData udg) {
             Customer ctm = udg.Ctm;
 
             ctm.CtmBirthdate = DateTime.Parse(udg.Birthdate);
@@ -196,7 +196,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             if (ctm == null) throw new Exception("Um cliente com esse ID não foi encontrado");
             ctm.CtmPass = data.CtmPass;
 
-            UpdateDataGroup udg = new UpdateDataGroup {
+            UpdateData udg = new UpdateData {
                 Ctm = ctm,
                 Birthdate = ctm.CtmBirthdate.ToString("yyyy-MM-dd")
             };

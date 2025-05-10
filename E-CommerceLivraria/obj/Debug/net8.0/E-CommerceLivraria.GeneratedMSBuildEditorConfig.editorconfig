@@ -32,6 +32,14 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cY3J1ZFxjdXN0b21lclxyZWFkQWxsXEFsbEN1c3RvbWVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Admin/ctmRequests/dtlPurchase/dtlPurchase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cY3RtUmVxdWVzdHNcZHRsUHVyY2hhc2VcZHRsUHVyY2hhc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Admin/ctmRequests/purchases/Purchases.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cY3RtUmVxdWVzdHNccHVyY2hhc2VzXFB1cmNoYXNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Address/CreateAdd/createAddress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQWRkcmVzc1xDcmVhdGVBZGRcY3JlYXRlQWRkcmVzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

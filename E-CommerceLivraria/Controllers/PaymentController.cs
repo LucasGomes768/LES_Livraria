@@ -27,6 +27,7 @@ namespace E_CommerceLivraria.Controllers
         }
 
         // ENDEREÇO
+        [HttpGet]
         public IActionResult DeliveryAddressPage(CartDataGroup cdg)
         {
             var ctm = _customerService.Get(cdg.CtmId);

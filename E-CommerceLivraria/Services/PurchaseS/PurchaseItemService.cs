@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.Models;
+﻿using E_CommerceLivraria.Enums;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.PurchaseR;
 
 namespace E_CommerceLivraria.Services.PurchaseS
@@ -35,6 +36,14 @@ namespace E_CommerceLivraria.Services.PurchaseS
         public PurchaseItem Update(PurchaseItem purchaseItem)
         {
             return _purchaseItemRepository.Update(purchaseItem);
+        }
+
+        public PurchaseItem UpdateStatus(PurchaseItem purchaseItem, EStatus newStatus)
+        {
+            if ((EStatus)(int)purchaseItem.PciStatus >= newStatus) return purchaseItem;
+
+            purchaseItem.PciStatus = (decimal)newStatus;
+            return Update(purchaseItem);
         }
     }
 }

@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\css\\admin\\address\\updateStyle.css"
     },
     {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.css",
+      "PackagePath": "staticwebassets\\css\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.css"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\ctmRequests\\purchases\\purchases.css",
+      "PackagePath": "staticwebassets\\css\\admin\\ctmRequests\\purchases\\purchases.css"
+    },
+    {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\customer\\crud\\AllCustomers.css",
       "PackagePath": "staticwebassets\\css\\admin\\customer\\crud\\AllCustomers.css"
     },
@@ -67,6 +75,14 @@
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\address\\removeAddress.js",
       "PackagePath": "staticwebassets\\js\\admin\\address\\removeAddress.js"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.js",
+      "PackagePath": "staticwebassets\\js\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.js"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\ctmRequests\\purchases\\purchases.js",
+      "PackagePath": "staticwebassets\\js\\admin\\ctmRequests\\purchases\\purchases.js"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\admin\\customer\\crud\\AllCustomers.js",

@@ -1,5 +1,5 @@
 ﻿namespace E_CommerceLivraria.Models.ModelsStructGroups {
-    public class CreateDataGroup {
+    public class CreateData {
         public Customer Ctm { get; set; } = new Customer();
         public string Birthdate { get; set; } = "";
         public Address Shipping { get; set; } = new Address();

@@ -1,5 +1,5 @@
 ﻿namespace E_CommerceLivraria.Models.ModelsStructGroups {
-    public class UpdateDataGroup {
+    public class UpdateData {
         public Customer Ctm { get; set; } = new Customer();
         public string Birthdate { get; set; } = "";
         public List<Gender> Genders { get; set; } = new List<Gender>();

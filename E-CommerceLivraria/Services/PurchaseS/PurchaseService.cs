@@ -1,4 +1,5 @@
 ﻿using E_CommerceLivraria.DTO.PaymentDTO;
+using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Repository.PurchaseR;
@@ -73,6 +74,20 @@ namespace E_CommerceLivraria.Services.PurchaseS
         public Purchase Update(Purchase purchase)
         {
             return _purchaseRepository.Update(purchase);
+        }
+
+        public Purchase UpdateStatus(Purchase purchase, EStatus newStatus)
+        {
+            if ((EStatus)purchase.PrcStatus == EStatus.COMPRA_REPROVADA) throw new Exception("Essa compra já foi recusada");
+
+            if ((EStatus)purchase.PrcStatus == EStatus.TROCA_REPROVADA) throw new Exception("Esse pedido de troca já foi reprovado");
+
+            foreach (PurchaseItem item in purchase.PurchaseItems)
+            {
+                _purchaseItemService.UpdateStatus(item, newStatus);
+            }
+
+            return _purchaseRepository.Get(purchase.PrcId);
         }
     }
 }

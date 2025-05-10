@@ -1,6 +1,8 @@
 wwwroot\css\admin\address\createStyle.css
 wwwroot\css\admin\address\detailedStyle.css
 wwwroot\css\admin\address\updateStyle.css
+wwwroot\css\admin\ctmRequests\dtlPurchase\dtlPurchase.css
+wwwroot\css\admin\ctmRequests\purchases\purchases.css
 wwwroot\css\admin\customer\crud\AllCustomers.css
 wwwroot\css\admin\layout.css
 wwwroot\css\customer\address\createAddress.css
@@ -14,6 +16,8 @@ wwwroot\css\customer\layout.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\admin\address\removeAddress.js
+wwwroot\js\admin\ctmRequests\dtlPurchase\dtlPurchase.js
+wwwroot\js\admin\ctmRequests\purchases\purchases.js
 wwwroot\js\admin\customer\crud\AllCustomers.js
 wwwroot\js\admin\customer\verifyPassword.js
 wwwroot\js\admin\layout.js

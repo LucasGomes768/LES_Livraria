@@ -63,7 +63,7 @@ export function finalizarCompra() {
             if (request.status === 200) {
                 sessionStorage.removeItem("cartoesSelecionados");
                 alert("Compra realizada com sucesso!")
-                window.location.href = '/Home/HomePage'
+                window.location.href = `AdmPurchases/DetailedPurchase/${id}`
             } else {
                 alert('Erro ao processar compra: ' + request.statusText);
             }

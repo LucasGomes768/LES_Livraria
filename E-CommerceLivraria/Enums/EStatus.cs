@@ -2,12 +2,12 @@
     public enum EStatus : int{
         EM_PROCESSAMENTO,
         COMPRA_APROVADA,
-        COMPRA_REPROVADA,
         EM_TRANSPORTE,
         ENTREGUE,
         TROCA_SOLICITADA,
-        TROCA_REPROVADA,
         EM_TROCA,
-        TROCADO
+        TROCADO,
+        COMPRA_REPROVADA = -1,
+        TROCA_REPROVADA = -2
     }
 }

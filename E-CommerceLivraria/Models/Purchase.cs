@@ -29,11 +29,20 @@ public partial class Purchase
     /// Represents the total price of all products in a purchase.
     /// </summary>
     [NotMapped]
-    public decimal PrcTotalValue
+    public decimal PrcTotalPrice
     {
         get
         {
             return PurchaseItems.Sum(x => x.PciTotalPrice);
+        }
+    }
+
+    [NotMapped]
+    public int PrcStatus
+    {
+        get
+        {
+            return (int)PurchaseItems.Min(x => x.PciStatus);
         }
     }
 

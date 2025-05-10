@@ -1,0 +1,115 @@
+.purchasesBody {
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    margin-top: 5vh;
+    padding: 1%;
+    width: 85vw;
+    min-height: 10vh;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--blue2);
+    border: 3px solid var(--blue1);
+    border-radius: 5px;
+    padding: 1%;
+    width: 23%;
+    min-height: 10vh;
+}
+
+    .filter button {
+        display: flex;
+        justify-self: center;
+
+        background-color: white;
+        border: 2px solid var(--ourple);
+        border-radius: 5px;
+        font-size: 1.35vw;
+
+        transition-duration: 0.2s;
+    }
+
+        .filter button:hover {
+            background-color: var(--ourple);
+            color: white;
+        }
+
+    .filter h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+        .filter form .line {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 1%;
+        }
+
+            .filter form .spaceBet {
+                justify-content: space-between;
+            }
+
+            .filter form .rGap {
+                justify-content: left;
+                gap: 3%;
+            }
+
+        .filter form .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .filter form .field input {
+                font-weight: 350;
+                font-size: 1.25vw;
+            }
+
+            .filter form .field select {
+                font-weight: 350;
+                font-size: 1.25vw;
+                height: 100%;
+            }
+
+            .filter form .field option {
+                font-size: 1.25vw;
+                font-weight: 300;
+            }
+
+.purchases {
+    display: flex;
+
+    padding: 1%;
+    border-radius: 5px;
+    background-color: var(--gray2);
+    width: 75%;
+    min-height: 10vh;
+}
+
+    .purchases table {
+        border: 3px solid var(--blue1);
+        border-radius: 5px;
+        width: 100%;
+    }
+
+        .purchases table tr {
+            width: 100%;
+        }
+
+        .purchases table th {
+            background-color: var(--blue2);
+            border: 3px solid var(--blue1);
+            padding-top: 0.25%;
+            text-align: center;
+        }
+
+        .purchases table td {
+            background-color: white;
+            border: 3px solid var(--blue1);
+            text-align: center;
+        }

@@ -1,0 +1,258 @@
+.purchaseBody {
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: var(--blue2);
+    border: 5px solid var(--blue1);
+    border-radius: 10px;
+    margin-top: 5vh;
+    padding: 1%;
+    width: 75vw;
+    min-height: 10vh;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2vh;
+    font-weight: 400;
+    font-size: 2.4vw;
+}
+
+.importantSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: var(--gray3);
+    border-radius: 5px;
+    width: 92%;
+    min-height: 5vh;
+    padding: 1%;
+}
+
+    .importantSection h2 {
+        font-weight: 450;
+        font-size: 1.3vw;
+    }
+
+.dataBts {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1vw;
+
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+    .dataBts button {
+        background-color: var(--ourple);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 1vh 1vw;
+
+        transition-duration: 0.2s;
+    }
+
+        .dataBts button:hover {
+            background-color: var(--darkourple);
+        }
+
+.dataSectionJs {
+    display: none;
+    width: 95%;
+}
+
+.section {
+    background-color: var(--gray3);
+    border-radius: 5px;
+    width: 100%;
+    min-height: 10vh;
+    padding: 1%;
+}
+
+    .section h2 {
+        text-align: center;
+        font-size: 1.75vw;
+        font-weight: 400;
+    }
+
+    .section .spaceEven {
+        justify-content: space-evenly;
+    }
+
+    .section .spaceBet {
+        justify-content: space-between;
+    }
+
+    .section .rGap {
+        gap: 3%;
+    }
+
+    .section .line {
+        display: flex;
+        flex-direction: row;
+    }
+
+        .section .line .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section .line .field input:read-only {
+            border: 2px solid lightgray;
+            border-radius: 4px;
+        }
+
+        .section .line .field select:disabled {
+            border: 2px solid lightgray;
+            border-radius: 4px;
+            color: black;
+        }
+
+.methodSection{
+    background-color: var(--gray3);
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    border-radius: 5px;
+    width: 30%;
+    padding: 0.5%;
+}
+
+    .methodSection h3{
+        text-align: center;
+        font-size: 1.5vw;
+        font-weight: 400;
+    }
+
+    .methodSection table {
+        background-color: yellow;
+        border: 2px solid var(--ourple);
+    }
+
+    .methodSection th {
+        padding: 1%;
+        color: white;
+        font-weight: 400;
+        background-color: var(--ourple);
+    }
+
+    .methodSection tr:nth-child(even) {
+        background-color: var(--gray3);
+    }
+
+    .methodSection tr:nth-child(odd) {
+        background-color: var(--gray2);
+    }
+
+    .methodSection td {
+        padding: 1%;
+        font-weight: 400;
+        border-bottom: 1px solid var(--gray1);
+    }
+
+.items {
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: var(--gray2);
+    border: 5px solid var(--gray1);
+    border-radius: 10px;
+    margin-top: 5vh;
+    padding: 1%;
+    width: 75vw;
+    min-height: 10vh;
+}
+
+    .items .itemsRow {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        gap: 4%;
+
+        width: 100%;
+    }
+
+    .items .item {
+        display: flex;
+        flex-direction: row;
+
+        height: 20vh;
+        width: 47.5%;
+        background-color: lightgray;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
+        .item .imgDiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 33%;
+            background-color: whitesmoke;
+            border-right: 2px solid black;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+            .item .imgDiv img {
+                max-width: 90%;
+                height: 80%;
+            }
+    
+        .item .txtInfo {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: 100%;
+            padding: 1%;
+            padding-bottom: 1.5%;
+            background-color: var(--gray3);
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+            .item .txtInfo .title {
+                max-height: 40%;
+            }
+
+                .item .txtInfo .title h1 {
+                    text-align: left;
+                    font-weight: 400;
+                    font-size: 1.4vw;
+                    margin: 0%;
+                    padding: 0%;
+                }
+
+            .item .txtInfo h2 {
+                margin: 0%;
+                padding: 0%;
+                font-weight: 400;
+                font-size: 1.15vw;
+            }
+
+            .item .txtInfo .purchaseStatus button {
+                border: 1px solid black;
+                color: black;
+                background-color: white;
+                border-radius: 5px;
+                font-size: 1vw;
+
+                transition-duration: 0.2s;
+            }
+
+                .item .txtInfo .purchaseStatus button:hover {
+                    color: white;
+                    background-color: black;
+                }
