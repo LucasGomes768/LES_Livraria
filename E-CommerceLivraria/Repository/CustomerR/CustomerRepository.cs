@@ -38,6 +38,7 @@ namespace E_CommerceLivraria.Repository.CustomerR {
                 .Include(x => x.CtcCrds)
                     .ThenInclude(x => x.CrdCcf)
                 .Include(x => x.Purchases)
+                    .ThenInclude(x => x.PurchaseItems)
                 .Include(x => x.CtmTlp)
                     .ThenInclude(x => x.TlpTpt)
                 .Include(x => x.CtmAdd)

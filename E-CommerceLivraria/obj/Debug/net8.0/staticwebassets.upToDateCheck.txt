@@ -13,6 +13,9 @@ wwwroot\css\customer\home\home.css
 wwwroot\css\customer\home\product\product.css
 wwwroot\css\customer\home\store\store.css
 wwwroot\css\customer\layout.css
+wwwroot\css\customer\profile\profile.css
+wwwroot\css\customer\profile\purchases\purchaseDtl.css
+wwwroot\css\customer\profile\purchases\purchaseList.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\admin\address\removeAddress.js
@@ -25,6 +28,7 @@ wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
 wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
 wwwroot\js\customer\cart\cart.js
 wwwroot\js\customer\layout.js
+wwwroot\js\customer\profile\purchases\purchaseDtl.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

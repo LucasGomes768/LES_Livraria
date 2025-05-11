@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/customer/layout.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/customer/profile/profile.css" asp-append-version="true">
     <link rel="stylesheet" href="@ViewData["CSSFile"]" asp-append-version="true">
 
     <title>@ViewData["Title"]</title>
@@ -85,7 +86,7 @@
                     </a>
                 </div>
                 <div class="profileSection">
-                    <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1">
+                    <a href="/customer/profile/purchases/list/purchaseList.html">
                         <h2>Compras</h2>
                     </a>
                 </div>
@@ -122,7 +123,51 @@
         </div>
     </header>
     <main role="main">
+        <div class="profileBody">
+            <div class="profileOptions">
+                <div class="profileOptions">
+                    <div class="title">
+                        <h1>Meu Perfil</h1>
+                    </div>
+                    <!-- TODO: Cadastro -->
+                    <div class="section">
+                        <a href="/customer/profile/info/profileInfo.html"><h2>Informações</h2></a>
+                    </div>
+                    <!-- TODO: Endereços -->
+                    <div class="section">
+                        <h2>Endereços</h2>
+                    </div>
+                    <div id="addresses">
+                        <div class="subsection">
+                            <a href="/customer/profile/address/detailed/profileAddressDtl.html"><h3>Residencial</h3></a>
+                        </div>
+                        <div class="subsection">
+                            <a href="/customer/profile/address/list/profileAddressList.html"><h3>Entrega</h3></a>
+                        </div>
+                        <div class="subsection">
+                            <a href="/customer/profile/address/list/profileAddressList.html"><h3>Cobrança</h3></a>
+                        </div>
+                    </div>
+                    <!-- TODO: Cartões -->
+                    <div class="section">
+                        <a href="/customer/profile/card/list/cardList.html"><h2>Cartões</h2></a>
+                    </div>
+                    <!-- TODO: Cupons -->
+                    <div class="section">
+                        <a href="/customer/profile/coupons/coupons.html"><h2>Cupons</h2></a>
+                    </div>
+                    <!-- TODO: Compras -->
+                    <div class="section">
+                        <a href="/customer/profile/purchases/list/purchaseList.html"><h2>Compras</h2></a>
+                    </div>
+                    <!-- TODO: Trocas -->
+                    <div class="section">
+                        <a href="/customer/profile/purchases/list/purchaseList.html"><h2>Trocas</h2></a>
+                    </div>
+                </div>
+            </div>
         @RenderBody()
+        </div>
     </main>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

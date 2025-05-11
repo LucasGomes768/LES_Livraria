@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\E-CommerceLivraria.bundle.scp.css",
-      "PackagePath": "staticwebassets\\E-CommerceLivraria.bd9no756m5.bundle.scp.css"
+      "PackagePath": "staticwebassets\\E-CommerceLivraria.bau6kbvz2c.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\address\\createStyle.css",
@@ -65,6 +65,18 @@
       "PackagePath": "staticwebassets\\css\\customer\\layout.css"
     },
     {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\profile\\profile.css",
+      "PackagePath": "staticwebassets\\css\\customer\\profile\\profile.css"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\profile\\purchases\\purchaseDtl.css",
+      "PackagePath": "staticwebassets\\css\\customer\\profile\\purchases\\purchaseDtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\profile\\purchases\\purchaseList.css",
+      "PackagePath": "staticwebassets\\css\\customer\\profile\\purchases\\purchaseList.css"
+    },
+    {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -111,6 +123,10 @@
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\layout.js",
       "PackagePath": "staticwebassets\\js\\customer\\layout.js"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\profile\\purchases\\purchaseDtl.js",
+      "PackagePath": "staticwebassets\\js\\customer\\profile\\purchases\\purchaseDtl.js"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\site.js",

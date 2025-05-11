@@ -9,15 +9,10 @@
 <div class="purchasesBody">
     <div class="filter">
         <div class="field">
-            <form method="get" asp-controller="AdmPurchases" asp-action="PurchasesListFilter" id="statusForm">
+            <form method="get" asp-controller="AdmPurchases" asp-action="@Model.FilterAction" id="statusForm">
                 <label for="status">Status das compras</label>
-                <select id="status" asp-for="StatusId" onchange="this.form.submit()">
-                    <option value="">Qualquer status</option>
-                    <option value="0.0">Em Processamento</option>
-                    <option value="1.0">Compra aprovada</option>
-                    <option value="2.0">Compra reprovada</option>
-                    <option value="3.0">Em transporte</option>
-                    <option value="4.0">Entregue</option>
+                <select id="status" asp-for="StatusId" onchange="this.form.submit()" asp-items="@Model.FilterOptions">
+                    <option value="" selected>Qualquer status</option>
                 </select>
             </form>
         </div>

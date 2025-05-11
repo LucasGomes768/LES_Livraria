@@ -1,0 +1,208 @@
+﻿@using E_CommerceLivraria.Enums
+@model Purchase
+@{
+    Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
+    ViewData["Title"] = "Compra";
+    ViewData["CSSFile"] = "~/css/customer/profile/purchases/purchaseDtl.css";
+
+    var items = Model.PurchaseItems.ToList();
+    var status = (EStatus)Model.PrcStatus;
+}
+<div class="purchasesDtl">
+    <div class="purchaseBody">
+        <h1>Cadastro da compra</h1>
+        <div class="importantSection">
+            <h2>Status: @status.ToString().Replace("_", " ")</h2>
+            @if (status == EStatus.ENTREGUE)
+            {
+                <div class="buttons">
+                    <a href="/customer/profile/exchange/request/exchangeRequest.html">
+                        <button class="btn btn-success">Solicitar troca</button>
+                    </a>
+                </div>
+            }
+        </div>
+        <br>
+        <div class="dataBts">
+            <button type="button" onclick="showOneSection('dadosGerais')">Dados gerais</button>
+            <button type="button" onclick="showOneSection('address')">Endereço</button>
+            <button type="button" onclick="showOneSection('paymentMethod')">Método de pagamento</button>
+        </div>
+        <div class="dataSection dataSectionJs" id="dadosGerais">
+            <h2>Dados gerais</h2>
+            <div class="line spaceEven">
+                <div class="field">
+                    <label for="name">Nome do cliente:</label>
+                    <input type="text" value="@Model.PrcCtm.CtmName" style="width: 20vw;" readonly>
+                </div>
+                <div class="field">
+                    <label for="update">Última atualização:</label>
+                    <input type="date" id="update" value="@Model.PrcDate.ToString("yyyy-MM-dd")" readonly>
+                </div>
+                <div class="field">
+                    <label for="price">Valor da compra:</label>
+                    <input type="text" id="price" value="R$@Model.PrcTotalPrice.ToString("F2")" style="width: 8.5vw;" readonly>
+                </div>
+                <div class="field">
+                    <label for="shipping">Frete:</label>
+                    <input type="text" id="shipping" value="R$@Model.PrcAdd.AddShipping.ToString("F2")" style="width: 7vw;" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="dataSection dataSectionJs" id="address">
+            <h2>Endereço de entrega</h2>
+            <form action="">
+                <div class="dataRow">
+                    <div class="field">
+                        <label for="rsType">Tipo de residência:</label>
+                        <input type="text" value="@Model.PrcAdd.AddRst.RstName" style="width: 10vw;" readonly />
+                    </div>
+                    <div class="field">
+                        <label for="ppType">Tipo de logradouro:</label>
+                        <input type="text" value="@Model.PrcAdd.AddPpt.PptName" style="width: 10vw;" readonly />
+                    </div>
+                    <div class="field">
+                        <label for="publicPlace">Logradouro:</label>
+                        <input type="text" id="publicPlace" style="width: 20vw;" readonly value="@Model.PrcAdd.AddPublicPlace">
+                    </div>
+                    <div class="field">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" maxlength="9" style="width: 6vw;" value="@Model.PrcAdd.AddCepStyled" readonly>
+                    </div>
+                    <div class="field">
+                        <label for="num">Nº:</label>
+                        <input type="number" class="noStep" style="width: 3.2vw;" id="num" min="1" max="9999" readonly value="@Model.PrcAdd.AddNumber.ToString()">
+                    </div>
+                </div>
+                <div class="dataRow">
+                    <div>
+                        <label for="neighborhood">Bairro:</label>
+                        <input type="text" id="neighborhood" required readonly value="@Model.PrcAdd.AddNbh.NbhName">
+                    </div>
+                    <div>
+                        <label for="city">Cidade:</label>
+                        <input type="text" id="city" required readonly value="@Model.PrcAdd.AddNbh.NbhCty.CtyName">
+                    </div>
+                    <div>
+                        <label for="state">Estado:</label>
+                        <input type="text" id="state" required readonly value="@Model.PrcAdd.AddNbh.NbhCty.CtyStt.SttName">
+                    </div>
+                    <div>
+                        <label for="country">País:</label>
+                        <input type="text" id="country" required readonly value="@Model.PrcAdd.AddNbh.NbhCty.CtyStt.SttCtr.CtrName">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="dataSection dataSectionJs" id="paymentMethod">
+            <div class="section">
+                <h2>Método de pagamento</h2>
+                <div class="line spaceEven">
+                    @if (Model.CreditCards.Count > 0 && Model.CreditCards.Any())
+                    {
+                        <div class="methodSection creditCards">
+                            @if (Model.CreditCards.Count == 1)
+                            {
+                                <h3>Cartão de crédito</h3>
+                            }
+                            else
+                            {
+                                <h3>Cartões de crédito</h3>
+                            }
+                            <table>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Valor</th>
+                                </tr>
+                                @foreach (CreditCardsPurchase ccp in Model.CreditCards)
+                                {
+                                    <tr>
+                                        <td>@ccp.CcpCrd.CrdNumber.ToString().Substring(12)</td>
+                                        <td>R$@ccp.CcpAmount.ToString("F2")</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    }
+                    @if (Model.PxcCpns.Count > 0 && Model.PxcCpns.Any())
+                    {
+                        <div class="methodSection exchangeCoupons">
+                            @if (Model.PxcCpns.Count == 1)
+                            {
+                                <h3>Cupom de troca</h3>
+                            }
+                            else
+                            {
+                                <h3>Cupons de troca</h3>
+                            }
+                            <table>
+                                <tr>
+                                    <th>Data de criação</th>
+                                    <th>Valor</th>
+                                </tr>
+                                @foreach (ExchangeCoupon xcp in Model.PxcCpns)
+                                {
+                                    <tr>
+                                        <td>@xcp.Xcp.CpnDateGen</td>
+                                        <td>R$@xcp.Xcp.CpnValue</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    }
+                    @if (Model.PrcCpp != null)
+                    {
+                        <div class="methodSection promotionalCoupons">
+                            <h3>Cupom promocional</h3>
+                            <table>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td>@Model.PrcCpp.PcpCode</td>
+                                    <td>R$@Model.PrcCpp.Pcp.CpnValue</td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="items">
+            <h1>Itens</h1>
+            @for (int i = 0; i < items.Count; i += 2)
+            {
+                <div class="itemsRow">
+                    @for (int y = i; (y < i + 2) && (y < items.Count); y++)
+                    {
+                        var item = items[y];
+                        <div class="item">
+                            <div class="imgDiv">
+                                <img src="@Url.Content(item.PciStc.StcBok.BokImgAddress)" alt="">
+                            </div>
+                            <div class="txtANDStatus">
+                                <div class="txtInfo">
+                                    <div class="title">
+                                        <h1>@item.PciStc.StcBok.BokTitle</h1>
+                                    </div>
+                                    <div class="quantity">
+                                        <h2>Unidades: @item.PciQuantity</h2>
+                                    </div>
+                                    <div class="total">
+                                        <h2>Preço total: R$@item.PciTotalPrice.ToString("F2")</h2>
+                                    </div>
+                                </div>
+                                <div class="status">
+                                    <h2>Status: @item.PciStatus</h2>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script src="~/js/customer/profile/purchases/purchaseDtl.js"></script>

@@ -1,0 +1,193 @@
+.profileBody {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.profileOptions {
+    background-color: rgb(235, 235, 235);
+    border-right: 2px solid black;
+    width: 20vw;
+    min-height: 89vh;
+}
+
+    .profileOptions .title {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        border-bottom: 2px solid gray;
+    }
+
+        .profileOptions .title h1 {
+            text-align: center;
+            font-weight: 350;
+        }
+
+    .profileOptions .section {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 2%;
+
+        border-bottom: 2px solid gray;
+    }
+
+        .profileOptions .section h2 {
+            text-align: center;
+            color: black;
+            padding: 1%;
+            font-weight: 300;
+            font-size: 1.75vw;
+
+            transition-duration: 0.1s;
+        }
+
+        .profileOptions .section a {
+            text-decoration: none;
+        }
+
+            .profileOptions .section a h2:hover {
+                color: goldenrod;
+            }
+
+        .profileOptions .section .subsection {
+            display: inherit;
+            align-content: inherit;
+            justify-content: inherit;
+            background-color: rgb(219, 219, 219);
+            border-bottom: 2px solid rgb(199, 199, 199);
+            padding: 1.5%;
+            padding-bottom: 0%;
+        }
+
+            .profileOptions .subsection h3 {
+                text-align: center;
+                color: black;
+                padding: 1%;
+                font-weight: 300;
+                font-size: 1.5vw;
+            }
+
+                .profileOptions .subsection a h3:hover {
+                    color: goldenrod;
+                }
+
+.profileForm {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    gap: 2vh;
+
+    width: 60vw;
+    height: min-content;
+    padding: 1.5%;
+    margin-top: 5vh;
+    margin-right: 10vw;
+    background-color: lightgray;
+}
+
+    .profileForm button {
+        border: 2px solid black;
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 1.3vw;
+
+        transition-duration: 0.2s;
+    }
+
+        .profileForm button.cancel {
+            border: 2px solid rgb(184, 0, 0);
+            color: rgb(184, 0, 0);
+        }
+
+        .profileForm button:hover {
+            background-color: black;
+            color: white;
+        }
+
+            .profileForm button.cancel:hover {
+                background-color: rgb(184, 0, 0);
+                color: white;
+            }
+
+    .updateOpts {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 1.5vw;
+    }
+
+    .profileForm h1 {
+        font-weight: 350;
+        text-align: center;
+    }
+
+    .profileForm .passBtn {
+        display: flex;
+        justify-content: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+    }
+
+    form label {
+        font-weight: 350;
+        font-size: 1.25vw;
+    }
+
+    form input {
+        font-weight: 350;
+        font-size: 1.15vw;
+        height: 100%;
+    }
+
+        form input:disabled {
+            background-color: rgb(240, 240, 240);
+            border: 1px solid black;
+            color: black;
+        }
+
+    form select {
+        font-weight: 350;
+        font-size: 1.25vw;
+        height: 100%;
+    }
+
+        form select:disabled {
+            background-color: rgb(240, 240, 240);
+            border: 1px solid black;
+            color: black;
+        }
+
+    form textarea {
+        font-weight: 350;
+        font-size: 1.25vw;
+        width: 100%;
+        resize: none;
+    }
+
+        form textarea:disabled {
+            background-color: rgb(240, 240, 240);
+            border: 1px solid black;
+            color: black;
+        }
+
+    form .dataRow {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+        form .dataRow div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        form .dataRow div.obs {
+            width: 100%;
+        }

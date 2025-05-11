@@ -3,6 +3,7 @@ using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models.ModelsStructGroups.PurchasesSG;
 using E_CommerceLivraria.Services.PurchaseS;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace E_CommerceLivraria.Controllers.AdminCTR
 {
@@ -20,11 +21,30 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         [HttpGet]
         public IActionResult PurchasesList()
         {
-            var purchases = _purchaseService.GetAll();
+            var purchases = _purchaseService.GetAll()
+                .Where(x => (
+                    x.PrcStatus < (int)EStatus.TROCA_SOLICITADA)
+                    && (x.PrcStatus >= (int)EStatus.EM_PROCESSAMENTO)
+                );
+
+            var filterOptions = Enum.GetValues(typeof(EStatus))
+                                    .Cast<EStatus>()
+                                    .SkipWhile(e => e != EStatus.EM_PROCESSAMENTO)
+                                    .TakeWhile(e => e != EStatus.TROCA_SOLICITADA)
+                                    .Append(EStatus.COMPRA_REPROVADA)
+                                    .Select(e => new SelectListItem
+                                    {
+                                        Value = ((int)e).ToString(),
+                                        Text = e.ToString().Replace("_", " ")
+                                    })
+                                    .OrderBy(x => x.Value)
+                                    .ToList();
 
             var apl = new AdmPurchaseListData()
             {
-                Purchases = purchases.OrderByDescending(x => x.PrcDate).ToList()
+                Purchases = purchases.OrderByDescending(x => x.PrcDate).ToList(),
+                FilterOptions = filterOptions,
+                FilterAction = "PurchasesListFilter"
             };
             return View("~/Views/Admin/ctmRequests/purchases/Purchases.cshtml", apl);
         }
@@ -32,23 +52,48 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         [HttpGet]
         public IActionResult PurchasesListFilter(AdmPurchaseListData apl)
         {
-            var purchases = _purchaseService.GetAll();
+            var purchases = _purchaseService.GetAll()
+                .Where(x => (
+                    x.PrcStatus < (int)EStatus.TROCA_SOLICITADA)
+                    && (x.PrcStatus >= (int)EStatus.EM_PROCESSAMENTO)
+                ).ToList();
 
             if (apl.StatusId != null)
             {
                 purchases = purchases.Where(x => x.PurchaseItems
-                    .Any(item => item.PciStatus == apl.StatusId.Value))
-                    .ToList();
+                    .Any(item => item.PciStatus == apl.StatusId.Value)).ToList();
             }
+
+
+            var filterOptions = Enum.GetValues(typeof(EStatus))
+                                    .Cast<EStatus>()
+                                    .SkipWhile(e => e != EStatus.EM_PROCESSAMENTO)
+                                    .TakeWhile(e => e != EStatus.TROCA_SOLICITADA)
+                                    .Append(EStatus.COMPRA_REPROVADA)
+                                    .Select(e => new SelectListItem
+                                    {
+                                        Value = ((int)e).ToString(),
+                                        Text = e.ToString().Replace("_", " ")
+                                    })
+                                    .OrderBy(x => x.Value)
+                                    .ToList();
 
             var aplNew = new AdmPurchaseListData()
             {
                 Purchases = purchases,
-                StatusId = apl.StatusId
+                FilterOptions = filterOptions,
+                StatusId = apl.StatusId,
+                FilterAction = "PurchasesListFilter"
             };
 
             return View("~/Views/Admin/ctmRequests/purchases/Purchases.cshtml", aplNew);
         }
+
+        // PEDIDOS DE TROCA
+        //[HttpGet] IActionResult ExchangeList()
+        //{
+
+        //}
 
         [HttpGet("AdmPurchases/DetailedPurchase/{id:decimal}")]
         public IActionResult DetailedPurchase([FromRoute] decimal id)

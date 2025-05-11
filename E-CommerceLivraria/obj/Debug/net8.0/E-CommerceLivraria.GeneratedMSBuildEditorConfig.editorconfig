@@ -68,6 +68,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSG9tZVxTdG9yZVxTdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Profile/Exchanges/RequestExchange/RequestExchange.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUHJvZmlsZVxFeGNoYW5nZXNcUmVxdWVzdEV4Y2hhbmdlXFJlcXVlc3RFeGNoYW5nZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Profile/Purchases/Detailed/DetailedPurchase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUHJvZmlsZVxQdXJjaGFzZXNcRGV0YWlsZWRcRGV0YWlsZWRQdXJjaGFzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Profile/Purchases/PurchasesList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUHJvZmlsZVxQdXJjaGFzZXNcUHVyY2hhc2VzTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -91,3 +103,7 @@ build_metadata.AdditionalFiles.CssScope = b-nsju261jx7
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Shared/_PublicLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QdWJsaWNMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-o29r937nbg
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Shared/_PublicProfileLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QdWJsaWNQcm9maWxlTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-b4zfiikghm
