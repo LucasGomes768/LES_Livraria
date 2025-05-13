@@ -45,8 +45,19 @@ namespace E_CommerceLivraria.Services.PurchaseS
         {
             if ((EStatus)(int)purchaseItem.PciStatus >= newStatus) return purchaseItem;
 
-            purchaseItem.PciStatus = (decimal)newStatus;
-            return _purchaseItemRepository.Update(purchaseItem);
+            PurchaseItem newItem = new PurchaseItem()
+            {
+                PciPrcId = purchaseItem.PciPrcId,
+                PciPrc = purchaseItem.PciPrc,
+                PciStcId = purchaseItem.PciStcId,
+                PciStc = purchaseItem.PciStc,
+                PciQuantity = purchaseItem.PciQuantity,
+                PciStatus = (decimal)newStatus,
+                PciTotalPrice = purchaseItem.PciTotalPrice
+            };
+
+            _purchaseItemRepository.Delete(purchaseItem);
+            return _purchaseItemRepository.Add(newItem);
         }
     }
 }

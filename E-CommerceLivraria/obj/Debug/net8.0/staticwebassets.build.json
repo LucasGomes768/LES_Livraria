@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "f1gNXZIjCNegHEYVFwEBeYfZEiwWf290qV/URjJKuVo=",
+  "Hash": "AX+me/bu6jBNMl47N1Qx+PsDExLXfpJbWbyOJ34QihQ=",
   "Source": "E-CommerceLivraria",
   "BasePath": "_content/E-CommerceLivraria",
   "Mode": "Default",
@@ -136,8 +136,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "aqrj8id6ku",
-      "Integrity": "IvPPLcd2zOpq6jQtjDK9y0wuzg72/U/LNwXkqqZ4tB8=",
+      "Fingerprint": "jvlu2vjg0f",
+      "Integrity": "weeeO8L3w3SV/T9q+9g+Re6aoffWgi6MialERTMwuPE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.css"
@@ -325,8 +325,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "fobpezqy15",
-      "Integrity": "oZ7RdC7F/OKsDdt67r/F/u4AQ7aH4zNNR+y4ATjMjc8=",
+      "Fingerprint": "1h6nesf6gh",
+      "Integrity": "e1GzRkoNYuWoQj44ZZAD4eL20O9TARZmyXkGNvD2a5E=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\customer\\home\\product\\product.css"
@@ -661,8 +661,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "uwfglbreff",
-      "Integrity": "ctrbs9vh7cudo8s8mt1tCJ7G8eLUA5vNAi0v+fhkP7E=",
+      "Fingerprint": "yf9lugggkf",
+      "Integrity": "8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js"
@@ -703,8 +703,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "2q2lsspzzr",
-      "Integrity": "Ct1wZ//XMfN4JUu2FNNmnvv3CV+mxdQEHGpPJX4z5qc=",
+      "Fingerprint": "lxcuqzryxx",
+      "Integrity": "B217hX/3TD/34JApvtQ9CZvCR6ijTNyqED1OGm3g+vA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customer\\cart\\cart.js"
@@ -766,8 +766,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "e9ofk1x0ii",
-      "Integrity": "knCBTOWhU4NvPSXmFPdmOa1a460B9IV2cd6LcOHD1I0=",
+      "Fingerprint": "i632ifkntz",
+      "Integrity": "ZpWTL1oMkov5aTpnwnJDrwkz9x5MnFmy7Ucu12cjkX4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customer\\profile\\exchanges\\requestExchange\\exchangeRequest.js"
@@ -2264,6 +2264,27 @@
       "OriginalItemSpec": "wwwroot\\resources\\images\\icons\\icons8-carrinho-24.png"
     },
     {
+      "Identity": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\icons8-sair-96.png",
+      "SourceId": "E-CommerceLivraria",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\",
+      "BasePath": "_content/E-CommerceLivraria",
+      "RelativePath": "resources/images/icons/icons8-sair-96#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e4qyhbzt6k",
+      "Integrity": "QhrM+Tf5UxyS6lkxyNVYKbtqsgDsb/mkxmlxQOmOyp8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resources\\images\\icons\\icons8-sair-96.png"
+    },
+    {
       "Identity": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\user1.svg",
       "SourceId": "E-CommerceLivraria",
       "SourceType": "Discovered",
@@ -2533,51 +2554,6 @@
       ]
     },
     {
-      "Route": "css/admin/ctmRequests/dtlPurchase/dtlPurchase.aqrj8id6ku.css",
-      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5749"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"IvPPLcd2zOpq6jQtjDK9y0wuzg72/U/LNwXkqqZ4tB8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 16:27:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "aqrj8id6ku"
-        },
-        {
-          "Name": "label",
-          "Value": "css/admin/ctmRequests/dtlPurchase/dtlPurchase.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-IvPPLcd2zOpq6jQtjDK9y0wuzg72/U/LNwXkqqZ4tB8="
-        }
-      ]
-    },
-    {
       "Route": "css/admin/ctmRequests/dtlPurchase/dtlPurchase.css",
       "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.css",
       "Selectors": [],
@@ -2588,7 +2564,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5749"
+          "Value": "5777"
         },
         {
           "Name": "Content-Type",
@@ -2596,11 +2572,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"IvPPLcd2zOpq6jQtjDK9y0wuzg72/U/LNwXkqqZ4tB8=\""
+          "Value": "\"weeeO8L3w3SV/T9q+9g+Re6aoffWgi6MialERTMwuPE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 05 May 2025 16:27:31 GMT"
+          "Value": "Tue, 13 May 2025 18:22:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2610,7 +2586,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-IvPPLcd2zOpq6jQtjDK9y0wuzg72/U/LNwXkqqZ4tB8="
+          "Value": "sha256-weeeO8L3w3SV/T9q+9g+Re6aoffWgi6MialERTMwuPE="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin/ctmRequests/dtlPurchase/dtlPurchase.jvlu2vjg0f.css",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\admin\\ctmRequests\\dtlPurchase\\dtlPurchase.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5777"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"weeeO8L3w3SV/T9q+9g+Re6aoffWgi6MialERTMwuPE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 18:22:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jvlu2vjg0f"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin/ctmRequests/dtlPurchase/dtlPurchase.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-weeeO8L3w3SV/T9q+9g+Re6aoffWgi6MialERTMwuPE="
         }
       ]
     },
@@ -3271,6 +3292,51 @@
       ]
     },
     {
+      "Route": "css/customer/home/product/product.1h6nesf6gh.css",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\home\\product\\product.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3477"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e1GzRkoNYuWoQj44ZZAD4eL20O9TARZmyXkGNvD2a5E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 14:35:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1h6nesf6gh"
+        },
+        {
+          "Name": "label",
+          "Value": "css/customer/home/product/product.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-e1GzRkoNYuWoQj44ZZAD4eL20O9TARZmyXkGNvD2a5E="
+        }
+      ]
+    },
+    {
       "Route": "css/customer/home/product/product.css",
       "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\home\\product\\product.css",
       "Selectors": [],
@@ -3281,7 +3347,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3356"
+          "Value": "3477"
         },
         {
           "Name": "Content-Type",
@@ -3289,11 +3355,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"oZ7RdC7F/OKsDdt67r/F/u4AQ7aH4zNNR+y4ATjMjc8=\""
+          "Value": "\"e1GzRkoNYuWoQj44ZZAD4eL20O9TARZmyXkGNvD2a5E=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 12 Apr 2025 12:52:52 GMT"
+          "Value": "Tue, 13 May 2025 14:35:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3303,52 +3369,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oZ7RdC7F/OKsDdt67r/F/u4AQ7aH4zNNR+y4ATjMjc8="
-        }
-      ]
-    },
-    {
-      "Route": "css/customer/home/product/product.fobpezqy15.css",
-      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\home\\product\\product.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3356"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oZ7RdC7F/OKsDdt67r/F/u4AQ7aH4zNNR+y4ATjMjc8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 12 Apr 2025 12:52:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "fobpezqy15"
-        },
-        {
-          "Name": "label",
-          "Value": "css/customer/home/product/product.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-oZ7RdC7F/OKsDdt67r/F/u4AQ7aH4zNNR+y4ATjMjc8="
+          "Value": "sha256-e1GzRkoNYuWoQj44ZZAD4eL20O9TARZmyXkGNvD2a5E="
         }
       ]
     },
@@ -4757,7 +4778,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2839"
+          "Value": "2820"
         },
         {
           "Name": "Content-Type",
@@ -4765,11 +4786,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ctrbs9vh7cudo8s8mt1tCJ7G8eLUA5vNAi0v+fhkP7E=\""
+          "Value": "\"8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 21:57:45 GMT"
+          "Value": "Tue, 13 May 2025 19:51:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4779,12 +4800,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ctrbs9vh7cudo8s8mt1tCJ7G8eLUA5vNAi0v+fhkP7E="
+          "Value": "sha256-8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac="
         }
       ]
     },
     {
-      "Route": "js/customer/cart/addressPay/methodPay/methodPayment.uwfglbreff.js",
+      "Route": "js/customer/cart/addressPay/methodPay/methodPayment.yf9lugggkf.js",
       "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -4794,7 +4815,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2839"
+          "Value": "2820"
         },
         {
           "Name": "Content-Type",
@@ -4802,11 +4823,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ctrbs9vh7cudo8s8mt1tCJ7G8eLUA5vNAi0v+fhkP7E=\""
+          "Value": "\"8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 21:57:45 GMT"
+          "Value": "Tue, 13 May 2025 19:51:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4816,7 +4837,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "uwfglbreff"
+          "Value": "yf9lugggkf"
         },
         {
           "Name": "label",
@@ -4824,7 +4845,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ctrbs9vh7cudo8s8mt1tCJ7G8eLUA5vNAi0v+fhkP7E="
+          "Value": "sha256-8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac="
         }
       ]
     },
@@ -4911,51 +4932,6 @@
       ]
     },
     {
-      "Route": "js/customer/cart/cart.2q2lsspzzr.js",
-      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\cart.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1206"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Ct1wZ//XMfN4JUu2FNNmnvv3CV+mxdQEHGpPJX4z5qc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 12 Apr 2025 12:52:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "2q2lsspzzr"
-        },
-        {
-          "Name": "label",
-          "Value": "js/customer/cart/cart.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Ct1wZ//XMfN4JUu2FNNmnvv3CV+mxdQEHGpPJX4z5qc="
-        }
-      ]
-    },
-    {
       "Route": "js/customer/cart/cart.js",
       "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\cart.js",
       "Selectors": [],
@@ -4966,7 +4942,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1206"
+          "Value": "2030"
         },
         {
           "Name": "Content-Type",
@@ -4974,11 +4950,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Ct1wZ//XMfN4JUu2FNNmnvv3CV+mxdQEHGpPJX4z5qc=\""
+          "Value": "\"B217hX/3TD/34JApvtQ9CZvCR6ijTNyqED1OGm3g+vA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 12 Apr 2025 12:52:52 GMT"
+          "Value": "Tue, 13 May 2025 17:23:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4988,7 +4964,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Ct1wZ//XMfN4JUu2FNNmnvv3CV+mxdQEHGpPJX4z5qc="
+          "Value": "sha256-B217hX/3TD/34JApvtQ9CZvCR6ijTNyqED1OGm3g+vA="
+        }
+      ]
+    },
+    {
+      "Route": "js/customer/cart/cart.lxcuqzryxx.js",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\cart.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2030"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B217hX/3TD/34JApvtQ9CZvCR6ijTNyqED1OGm3g+vA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 17:23:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lxcuqzryxx"
+        },
+        {
+          "Name": "label",
+          "Value": "js/customer/cart/cart.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B217hX/3TD/34JApvtQ9CZvCR6ijTNyqED1OGm3g+vA="
         }
       ]
     },
@@ -5157,7 +5178,7 @@
       ]
     },
     {
-      "Route": "js/customer/profile/exchanges/requestExchange/exchangeRequest.e9ofk1x0ii.js",
+      "Route": "js/customer/profile/exchanges/requestExchange/exchangeRequest.i632ifkntz.js",
       "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\profile\\exchanges\\requestExchange\\exchangeRequest.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -5167,7 +5188,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2326"
+          "Value": "2289"
         },
         {
           "Name": "Content-Type",
@@ -5175,11 +5196,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"knCBTOWhU4NvPSXmFPdmOa1a460B9IV2cd6LcOHD1I0=\""
+          "Value": "\"ZpWTL1oMkov5aTpnwnJDrwkz9x5MnFmy7Ucu12cjkX4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 13 May 2025 12:20:44 GMT"
+          "Value": "Tue, 13 May 2025 18:39:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5189,7 +5210,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "e9ofk1x0ii"
+          "Value": "i632ifkntz"
         },
         {
           "Name": "label",
@@ -5197,7 +5218,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-knCBTOWhU4NvPSXmFPdmOa1a460B9IV2cd6LcOHD1I0="
+          "Value": "sha256-ZpWTL1oMkov5aTpnwnJDrwkz9x5MnFmy7Ucu12cjkX4="
         }
       ]
     },
@@ -5212,7 +5233,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2326"
+          "Value": "2289"
         },
         {
           "Name": "Content-Type",
@@ -5220,11 +5241,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"knCBTOWhU4NvPSXmFPdmOa1a460B9IV2cd6LcOHD1I0=\""
+          "Value": "\"ZpWTL1oMkov5aTpnwnJDrwkz9x5MnFmy7Ucu12cjkX4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 13 May 2025 12:20:44 GMT"
+          "Value": "Tue, 13 May 2025 18:39:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5234,7 +5255,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-knCBTOWhU4NvPSXmFPdmOa1a460B9IV2cd6LcOHD1I0="
+          "Value": "sha256-ZpWTL1oMkov5aTpnwnJDrwkz9x5MnFmy7Ucu12cjkX4="
         }
       ]
     },
@@ -11057,6 +11078,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-jCBqhr3YghASEs/wahbAkjU4dQ3uBfZHophEKYYyhB0="
+        }
+      ]
+    },
+    {
+      "Route": "resources/images/icons/icons8-sair-96.e4qyhbzt6k.png",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\icons8-sair-96.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "734"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QhrM+Tf5UxyS6lkxyNVYKbtqsgDsb/mkxmlxQOmOyp8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 02 May 2025 21:45:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e4qyhbzt6k"
+        },
+        {
+          "Name": "label",
+          "Value": "resources/images/icons/icons8-sair-96.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QhrM+Tf5UxyS6lkxyNVYKbtqsgDsb/mkxmlxQOmOyp8="
+        }
+      ]
+    },
+    {
+      "Route": "resources/images/icons/icons8-sair-96.png",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\icons8-sair-96.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "734"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QhrM+Tf5UxyS6lkxyNVYKbtqsgDsb/mkxmlxQOmOyp8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 02 May 2025 21:45:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QhrM+Tf5UxyS6lkxyNVYKbtqsgDsb/mkxmlxQOmOyp8="
         }
       ]
     },

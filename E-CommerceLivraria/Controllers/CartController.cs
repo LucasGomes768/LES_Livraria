@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.Models;
+﻿using E_CommerceLivraria.DTO.CartDTO;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups.CartSG;
 using E_CommerceLivraria.Models.ModelsStructGroups.StockSG;
 using E_CommerceLivraria.Services.CustomerS;
@@ -91,6 +92,29 @@ namespace E_CommerceLivraria.Controllers
             _customerService.Update(customer);
 
             return RedirectToAction("cartPage", "Cart");
+        }
+
+        [HttpPost("Cart/UpdateQuantity")]
+        public IActionResult updateItemFromCart([FromBody] UpdateItemDTO updateData)
+        {
+            try
+            {
+                var customer = _customerService.Get(updateData.CtmId);
+                if (customer == null) return NotFound(updateData.CtmId);
+
+                var stock = _stockService.Get(updateData.ItemStockID);
+                if (stock == null) return NotFound(updateData.ItemStockID);
+
+                _cartService.UpdateItemAmount(customer.CtmCrt, stock, updateData.NewAmount);
+
+                return Ok(new {
+                    Sucess = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

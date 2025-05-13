@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>aqrj8id6ku</Fingerprint>
-      <Integrity>IvPPLcd2zOpq6jQtjDK9y0wuzg72/U/LNwXkqqZ4tB8=</Integrity>
+      <Fingerprint>jvlu2vjg0f</Fingerprint>
+      <Integrity>weeeO8L3w3SV/T9q+9g+Re6aoffWgi6MialERTMwuPE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin\ctmRequests\dtlPurchase\dtlPurchase.css'))</OriginalItemSpec>
@@ -228,8 +228,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fobpezqy15</Fingerprint>
-      <Integrity>oZ7RdC7F/OKsDdt67r/F/u4AQ7aH4zNNR+y4ATjMjc8=</Integrity>
+      <Fingerprint>1h6nesf6gh</Fingerprint>
+      <Integrity>e1GzRkoNYuWoQj44ZZAD4eL20O9TARZmyXkGNvD2a5E=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\home\product\product.css'))</OriginalItemSpec>
@@ -534,8 +534,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>uwfglbreff</Fingerprint>
-      <Integrity>ctrbs9vh7cudo8s8mt1tCJ7G8eLUA5vNAi0v+fhkP7E=</Integrity>
+      <Fingerprint>yf9lugggkf</Fingerprint>
+      <Integrity>8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\methodPay\methodPayment.js'))</OriginalItemSpec>
@@ -570,8 +570,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>2q2lsspzzr</Fingerprint>
-      <Integrity>Ct1wZ//XMfN4JUu2FNNmnvv3CV+mxdQEHGpPJX4z5qc=</Integrity>
+      <Fingerprint>lxcuqzryxx</Fingerprint>
+      <Integrity>B217hX/3TD/34JApvtQ9CZvCR6ijTNyqED1OGm3g+vA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\cart.js'))</OriginalItemSpec>
@@ -624,8 +624,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>e9ofk1x0ii</Fingerprint>
-      <Integrity>knCBTOWhU4NvPSXmFPdmOa1a460B9IV2cd6LcOHD1I0=</Integrity>
+      <Fingerprint>i632ifkntz</Fingerprint>
+      <Integrity>ZpWTL1oMkov5aTpnwnJDrwkz9x5MnFmy7Ucu12cjkX4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\profile\exchanges\requestExchange\exchangeRequest.js'))</OriginalItemSpec>
@@ -1907,6 +1907,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\resources\images\icons\icons8-carrinho-24.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\resources\images\icons\icons8-sair-96.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>E-CommerceLivraria</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/E-CommerceLivraria</BasePath>
+      <RelativePath>resources/images/icons/icons8-sair-96.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>e4qyhbzt6k</Fingerprint>
+      <Integrity>QhrM+Tf5UxyS6lkxyNVYKbtqsgDsb/mkxmlxQOmOyp8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\resources\images\icons\icons8-sair-96.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\resources\images\icons\user1.svg'))">
       <SourceType>Package</SourceType>

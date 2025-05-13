@@ -114,7 +114,9 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
             if ((EStatus)purchase.PrcStatus == EStatus.TROCA_REPROVADA) throw new Exception("Esse pedido de troca já foi reprovado");
 
-            foreach (PurchaseItem item in purchase.PurchaseItems)
+            var tempList = purchase.PurchaseItems.ToList();
+
+            foreach (PurchaseItem item in tempList)
             {
                 _purchaseItemService.UpdateStatus(item, newStatus);
             }

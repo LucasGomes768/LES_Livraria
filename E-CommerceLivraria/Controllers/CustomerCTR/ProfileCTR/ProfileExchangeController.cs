@@ -1,6 +1,7 @@
 ﻿using AspNetCoreGeneratedDocument;
 using E_CommerceLivraria.DTO.ExchangesDTO;
 using E_CommerceLivraria.Enums;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.PurchaseS;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,42 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
             _customerService = customerService;
             _purchaseService = purchaseService;
             _purchaseItemService = purchaseItemService;
+        }
+
+        [HttpGet("ExchangeProfile/{CtmId:decimal}")]
+        public IActionResult ExchangesList([FromRoute] decimal CtmId)
+        {
+            try
+            {
+                var customer = _customerService.Get(CtmId);
+                if (customer == null) throw new Exception("Cliente não foi encontrado");
+
+                return View("~/Views/Customer/Profile/Exchanges/ExchangesList.cshtml", customer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("ExchangeProfile/{CtmId:decimal}/{PrcId:decimal}")]
+        public IActionResult DetailedExchange([FromRoute] decimal CtmId, [FromRoute] decimal PrcId)
+        {
+            try
+            {
+                var purchase = _purchaseService.Get(PrcId);
+                if (purchase == null) throw new Exception("Compra não foi encontrada");
+
+                if (purchase.PrcCtmId != CtmId) throw new Exception("Tentativa de acesso de compra de outro usuário");
+
+                purchase.PurchaseItems = purchase.PurchaseItems.Where(x => (x.PciStatus >= (int)EStatus.TROCA_SOLICITADA) || (x.PciStatus == (int)EStatus.TROCA_REPROVADA)).ToList();
+
+                return View("~/Views/Customer/Profile/Exchanges/Detailed/DetailedExchange.cshtml", purchase);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("RequestExchange/{CtmId:decimal}/{PrcId:decimal}")]

@@ -23,6 +23,10 @@
             @for (int y = i; (y < i + 2) && (y < purchases.Count); y++)
             {
                 var purchase = purchases[y];
+                if ((purchase.PrcStatus >= (int)EStatus.TROCA_SOLICITADA) || (purchase.PrcStatus <= (int)EStatus.TROCA_REPROVADA))
+                {
+                    continue;
+                }
 
                 <div class="pchInstance">
                     <div class="infoActions">

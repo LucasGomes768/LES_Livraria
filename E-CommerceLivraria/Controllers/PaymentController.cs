@@ -27,8 +27,7 @@ namespace E_CommerceLivraria.Controllers
         }
 
         // ENDEREÇO
-        [HttpGet]
-        public IActionResult DeliveryAddressPage(CartDataGroup cdg)
+        public IActionResult DeliveryAddressPageRedirect(CartDataGroup cdg)
         {
             var ctm = _customerService.Get(cdg.CtmId);
             if (ctm == null) return NotFound();
@@ -38,11 +37,10 @@ namespace E_CommerceLivraria.Controllers
                 CtmId = cdg.CtmId,
                 Cart = ctm.Cart,
                 Addresses = ctm.DadAdds.ToList(),
-                Total = ctm.Cart.CartItems.Sum(x => x.CriTotalprice),
-                
+                Total = ctm.Cart.CartItems.Sum(x => x.CriTotalprice)
             };
 
-            return View("~/Views/Customer/Cart/addressPayment/addressPayment.cshtml", papd);
+            return RedirectToAction("DeliveryAddressPage", papd);
         }
 
         [HttpGet]

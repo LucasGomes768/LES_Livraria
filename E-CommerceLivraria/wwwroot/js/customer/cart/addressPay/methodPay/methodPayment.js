@@ -38,17 +38,18 @@ export function finalizarCompra() {
     btn.textContent = 'Processando...'
 
     const cartoes = JSON.parse(sessionStorage.getItem("cartoesSelecionados") || "[]");
+    console.log('Cartões armazenados:', cartoes);
     const totalCompra = parseFloat(document.getElementById('totalPrice').value);
 
-    const request = new XMLHttpRequest();
-    request.open('POST', '/Payment/ProcessPurchase', false);
-    request.setRequestHeader('Content-Type', 'application/json');
+    //const request = new XMLHttpRequest();
+    //request.open('POST', '/Payment/ProcessPurchase', false);
+    //request.setRequestHeader('Content-Type', 'application/json');
 
     const data = {
         FinalPrice: totalCompra,
         CreditCards: cartoes.map(cartao => ({
-            id: parseFloat(cartao.id),
-            value: parseFloat(cartao.value)
+            id: parseFloat(cartao?.id || 0),
+            value: parseFloat(cartao?.value || 0)
         })),
         PromotionalCode: "",
         ExchangeIds: [],
@@ -56,23 +57,21 @@ export function finalizarCompra() {
         CtmId: parseFloat(document.getElementById("ctmId").value)
     }
 
-    setTimeout(() => {
-        try {
-            request.send(JSON.stringify(data));
+    //try {
+    //    request.send(JSON.stringify(data));
 
-            if (request.status === 200) {
-                sessionStorage.removeItem("cartoesSelecionados");
-                alert("Compra realizada com sucesso!")
-                window.location.href = `AdmPurchases/DetailedPurchase/${id}`
-            } else {
-                alert('Erro ao processar compra: ' + request.statusText);
-            }
+    //    if (request.status === 200) {
+    //        sessionStorage.removeItem("cartoesSelecionados");
+    //        alert("Compra realizada com sucesso!")
+    //        window.location.href = `/Home/HomePage`
+    //    } else {
+    //        alert('Erro ao processar compra: ' + request.statusText);
+    //    }
 
-        } catch (error) {
-            alert('Falha na comunicação: ' + error.message);
-        } finally {
-            btn.disabled = false
-            btn.textContent = 'Finalizar Compra'
-        }
-    }, 100)
+    //} catch (error) {
+    //    alert('Falha na comunicação: ' + error.message);
+    //} finally {
+    //    btn.disabled = false
+    //    btn.textContent = 'Finalizar Compra'
+    //}
 }

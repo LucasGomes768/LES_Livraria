@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.Services.CustomerS;
+﻿using E_CommerceLivraria.Enums;
+using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.PurchaseS;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +45,10 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 if (purchase == null) throw new Exception("Compra não foi encontrada");
 
                 if (purchase.PrcCtmId != CtmId) throw new Exception("Tentativa de acesso de compra de outro usuário");
+
+                purchase.PurchaseItems = purchase.PurchaseItems
+                    .Where(x => (x.PciStatus >= (int)EStatus.COMPRA_REPROVADA) || (x.PciStatus < (int)EStatus.TROCA_SOLICITADA))
+                    .ToList();
 
                 return View("~/Views/Customer/Profile/Purchases/Detailed/DetailedPurchase.cshtml", purchase);
             }

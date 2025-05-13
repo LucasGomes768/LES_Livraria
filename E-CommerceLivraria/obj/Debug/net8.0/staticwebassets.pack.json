@@ -425,6 +425,10 @@
       "PackagePath": "staticwebassets\\resources\\images\\icons\\icons8-carrinho-24.png"
     },
     {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\icons8-sair-96.png",
+      "PackagePath": "staticwebassets\\resources\\images\\icons\\icons8-sair-96.png"
+    },
+    {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\user1.svg",
       "PackagePath": "staticwebassets\\resources\\images\\icons\\user1.svg"
     },

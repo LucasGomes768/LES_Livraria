@@ -1,5 +1,47 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using E_CommerceLivraria.Enums
+@model Customer
 @{
+    Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
+    ViewData["Title"] = "Histórico de trocas";
+    ViewData["CSSFile"] = "~/css/customer/profile/purchases/purchaseList.css";
+    var purchases = Model.Purchases.OrderBy(x => x.PrcDate).ToList();
 }
+<div class="purchasesList">
+    <h1>Compras</h1>
+    <div class="filters">
+        <label for="time">Período:</label>
+        <select id="time">
+            <option value="" selected>Qualquer</option>
+            <option value="thisMonth">Este mês</option>
+            <option value="lastMonth">Mês passado</option>
+            <option value="thisYear">Esse ano</option>
+        </select>
+    </div>
+    @for (int i = 0; i < purchases.Count; i += 2)
+    {
+        <div class="pchRow">
+            @for (int y = i; (y < i + 2) && (y < purchases.Count); y++)
+            {
+                var purchase = purchases[y];
+                if (purchase.PrcStatusExchange == null)
+                {
+                    continue;
+                }
+
+                <div class="pchInstance">
+                    <div class="infoActions">
+                        <div class="txtInfo">
+                            <h2>@(((EStatus)purchase.PrcStatusExchange).ToString().Replace("_", " "))</h2>
+                            <h3>Última atualização: @purchase.PrcDate.ToShortDateString()</h3>
+                        </div>
+                        <div class="actions">
+                            <a asp-controller="ProfileExchange" asp-action="DetailedExchange" asp-route-CtmId="@Model.CtmId" asp-route-PrcId="@purchase.PrcId">
+                                <button>Visualizar Troca</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

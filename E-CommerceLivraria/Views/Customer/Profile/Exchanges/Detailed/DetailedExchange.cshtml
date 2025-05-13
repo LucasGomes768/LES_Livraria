@@ -2,31 +2,29 @@
 @model Purchase
 @{
     Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
-    ViewData["Title"] = "Compra";
+    ViewData["Title"] = "Troca";
     ViewData["CSSFile"] = "~/css/customer/profile/purchases/purchaseDtl.css";
 
     var items = Model.PurchaseItems.ToList();
-    var status = (EStatus)Model.PrcStatus;
+    var status = (EStatus)Model.PrcStatusExchange;
+    int lineLimit = 0;
 }
+<script>
+    @if (Model.PrcStatusExchange == null)
+    {
+        @:history.go(-1);
+    }
+</script>
 <div class="purchasesDtl">
     <div class="purchaseBody">
-        <h1>Cadastro da compra</h1>
+        <h1>Cadastro da troca</h1>
         <div class="importantSection">
             <h2>Status: @status.ToString().Replace("_", " ")</h2>
-            @if (status == EStatus.ENTREGUE)
-            {
-                <div class="buttons">
-                    <a asp-controller="ProfileExchange" asp-action="RequestExchangePage" asp-route-CtmId="@Model.PrcCtmId" asp-route-PrcId="@Model.PrcId">
-                        <button class="btn btn-success" type="button">Solicitar troca</button>
-                    </a>
-                </div>
-            }
         </div>
         <br>
         <div class="dataBts">
             <button type="button" onclick="showOneSection('dadosGerais')">Dados gerais</button>
             <button type="button" onclick="showOneSection('address')">Endereço</button>
-            <button type="button" onclick="showOneSection('paymentMethod')">Método de pagamento</button>
         </div>
         <div class="dataSection dataSectionJs" id="dadosGerais">
             <h2>Dados gerais</h2>
@@ -94,81 +92,6 @@
                 </div>
             </form>
         </div>
-        <div class="dataSection dataSectionJs" id="paymentMethod">
-            <div class="section">
-                <h2>Método de pagamento</h2>
-                <div class="line spaceEven">
-                    @if (Model.CreditCards.Count > 0 && Model.CreditCards.Any())
-                    {
-                        <div class="methodSection creditCards">
-                            @if (Model.CreditCards.Count == 1)
-                            {
-                                <h3>Cartão de crédito</h3>
-                            }
-                            else
-                            {
-                                <h3>Cartões de crédito</h3>
-                            }
-                            <table>
-                                <tr>
-                                    <th>Número</th>
-                                    <th>Valor</th>
-                                </tr>
-                                @foreach (CreditCardsPurchase ccp in Model.CreditCards)
-                                {
-                                    <tr>
-                                        <td>@ccp.CcpCrd.CrdNumber.ToString().Substring(12)</td>
-                                        <td>R$@ccp.CcpAmount.ToString("F2")</td>
-                                    </tr>
-                                }
-                            </table>
-                        </div>
-                    }
-                    @if (Model.PxcCpns.Count > 0 && Model.PxcCpns.Any())
-                    {
-                        <div class="methodSection exchangeCoupons">
-                            @if (Model.PxcCpns.Count == 1)
-                            {
-                                <h3>Cupom de troca</h3>
-                            }
-                            else
-                            {
-                                <h3>Cupons de troca</h3>
-                            }
-                            <table>
-                                <tr>
-                                    <th>Data de criação</th>
-                                    <th>Valor</th>
-                                </tr>
-                                @foreach (ExchangeCoupon xcp in Model.PxcCpns)
-                                {
-                                    <tr>
-                                        <td>@xcp.Xcp.CpnDateGen</td>
-                                        <td>R$@xcp.Xcp.CpnValue</td>
-                                    </tr>
-                                }
-                            </table>
-                        </div>
-                    }
-                    @if (Model.PrcCpp != null)
-                    {
-                        <div class="methodSection promotionalCoupons">
-                            <h3>Cupom promocional</h3>
-                            <table>
-                                <tr>
-                                    <th>Código</th>
-                                    <th>Valor</th>
-                                </tr>
-                                <tr>
-                                    <td>@Model.PrcCpp.PcpCode</td>
-                                    <td>R$@Model.PrcCpp.Pcp.CpnValue</td>
-                                </tr>
-                            </table>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
         <br>
         <div class="items">
             <h1>Itens</h1>
@@ -178,11 +101,6 @@
                     @for (int y = i; (y < i + 2) && (y < items.Count); y++)
                     {
                         var item = items[y];
-                        if ((EStatus)item.PciStatus >= EStatus.TROCA_SOLICITADA || (EStatus)item.PciStatus < EStatus.COMPRA_REPROVADA)
-                        {
-                            continue;
-                        }
-
                         <div class="item">
                             <div class="imgDiv">
                                 <img src="@Url.Content(item.PciStc.StcBok.BokImgAddress)" alt="">
@@ -200,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="status">
-                                    <h2>Status: @(((EStatus)item.PciStatus).ToString().Replace("_"," "))</h2>
+                                    <h2>Status: @(((EStatus)item.PciStatus).ToString().Replace("_", " "))</h2>
                                 </div>
                             </div>
                         </div>

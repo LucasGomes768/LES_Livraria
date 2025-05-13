@@ -103,4 +103,5 @@ wwwroot\resources\images\books_covers\o_rei_de_amarelo_darkside.jpg
 wwwroot\resources\images\books_covers\pai_rico_pai_pobre.jpg
 wwwroot\resources\images\icons\chatbot1.svg
 wwwroot\resources\images\icons\icons8-carrinho-24.png
+wwwroot\resources\images\icons\icons8-sair-96.png
 wwwroot\resources\images\icons\user1.svg

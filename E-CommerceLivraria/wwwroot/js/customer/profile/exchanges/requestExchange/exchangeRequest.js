@@ -57,7 +57,8 @@ function sendExchangeRequest(data) {
 
         if (request.status === 200) {
             alert("Troca solicitada com sucesso!")
-            window.location.href = `Profile/Purchases/${data.CtmId}/${data.PrcId}`
+            history.go(-1)
+            return
         } else {
             alert('Erro ao processar compra: ' + request.statusText);
             console.error('Erro completo:', request.responseText);

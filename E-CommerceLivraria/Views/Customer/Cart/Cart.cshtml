@@ -5,6 +5,7 @@
     ViewData["Title"] = "Carrinho";
     ViewData["CSSFile"] = "~/css/customer/cart/cart.css";
 }
+<input type="number" id="CtmId" value="@Model.CtmId" hidden />
 <div class="cartBody">
     <div class="items">
         @for (int i = 0; i < Model.Items.Count; i++)
@@ -20,12 +21,12 @@
                     <div class="actions">
                         <div class="quantity">
                             <label for="quantity">Quantidade:</label>
-                            <input type="number" class="quantityInput" data-index="@(i + 1)" onblur="updatePrice(this)" min="1" max="@(Model.Items[i].CriStc.StcAvailableAmount + Model.Items[i].CriQuantity)" value="@Model.Items[i].CriQuantity">
+                            <input type="number" class="quantityInput" data-index="@Model.Items[i].CriStcId" onblur="updatePrice(this)" min="1" max="@(Model.Items[i].CriStc.StcAvailableAmount + Model.Items[i].CriQuantity)" value="@Model.Items[i].CriQuantity">
                         </div>
                         <div class="totalPrice">
-                            <input type="hidden" class="basePrice" data-index="@(i + 1)" value="@(Model.Items[i].CriTotalprice / Model.Items[i].CriQuantity)"/>
-                            <input type="hidden" class="curPrice" data-index="@(i + 1)" value="@(Model.Items[i].CriTotalprice)" />
-                            <h2 class="itemTotal" data-index="@(i + 1)"><b>R$</b>@Model.Items[i].CriTotalprice</h2>
+                            <input type="hidden" class="basePrice" data-index="@Model.Items[i].CriStcId" value="@(Model.Items[i].CriTotalprice / Model.Items[i].CriQuantity)" />
+                            <input type="hidden" class="curPrice" data-index="@Model.Items[i].CriStcId" value="@(Model.Items[i].CriTotalprice)" />
+                            <h2 class="itemTotal" data-index="@Model.Items[i].CriStcId"><b>R$</b>@Model.Items[i].CriTotalprice</h2>
                         </div>
                         <div class="remove">
                             <form asp-controller="Cart" asp-action="removeItemFromCart">
@@ -41,7 +42,7 @@
     </div>
     <div class="priceData">
         <div>
-            <form asp-controller="Payment" asp-action="DeliveryAddressPage">
+            <form method="get" asp-controller="Payment" asp-action="DeliveryAddressPageRedirect">
                 <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
                 <h2>Total:</h2>
                 <input type="hidden" class="totalPriceInp" value="@Model.Items.Sum(x => x.CriTotalprice)" />
@@ -53,4 +54,4 @@
         </div>
     </div>
 </div>
-<script src="~/js/customer/cart/cart.js"></script>
+<script src="~/js/customer/cart/cart.js?v=1.0.@(DateTime.Now.Ticks)"></script>

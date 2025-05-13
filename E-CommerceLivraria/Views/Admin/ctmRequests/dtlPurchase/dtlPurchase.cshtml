@@ -188,7 +188,7 @@
     @for (int i = 0; i < purchaseItems.Count; i += 2)
     {
         <div class="itemsRow">
-            @for(int y = i; (y < i + 2) || (y < purchaseItems.Count); y++)
+            @for(int y = i; (y < i + 2) && (y < purchaseItems.Count); y++)
             {
                 EStatus itemStatus = (EStatus)purchaseItems[y].PciStatus;
                 <div class="item">

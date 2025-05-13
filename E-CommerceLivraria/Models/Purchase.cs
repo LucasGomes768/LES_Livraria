@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using E_CommerceLivraria.Enums;
 
 namespace E_CommerceLivraria.Models;
 
@@ -43,6 +44,23 @@ public partial class Purchase
         get
         {
             return (int)PurchaseItems.Min(x => x.PciStatus);
+        }
+    }
+
+    [NotMapped]
+    public int? PrcStatusExchange
+    {
+        get
+        {
+            var result = PurchaseItems.Where(x => (x.PciStatus >= (int)EStatus.TROCA_SOLICITADA) || (x.PciStatus == (int)EStatus.TROCA_REPROVADA));
+
+            if (!result.Any() || result.Count() < 1)
+            {
+                return null;
+            } else
+            {
+                return (int)result.Min(x => x.PciStatus);
+            }
         }
     }
 

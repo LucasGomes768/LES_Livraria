@@ -8,6 +8,9 @@
 }
 
     .productBody .itemImg {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
         background-color: lightgray;
         border-radius: 10px;
         padding: 1%;
@@ -19,6 +22,7 @@
             display: flex;
             justify-self: center;
             height: 70vh;
+            max-width: 23vw;
         }
     
     .productBody .dataPay {

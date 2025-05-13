@@ -86,8 +86,13 @@
                     </a>
                 </div>
                 <div class="profileSection">
-                    <a href="/customer/profile/purchases/list/purchaseList.html">
+                    <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1">
                         <h2>Compras</h2>
+                    </a>
+                </div>
+                <div class="profileSection">
+                    <a asp-controller="ProfileExchange" asp-action="ExchangesList" asp-route-CtmId="1">
+                        <h2>Trocas</h2>
                     </a>
                 </div>
                 <div class="logout profileSection">
@@ -158,11 +163,11 @@
                     </div>
                     <!-- TODO: Compras -->
                     <div class="section">
-                        <a href="/customer/profile/purchases/list/purchaseList.html"><h2>Compras</h2></a>
+                        <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1"><h2>Compras</h2></a>
                     </div>
                     <!-- TODO: Trocas -->
                     <div class="section">
-                        <a href="/customer/profile/purchases/list/purchaseList.html"><h2>Trocas</h2></a>
+                        <a asp-controller="ProfileExchange" asp-action="ExchangesList" asp-route-CtmId="1"><h2>Trocas</h2></a>
                     </div>
                 </div>
             </div>
