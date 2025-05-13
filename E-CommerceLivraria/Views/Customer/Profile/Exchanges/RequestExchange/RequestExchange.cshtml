@@ -1,5 +1,49 @@
-﻿@{
+﻿@using E_CommerceLivraria.Enums
+@model Purchase
+@{
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
-    ViewData["Title"] = "Pedir troca";
-    ViewData["CSSFile"] = "~/css/customer/profile/purchases/purchaseDtl.css";
+    ViewData["Title"] = "Solicitar troca";
+    ViewData["CSSFile"] = "~/css/customer/profile/exchanges/requestExchange/exchangeRequest.css";
+
+    var purchaseItems = Model.PurchaseItems.ToList();
 }
+<input type="text" id="ctmId" value="@Model.PrcCtmId" hidden />
+<input type="text" id="prcId" value="@Model.PrcId" hidden />
+<br>
+<button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
+<div class="bigBody">
+    <div class="exchangeBody">
+        <h1>Selecione os itens a serem trocados</h1>
+        @if (purchaseItems.Count > 0 && purchaseItems.Any())
+        {
+            <div class="tableItems">
+                <table>
+                    <tr class="cover">
+                        <th class="tdCover">Capa</th>
+                        <th class="tdTitle">Título</th>
+                        <th class="tdQuantityBought">Quantidade comprada</th>
+                        <th class="tdQuantity">Quantidade á trocar</th>
+                        <th class="tdMark">Marcar para troca</th>
+                    </tr>
+                    @foreach (PurchaseItem item in purchaseItems)
+                    {
+                        EStatus itemStatus = (EStatus)(int)item.PciStatus;
+                        if (itemStatus != EStatus.ENTREGUE) continue;
+
+                        <tr>
+                            <td class="cover tdCover"><img src="@Url.Content(item.PciStc.StcBok.BokImgAddress)" alt=""></td>
+                            <td class="tdTitle">@item.PciStc.StcBok.BokTitle</td>
+                            <td class="tdQuantityBought"><input type="number" id="@($"bought{item.PciStcId}")" value="@item.PciQuantity" readonly></td>
+                            <td class="tdQuantity"><input type="number" id="@($"exchange{item.PciStcId}")" min="1" max="@item.PciQuantity" value="@item.PciQuantity" required></td>
+                            <td class="tdMark"><input type="checkbox" id="@($"check{item.PciStcId}")" checked onclick="markForExchange(@(item.PciStcId))"></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="buttons">
+                <button type="button" onclick="prepareExchangeData()">Solicitar troca</button>
+            </div>
+        }
+    </div>
+</div>
+<script src="~/js/customer/profile/exchanges/requestExchange/exchangeRequest.js?v=1.0.@(DateTime.Now.Ticks)"></script>

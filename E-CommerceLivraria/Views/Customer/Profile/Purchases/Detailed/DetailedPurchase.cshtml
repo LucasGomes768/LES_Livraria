@@ -16,8 +16,8 @@
             @if (status == EStatus.ENTREGUE)
             {
                 <div class="buttons">
-                    <a href="/customer/profile/exchange/request/exchangeRequest.html">
-                        <button class="btn btn-success">Solicitar troca</button>
+                    <a asp-controller="ProfileExchange" asp-action="RequestExchangePage" asp-route-CtmId="@Model.PrcCtmId" asp-route-PrcId="@Model.PrcId">
+                        <button class="btn btn-success" type="button">Solicitar troca</button>
                     </a>
                 </div>
             }
@@ -178,6 +178,11 @@
                     @for (int y = i; (y < i + 2) && (y < items.Count); y++)
                     {
                         var item = items[y];
+                        if ((EStatus)item.PciStatus >= EStatus.TROCA_SOLICITADA || (EStatus)item.PciStatus < EStatus.EM_PROCESSAMENTO)
+                        {
+                            continue;
+                        }
+
                         <div class="item">
                             <div class="imgDiv">
                                 <img src="@Url.Content(item.PciStc.StcBok.BokImgAddress)" alt="">

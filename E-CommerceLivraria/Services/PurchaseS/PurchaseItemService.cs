@@ -23,9 +23,9 @@ namespace E_CommerceLivraria.Services.PurchaseS
             return _purchaseItemRepository.Delete(purchaseItem);
         }
 
-        public PurchaseItem? Get(decimal stockId, decimal purchaseId)
+        public PurchaseItem? Get(decimal stockId, decimal purchaseId, EStatus status)
         {
-            return _purchaseItemRepository.Get(stockId, purchaseId);
+            return _purchaseItemRepository.Get(stockId, purchaseId, (decimal)status);
         }
 
         public List<PurchaseItem> GetAll()
@@ -35,6 +35,9 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
         public PurchaseItem Update(PurchaseItem purchaseItem)
         {
+            var pci = _purchaseItemRepository.Get(purchaseItem.PciStcId, purchaseItem.PciPrcId, purchaseItem.PciStatus);
+            if (pci == null) return new PurchaseItem();
+
             return _purchaseItemRepository.Update(purchaseItem);
         }
 
@@ -43,7 +46,7 @@ namespace E_CommerceLivraria.Services.PurchaseS
             if ((EStatus)(int)purchaseItem.PciStatus >= newStatus) return purchaseItem;
 
             purchaseItem.PciStatus = (decimal)newStatus;
-            return Update(purchaseItem);
+            return _purchaseItemRepository.Update(purchaseItem);
         }
     }
 }

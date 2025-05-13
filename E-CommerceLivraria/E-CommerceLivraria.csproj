@@ -35,7 +35,6 @@
     <Folder Include="DTO\ProfileDTO\" />
     <Folder Include="DTO\PaymentDTO\Method\" />
     <Folder Include="Views\Admin\crud\customer\create\" />
-    <Folder Include="wwwroot\css\customer\profile\exchanges\requestExchange\" />
   </ItemGroup>
 
   <ItemGroup>

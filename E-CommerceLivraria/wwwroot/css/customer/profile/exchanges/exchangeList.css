@@ -1,0 +1,111 @@
+@import url('/customer/profile/profile.css');
+
+.exchangesList {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vh;
+
+    width: 80vw;
+    height: min-content;
+    padding: 1.5%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+    .exchangesList h1 {
+        text-align: center;
+        font-weight: 350;
+    }
+
+.filters {
+    display: flex;
+    align-content: center;
+    justify-content: left;
+    flex-direction: row;
+    gap: 0.33vw;
+
+    width: 90%;
+}
+
+.excRow {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 100%;
+}
+
+.excInstance {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+
+    padding: 1%;
+    width: 45%;
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .excInstance .infoActions {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        padding: 1%;
+    }
+
+        .excInstance .infoActions .txtInfo {
+            padding: 1%;
+            height: 75%;
+        }
+
+            .excInstance .infoActions .txtInfo p {
+                margin-bottom: 0%;
+                font-size: 1.25vw;
+            }
+        
+            .excInstance .infoActions .txtInfo h2 {
+                font-weight: 450;
+                font-size: 1.65vw;
+            }
+
+            .excInstance .infoActions .txtInfo h3 {
+                font-weight: 350;
+                font-size: 1.15vw;
+            }
+        
+        .excInstance .infoActions .actions {
+            display: flex;
+            align-items: center;
+            height: 25%;
+        }
+
+            .excInstance .infoActions .actions a {
+                width: 100%;
+            }
+
+            .excInstance .infoActions .actions button {
+                width: 100%;
+                font-size: 1.5vw;
+                font-weight: 400;
+                border: 3px solid black;
+                border-radius: 10px;
+                background-color: white;
+                color: black;
+
+                transition-duration: 0.2s;
+            }
+
+                .excInstance .infoActions .actions button:hover {
+                    background-color: black;
+                    color: white;
+
+                    transition-duration: 0.2s;
+                }

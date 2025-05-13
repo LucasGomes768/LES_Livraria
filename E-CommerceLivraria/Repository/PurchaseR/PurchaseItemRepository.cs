@@ -24,7 +24,7 @@ namespace E_CommerceLivraria.Repository.PurchaseR
 
         public bool Delete(PurchaseItem purchaseItem)
         {
-            var pci = _dbContext.PurchaseItems.FirstOrDefault(x => (x.PciStcId == purchaseItem.PciStcId) && (x.PciPrcId == purchaseItem.PciPrcId));
+            var pci = _dbContext.PurchaseItems.FirstOrDefault(x => (x.PciStcId == purchaseItem.PciStcId) && (x.PciPrcId == purchaseItem.PciPrcId) && (x.PciStatus == purchaseItem.PciStatus));
             if (pci == null) return false;
 
             _dbContext.PurchaseItems.Remove(pci);
@@ -33,12 +33,14 @@ namespace E_CommerceLivraria.Repository.PurchaseR
             return true;
         }
 
-        public PurchaseItem? Get(decimal stockId, decimal purchaseId)
+        public PurchaseItem? Get(decimal stockId, decimal purchaseId, decimal status)
         {
             return _dbContext.PurchaseItems
                 .Include(x => x.PciStc)
+                    .ThenInclude(x => x.StcBok)
+                        .ThenInclude(x => x.BokPrg)
                 .Include(x => x.PciPrc)
-                .FirstOrDefault(x => (x.PciStcId == stockId) && (x.PciPrcId == purchaseId));
+                .FirstOrDefault(x => (x.PciStcId == stockId) && (x.PciPrcId == purchaseId) && (x.PciStatus == status));
         }
 
         public List<PurchaseItem> GetAll()
@@ -51,10 +53,7 @@ namespace E_CommerceLivraria.Repository.PurchaseR
 
         public PurchaseItem Update(PurchaseItem purchaseItem)
         {
-            var pci = Get(purchaseItem.PciStcId, purchaseItem.PciPrcId);
-            if (pci == null) return new PurchaseItem();
-            
-            _dbContext.PurchaseItems.Update(pci);
+            _dbContext.PurchaseItems.Update(purchaseItem);
             _dbContext.SaveChanges();
 
             return purchaseItem;

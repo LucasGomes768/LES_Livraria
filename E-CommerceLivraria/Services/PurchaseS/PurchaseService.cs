@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.DTO.PaymentDTO;
+﻿using E_CommerceLivraria.DTO.ExchangesDTO;
+using E_CommerceLivraria.DTO.PaymentDTO;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
@@ -43,7 +44,8 @@ namespace E_CommerceLivraria.Services.PurchaseS
                 {
                     PciStc = item.CriStc,
                     PciQuantity = item.CriQuantity,
-                    PciTotalPrice = item.CriTotalprice
+                    PciTotalPrice = item.CriTotalprice,
+                    PciStatus = (decimal)EStatus.EM_PROCESSAMENTO
                 };
 
                 purchase.PurchaseItems.Add(purchaseItem);
@@ -54,6 +56,36 @@ namespace E_CommerceLivraria.Services.PurchaseS
             purchase.PrcAdd = purchaseData.DeliveryAddress;
 
             return _purchaseRepository.Add(purchase);
+        }
+
+        public Purchase AddExchange(ExchangeRequestDTO exchangeData)
+        {
+            foreach (PurchaseItem itemToExc in exchangeData.ItemsToExchange)
+            {
+                var currentItem = _purchaseItemService.Get(itemToExc.PciStcId, exchangeData.PrcId, EStatus.ENTREGUE);
+
+                if (currentItem == null) continue;
+
+                if (itemToExc.PciQuantity > currentItem.PciQuantity) throw new Exception("A quantidade de itens solicitadas para troca excede a quantidade comprada.");
+
+                itemToExc.PciStc = currentItem.PciStc;
+                itemToExc.PciStatus = (decimal)EStatus.TROCA_SOLICITADA;
+                itemToExc.PciTotalPrice = itemToExc.PciStc.StcSalePrice * itemToExc.PciQuantity;
+
+                if (itemToExc.PciQuantity < currentItem.PciQuantity)
+                {
+                    currentItem.PciQuantity -= itemToExc.PciQuantity;
+                    currentItem.PciTotalPrice = currentItem.PciStc.StcSalePrice * currentItem.PciQuantity;
+                    _purchaseItemService.Update(currentItem);
+                } else
+                {
+                    _purchaseItemService.Delete(currentItem);
+                }
+
+                _purchaseItemService.Add(itemToExc);
+            }
+
+            return Get(exchangeData.PrcId);
         }
 
         public bool Delete(decimal id)

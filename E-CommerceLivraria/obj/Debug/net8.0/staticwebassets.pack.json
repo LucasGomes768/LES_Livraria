@@ -65,6 +65,14 @@
       "PackagePath": "staticwebassets\\css\\customer\\layout.css"
     },
     {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\profile\\exchanges\\exchangeList.css",
+      "PackagePath": "staticwebassets\\css\\customer\\profile\\exchanges\\exchangeList.css"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\profile\\exchanges\\requestExchange\\exchangeRequest.css",
+      "PackagePath": "staticwebassets\\css\\customer\\profile\\exchanges\\requestExchange\\exchangeRequest.css"
+    },
+    {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\css\\customer\\profile\\profile.css",
       "PackagePath": "staticwebassets\\css\\customer\\profile\\profile.css"
     },
@@ -123,6 +131,14 @@
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\layout.js",
       "PackagePath": "staticwebassets\\js\\customer\\layout.js"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\profile\\exchanges\\exchangeList.js",
+      "PackagePath": "staticwebassets\\js\\customer\\profile\\exchanges\\exchangeList.js"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\profile\\exchanges\\requestExchange\\exchangeRequest.js",
+      "PackagePath": "staticwebassets\\js\\customer\\profile\\exchanges\\requestExchange\\exchangeRequest.js"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\profile\\purchases\\purchaseDtl.js",

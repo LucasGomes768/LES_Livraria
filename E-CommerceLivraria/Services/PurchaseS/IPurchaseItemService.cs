@@ -9,7 +9,7 @@ namespace E_CommerceLivraria.Services.PurchaseS
         public PurchaseItem Update(PurchaseItem purchaseItem);
         public PurchaseItem UpdateStatus(PurchaseItem purchaseItem, EStatus newStatus);
         public bool Delete(PurchaseItem purchaseItem);
-        public PurchaseItem? Get(decimal stockId, decimal purchaseId);
+        public PurchaseItem? Get(decimal stockId, decimal purchaseId, EStatus status);
         public List<PurchaseItem> GetAll();
     }
 }

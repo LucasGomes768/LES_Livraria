@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.DTO.PaymentDTO;
+﻿using E_CommerceLivraria.DTO.ExchangesDTO;
+using E_CommerceLivraria.DTO.PaymentDTO;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 
@@ -12,5 +13,6 @@ namespace E_CommerceLivraria.Services.PurchaseS
         public bool Delete(decimal id);
         public Purchase? Get(decimal id);
         public List<Purchase> GetAll();
+        public Purchase AddExchange(ExchangeRequestDTO exchangeData);
     }
 }

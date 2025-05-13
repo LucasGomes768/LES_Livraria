@@ -143,7 +143,9 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             {
                 if (updateStatusDTO == null) return BadRequest("Estoque nulo");
 
-                var purchaseItem = _purchaseItemService.Get((decimal)updateStatusDTO.StcId, updateStatusDTO.PrcId);
+                EStatus status = (EStatus)(updateStatusDTO.Status - 1);
+
+                var purchaseItem = _purchaseItemService.Get((decimal)updateStatusDTO.StcId, updateStatusDTO.PrcId, status);
                 if (purchaseItem == null) throw new Exception("Item da compra não foi encontrado");
 
                 purchaseItem = _purchaseItemService.UpdateStatus(purchaseItem, (EStatus)updateStatusDTO.Status);

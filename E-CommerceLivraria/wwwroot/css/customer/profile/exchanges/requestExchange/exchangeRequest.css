@@ -1,0 +1,139 @@
+.bigBody {
+    display: flex;
+    justify-content: center;
+
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    margin-bottom: 5vh;
+}
+
+.exchangeBody {
+    display: flex;
+    flex-direction: column;
+
+    background-color: lightgray;
+    border-radius: 10px;
+    width: 75vw;
+    min-height: 20vh;
+    padding: 1.5%;
+    border: 2px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .exchangeBody h1 {
+        font-size: 2.5vw;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 5vh;
+    }
+
+.exchangeBody .firstLine {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+    .exchangeBody .tableItems {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+    }
+
+        .exchangeBody .tableItems table {
+            width: 90%;
+            border: 2px solid black;
+            table-layout: fixed;
+        }
+
+            .exchangeBody .tableItems table th {
+                text-align: center;
+                padding: 0.5%;
+                background-color: gray;
+                border-bottom: 2px solid black;
+                width: 100%;
+            }
+
+            .exchangeBody .tableItems table td {
+                text-align: center;
+                padding: 0.5%;
+                border-bottom: 2px solid black;
+                width: 100%;
+            }
+
+            .exchangeBody .tableItems table tr {
+                width: 100%;
+            }
+
+                .exchangeBody .tableItems table tr:nth-child(even) {
+                    background-color: rgb(255, 255, 255);
+                }
+        
+                .exchangeBody .tableItems table tr:nth-child(odd) {
+                    background-color: lightgray;
+                }
+
+            .exchangeBody .tableItems table input {
+                font-size: 1.2vw;
+                width: 5vw;
+                margin-right: 0%;
+            }
+
+                .exchangeBody .tableItems table input[type=checkbox] {
+                    transform: scale(2);
+                }
+            
+            .exchangeBody .tableItems table .tdTitle {
+                width: 22.5vw;
+            }
+
+            .exchangeBody .tableItems table .tdQuantityBought {
+                width: 14vw;
+            }
+
+            .exchangeBody .tableItems table .tdQuantity {
+                width: 12.5vw;
+            }
+
+            .exchangeBody .tableItems table .tdCover {
+                width: 5vw;
+            }
+
+            .exchangeBody .tableItems table .cover {
+                background-color: rgb(218, 218, 218);
+                border-right: 2px solid black;
+                border-left: 2px solid black;
+            }
+
+            .exchangeBody .tableItems table td img {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+
+.buttons {
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    margin-top: 1%;
+    margin-left: 5%;
+    width: 90%;
+}
+
+    .buttons button {
+        background-color: white;
+        border: 2px solid green;
+        border-radius: 7px;
+        width: 10vw;
+        padding: 1%;
+        font-weight: 450;
+        transition-duration: 0.2s;
+    }
+
+        .buttons button:hover {
+            background-color: green;
+            color: white;
+        }

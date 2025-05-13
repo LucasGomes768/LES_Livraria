@@ -881,7 +881,7 @@ public partial class ECommerceDbContext : DbContext
 
         modelBuilder.Entity<PurchaseItem>(entity =>
         {
-            entity.HasKey(e => new { e.PciPrcId, e.PciStcId }).HasName("purchase_items_pk");
+            entity.HasKey(e => new { e.PciPrcId, e.PciStcId, e.PciStatus }).HasName("purchase_items_pkey");
 
             entity.ToTable("purchase_items");
 
