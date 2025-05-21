@@ -46,19 +46,7 @@ namespace E_CommerceLivraria.Controllers
             var stock = _stockService.Get(pdg.StockId);
             if (stock == null) return NotFound("O item não foi encontrado");
 
-            CartItem cri = new CartItem() {
-                CriCrt = customer.CtmCrt,
-                CriStc = stock,
-                CriQuantity = pdg.Quantity,
-                CriTotalprice = stock.StcSalePrice * pdg.Quantity,
-                CriLastTimeAltered = DateTime.Now
-            };
-
-            stock.StcAvailableAmount -= pdg.Quantity;
-            stock.StcBlockedAmount += pdg.Quantity;
-
-            customer.CtmCrt.CartItems.Add(cri);
-            _customerService.Update(customer);
+            _cartService.AddItem(customer.Cart, stock, pdg.Quantity);
 
             ProductDataGroup pdgNew = new ProductDataGroup {
                 Stock = stock,
@@ -72,26 +60,27 @@ namespace E_CommerceLivraria.Controllers
         }
 
         public IActionResult removeItemFromCart(CartDataGroup cdg) {
-            var customer = _customerService.Get(cdg.CtmId);
-            if (customer == null) return NotFound("O cliente não foi encontrado");
+            try
+            {
+                var customer = _customerService.Get(cdg.CtmId);
+                if (customer == null) return NotFound("O cliente não foi encontrado");
 
-            if (cdg.removedStockId == null) {
-                return BadRequest("ID inválido");
+                if (cdg.removedStockId == null)
+                {
+                    return BadRequest("ID inválido");
+                }
+
+                var stock = _stockService.Get((decimal)cdg.removedStockId);
+                if (stock == null) return NotFound("O item não foi encontrado");
+
+                _cartService.RemoveItem(customer.Cart, stock);
+
+                return RedirectToAction("cartPage", "Cart");
             }
-
-            var stock = _stockService.Get((decimal)cdg.removedStockId);
-            if (stock == null) return NotFound("O item não foi encontrado");
-
-            var cri = customer.CtmCrt.CartItems.FirstOrDefault(x => x.CriStcId == stock.StcId);
-            if (cri == null) return NotFound("Esse item não foi encontrado no carrinho");
-
-            stock.StcAvailableAmount += cri.CriQuantity;
-            stock.StcBlockedAmount -= cri.CriQuantity;
-
-            customer.CtmCrt.CartItems.Remove(cri);
-            _customerService.Update(customer);
-
-            return RedirectToAction("cartPage", "Cart");
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("Cart/UpdateQuantity")]

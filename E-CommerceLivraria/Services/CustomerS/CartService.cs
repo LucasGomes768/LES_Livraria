@@ -43,11 +43,8 @@ namespace E_CommerceLivraria.Services.CustomerS {
 
             if (index != -1)
             {
-
-                itemStock.StcAvailableAmount += (cartItemsTemp[index].CriQuantity - newAmount);
-                itemStock.StcBlockedAmount -= (cartItemsTemp[index].CriQuantity - newAmount);
-
-                _stockService.Update(itemStock);
+                decimal amountDiff = newAmount - cartItemsTemp[index].CriQuantity;
+                _stockService.BlockItems(itemStock, amountDiff);
 
                 CartItem itemTemp = new CartItem()
                 {
@@ -55,15 +52,46 @@ namespace E_CommerceLivraria.Services.CustomerS {
                     CriStcId = itemStock.StcId,
                     CriQuantity = newAmount,
                     CriTotalprice = itemStock.StcSalePrice * newAmount,
+                    CriLastTimeAltered = DateTime.Now
                 };
 
                 cartItemsTemp[index] = itemTemp;
                 cart.CartItems = cartItemsTemp;
                 
-                return Update(cart);
+                return _cartRepository.Update(cart);
             }
 
             return cart;
+        }
+
+        public Cart AddItem(Cart cart, Stock stock, decimal quantity)
+        {
+            _stockService.BlockItems(stock, quantity);
+
+            CartItem newItem = new CartItem()
+            {
+                CriCrt = cart,
+                CriCrtId = cart.CrtId,
+                CriStc = stock,
+                CriStcId = stock.StcId,
+                CriQuantity = quantity,
+                CriTotalprice = stock.StcSalePrice * quantity,
+                CriLastTimeAltered = DateTime.Now
+            };
+
+            cart.CartItems.Add(newItem);
+            return _cartRepository.Update(cart);
+        }
+
+        public Cart RemoveItem(Cart cart, Stock stock)
+        {
+            var itemTemp = cart.CartItems.FirstOrDefault(x => x.CriStcId == stock.StcId);
+            if (itemTemp == null) throw new Exception("O item não foi encontrado no carrinho");
+
+            _stockService.BlockItems(stock, itemTemp.CriQuantity * -1);
+            cart.CartItems.Remove(itemTemp);
+
+            return _cartRepository.Update(cart);
         }
     }
 }

@@ -21,9 +21,14 @@ namespace E_CommerceLivraria.Services.StockS {
             return _stockRepository.GetByBook(id);
         }
 
-        public Stock UpdateQuantity(Stock stock, decimal amount)
+        public Stock BlockItems(Stock stock, decimal amountBlocked)
         {
-            stock
+            if (stock.StcAvailableAmount < amountBlocked) throw new Exception("A quantidade de itens sendo bloqueados excede a quantidade de itens disponíveis");
+
+            stock.StcAvailableAmount -= amountBlocked;
+            stock.StcBlockedAmount += amountBlocked;
+
+            return _stockRepository.Update(stock);
         }
     }
 }
