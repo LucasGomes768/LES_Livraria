@@ -2,7 +2,7 @@
 using E_CommerceLivraria.Repository.CustomerR;
 using E_CommerceLivraria.Repository.CustomerR.TelephoneR;
 
-namespace E_CommerceLivraria.Services.CustomerS {
+namespace E_CommerceLivraria.Services.CustomerS.TelephoneS {
     public class TelephoneTypeService : ITelephoneTypeService{
         private readonly ITelephoneTypeRepository _telephoneTypeRepository;
 

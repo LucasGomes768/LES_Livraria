@@ -427,7 +427,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2520"
+          "Value": "2491"
         },
         {
           "Name": "Content-Type",
@@ -435,22 +435,22 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"tfTI5I31MtLKdDp9Y74hK2fdY4b1rzMfXmuqXke8y9o=\""
+          "Value": "\"6+YtQhQUbCWsNKJg3zO20EpDU5WdXHaXankACqde76E=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 04 May 2025 20:27:03 GMT"
+          "Value": "Wed, 14 May 2025 02:28:26 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-tfTI5I31MtLKdDp9Y74hK2fdY4b1rzMfXmuqXke8y9o="
+          "Value": "sha256-6+YtQhQUbCWsNKJg3zO20EpDU5WdXHaXankACqde76E="
         }
       ]
     },
     {
-      "Route": "css/admin/ctmRequests/purchases/purchases.v34ym739nb.css",
+      "Route": "css/admin/ctmRequests/purchases/purchases.pnot3dwf27.css",
       "AssetFile": "css/admin/ctmRequests/purchases/purchases.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -464,7 +464,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2520"
+          "Value": "2491"
         },
         {
           "Name": "Content-Type",
@@ -472,21 +472,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"tfTI5I31MtLKdDp9Y74hK2fdY4b1rzMfXmuqXke8y9o=\""
+          "Value": "\"6+YtQhQUbCWsNKJg3zO20EpDU5WdXHaXankACqde76E=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 04 May 2025 20:27:03 GMT"
+          "Value": "Wed, 14 May 2025 02:28:26 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "v34ym739nb"
+          "Value": "pnot3dwf27"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-tfTI5I31MtLKdDp9Y74hK2fdY4b1rzMfXmuqXke8y9o="
+          "Value": "sha256-6+YtQhQUbCWsNKJg3zO20EpDU5WdXHaXankACqde76E="
         },
         {
           "Name": "label",

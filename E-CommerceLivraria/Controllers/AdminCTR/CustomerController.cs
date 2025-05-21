@@ -4,6 +4,7 @@ using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Services.CustomerS.TelephoneS;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;

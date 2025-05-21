@@ -84,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>v34ym739nb</Fingerprint>
-      <Integrity>tfTI5I31MtLKdDp9Y74hK2fdY4b1rzMfXmuqXke8y9o=</Integrity>
+      <Fingerprint>pnot3dwf27</Fingerprint>
+      <Integrity>6+YtQhQUbCWsNKJg3zO20EpDU5WdXHaXankACqde76E=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin\ctmRequests\purchases\purchases.css'))</OriginalItemSpec>

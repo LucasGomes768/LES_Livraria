@@ -21,8 +21,9 @@ namespace E_CommerceLivraria.Services.StockS {
             return _stockRepository.GetByBook(id);
         }
 
-        public Stock Update(Stock stock) {
-            return _stockRepository.Update(stock);
+        public Stock UpdateQuantity(Stock stock, decimal amount)
+        {
+            stock
         }
     }
 }

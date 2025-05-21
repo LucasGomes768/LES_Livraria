@@ -74,6 +74,12 @@
                         <input type="text" id="pp" required readonly value="@(Model.ChoosenAdd == null ? null : Model.ChoosenAdd.AddPublicPlace)">
                     </div>
                 </div>
+                <div class="line">
+                    <div>
+                        <label for="short">Frase curta:</label>
+                        <input type="text" required readonly value="@(Model.ChoosenAdd == null ? null : Model.ChoosenAdd.AddShortPhrase)" style="width: 67vw;" />
+                    </div>
+                </div>
                 <div class="line observationsDiv">
                     <div>
                         <label for="obs">Observações:</label>

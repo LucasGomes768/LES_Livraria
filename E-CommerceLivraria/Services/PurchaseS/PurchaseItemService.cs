@@ -43,7 +43,7 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
         public PurchaseItem UpdateStatus(PurchaseItem purchaseItem, EStatus newStatus)
         {
-            if ((EStatus)(int)purchaseItem.PciStatus >= newStatus) return purchaseItem;
+            if (purchaseItem.PciStatus >= (int)newStatus && newStatus > 0) return purchaseItem;
 
             PurchaseItem newItem = new PurchaseItem()
             {

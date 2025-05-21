@@ -1,7 +1,7 @@
 export function carregarCartoes() {
     const table = document.getElementById("cardsUsedTable");
     let html = "<tr>" +
-        "<th>Número</th>" +
+        "<th>Numero</th>" +
         "<th>Bandeira</th>" +
         "<th>Valor</th>" +
         "<th></th>" +

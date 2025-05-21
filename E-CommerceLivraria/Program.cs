@@ -15,6 +15,7 @@ using E_CommerceLivraria.Repository.StockR.BookR.PublisherR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.AddressS.RegionsS;
 using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Services.CustomerS.TelephoneS;
 using E_CommerceLivraria.Services.PurchaseS;
 using E_CommerceLivraria.Services.StockS;
 using E_CommerceLivraria.Services.StockS.BookS;

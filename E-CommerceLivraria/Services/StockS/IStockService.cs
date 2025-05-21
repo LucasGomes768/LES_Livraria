@@ -5,6 +5,6 @@ namespace E_CommerceLivraria.Services.StockS {
         public Stock? Get(decimal id);
         public Stock? GetByBook(decimal id);
         public List<Stock> GetAll();
-        public Stock Update(Stock stock);
+        public Stock UpdateQuantity(Stock stock, decimal amount);
     }
 }
