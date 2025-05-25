@@ -8,6 +8,8 @@ using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Models.ModelsStructGroups.MethodPaymentSG;
 using E_CommerceLivraria.DTO.PaymentDTO;
 using E_CommerceLivraria.Services.PurchaseS;
+using System.Text.Json;
+using E_CommerceLivraria.DTO.PaymentDTO.ChoosenAddress;
 
 namespace E_CommerceLivraria.Controllers
 {
@@ -64,6 +66,36 @@ namespace E_CommerceLivraria.Controllers
             }
 
             return View("~/Views/Customer/Cart/addressPayment/addressPayment.cshtml", papdNew);
+        }
+
+        [HttpGet("Payment/GetDeliveryAddress/{addId:decimal}")]
+        public IActionResult GetChoosenAddress([FromRoute] decimal addId)
+        {
+            try
+            {
+                var add = _addressService.Get(addId);
+                if (add == null) return NotFound(new
+                {
+                    Sucess = false,
+                    Message = "Endereço não encontrado"
+                });
+
+                ChoosenAddressDTO addDTO = new ChoosenAddressDTO(add);
+
+                return Ok(new
+                {
+                    Sucess = true,
+                    Data = addDTO
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Sucess = false,
+                    error = $"Erro ao selecionar endereço: {ex.Message}"
+                });
+            }
         }
 
         // MÉTODO DE PAGAMENTO

@@ -26,6 +26,7 @@ wwwroot\js\admin\ctmRequests\purchases\purchases.js
 wwwroot\js\admin\customer\crud\AllCustomers.js
 wwwroot\js\admin\customer\verifyPassword.js
 wwwroot\js\admin\layout.js
+wwwroot\js\customer\cart\addressPay\addressPay.js
 wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
 wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
 wwwroot\js\customer\cart\cart.js

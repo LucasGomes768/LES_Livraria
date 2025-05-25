@@ -158,10 +158,20 @@
             color: black;
             font-size: 1.4vw;
 
-            transition-duration: 0.2s;
         }
 
-            .priceData .goPay button:hover {
+        .priceData .goPay button:disabled {
+            border-style: revert;
+            border-color: gray;
+            background-color: gray;
+            color: white;
+        }
+
+            .priceData .goPay button:not(:disabled) {
+                transition-duration: 0.2s;
+            }
+
+            .priceData .goPay button:not(:disabled):hover {
                 background-color: black;
                 color: white;
             }

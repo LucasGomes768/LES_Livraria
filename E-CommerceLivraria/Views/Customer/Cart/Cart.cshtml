@@ -47,9 +47,17 @@
                 <h2>Total:</h2>
                 <input type="hidden" class="totalPriceInp" value="@Model.Items.Sum(x => x.CriTotalprice)" />
                 <h1 id="totalPriceTxt"><b>R$</b>@Model.Items.Sum(x => x.CriTotalprice)</h1>
-                <div class="goPay">
-                    <button>Definir endereço de entrega</button>
-                </div>
+                @if (Model.Items.Any() && Model.Items.Count > 0)
+                {
+                    <div class="goPay">
+                        <button>Definir endereço de entrega</button>
+                    </div>
+                } else
+                {
+                    <div class="goPay">
+                        <button type="button" disabled>Sem itens no carrinho</button>
+                    </div>
+                }
             </form>
         </div>
     </div>

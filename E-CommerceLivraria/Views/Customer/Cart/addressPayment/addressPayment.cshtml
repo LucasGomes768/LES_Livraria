@@ -1,5 +1,6 @@
 ﻿@using System.Globalization
 @using E_CommerceLivraria.Enums.Customer
+@using System.Globalization
 @model E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG.PayAddressPageData
 @{
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
@@ -13,30 +14,28 @@
         <h1>Selecione o endereço de entrega</h1>
         <div class="firstLine">
             <div class="cep">
-                <form method="get" asp-controller="Payment" id="itemForm">
-                    <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
-                    <label for="cep">CEP:</label>
-                    <select id="cep" asp-for="ChoosenAddId"
-                    asp-items="@(new SelectList(Model.Addresses, "AddId", "AddCepStyled"))"
-                    onchange="document.getElementById('itemForm').submit()">
-                        @if (Model.tempAdded == false)
-                        {
-                            <option value="" selected>- Selecione -</option>
-                        } else
-                        {
-                            <option value="@Model.ChoosenAddId" selected>@Model.ChoosenAdd.AddCepStyled</option>
-                            <option value="">- Selecione -</option>
-                        }
-                    </select>
-                </form>
+                <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
+                <label for="cep">CEP:</label>
+                <select id="cep" asp-for="ChoosenAddId"
+                asp-items="@(new SelectList(Model.Addresses, "AddId", "AddCepStyled"))"
+                onchange="getAddressData()">
+                    @if (Model.tempAdded == false)
+                    {
+                        <option value="" selected>- Selecione -</option>
+                    } else
+                    {
+                        <option value="@Model.ChoosenAddId" selected>@Model.ChoosenAdd.AddCepStyled</option>
+                        <option value="">- Selecione -</option>
+                    }
+                </select>
             </div>
             <a asp-controller="CtmPayment" asp-action="CreateAddressPage" asp-route-ctmId="@Model.CtmId" asp-route-origin="@nameof(ECtmAddressCreate.PAYMENT)">
                 <button type="button">Adicionar novo endereço</button>
             </a>
         </div>
-        <form asp-controller="Payment" asp-action="RedirectPaymentMethodPage">
+        <form id="formAddData" asp-controller="Payment" asp-action="RedirectPaymentMethodPage">
             <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
-            <input type="number" value="@(Model.ChoosenAddId.HasValue ? Model.ChoosenAddId : null)" asp-for="ChoosenAddId" hidden />
+            <input type="number" id="choosenAddId" value="" asp-for="ChoosenAddId" hidden />
             <div class="addressData">
                 <div class="line sp_between">
                     <div class="number">
@@ -77,7 +76,7 @@
                 <div class="line">
                     <div>
                         <label for="short">Frase curta:</label>
-                        <input type="text" required readonly value="@(Model.ChoosenAdd == null ? null : Model.ChoosenAdd.AddShortPhrase)" style="width: 67vw;" />
+                        <input type="text" id="short" required readonly value="@(Model.ChoosenAdd == null ? null : Model.ChoosenAdd.AddShortPhrase)" style="width: 67vw;" />
                     </div>
                 </div>
                 <div class="line observationsDiv">
@@ -88,33 +87,49 @@
                 </div>
             </div>
             <br>
-            @if (Model.ChoosenAdd == null)
-            {
-                <button type="button" disabled>Escolha um endereço</button>
-            } else
-            {
-                <button type="submit">Continuar para forma de pagamento</button>
-            }
+            <div id="proceedMethod">
+                @if (Model.ChoosenAdd == null)
+                {
+                    <button type="button" disabled>Escolha um endereço</button>
+                }
+                else
+                {
+                    <button type="submit">Continuar para forma de pagamento</button>
+                }
+            </div>
         </form>
     </div>
     <div class="price">
         <div>
+            <input type="text" id="currPrice" value="@Model.Total.ToString(CultureInfo.InvariantCulture)" hidden />
             <h2>Valor Atual:</h2>
             <h1><b>R$</b>@Model.Total</h1>
         </div>
         <div>
             <h2>Frete:</h2>
-            <h1><b>R$</b>@(Model.ChoosenAdd == null ? 0.ToString("F2") : Model.ChoosenAdd.AddShipping)</h1>
+            @if (Model.ChoosenAdd == null)
+            {
+                <input type="text" id="shippingPrice" value="0" hidden />
+                <h1 id="shipText"><b>R$</b>@(0.ToString("F2"))</h1>
+            } else
+            {
+                <input type="text" id="shippingPrice" value="@Model.ChoosenAdd.AddShipping.ToString(CultureInfo.InvariantCulture)" />
+                <h1 id="shipText"><b>R$</b>@(Model.ChoosenAdd.AddShipping)</h1>
+            }
         </div>
         <div class="finalPrice">
             <h2>Valor Total:</h2>
-            @if (Model.ChoosenAdd == null)
-            {
-                <h1><b>R$</b>@Model.Total</h1>
-            } else
-            {
-                <h1><b>R$</b>@(Model.Total + Model.ChoosenAdd.AddShipping)</h1>
-            }
+            <div id="totalPriceValue">
+                @if (Model.ChoosenAdd == null)
+                {
+                    <h1><b>R$</b>@Model.Total</h1>
+                }
+                else
+                {
+                    <h1><b>R$</b>@(Model.Total + Model.ChoosenAdd.AddShipping)</h1>
+                }
+            </div>
         </div>
     </div>
 </div>
+<script src="~/js/customer/cart/addressPay/addressPay.js?v=1.0.@(DateTime.Now.Ticks)"></script>

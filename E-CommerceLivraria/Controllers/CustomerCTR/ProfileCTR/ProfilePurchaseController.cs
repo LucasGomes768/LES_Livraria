@@ -47,7 +47,7 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 if (purchase.PrcCtmId != CtmId) throw new Exception("Tentativa de acesso de compra de outro usuário");
 
                 purchase.PurchaseItems = purchase.PurchaseItems
-                    .Where(x => (x.PciStatus >= (int)EStatus.COMPRA_REPROVADA) || (x.PciStatus < (int)EStatus.TROCA_SOLICITADA))
+                    .Where(x => (x.PciStatus >= (int)EStatus.COMPRA_REPROVADA) && (x.PciStatus < (int)EStatus.TROCA_SOLICITADA))
                     .ToList();
 
                 return View("~/Views/Customer/Profile/Purchases/Detailed/DetailedPurchase.cshtml", purchase);

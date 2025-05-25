@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fhJhSKfBnAd/RFQGdfDMXTe3tnKXO5Gh7ctTBEaYOO0=",
+  "Hash": "4D4NenEIEuZT1WIdUKvZJgmRE9Y/64NPM4RgUxtE6gA=",
   "Source": "E-CommerceLivraria",
   "BasePath": "_content/E-CommerceLivraria",
   "Mode": "Default",
@@ -647,6 +647,27 @@
       "OriginalItemSpec": "wwwroot\\js\\admin\\layout.js"
     },
     {
+      "Identity": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\addressPay.js",
+      "SourceId": "E-CommerceLivraria",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\",
+      "BasePath": "_content/E-CommerceLivraria",
+      "RelativePath": "js/customer/cart/addressPay/addressPay#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xsirh73dr6",
+      "Integrity": "D8tk26pDkk+O39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\customer\\cart\\addressPay\\addressPay.js"
+    },
+    {
       "Identity": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js",
       "SourceId": "E-CommerceLivraria",
       "SourceType": "Discovered",
@@ -661,8 +682,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "yf9lugggkf",
-      "Integrity": "8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac=",
+      "Fingerprint": "i473byleh8",
+      "Integrity": "LjYVykbKoAnF3zGqLq6OY5bYmXVc7poIMWtTxhfF/ho=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js"
@@ -4768,6 +4789,133 @@
       ]
     },
     {
+      "Route": "js/customer/cart/addressPay/addressPay.js",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\addressPay.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D8tk26pDkk+O39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 May 2025 15:05:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-D8tk26pDkk+O39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8="
+        }
+      ]
+    },
+    {
+      "Route": "js/customer/cart/addressPay/addressPay.xsirh73dr6.js",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\addressPay.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D8tk26pDkk+O39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 May 2025 15:05:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xsirh73dr6"
+        },
+        {
+          "Name": "label",
+          "Value": "js/customer/cart/addressPay/addressPay.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-D8tk26pDkk+O39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8="
+        }
+      ]
+    },
+    {
+      "Route": "js/customer/cart/addressPay/methodPay/methodPayment.i473byleh8.js",
+      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2784"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LjYVykbKoAnF3zGqLq6OY5bYmXVc7poIMWtTxhfF/ho=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 May 2025 11:28:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i473byleh8"
+        },
+        {
+          "Name": "label",
+          "Value": "js/customer/cart/addressPay/methodPay/methodPayment.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LjYVykbKoAnF3zGqLq6OY5bYmXVc7poIMWtTxhfF/ho="
+        }
+      ]
+    },
+    {
       "Route": "js/customer/cart/addressPay/methodPay/methodPayment.js",
       "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js",
       "Selectors": [],
@@ -4778,7 +4926,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2820"
+          "Value": "2784"
         },
         {
           "Name": "Content-Type",
@@ -4786,11 +4934,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac=\""
+          "Value": "\"LjYVykbKoAnF3zGqLq6OY5bYmXVc7poIMWtTxhfF/ho=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 13 May 2025 19:51:04 GMT"
+          "Value": "Sun, 25 May 2025 11:28:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4800,52 +4948,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac="
-        }
-      ]
-    },
-    {
-      "Route": "js/customer/cart/addressPay/methodPay/methodPayment.yf9lugggkf.js",
-      "AssetFile": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\cart\\addressPay\\methodPay\\methodPayment.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2820"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 13 May 2025 19:51:04 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "yf9lugggkf"
-        },
-        {
-          "Name": "label",
-          "Value": "js/customer/cart/addressPay/methodPay/methodPayment.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-8r7A8YUJ6sv1vne8H/MNDSVtAlYoKNhJaS5VJchYoac="
+          "Value": "sha256-LjYVykbKoAnF3zGqLq6OY5bYmXVc7poIMWtTxhfF/ho="
         }
       ]
     },

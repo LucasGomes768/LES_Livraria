@@ -178,10 +178,6 @@
                     @for (int y = i; (y < i + 2) && (y < items.Count); y++)
                     {
                         var item = items[y];
-                        if ((EStatus)item.PciStatus >= EStatus.TROCA_SOLICITADA || (EStatus)item.PciStatus < EStatus.COMPRA_REPROVADA)
-                        {
-                            continue;
-                        }
 
                         <div class="item">
                             <div class="imgDiv">
