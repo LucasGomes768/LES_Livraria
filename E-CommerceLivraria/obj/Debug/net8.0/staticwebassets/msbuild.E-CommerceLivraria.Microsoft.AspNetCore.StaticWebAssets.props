@@ -192,8 +192,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>h1w9hdut69</Fingerprint>
-      <Integrity>i9Cfzyw/j4Ky8HYl/FynCqUbAQehGP+ZEu7FusRjxNE=</Integrity>
+      <Fingerprint>g2c79pvwrj</Fingerprint>
+      <Integrity>KCpYKGk7ARmbiR8AtVE7A4FHW3UbUrQ1JCpSgxyCTus=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\cart.css'))</OriginalItemSpec>
@@ -534,8 +534,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xsirh73dr6</Fingerprint>
-      <Integrity>D8tk26pDkk+O39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8=</Integrity>
+      <Fingerprint>1xva121o2g</Fingerprint>
+      <Integrity>60bS2U3gWqr2Dx5kU54USjQtNAmGLteSp6fVQs8QezI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\addressPay.js'))</OriginalItemSpec>

@@ -113,7 +113,7 @@
                 <h1 id="shipText"><b>R$</b>@(0.ToString("F2"))</h1>
             } else
             {
-                <input type="text" id="shippingPrice" value="@Model.ChoosenAdd.AddShipping.ToString(CultureInfo.InvariantCulture)" />
+                <input type="text" id="shippingPrice" value="@Model.ChoosenAdd.AddShipping.ToString(CultureInfo.InvariantCulture)" hidden />
                 <h1 id="shipText"><b>R$</b>@(Model.ChoosenAdd.AddShipping)</h1>
             }
         </div>

@@ -123,14 +123,14 @@
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/cart.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\cart.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-i9Cfzyw/j4Ky8HYl/FynCqUbAQehGP\u002BZEu7FusRjxNE="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4288"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022i9Cfzyw/j4Ky8HYl/FynCqUbAQehGP\u002BZEu7FusRjxNE=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:52 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-KCpYKGk7ARmbiR8AtVE7A4FHW3UbUrQ1JCpSgxyCTus="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4569"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022KCpYKGk7ARmbiR8AtVE7A4FHW3UbUrQ1JCpSgxyCTus=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 19:32:32 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/cart.h1w9hdut69.css">
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/cart/cart.g2c79pvwrj.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\cart\cart.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"h1w9hdut69"},{"Name":"integrity","Value":"sha256-i9Cfzyw/j4Ky8HYl/FynCqUbAQehGP\u002BZEu7FusRjxNE="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/cart/cart.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4288"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022i9Cfzyw/j4Ky8HYl/FynCqUbAQehGP\u002BZEu7FusRjxNE=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 12:52:52 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g2c79pvwrj"},{"Name":"integrity","Value":"sha256-KCpYKGk7ARmbiR8AtVE7A4FHW3UbUrQ1JCpSgxyCTus="},{"Name":"label","Value":"_content/E-CommerceLivraria/css/customer/cart/cart.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4569"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022KCpYKGk7ARmbiR8AtVE7A4FHW3UbUrQ1JCpSgxyCTus=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 19:32:32 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/css/customer/home/home.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer\home\home.css'))</AssetFile>
@@ -348,17 +348,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-47DEQpj8HBSa\u002B/TImW\u002B5JCeuQeRkm5NMpJWZG3hSuFU="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"0"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u002247DEQpj8HBSa\u002B/TImW\u002B5JCeuQeRkm5NMpJWZG3hSuFU=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 21:22:01 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/js/customer/cart/addressPay/addressPay.1xva121o2g.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\addressPay.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"1xva121o2g"},{"Name":"integrity","Value":"sha256-60bS2U3gWqr2Dx5kU54USjQtNAmGLteSp6fVQs8QezI="},{"Name":"label","Value":"_content/E-CommerceLivraria/js/customer/cart/addressPay/addressPay.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3345"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u002260bS2U3gWqr2Dx5kU54USjQtNAmGLteSp6fVQs8QezI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 18:32:29 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/js/customer/cart/addressPay/addressPay.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\addressPay.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-D8tk26pDkk\u002BO39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2992"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022D8tk26pDkk\u002BO39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 15:05:49 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/js/customer/cart/addressPay/addressPay.xsirh73dr6.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\addressPay.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xsirh73dr6"},{"Name":"integrity","Value":"sha256-D8tk26pDkk\u002BO39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8="},{"Name":"label","Value":"_content/E-CommerceLivraria/js/customer/cart/addressPay/addressPay.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2992"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022D8tk26pDkk\u002BO39ZCYtKmFYt3Ww3Sk8xO3wv9zCmBHh8=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 15:05:49 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-60bS2U3gWqr2Dx5kU54USjQtNAmGLteSp6fVQs8QezI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3345"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u002260bS2U3gWqr2Dx5kU54USjQtNAmGLteSp6fVQs8QezI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 May 2025 18:32:29 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/E-CommerceLivraria/js/customer/cart/addressPay/methodPay/methodPayment.i473byleh8.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\cart\addressPay\methodPay\methodPayment.js'))</AssetFile>

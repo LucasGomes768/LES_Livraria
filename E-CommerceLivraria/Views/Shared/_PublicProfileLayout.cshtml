@@ -51,7 +51,7 @@
                     <h1>Meu Perfil</h1>
                 </div>
                 <div class="profileSection">
-                    <a href="/customer/profile/info/profileInfo.html">
+                    <a asp-controller="ProfileInfo" asp-action="ProfileInfo" asp-route-CtmId="1">
                         <h2>Informações</h2>
                     </a>
                 </div>
@@ -136,7 +136,9 @@
                     </div>
                     <!-- TODO: Cadastro -->
                     <div class="section">
-                        <a href="/customer/profile/info/profileInfo.html"><h2>Informações</h2></a>
+                        <a asp-controller="ProfileInfo" asp-action="ProfileInfo" asp-route-CtmId="1">
+                            <h2>Informações</h2>
+                        </a>
                     </div>
                     <!-- TODO: Endereços -->
                     <div class="section">
@@ -163,11 +165,15 @@
                     </div>
                     <!-- TODO: Compras -->
                     <div class="section">
-                        <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1"><h2>Compras</h2></a>
+                        <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1">
+                            <h2>Compras</h2>
+                        </a>
                     </div>
                     <!-- TODO: Trocas -->
                     <div class="section">
-                        <a asp-controller="ProfileExchange" asp-action="ExchangesList" asp-route-CtmId="1"><h2>Trocas</h2></a>
+                        <a asp-controller="ProfileExchange" asp-action="ExchangesList" asp-route-CtmId="1">
+                            <h2>Trocas</h2>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,61 @@
+﻿@using E_CommerceLivraria.Enums
+@model Customer
+@{
+    Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
+    ViewData["Title"] = "Dados da Conta";
+    ViewData["CSSFile"] = "~/css/customer/profile/profile.css";
+
+    var TlpTypes = (List<TelephoneType>) ViewBag.TlpTypes;
+    var Genders = (List<Gender>) ViewBag.Genders;
+}
+<div class="profileForm">
+    <h1>Informações da conta</h1>
+    <div class="updateOpts">
+        <button>Alterar senha</button>
+        <button id="updateBtn">Alterar dados</button>
+    </div>
+    <form action="">
+        <div class="dataRow">
+            <div>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" style="width:20vw" required disabled value="@Model.CtmName">
+            </div>
+            <div>
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" style="width:20vw" required disabled value="@Model.CtmEmail">
+            </div>
+            <div>
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" style="width:9.5vw" maxlength="14" value="@Model.CtmCpfStyled" required disabled>
+            </div>
+        </div>
+        <div class="dataRow">
+            <div>
+                <label for="ddd">DDD:</label>
+                <input type="number" id="ddd" min="0" max="999" required disabled value="@Model.CtmTlp.TlpDdd">
+            </div>
+            <div>
+                <label for="numTel">Nº de telefone:</label>
+                <input type="text" id="numTel" maxlength="10" required disabled value="@Model.CtmTlp.TlpNumber">
+            </div>
+            <div>
+                <label for="typeTel">Tipo de telefone:</label>
+                <select id="typeTel" disabled asp-items="@(new SelectList(TlpTypes, "TptId", "TptName", Model.CtmTlp.TlpTptId))">
+                </select>
+            </div>
+            <div>
+                <label for="gender">Gênero:</label>
+                <select id="gender" disabled asp-items="@(new SelectList(Genders, "GndId", "GndName", Model.CtmGndId))">
+                </select>
+            </div>
+            <div>
+                <label for="birthdate">Data de Nascimento:</label>
+                <input type="date" id="birthdate" disabled value="@Model.CtmBirthdate.ToString("yyyy-MM-dd")">
+            </div>
+        </div>
+        <div class="updateOpts" id="updateOpts">
+            <button>Salvar mudanças</button>
+            <button class="cancel">Cancelar</button>
+        </div>
+    </form>
+</div>

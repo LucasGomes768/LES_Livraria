@@ -16,6 +16,9 @@ public partial class Telephone
     /// </summary>
     public string TlpNumber { get; set; } = null!;
 
+    /// <summary>
+    /// Includes TlpDdd and TlpNumber in a string
+    /// </summary>
     [NotMapped]
     public string FullNumber {
         get { return $"{TlpDdd}{TlpNumber}"; }
