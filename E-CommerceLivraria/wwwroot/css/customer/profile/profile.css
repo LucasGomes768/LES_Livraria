@@ -96,20 +96,34 @@
         transition-duration: 0.2s;
     }
 
+        .profileForm button:disabled {
+            border-style: revert;
+            border-color: gray;
+            background-color: gray;
+            color: white;
+        }
+
         .profileForm button.cancel {
             border: 2px solid rgb(184, 0, 0);
             color: rgb(184, 0, 0);
         }
 
-        .profileForm button:hover {
+            .profileForm button.cancel:disabled {
+                border-style: revert;
+                border-color: darkred;
+                background-color: darkred;
+                color: white;
+            }
+
+        .profileForm button:hover:not(:disabled) {
             background-color: black;
             color: white;
         }
 
-            .profileForm button.cancel:hover {
-                background-color: rgb(184, 0, 0);
-                color: white;
-            }
+        .profileForm button.cancel:hover:not(:disabled) {
+            background-color: rgb(184, 0, 0);
+            color: white;
+        }
 
     .updateOpts {
         display: flex;

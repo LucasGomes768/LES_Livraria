@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.Repository.CustomerR.GenderR;
+﻿using E_CommerceLivraria.DTO.ProfileDTO.InfoDTO;
+using E_CommerceLivraria.Repository.CustomerR.GenderR;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,21 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 ViewBag.TlpTypes = _telephoneTypeService.GetAll();
                 ViewBag.Genders = _genderRepository.GetAll();
 
-                return View("~/Views/Customer/Profile/Info/Info.cshtml", customer);
+                InfoDTO info = new InfoDTO()
+                {
+                    Id = customer.CtmId,
+                    Name = customer.CtmName,
+                    Pass = customer.CtmPass,
+                    Email = customer.CtmEmail,
+                    Cpf = customer.CtmCpfStyled,
+                    Ddd = customer.CtmTlp.TlpDdd,
+                    TlpNum = customer.CtmTlp.TlpNumber,
+                    Tpt = customer.CtmTlp.TlpTpt.TptId,
+                    Gender = customer.CtmGndId,
+                    BirthDate = customer.CtmBirthdate
+                };
+
+                return View("~/Views/Customer/Profile/Info/Info.cshtml", info);
             }
             catch (Exception ex)
             {

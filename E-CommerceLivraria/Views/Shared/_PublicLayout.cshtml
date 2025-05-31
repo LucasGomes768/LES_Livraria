@@ -107,7 +107,7 @@
                     <button class="close" onclick="invertPopUpDisplay('chatbot')">X</button>
                     <h1>Assistente Virtual</h1>
                 </div>
-                <div class="messages">
+                <div class="messages" id="messages">
                     <div class="botMsg">
                         <p>Bom dia! Como posso te ajudar?</p>
                     </div>
@@ -116,10 +116,10 @@
                     </div>
                 </div>
                 <div class="userTextfield">
-                    <textarea name="" id="" rows="3"></textarea>
+                    <textarea id="userMessage" rows="3"></textarea>
                     <div>
-                        <button>
-                            <img src="/layout/resources/send1.svg" alt="">
+                        <button type="button" onclick="sendMessage()">
+                            <img src="~/resources/images/icons/send1.svg" alt="">
                         </button>
                     </div>
                 </div>
@@ -129,9 +129,10 @@
     <main role="main">
         @RenderBody()
     </main>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/customer/layout.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+    <script src="~/js/site.js?v=1.0.@(DateTime.Now.Ticks)" asp-append-version="true"></script>
+    <script src="~/js/customer/layout.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+    <script src="~/js/customer/chatbot/chatbot.js?v=1.0.@(DateTime.Now.Ticks)"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

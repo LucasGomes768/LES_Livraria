@@ -133,6 +133,10 @@
       "PackagePath": "staticwebassets\\js\\customer\\cart\\cart.js"
     },
     {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\chatbot\\chatbot.js",
+      "PackagePath": "staticwebassets\\js\\customer\\chatbot\\chatbot.js"
+    },
+    {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\layout.js",
       "PackagePath": "staticwebassets\\js\\customer\\layout.js"
     },
@@ -145,8 +149,16 @@
       "PackagePath": "staticwebassets\\js\\customer\\profile\\exchanges\\requestExchange\\exchangeRequest.js"
     },
     {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\profile\\info\\info.js",
+      "PackagePath": "staticwebassets\\js\\customer\\profile\\info\\info.js"
+    },
+    {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\customer\\profile\\purchases\\purchaseDtl.js",
       "PackagePath": "staticwebassets\\js\\customer\\profile\\purchases\\purchaseDtl.js"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\extra\\styleField.js",
+      "PackagePath": "staticwebassets\\js\\extra\\styleField.js"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\js\\site.js",
@@ -431,6 +443,10 @@
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\icons8-sair-96.png",
       "PackagePath": "staticwebassets\\resources\\images\\icons\\icons8-sair-96.png"
+    },
+    {
+      "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\send1.svg",
+      "PackagePath": "staticwebassets\\resources\\images\\icons\\send1.svg"
     },
     {
       "Id": "C:\\Users\\Lucas\\Documents\\5º Semestre\\5º Semestre\\LES\\e-commerce\\E-CommerceLivraria\\E-CommerceLivraria\\wwwroot\\resources\\images\\icons\\user1.svg",

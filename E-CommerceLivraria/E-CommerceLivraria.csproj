@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="DTO\PaymentDTO\Method\" />
-    <Folder Include="DTO\ProfileDTO\InfoDTO\" />
     <Folder Include="Services\CustomerS\GenderS\" />
     <Folder Include="Views\Admin\crud\customer\create\" />
     <Folder Include="wwwroot\css\customer\profile\info\" />

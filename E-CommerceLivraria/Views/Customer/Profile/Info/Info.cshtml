@@ -1,5 +1,6 @@
 ﻿@using E_CommerceLivraria.Enums
-@model Customer
+@using E_CommerceLivraria.DTO.ProfileDTO.InfoDTO
+@model InfoDTO
 @{
     Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
     ViewData["Title"] = "Dados da Conta";
@@ -11,51 +12,54 @@
 <div class="profileForm">
     <h1>Informações da conta</h1>
     <div class="updateOpts">
-        <button>Alterar senha</button>
-        <button id="updateBtn">Alterar dados</button>
+        <button class="beginUpdate">Alterar senha</button>
+        <button type="button" id="updateBtn" class="beginUpdate" onclick="enableChangesField()">Alterar dados</button>
     </div>
-    <form action="">
+    <form asp-controller="CustomerCRUD" asp-action="UpdateCustomer" method="post">
+        <input type="text" id="id" asp-for="Id" value="@Model.Id" hidden />
         <div class="dataRow">
             <div>
                 <label for="name">Nome:</label>
-                <input type="text" id="name" style="width:20vw" required disabled value="@Model.CtmName">
+                <input type="text" id="name" asp-for="Name" style="width:20vw" required disabled value="@Model.Name">
             </div>
             <div>
                 <label for="email">E-Mail:</label>
-                <input type="email" id="email" style="width:20vw" required disabled value="@Model.CtmEmail">
+                <input type="email" id="email" asp-for="Email" style="width:20vw" required disabled value="@Model.Email">
             </div>
             <div>
                 <label for="cpf">CPF:</label>
-                <input type="text" id="cpf" style="width:9.5vw" maxlength="14" value="@Model.CtmCpfStyled" required disabled>
+                <input type="text" id="cpf" asp-for="Cpf" style="width:9.5vw" maxlength="14" value="@Model.Cpf" required disabled onblur="styleCpf(this)">
             </div>
         </div>
         <div class="dataRow">
             <div>
                 <label for="ddd">DDD:</label>
-                <input type="number" id="ddd" min="0" max="999" required disabled value="@Model.CtmTlp.TlpDdd">
+                <input type="number" id="ddd" asp-for="Ddd" min="0" max="999" required disabled value="@Model.Ddd">
             </div>
             <div>
                 <label for="numTel">Nº de telefone:</label>
-                <input type="text" id="numTel" maxlength="10" required disabled value="@Model.CtmTlp.TlpNumber">
+                <input type="text" id="numTel" asp-for="TlpNum" maxlength="10" required disabled value="@Model.TlpNum">
             </div>
             <div>
                 <label for="typeTel">Tipo de telefone:</label>
-                <select id="typeTel" disabled asp-items="@(new SelectList(TlpTypes, "TptId", "TptName", Model.CtmTlp.TlpTptId))">
+                <select id="typeTel" asp-for="Tpt" disabled asp-items="@(new SelectList(TlpTypes, "TptId", "TptName", Model.Tpt))">
                 </select>
             </div>
             <div>
                 <label for="gender">Gênero:</label>
-                <select id="gender" disabled asp-items="@(new SelectList(Genders, "GndId", "GndName", Model.CtmGndId))">
+                <select id="gender" asp-for="Gender" disabled asp-items="@(new SelectList(Genders, "GndId", "GndName", Model.Gender))">
                 </select>
             </div>
             <div>
                 <label for="birthdate">Data de Nascimento:</label>
-                <input type="date" id="birthdate" disabled value="@Model.CtmBirthdate.ToString("yyyy-MM-dd")">
+                <input type="date" id="birthdate" asp-for="BirthDate" disabled value="@Model.BirthDate.ToString("yyyy-MM-dd")">
             </div>
         </div>
-        <div class="updateOpts" id="updateOpts">
-            <button>Salvar mudanças</button>
-            <button class="cancel">Cancelar</button>
+        <div class="updateOpts">
+            <button class="doUpdate" type="submit" disabled>Salvar mudanças</button>
+            <button class="cancel doUpdate" type="button" onclick="disableChangesField()" disabled>Cancelar</button>
         </div>
     </form>
 </div>
+<script src="~/js/extra/styleField.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+<script src="~/js/customer/profile/info/info.js?v=1.0.@(DateTime.Now.Ticks)"></script>
