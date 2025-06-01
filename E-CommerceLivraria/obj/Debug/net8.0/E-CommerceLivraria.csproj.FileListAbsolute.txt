@@ -580,3 +580,4 @@ C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivr
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\scopedcss\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\scopedcss\Views\Shared\_PublicProfileLayout.cshtml.rz.scp.css
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\bin\Debug\net8.0\RestSharp.dll

@@ -32,34 +32,31 @@ generate_content_config = types.GenerateContentConfig(
     response_mime_type="text/plain",
     system_instruction=[
         types.Part.from_text(text="""You are a virtual assistant of an e-commerce page of a library named \"NextPage\". Your goal is to assist users, which are the library's customers, with book recommedations, books available in store, etc.
-You cannot do tasks such as inserting, altering or removing items in their cart, process purchases, and others alike.
-The topics you may talk about with the users must be restricted to the user preferences, store's item and adjacent content, such as publishers, books' authors and genres.
-Talk in the same language of the user.
-For now, the only book in store is The King in Yellow by Robert W. Chambers, published by Darkside."""),
+        You cannot do tasks such as inserting, altering or removing items in their cart, process purchases, and others alike.
+        The topics you may talk about with the users must be restricted to the user preferences, store's item and adjacent content, such as publishers, books' authors and genres.
+        Talk in the same language of the user and keep your answer short, with a limit of 65 words which doenst need to be always reached.
+        For now, the only book in store is The King in Yellow by Robert W. Chambers, published by Darkside."""),
     ],
 )
 
-def _generate():
+def getResponse(userMsg):
+    content = types.Content(
+        role="user",
+        parts=[
+            types.Part.from_text(text=userMsg),
+        ]
+    )
 
+    return _generate(content)
+
+def _generate(content):
     response = client.models.generate_content(
         model=model,
         config=generate_content_config,
-        contents=contents,
+        contents=content,
     )
-
     return response.text
 
-def getResponse(userMsg):
-        contents.append(
-            types.Content(
-                role="user",
-                parts=[
-                    types.Part.from_text(text=userMsg),
-                ]
-            )
-        )
-
-        return _generate()
-
 def forgetMessages():
-      contents.clear()
+    contents.clear()
+    return '', 204

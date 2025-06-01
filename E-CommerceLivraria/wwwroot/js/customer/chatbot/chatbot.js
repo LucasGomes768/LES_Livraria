@@ -1,52 +1,58 @@
-function sendMessage() {
-    // Pegar campos
-    const userField = document.getElementById('userMessage')
-    let userMsg = userField.value
+async function sendMessage() {
+    try {
+        // Pegar campos
+        const userField = document.getElementById('userMessage')
+        let userMsg = userField.value
 
-    // Verificar se mensagem é nula
-    if (!userMsg) {
-        alert('Escreva uma mensagem para enviar!')
-        return
+        // Verificar se mensagem é nula
+        if (!userMsg) {
+            alert('Escreva uma mensagem para enviar!')
+            return
+        }
+
+        // Formatar mensagem
+        userMsg = userMsg.trim()
+
+        // Anexar mensagem do usuário
+        userField.value = ''
+        appendMessage('user', userMsg)
+
+        // Enviar mensagem
+        const answer = await messageAPI(userMsg)
+
+        // Anexar mensagem do bot
+        if (answer)
+            appendMessage('bot', answer)
+    } catch (ex) {
+        console.error('Erro:', ex)
+        appendMessage('bot', "O assistente virtual está indisponível no momento. Tente novamente mais tarde")
     }
-
-    // Formatar mensagem
-    userMsg = userMsg.trim()
-
-    // Anexar mensagem do usuário
-    userField.value = ''
-    appendMessage('user', userMsg)
-
-    // Enviar mensagem
-    const answer = messageAPI(userMsg)
-
-    // Anexar mensagem do bot
-    if (answer)
-        appendMessage('bot', answer)
     
 }
 
-function messageAPI(input) {
-    const request = new XMLHttpRequest()
-    request.open('POST', `http://localhost:5000/chatbot/send`, false)
-    request.setRequestHeader('Content-Type', 'application/json')
-
-    const data = {
-        clientId: 1,
-        message: input
-    }
-
+async function messageAPI(input) {
     try {
-        request.send(JSON.stringify(data))
+        const response = await fetch('/Chatbot/SendMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                CtmId: 1,
+                Message: input
+            })
+        });
 
-        if (request.status === 200) {
-            const response = request.responseText
-            return response
-        } else {
-            return "O assistente virtual está indisponível no momento. Tente novamente mais tarde"
-            console.error('Erro: ', request.status, resquest.responseText)
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
         }
-    } catch (error) {
-        alert("Erro: " + error.message)
+
+        const data = await response.json();
+        const answer = JSON.parse(data.content)
+        return answer.response;
+    } catch (ex) {
+        console.error('Erro na API:', ex);
+        throw ex;
     }
 }
 
