@@ -148,7 +148,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    max-width: 25vw;
+    min-width: 25vw;
     height: 100vh;
     background-color: whitesmoke;
 }
@@ -251,7 +251,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    min-width: 33vw;
+    width: 33vw;
     height: 100vh;
     background-color: whitesmoke;
 }
@@ -287,6 +287,10 @@
 
     .chatbotTitle .close:hover {
         color: black;
+    }
+
+    .messages p {
+        font-size: 15px;
     }
 
     .userTextfield {
