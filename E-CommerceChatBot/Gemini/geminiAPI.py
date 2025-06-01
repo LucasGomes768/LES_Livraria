@@ -60,3 +60,6 @@ def getResponse(userMsg):
         )
 
         return _generate()
+
+def forgetMessages():
+      contents.clear()
