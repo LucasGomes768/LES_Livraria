@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-CommerceLivraria", "E-CommerceLivraria\E-CommerceLivraria.csproj", "{D3FF3D4E-5B78-4EFD-B98A-AC16C8222AB7}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "E-CommerceChatBot", "E-CommerceChatBot\E-CommerceChatBot.pyproj", "{615652A6-B4CF-4FA1-A9B6-8F4299F25A7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{D3FF3D4E-5B78-4EFD-B98A-AC16C8222AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3FF3D4E-5B78-4EFD-B98A-AC16C8222AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3FF3D4E-5B78-4EFD-B98A-AC16C8222AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615652A6-B4CF-4FA1-A9B6-8F4299F25A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615652A6-B4CF-4FA1-A9B6-8F4299F25A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

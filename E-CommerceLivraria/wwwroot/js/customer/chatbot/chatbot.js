@@ -12,13 +12,42 @@ function sendMessage() {
     // Formatar mensagem
     userMsg = userMsg.trim()
 
-    // Enviar mensagem
-    // Blah Blah API
-
-    // Anexar mensagem(ns)
+    // Anexar mensagem do usuário
     userField.value = ''
     appendMessage('user', userMsg)
+
+    // Enviar mensagem
+    const answer = messageAPI(userMsg)
+
+    // Anexar mensagem do bot
+    if (answer)
+        appendMessage('bot', answer)
     
+}
+
+function messageAPI(input) {
+    const request = new XMLHttpRequest()
+    request.open('POST', `http://localhost:5000/chatbot/send`, false)
+    request.setRequestHeader('Content-Type', 'application/json')
+
+    const data = {
+        clientId: 1,
+        message: input
+    }
+
+    try {
+        request.send(JSON.stringify(data))
+
+        if (request.status === 200) {
+            const response = request.responseText
+            return response
+        } else {
+            return "O assistente virtual está indisponível no momento. Tente novamente mais tarde"
+            console.error('Erro: ', request.status, resquest.responseText)
+        }
+    } catch (error) {
+        alert("Erro: " + error.message)
+    }
 }
 
 function appendMessage(sender, message) {

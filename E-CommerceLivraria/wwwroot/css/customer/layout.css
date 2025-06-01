@@ -148,7 +148,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    min-width: 25vw;
+    max-width: 25vw;
     height: 100vh;
     background-color: whitesmoke;
 }

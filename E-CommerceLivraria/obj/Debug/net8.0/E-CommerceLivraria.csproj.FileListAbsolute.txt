@@ -264,12 +264,6 @@ C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivr
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets\msbuild.E-CommerceLivraria.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets\msbuild.E-CommerceLivraria.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets\msbuild.build.E-CommerceLivraria.props
-C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.E-CommerceLivraria.props
-C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.E-CommerceLivraria.props
-C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\E-Commer.7B0777FD.Up2Date
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\E-CommerceLivraria.dll
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\refint\E-CommerceLivraria.dll
@@ -585,3 +579,4 @@ C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivr
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\scopedcss\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\scopedcss\Views\Shared\_PublicProfileLayout.cshtml.rz.scp.css
+C:\Users\Lucas\Documents\5º Semestre\5º Semestre\LES\e-commerce\E-CommerceLivraria\E-CommerceLivraria\obj\Debug\net8.0\staticwebassets.build.json.cache
