@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using E_CommerceLivraria.DTO.ChatbotDTO;
 using E_CommerceLivraria.Models;
 
 namespace E_CommerceLivraria.Services.CustomerS {
@@ -10,5 +11,6 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public Customer Update(Customer customer);
         public bool Exists(decimal id);
         public void ClearCart(Customer customer);
+        public RelevantCtmInfoAI GetInfoForChatbot(decimal id);
     }
 }

@@ -10,8 +10,8 @@ CORS(app)
 @app.route('/gemini/send',methods=['POST'])
 def sendMessage():
     try:
-        userObj = request.get_json()
-        response = chatbot.getResponse(userObj['message'])
+        promptInfo = request.get_json()
+        response = chatbot.getResponse(promptInfo)
         return jsonify({"response": response})
     except Exception as e:
         print(jsonify({"error": str(e)}))

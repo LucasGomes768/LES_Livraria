@@ -49,7 +49,8 @@ public partial class Stock
     [NotMapped]
     public decimal StcSalePrice {
         get {
-            return StcCost * (1 + StcBok.BokPrg.PrgProfitMargin);
+            decimal salePrice = StcCost * (1 + StcBok.BokPrg.PrgProfitMargin);
+            return Math.Round(salePrice, 2, MidpointRounding.ToEven);
         }
     }
 

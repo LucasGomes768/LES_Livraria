@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.Models;
+﻿using E_CommerceLivraria.DTO.ChatbotDTO;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.StockR;
 
 namespace E_CommerceLivraria.Services.StockS {
@@ -29,6 +30,37 @@ namespace E_CommerceLivraria.Services.StockS {
             stock.StcBlockedAmount += amountBlocked;
 
             return _stockRepository.Update(stock);
+        }
+
+        public List<RelevantBookInfoAI> GetInfoForAI()
+        {
+            var allBooks = _stockRepository.GetAll();
+
+            List<RelevantBookInfoAI> infos = new List<RelevantBookInfoAI>();
+
+            foreach (var stock in allBooks)
+            {
+                RelevantBookInfoAI book = new RelevantBookInfoAI()
+                {
+                    Title = stock.StcBok.BokTitle,
+                    Sinopsis = stock.StcBok.BokSinopsis,
+                    Edition = (int)stock.StcBok.BokEdition,
+                    PagesAmount = (int)stock.StcBok.BokPagesAmount,
+                    Year = (int)stock.StcBok.BokYear,
+                    Publisher = stock.StcBok.BokPbl.PblName,
+                    Author = stock.StcBok.BokBat.BatName,
+                    Price = stock.StcSalePrice,
+                    AvailableAmount = (int)stock.StcAvailableAmount,
+                    Categories = new List<string>()
+                };
+
+                foreach (var category in stock.StcBok.BcrBcts)
+                    book.Categories.Add(category.BctName);
+
+                infos.Add(book);
+            }
+
+            return infos;
         }
     }
 }

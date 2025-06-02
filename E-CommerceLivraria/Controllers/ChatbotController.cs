@@ -3,11 +3,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text.Json;
 using RestSharp;
+using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Services.StockS;
 
 namespace E_CommerceLivraria.Controllers
 {
     public class ChatbotController : Controller
     {
+        private ICustomerService _customerService;
+        private IStockService _stockService;
+
+        public ChatbotController(ICustomerService customerService, IStockService stockService)
+        {
+            _customerService = customerService;
+            _stockService = stockService;
+        }
+
         [HttpPost("/Chatbot/SendMessage")]
         public async Task<IActionResult> SendMessage([FromBody] UserMessageDTO userMessageJson)
         {
@@ -18,9 +29,16 @@ namespace E_CommerceLivraria.Controllers
                     return BadRequest("Valor foi enviado nulo");
                 }
 
+                PromptRelevantInfoAI promptInfo = new PromptRelevantInfoAI()
+                {
+                    Message = userMessageJson.Message,
+                    CustomerInfo = _customerService.GetInfoForChatbot(userMessageJson.CtmId),
+                    StoreBooksInfo = _stockService.GetInfoForAI()
+                };
+
                 var client = new RestClient("http://localhost:5000/gemini/send");
 
-                var jsonString = JsonSerializer.Serialize(userMessageJson, new JsonSerializerOptions
+                var jsonString = JsonSerializer.Serialize(promptInfo, new JsonSerializerOptions
                 {
                     WriteIndented = true,
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
