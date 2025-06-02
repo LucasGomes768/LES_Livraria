@@ -1,4 +1,5 @@
 # Visual Studio files
 .vs/
-/E-CommerceChatBot/.env
+.env
+bin/
 *.tmp

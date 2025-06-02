@@ -52,7 +52,9 @@ def getResponse(promptInfo):
         ]
     )
 
-    return _generate(content)
+    contents.append(content)
+
+    return _generate()
 
 def formatPrompt(Message, UserData, StoreData):
     prompt = f"""
@@ -63,14 +65,23 @@ def formatPrompt(Message, UserData, StoreData):
     """
     return prompt
 
-def _generate(content, maxRetries = 5, initialDelay = 1):
+def _generate(maxRetries = 5, initialDelay = 1):
     for i in range(maxRetries):
         try:
             response = client.models.generate_content(
                 model=model,
                 config=generate_content_config,
-                contents=content,
+                contents=contents,
             )
+
+            responseContent = types.Content(
+                role="model",
+                parts=[
+                    types.Part.from_text(text=response.text),
+                ]
+            )
+
+            contents.append(responseContent)
 
             return response.text
         except Exception as e:
@@ -78,7 +89,7 @@ def _generate(content, maxRetries = 5, initialDelay = 1):
 
             if "503 UNAVAILABLE" in errorMessage or "overloaded" in errorMessage or "quota" in errorMessage:
                 if i < maxRetries - 1:
-                    delay = initialDelay * (2 ** i)
+                    delay = initialDelay * (3 ** i)
                     print(f"Modelo sobrecarregado, tentando novamente em {delay:.1f} segundos...")
                     time.sleep(delay)
                 else:

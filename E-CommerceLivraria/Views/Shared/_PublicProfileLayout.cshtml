@@ -108,19 +108,13 @@
                     <button class="close" onclick="invertPopUpDisplay('chatbot')">X</button>
                     <h1>Assistente Virtual</h1>
                 </div>
-                <div class="messages">
-                    <div class="botMsg">
-                        <p>Bom dia! Como posso te ajudar?</p>
-                    </div>
-                    <div class="userMsg">
-                        <p>Bom dia! Como posso te ajudar?</p>
-                    </div>
+                <div class="messages" id="messages">
                 </div>
                 <div class="userTextfield">
-                    <textarea name="" id="" rows="3"></textarea>
+                    <textarea id="userMessage" rows="3"></textarea>
                     <div>
-                        <button>
-                            <img src="/layout/resources/send1.svg" alt="">
+                        <button type="button" onclick="sendMessage()">
+                            <img src="~/resources/images/icons/send1.svg" alt="">
                         </button>
                     </div>
                 </div>
