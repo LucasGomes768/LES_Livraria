@@ -27,7 +27,7 @@ async function sendMessage() {
             appendMessage('bot', answer)
     } catch (ex) {
         console.error('Erro:', ex)
-        appendMessage('bot', "O assistente virtual está indisponível no momento. Tente novamente mais tarde")
+        appendMessage('bot', "O assistente virtual esta indisponivel no momento. Tente novamente mais tarde")
     }
     
 }
@@ -105,9 +105,7 @@ function loadMessages() {
 
     if (messages) {
         messages = JSON.parse(messages)
-
         messages.forEach(x => appendMessage(x.role, x.text))
-        
     }
 }
 
