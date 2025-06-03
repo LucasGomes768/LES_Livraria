@@ -14,12 +14,14 @@ namespace E_CommerceLivraria.Controllers
             _customerService = customerService;
         }
 
-        [HttpPost]
-        public IActionResult UpdateCustomer(InfoDTO info)
+        [HttpPost("/CRUD/Customer/InfoUpdate")]
+        public IActionResult UpdateCustomer([FromBody] InfoDTO info)
         {
             try
             {
                 if (info == null) return BadRequest("Cadastro do cliente nulo");
+
+                _customerService.UpdateBasicInfo(info);
 
                 return Ok(new {
                     Sucess = true

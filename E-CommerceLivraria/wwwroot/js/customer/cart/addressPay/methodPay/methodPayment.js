@@ -38,7 +38,6 @@ export function finalizarCompra() {
     btn.textContent = 'Processando...'
 
     const cartoes = JSON.parse(sessionStorage.getItem("cartoesSelecionados") || "[]");
-    console.log('Cartões armazenados:', cartoes);
     const totalCompra = parseFloat(document.getElementById('totalPrice').value);
 
     const request = new XMLHttpRequest();

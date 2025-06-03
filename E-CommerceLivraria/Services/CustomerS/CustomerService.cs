@@ -1,4 +1,5 @@
 ﻿using E_CommerceLivraria.DTO.ChatbotDTO;
+using E_CommerceLivraria.DTO.ProfileDTO.InfoDTO;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.CustomerR;
@@ -94,6 +95,25 @@ namespace E_CommerceLivraria.Services.CustomerS {
             }
 
             return info;
+        }
+
+        public Customer UpdateBasicInfo(InfoDTO info)
+        {
+            Customer? ctm = _customerRepository.Get(info.Id);
+            if (ctm == null) throw new Exception("Cliente não foi encontrado");
+
+            ctm.CtmName = info.Name;
+            ctm.CtmEmail = info.Email;
+            ctm.CtmPass = info.Pass ?? ctm.CtmPass;
+            ctm.CtmCpf = decimal.Parse(info.Cpf.Replace("-","").Replace(".","").Trim());
+            ctm.CtmActive = info.Active;
+            ctm.CtmBirthdate = info.BirthDate;
+            ctm.CtmGndId = info.Gender;
+            ctm.CtmTlp.TlpDdd = info.Ddd;
+            ctm.CtmTlp.TlpNumber = info.TlpNum;
+            ctm.CtmTlp.TlpTptId = info.Tpt;
+
+            return _customerRepository.Update(ctm);
         }
     }
 }

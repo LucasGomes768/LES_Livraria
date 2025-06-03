@@ -12,5 +12,6 @@
         public decimal Tpt { get; set; }
         public decimal Gender { get; set; }
         public DateTime BirthDate { get; set; }
+        public bool Active { get; set; }
     }
 }

@@ -41,3 +41,36 @@ function disableChangesField() {
         btn.disabled = true;
     }
 }
+
+function UpdateInfo() {
+    const ctm = {
+        Id: document.getElementById('id').value,
+        Name: document.getElementById('name').value,
+        Email: document.getElementById('email').value,
+        Cpf: document.getElementById('cpf').value,
+        Ddd: document.getElementById('ddd').value,
+        TlpNum: document.getElementById('numTel').value,
+        Tpt: document.getElementById('typeTel').value,
+        Gender: document.getElementById('gender').value,
+        BirthDate: document.getElementById('birthdate').value,
+        Pass: document.getElementById('pass').value,
+        Active: true
+    }
+
+    const request = new XMLHttpRequest();
+    request.open('POST', '/CRUD/Customer/InfoUpdate', false);
+    request.setRequestHeader('Content-type', 'application/json');
+
+    try {
+        request.send(JSON.stringify(ctm))
+
+        if (request.status === 200) {
+            alert('Dados atualizados com sucesso!')
+        } else {
+            alert('Ocorreu um erro na atualização:' + request.statusText)
+            console.error(`Erro ${request.status}: ${request.responseText}`)
+        }
+    } catch (ex) {
+        alert('Falha na comunicação:' + ex.error);
+    }
+}

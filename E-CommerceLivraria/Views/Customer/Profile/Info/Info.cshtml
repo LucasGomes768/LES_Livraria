@@ -15,7 +15,8 @@
         <button class="beginUpdate">Alterar senha</button>
         <button type="button" id="updateBtn" class="beginUpdate" onclick="enableChangesField()">Alterar dados</button>
     </div>
-    <form asp-controller="CustomerCRUD" asp-action="UpdateCustomer" method="post">
+    <form>
+        <input type="text" id="pass" value="@Model.Pass" hidden />
         <input type="text" id="id" asp-for="Id" value="@Model.Id" hidden />
         <div class="dataRow">
             <div>
@@ -56,7 +57,7 @@
             </div>
         </div>
         <div class="updateOpts">
-            <button class="doUpdate" type="submit" disabled>Salvar mudanças</button>
+            <button class="doUpdate" onclick="UpdateInfo()" type="button" disabled>Salvar mudanças</button>
             <button class="cancel doUpdate" type="button" onclick="disableChangesField()" disabled>Cancelar</button>
         </div>
     </form>
