@@ -15,6 +15,7 @@ async function sendMessage() {
 
         // Anexar mensagem do usuário
         userField.value = ''
+        saveMsgHistory('user', userMsg)
         appendMessage('user', userMsg)
 
         // Enviar mensagem
@@ -22,6 +23,7 @@ async function sendMessage() {
 
         // Anexar mensagem do bot
         if (answer)
+            saveMsgHistory('bot', answer)
             appendMessage('bot', answer)
     } catch (ex) {
         console.error('Erro:', ex)
@@ -56,10 +58,10 @@ async function messageAPI(input) {
     }
 }
 
-function appendMessage(sender, message) {
+function appendMessage(role, message) {
     let currMsgs = document.getElementById('messages').innerHTML
 
-    if (sender === 'user') {
+    if (role === 'user') {
         currMsgs += `
                     <div class="userMsg">
                         <p>${message}</p>
@@ -75,3 +77,38 @@ function appendMessage(sender, message) {
 
     document.getElementById('messages').innerHTML = currMsgs
 }
+
+function saveMsgHistory(role, text) {
+    let messages = sessionStorage.getItem('chatbotMessages')
+
+    const message = {
+        "role": role,
+        "text": text
+    }
+
+    if (!messages) {
+        const newHistory = [message]
+        const string = JSON.stringify(newHistory)
+
+        sessionStorage.setItem('chatbotMessages', string)
+    } else {
+        messages = JSON.parse(messages)
+        messages.push(message)
+
+        const string = JSON.stringify(messages)
+        sessionStorage.setItem('chatbotMessages', string)
+    }
+}
+
+function loadMessages() {
+    let messages = sessionStorage.getItem('chatbotMessages')
+
+    if (messages) {
+        messages = JSON.parse(messages)
+
+        messages.forEach(x => appendMessage(x.role, x.text))
+        
+    }
+}
+
+window.onload = loadMessages()
