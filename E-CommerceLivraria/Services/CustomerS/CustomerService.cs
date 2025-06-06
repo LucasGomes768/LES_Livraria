@@ -105,13 +105,25 @@ namespace E_CommerceLivraria.Services.CustomerS {
             ctm.CtmName = info.Name;
             ctm.CtmEmail = info.Email;
             ctm.CtmPass = info.Pass ?? ctm.CtmPass;
-            ctm.CtmCpf = decimal.Parse(info.Cpf.Replace("-","").Replace(".","").Trim());
+            ctm.CtmCpf = info.Cpf != null ? decimal.Parse(info.Cpf.Replace("-","").Replace(".","").Trim()) : ctm.CtmCpf;
             ctm.CtmActive = info.Active;
             ctm.CtmBirthdate = info.BirthDate;
             ctm.CtmGndId = info.Gender;
             ctm.CtmTlp.TlpDdd = info.Ddd;
             ctm.CtmTlp.TlpNumber = info.TlpNum;
             ctm.CtmTlp.TlpTptId = info.Tpt;
+
+            return _customerRepository.Update(ctm);
+        }
+
+        public Customer UpdatePassword(InfoDTO info)
+        {
+            Customer? ctm = _customerRepository.Get(info.Id);
+            if (ctm == null) throw new Exception("Cliente não foi encontrado");
+
+            if (info.Pass == null) throw new Exception("Senha nova não foi enviada");
+
+            ctm.CtmPass = info.Pass;
 
             return _customerRepository.Update(ctm);
         }

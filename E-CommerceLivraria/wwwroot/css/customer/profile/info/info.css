@@ -1,0 +1,94 @@
+@import url('../profile.css');
+
+.popUpBackground {
+    display: none;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(39, 39, 39, 0.404);
+    width: 100vw;
+    height: 89vh;
+    z-index: 10;
+}
+
+.passwordDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+    border: 4px solid rgb(78, 78, 78);
+    border-radius: 10px;
+    background-color: lightgray;
+
+    padding-top: 0vh;
+    margin-top: 18vh;
+    padding: 1vw;
+    height: 42vh;
+    width: 40vw;
+    z-index: 11;
+}
+
+    .passwordDiv h1{
+        text-align: center;
+        font-weight: 350;    
+    }
+
+    .passwordDiv form .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .passwordDiv form .inputs div{
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+    }
+
+    .passwordDiv .passUpdateBtns {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        gap: 7px;
+    }
+
+    .passwordDiv button {
+        border: 2px solid black;
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 1.3vw;
+
+        transition-duration: 0.2s;
+    }
+
+        .passwordDiv button:disabled {
+            border-style: revert;
+            border-color: gray;
+            background-color: gray;
+            color: white;
+        }
+
+        .passwordDiv button.cancel {
+            border: 2px solid rgb(184, 0, 0);
+            color: rgb(184, 0, 0);
+        }
+
+            .passwordDiv button.cancel:disabled {
+                border-style: revert;
+                border-color: darkred;
+                background-color: darkred;
+                color: white;
+            }
+
+        .passwordDiv button:hover:not(:disabled) {
+            background-color: black;
+            color: white;
+        }
+
+        .passwordDiv button.cancel:hover:not(:disabled) {
+            background-color: rgb(184, 0, 0);
+            color: white;
+        }

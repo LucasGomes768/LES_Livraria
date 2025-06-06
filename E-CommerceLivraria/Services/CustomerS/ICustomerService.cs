@@ -11,6 +11,7 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public bool Remove(decimal id);
         public Customer Update(Customer customer);
         public Customer UpdateBasicInfo(InfoDTO info);
+        public Customer UpdatePassword(InfoDTO info);
         public bool Exists(decimal id);
         public void ClearCart(Customer customer);
         public RelevantCtmInfoAI GetInfoForChatbot(decimal id);

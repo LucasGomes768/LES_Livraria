@@ -36,5 +36,29 @@ namespace E_CommerceLivraria.Controllers
                 });
             }
         }
+
+        [HttpPost("/CRUD/Customer/PasswordUpdate")]
+        public IActionResult UpdatePassword([FromBody] InfoDTO infoDTO)
+        {
+            try
+            {
+                if (infoDTO == null) return BadRequest("Nenhuma senha enviada");
+
+                _customerService.UpdatePassword(infoDTO);
+
+                return Ok(new
+                {
+                    Sucess = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Sucess = false,
+                    Message = ex.Message
+                });
+            }
+        }
     }
 }

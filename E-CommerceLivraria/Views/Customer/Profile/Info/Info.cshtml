@@ -4,7 +4,7 @@
 @{
     Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
     ViewData["Title"] = "Dados da Conta";
-    ViewData["CSSFile"] = "~/css/customer/profile/profile.css";
+    ViewData["CSSFile"] = "~/css/customer/profile/info/info.css";
 
     var TlpTypes = (List<TelephoneType>) ViewBag.TlpTypes;
     var Genders = (List<Gender>) ViewBag.Genders;
@@ -12,8 +12,8 @@
 <div class="profileForm">
     <h1>Informações da conta</h1>
     <div class="updateOpts">
-        <button class="beginUpdate">Alterar senha</button>
-        <button type="button" id="updateBtn" class="beginUpdate" onclick="enableChangesField()">Alterar dados</button>
+        <button class="beginUpdate" id="updatePasswordBtn">Alterar senha</button>
+        <button type="button" id="updateDataBtn" class="beginUpdate">Alterar dados</button>
     </div>
     <form>
         <input type="text" id="pass" value="@Model.Pass" hidden />
@@ -57,10 +57,35 @@
             </div>
         </div>
         <div class="updateOpts">
-            <button class="doUpdate" onclick="UpdateInfo()" type="button" disabled>Salvar mudanças</button>
-            <button class="cancel doUpdate" type="button" onclick="disableChangesField()" disabled>Cancelar</button>
+            <button class="doUpdate" id="updateGeneralInfo" type="button" disabled>Salvar mudanças</button>
+            <button class="cancel doUpdate" type="button" id="cancelInfoUpdt" disabled>Cancelar</button>
         </div>
     </form>
 </div>
+<div class="popUpBackground" id="passwordDiv">
+    <div class="passwordDiv">
+        <h1>Alterar senha</h1>
+        <form action="">
+            <div class="inputs">
+                <div>
+                    <label for="passCur">Digite sua senha atual:</label>
+                    <input type="password" id="passCur" required>
+                </div>
+                <div>
+                    <label for="passNew">Digite a senha nova:</label>
+                    <input type="password" id="passNew" required>
+                </div>
+                <div>
+                    <label for="passConf">Confirme sua senha nova:</label>
+                    <input type="password" id="passConf" required>
+                </div>
+            </div>
+            <div class="passUpdateBtns">
+                <button type="button" class="doUpdate" id="beginPassUpdt">Atualizar</button>
+                <button type="button" class="cancel doUpdate" id="cancelPassUpdt">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
 <script src="~/js/extra/styleField.js?v=1.0.@(DateTime.Now.Ticks)"></script>
-<script src="~/js/customer/profile/info/info.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+<script src="~/js/customer/profile/info/info.js?v=1.0.@(DateTime.Now.Ticks)" type="module"></script>

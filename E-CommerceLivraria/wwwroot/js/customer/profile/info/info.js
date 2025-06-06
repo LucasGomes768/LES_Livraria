@@ -1,4 +1,30 @@
-﻿function enableChangesField() {
+﻿import { verifyPassword } from '../../../extra/verifyPassword.js'
+
+window.PassFunctions = {
+    verifyPassword
+}
+
+document.getElementById('updatePasswordBtn').addEventListener('click', passDivDisplay);
+document.getElementById('cancelPassUpdt').addEventListener('click', passDivDisplay);
+document.getElementById('beginPassUpdt').addEventListener('click', updatePassword);
+document.getElementById('updateDataBtn').addEventListener('click', enableChangesField);
+document.getElementById('updateGeneralInfo').addEventListener('click', UpdateInfo);
+document.getElementById('cancelInfoUpdt').addEventListener('click', disableChangesField);
+
+function passDivDisplay() {
+    const curDisplay = document.getElementById('passwordDiv').style.display
+
+    if (curDisplay == 'none' || !curDisplay) {
+        document.getElementById('passwordDiv').style.display = 'flex'
+
+        document.getElementById('beginPassUpdt').disabled = false;
+        document.getElementById('cancelPassUpdt').disabled = false;
+    } else {
+        document.getElementById('passwordDiv').style.display = 'none'
+    }
+}
+
+function enableChangesField() {
     document.getElementById('id').disabled = false;
     document.getElementById('name').disabled = false;
     document.getElementById('email').disabled = false;
@@ -72,5 +98,62 @@ function UpdateInfo() {
         }
     } catch (ex) {
         alert('Falha na comunicação:' + ex.error);
+    }
+}
+
+function updatePassword() {
+    const curPass = document.getElementById('passCur').value;
+    const newPass = document.getElementById('passNew').value;
+    const confPass = document.getElementById('passConf').value;
+
+    if (!curPass) {
+        alert('A senha atual não foi inserida');
+        return;
+    }
+
+    if (!newPass) {
+        alert('Digite a sua nova senha');
+        return;
+    }
+
+    if (!confPass) {
+        alert('Redigite sua nova senha');
+        return;
+    }
+
+    if (curPass !== document.getElementById('pass').value) {
+        alert('A senha digitada está incorreta');
+        return;
+    };
+
+    const errorMsg = window.PassFunctions.verifyPassword(newPass, confPass);
+
+    if (errorMsg) {
+        alert(errorMsg);
+        return;
+    }
+
+    const request = new XMLHttpRequest();
+    request.open('POST', '/CRUD/Customer/PasswordUpdate', false);
+    request.setRequestHeader('Content-type', 'application/json');
+
+    const info = {
+        Id: document.getElementById('id').value,
+        Pass: newPass
+    }
+
+    try {
+        request.send(JSON.stringify(info))
+
+        if (request.status === 200) {
+            alert("Senha atualizada com sucesso!")
+            window.location.reload()
+        } else {
+            alert("Erro ao efetuar a atualização: " + request.statusText)
+            console.error(`Erro ${request.status}: ${request.responseText}`)
+        }
+    } catch (ex) {
+        alert("Erro ao atualizar a senha.")
+        console.error(ex)
     }
 }

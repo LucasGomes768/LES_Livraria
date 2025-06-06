@@ -1,7 +1,14 @@
-function verifyPassword(passField, confirmField, event) {
+export function verifyPassword(pass, confPass) {
     var errorMsg = ""
-    const pass = document.getElementById(passField).value
-    const confPass = document.getElementById(confirmField).value
+
+    // Nulo
+    if (!pass) {
+        errorMsg += '\n- O campo da senha nova não foi preenchido'
+    }
+
+    if (!confPass) {
+        errorMsg += '\n- A senha nova não foi redigitada'
+    }
 
     // Maiúsculo
     if (!(/[A-Z]/.test(pass))) {
@@ -21,12 +28,13 @@ function verifyPassword(passField, confirmField, event) {
     }
     // Redigitar senha
     if (pass !== confPass) {
-        errorMsg += "\n- Redigite sua senha"
+        errorMsg += "\n- A senha redigitada é diferente da senha nova inserida"
     }
 
     // Alert
     if (errorMsg !== "") {
-        alert("Senha invalida:" + errorMsg)
-        event.preventDefault()
+        return "Senha invalida:" + errorMsg
+    } else {
+        return undefined
     }
 }
