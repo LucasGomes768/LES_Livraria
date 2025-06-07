@@ -3,7 +3,7 @@ using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.CustomerS;
 using Microsoft.AspNetCore.Mvc;
 
-namespace E_CommerceLivraria.Controllers
+namespace E_CommerceLivraria.Controllers.CrudCTR
 {
     public class CustomerCRUDController : Controller
     {
@@ -32,7 +32,7 @@ namespace E_CommerceLivraria.Controllers
                 return StatusCode(500, new
                 {
                     Sucess = false,
-                    Message = ex.Message
+                    ex.Message
                 });
             }
         }
@@ -56,7 +56,7 @@ namespace E_CommerceLivraria.Controllers
                 return StatusCode(500, new
                 {
                     Sucess = false,
-                    Message = ex.Message
+                    ex.Message
                 });
             }
         }

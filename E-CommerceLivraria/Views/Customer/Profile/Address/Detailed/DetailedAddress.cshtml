@@ -1,0 +1,77 @@
+﻿@using E_CommerceLivraria.DTO.ProfileDTO.AddressDTO
+@model DetailedAddDTO
+@{
+    Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
+    ViewData["Title"] = "Endereço";
+    ViewData["CSSFile"] = "~/css/customer/profile/profile.css";
+
+    List<ResidenceType> RstList = (List<ResidenceType>) ViewBag.RstList;
+    List<PublicplaceType> PptList = (List<PublicplaceType>) ViewBag.PptList;
+}
+<div class="profileForm">
+    <h1>Cadastro do endereço</h1>
+    <div class="updateOpts">
+        <button id="updateBtn" type="button">Alterar dados</button>
+    </div>
+    <form action="">
+        <div class="dataRow">
+            <div>
+                <label for="rsType">Tipo de residência:</label>
+                <select id="rsType" disabled asp-items='new SelectList(RstList, "RstId", "RstName", Model.ResidenceType)'>
+                </select>
+            </div>
+            <div>
+                <label for="ppType">Tipo de logradouro:</label>
+                <select id="ppType" disabled asp-items='new SelectList(PptList, "PptId", "PptName", Model.PublicPlaceType)'>
+                </select>
+            </div>
+            <div>
+                <label for="publicPlace">Logradouro:</label>
+                <input type="text" id="publicPlace" style="width: 20vw;" required disabled value="@Model.PublicPlace">
+            </div>
+            <div>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" maxlength="9" style="width: 5.8vw;" value="@Model.Cep" required disabled>
+            </div>
+            <div>
+                <label for="num">Nº:</label>
+                <input type="number" class="noStep" style="width: 2.5vw;" id="num" min="1" max="9999" required disabled value="@Model.Number">
+            </div>
+        </div>
+        <div class="dataRow">
+            <div>
+                <label for="neighborhood">Bairro:</label>
+                <input type="text" id="neighborhood" required disabled value="@Model.Neighborhood">
+            </div>
+            <div>
+                <label for="city">Cidade:</label>
+                <input type="text" id="city" required disabled value="@Model.City">
+            </div>
+            <div>
+                <label for="state">Estado:</label>
+                <input type="text" id="state" required disabled value="@Model.State">
+            </div>
+            <div>
+                <label for="country">País:</label>
+                <input type="text" id="country" required disabled value="@Model.Country">
+            </div>
+        </div>
+        <div class="dataRow">
+            <div>
+                <label for="shortPhrase">Frase curta:</label>
+                <input type="text" id="shortPhrase" style="width: 57vw;" required disabled value="@Model.ShortPhrase" />
+            </div>
+        </div>
+        <div class="dataRow">
+            <div class="obs">
+                <label for="obs">Observações:</label>
+                <textarea id="obs" rows="3" disabled>@(Model.Observations ?? "")</textarea>
+            </div>
+        </div>
+        <div class="updateOpts">
+            <button type="button" id="updateData">Salvar mudanças</button>
+            <button type="button" id="cancelUpdate" class="cancel">Cancelar</button>
+        </div>
+    </form>
+</div>
+<script src="/ctmLayoutLoader.js"></script>
