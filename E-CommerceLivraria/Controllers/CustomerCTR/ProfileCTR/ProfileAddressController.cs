@@ -39,7 +39,7 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
             {
                 return StatusCode(500, new
                 {
-                    Sucessus = false,
+                    Sucess = false,
                     ex.Message
                 });
             }

@@ -11,9 +11,11 @@
 <div class="profileForm">
     <h1>Cadastro do endereço</h1>
     <div class="updateOpts">
-        <button id="updateBtn" type="button">Alterar dados</button>
+        <button id="updateBtn" class="beginUpdate" type="button" onclick="enableChangesField()">Alterar dados</button>
     </div>
     <form action="">
+        <input type="number" id="addId" value="@Model.Id" hidden />
+        <input type="number" id="ctmId" value="@Model.CtmId" hidden />
         <div class="dataRow">
             <div>
                 <label for="rsType">Tipo de residência:</label>
@@ -35,7 +37,7 @@
             </div>
             <div>
                 <label for="num">Nº:</label>
-                <input type="number" class="noStep" style="width: 2.5vw;" id="num" min="1" max="9999" required disabled value="@Model.Number">
+                <input type="number" class="noStep" style="width: 3vw;" id="num" min="1" max="9999" required disabled value="@Model.Number">
             </div>
         </div>
         <div class="dataRow">
@@ -69,9 +71,9 @@
             </div>
         </div>
         <div class="updateOpts">
-            <button type="button" id="updateData">Salvar mudanças</button>
-            <button type="button" id="cancelUpdate" class="cancel">Cancelar</button>
+            <button type="button" class="doUpdate" id="updateData" onclick="UpdateInfo()" disabled>Salvar mudanças</button>
+            <button type="button" class="doUpdate cancel" id="cancelUpdate" onclick="disableChangesField()" disabled>Cancelar</button>
         </div>
     </form>
 </div>
-<script src="/ctmLayoutLoader.js"></script>
+<script src="~/js/customer/profile/address/detailed.js?v=1.0.@(DateTime.Now.Ticks)"></script>

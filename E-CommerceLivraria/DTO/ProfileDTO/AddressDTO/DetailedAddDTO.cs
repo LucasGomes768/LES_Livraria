@@ -6,10 +6,10 @@
         public decimal CtmId { get; set; }
         public string Type { get; set; }
         public string PublicPlace { get; set; }
-        public decimal PublicPlaceType { get; set; }
-        public decimal ResidenceType { get; set; }
+        public decimal? PublicPlaceType { get; set; }
+        public decimal? ResidenceType { get; set; }
         public string Cep { get; set; }
-        public decimal Number { get; set; }
+        public decimal? Number { get; set; }
         public string Neighborhood { get; set; }
         public string City { get; set; }
         public string State { get; set; }
