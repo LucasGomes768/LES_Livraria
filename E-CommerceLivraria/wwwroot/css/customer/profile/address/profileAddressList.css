@@ -1,0 +1,79 @@
+.addressList {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vh;
+
+    width: 80vw;
+    height: min-content;
+    padding: 1.5%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+    .addressList h1 {
+        text-align: center;
+        font-weight: 350;
+    }
+
+.addRow {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+}
+
+.addInstance {
+    padding: 1%;
+    padding-bottom: 0%;
+    width: 45%;
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .addInstance h2 {
+        font-weight: 350;
+        font-size: 1.65vw;
+    }
+
+    .addInstance h3 {
+        font-weight: 350;
+        font-size: 1.15vw;
+    }
+
+    .addInstance .addOptions {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 1.2%;
+        border-top: 2px solid gray;
+    }
+
+        .addInstance .addOptions button {
+            font-weight: 350;
+            font-size: 1.25vw;
+            border-radius: 5px;
+            border: 2px solid black;
+            color: black;
+            background-color: white;
+
+            transition-duration: 0.2s;
+        }
+
+            .addInstance .addOptions button.remove {
+                color: red;
+                border-color: red;
+            }
+
+            .addInstance .addOptions button:hover {
+                color: white;
+                background-color: black;
+            }
+
+                .addInstance .addOptions button.remove:hover {
+                    color: white;
+                    background-color: red;
+                }

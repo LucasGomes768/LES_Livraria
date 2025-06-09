@@ -71,6 +71,33 @@ public partial class Address
 
     public virtual Neighborhood AddNbh { get; set; } = null!;
 
+    [NotMapped]
+    public City AddCty
+    {
+        get
+        {
+            return AddNbh.NbhCty;
+        }
+    }
+
+    [NotMapped]
+    public State AddStt
+    {
+        get
+        {
+            return AddNbh.NbhCty.CtyStt;
+        }
+    }
+
+    [NotMapped]
+    public Country AddCtr
+    {
+        get
+        {
+            return AddNbh.NbhCty.CtyStt.SttCtr;
+        }
+    }
+
     public virtual PublicplaceType AddPpt { get; set; } = null!;
 
     public virtual ResidenceType AddRst { get; set; } = null!;

@@ -1,4 +1,5 @@
 ﻿using E_CommerceLivraria.DTO.ProfileDTO.AddressDTO;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.CustomerS;
@@ -45,7 +46,7 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
             }
         }
 
-        [HttpGet("Profile/Address/{Type}/{CtmId:decimal}/{AddId:decimal}")]
+        [HttpGet("Profile/Addresses/{Type}/{CtmId:decimal}/{AddId:decimal}")]
         public IActionResult DetailedAddressPage([FromRoute] decimal CtmId, [FromRoute] decimal AddId, [FromRoute] string Type)
         {
             try
@@ -75,6 +76,37 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 ViewBag.PptList = _publicPlaceTypeRepository.GetAll();
 
                 return View("~/Views/Customer/Profile/Address/Detailed/DetailedAddress.cshtml",addInfo);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Sucess = false,
+                    ex.Message
+                });
+            }
+        }
+
+        [HttpGet("Profile/Addresses/{Type}/{CtmId:decimal}")]
+        public IActionResult AddressList([FromRoute] string Type, [FromRoute] decimal CtmId)
+        {
+            try
+            {
+                var ctm = _customerService.Get(CtmId);
+                if (ctm == null) return NotFound("Cliente não foi encontrado");
+
+                List<Address> addresses = new List<Address>();
+
+                if (Type.ToLower() == "delivery")
+                {
+                    addresses = ctm.DadAdds.ToList();
+                }
+                else
+                {
+                    addresses = ctm.BadAdds.ToList();
+                }
+
+                return View("~/Views/Customer/Profile/Address/ListAddresses.cshtml", addresses);
             }
             catch (Exception ex)
             {

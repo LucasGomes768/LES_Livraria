@@ -65,12 +65,12 @@
                         </a>
                     </div>
                     <div class="subsection">
-                        <a href="/customer/profile/address/list/profileAddressList.html">
+                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="delivery" asp-route-CtmId="1">
                             <h3>Entrega</h3>
                         </a>
                     </div>
                     <div class="subsection">
-                        <a href="/customer/profile/address/list/profileAddressList.html">
+                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="billing" asp-route-CtmId="1">
                             <h3>Cobrança</h3>
                         </a>
                     </div>
@@ -128,13 +128,11 @@
                     <div class="title">
                         <h1>Meu Perfil</h1>
                     </div>
-                    <!-- TODO: Cadastro -->
                     <div class="section">
                         <a asp-controller="ProfileInfo" asp-action="ProfileInfo" asp-route-CtmId="1">
                             <h2>Informações</h2>
                         </a>
                     </div>
-                    <!-- TODO: Endereços -->
                     <div class="section">
                         <h2>Endereços</h2>
                     </div>
@@ -143,10 +141,10 @@
                             <a asp-controller="ProfileAddress" asp-action="ResidentialAddress" asp-route-CtmId="1"><h3>Residencial</h3></a>
                         </div>
                         <div class="subsection">
-                            <a href="/customer/profile/address/list/profileAddressList.html"><h3>Entrega</h3></a>
+                            <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="delivery" asp-route-CtmId="1"><h3>Entrega</h3></a>
                         </div>
                         <div class="subsection">
-                            <a href="/customer/profile/address/list/profileAddressList.html"><h3>Cobrança</h3></a>
+                            <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="billing" asp-route-CtmId="1"><h3>Cobrança</h3></a>
                         </div>
                     </div>
                     <!-- TODO: Cartões -->
@@ -157,13 +155,11 @@
                     <div class="section">
                         <a href="/customer/profile/coupons/coupons.html"><h2>Cupons</h2></a>
                     </div>
-                    <!-- TODO: Compras -->
                     <div class="section">
                         <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1">
                             <h2>Compras</h2>
                         </a>
                     </div>
-                    <!-- TODO: Trocas -->
                     <div class="section">
                         <a asp-controller="ProfileExchange" asp-action="ExchangesList" asp-route-CtmId="1">
                             <h2>Trocas</h2>
