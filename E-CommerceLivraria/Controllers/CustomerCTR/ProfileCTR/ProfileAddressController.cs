@@ -106,6 +106,9 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                     addresses = ctm.BadAdds.ToList();
                 }
 
+                ViewBag.Type = Type;
+                ViewBag.CtmId = CtmId;
+
                 return View("~/Views/Customer/Profile/Address/ListAddresses.cshtml", addresses);
             }
             catch (Exception ex)

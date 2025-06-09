@@ -7,100 +7,27 @@
 }
 <div class="addressList">
     <h1>Endereços de entrega</h1>
-    <div class="addRow">
-        <div class="addInstance">
-            <div>
-                <h2>Nº 1111 - Vila Virgínia, Itaquaquecetuba</h2>
-                <h3>CEP 11111-111 - São Paulo, Brasil</h3>
-                <h3>Apartamento, Praça da Fé</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
+    @for (int i = 0; i < Model.Count(); i += 2)
+    {
+        <div class="addRow">
+            
+            @for (int j = i; j < i + 2 && j < Model.Count(); j++)
+            {
+                <div class="addInstance">
+                    <div>
+                        <h2>Nº @Model[j].AddNumber - @Model[j].AddNbh.NbhName, @Model[j].AddCty.CtyName</h2>
+                        <h3>CEP @Model[j].AddCepStyled - @Model[j].AddStt.SttName, @Model[j].AddCtr.CtrName</h3>
+                        <h3>@Model[j].AddRst.RstName, @Model[j].AddPublicPlace</h3>
+                    </div>
+                    <div class="addOptions">
+                        <a asp-controller="ProfileAddress" asp-action="DetailedAddressPage" asp-route-Type="@ViewBag.Type" asp-route-CtmId="@ViewBag.CtmId" asp-route-AddId="@Model[j].AddId">
+                            <button type="button">Visualizar</button>
+                        </a>
+                        <button class="remove">Remover</button>
+                    </div>
+                </div>
+            }
+
         </div>
-        <div class="addInstance">
-            <div>
-                <h2>Nº 222 - Jardim Camila, Mogi das Cruzes</h2>
-                <h3>CEP 22222-222 - São Paulo, Brasil</h3>
-                <h3>Apartamento, Avenida Verde</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
-        </div>
-    </div>
-    <div class="addRow">
-        <div class="addInstance">
-            <div>
-                <h2>Nº 33 - Jardim Ivone, Poá</h2>
-                <h3>CEP 33333-333 - São Paulo, Brasil</h3>
-                <h3>Casa, Aeroporto Melo</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
-        </div>
-        <div class="addInstance">
-            <div>
-                <h2>Nº 4 - Albany, Elmira</h2>
-                <h3>CEP 44444-444 - Nova Iorque, Estados Unidos</h3>
-                <h3>Apartamento, Praça da Fé</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
-        </div>
-    </div>
-    <div class="addRow">
-        <div class="addInstance">
-            <div>
-                <h2>Nº 1111 - Vila Virgínia, Itaquaquecetuba</h2>
-                <h3>CEP 11111-111 - São Paulo, Brasil</h3>
-                <h3>Apartamento, Praça da Fé</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
-        </div>
-        <div class="addInstance">
-            <div>
-                <h2>Nº 222 - Jardim Camila, Mogi das Cruzes</h2>
-                <h3>CEP 22222-222 - São Paulo, Brasil</h3>
-                <h3>Apartamento, Avenida Verde</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
-        </div>
-    </div>
-    <div class="addRow">
-        <div class="addInstance">
-            <div>
-                <h2>Nº 33 - Jardim Ivone, Poá</h2>
-                <h3>CEP 33333-333 - São Paulo, Brasil</h3>
-                <h3>Casa, Aeroporto Melo</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
-        </div>
-        <div class="addInstance">
-            <div>
-                <h2>Nº 4 - Albany, Elmira</h2>
-                <h3>CEP 44444-444 - Nova Iorque, Estados Unidos</h3>
-                <h3>Apartamento, Praça da Fé</h3>
-            </div>
-            <div class="addOptions">
-                <button>Visualizar</button>
-                <button class="remove">Remover</button>
-            </div>
-        </div>
-    </div>
+    }
 </div>
