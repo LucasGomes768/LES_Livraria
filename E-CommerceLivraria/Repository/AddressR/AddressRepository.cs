@@ -36,7 +36,7 @@ namespace E_CommerceLivraria.Repository.AddressR {
             return _dbContext.Addresses.ToList();
         }
 
-        public bool Remove(decimal id) {
+        public bool Delete(decimal id) {
             var add = Get(id);
 
             if (add == null) throw new System.Exception("Um endereço com este ID não foi encontrado");

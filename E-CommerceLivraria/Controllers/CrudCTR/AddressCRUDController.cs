@@ -18,7 +18,7 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
         }
 
         [HttpPost("CRUD/Address/Update")]
-        public IActionResult updateAddress([FromBody] DetailedAddDTO dto)
+        public IActionResult UpdateAddress([FromBody] DetailedAddDTO dto)
         {
             try
             {
@@ -78,6 +78,37 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
                 return StatusCode(500, new
                 {
                     Sucess = false,
+                    ex.Message
+                });
+            }
+        }
+
+        [HttpDelete("CRUD/Address/RemoveFromAccount/{Type}/{CtmId:decimal}/{AddId:decimal}")]
+        public IActionResult deleteAddress([FromRoute] string Type, [FromRoute] decimal CtmId,[FromRoute] decimal AddId)
+        {
+            try
+            {
+                var add = _addressService.Get(AddId);
+                if (add == null) return NotFound("Endereço não foi encontrado");
+
+                var ctm = _customerService.Get(CtmId);
+                if (ctm == null) return NotFound("Cliente não foi encontrado");
+
+                bool result = _addressService.AccountRemove(add, ctm, Type);
+
+                if (!result)
+                    return NotFound("O endereço não foi encontrado na conta");
+
+                return Ok(new
+                {
+                    Sucess = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Success = false,
                     ex.Message
                 });
             }

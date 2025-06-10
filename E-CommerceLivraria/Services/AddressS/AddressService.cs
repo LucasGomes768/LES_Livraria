@@ -59,8 +59,24 @@ namespace E_CommerceLivraria.Services.AddressS {
             return _addressRepository.GetAll();
         }
 
-        public bool Remove(decimal id) {
-            return _addressRepository.Remove(id);
+        public bool AccountRemove(Address add, Customer ctm, string list) {
+            if (list == "billing")
+            {
+                var ctmHas = add.BadCtms.FirstOrDefault(x => x.CtmId == ctm.CtmId);
+                if (ctmHas == null) return false;
+
+                add.BadCtms.Remove(ctm);
+                _addressRepository.Update(add);
+            } else
+            {
+                var ctmHas = add.DadCtms.FirstOrDefault(x => x.CtmId == ctm.CtmId);
+                if (ctmHas == null) return false;
+
+                add.DadCtms.Remove(ctm);
+                _addressRepository.Update(add);
+            }
+
+            return true;
         }
 
         public Address Update(Address address) {
