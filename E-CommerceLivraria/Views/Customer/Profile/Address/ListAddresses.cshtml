@@ -6,7 +6,13 @@
     ViewData["CSSFile"] = "~/css/customer/profile/address/profileAddressList.css";
 }
 <div class="addressList">
-    <h1>Endereços de entrega</h1>
+    @if (ViewBag.Type == "billing")
+    {
+        <h1>Endereços de cobrança</h1>
+    } else
+    {
+        <h1>Endereços de entrega</h1>
+    }
     @for (int i = 0; i < Model.Count(); i += 2)
     {
         <div class="addRow">
@@ -23,7 +29,7 @@
                         <a asp-controller="ProfileAddress" asp-action="DetailedAddressPage" asp-route-Type="@ViewBag.Type" asp-route-CtmId="@ViewBag.CtmId" asp-route-AddId="@Model[j].AddId">
                             <button type="button">Visualizar</button>
                         </a>
-                        <button class="remove">Remover</button>
+                        <button type="button" class="remove" onclick="removeAddress('@ViewBag.Type','@ViewBag.CtmId','@Model[j].AddId')">Remover</button>
                     </div>
                 </div>
             }
@@ -31,3 +37,4 @@
         </div>
     }
 </div>
+<script src="~/js/customer/profile/address/listAddress.js?v=1.0.@(DateTime.Now.Ticks)"></script>

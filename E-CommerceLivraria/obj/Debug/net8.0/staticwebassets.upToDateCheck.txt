@@ -113,3 +113,4 @@ wwwroot\resources\images\icons\icons8-carrinho-24.png
 wwwroot\resources\images\icons\icons8-sair-96.png
 wwwroot\resources\images\icons\send1.svg
 wwwroot\resources\images\icons\user1.svg
+wwwroot\js\customer\profile\address\listAddress.js
