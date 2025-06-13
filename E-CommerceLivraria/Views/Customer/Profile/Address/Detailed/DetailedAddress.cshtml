@@ -12,6 +12,10 @@
     <h1>Cadastro do endereço</h1>
     <div class="updateOpts">
         <button id="updateBtn" class="beginUpdate" type="button" onclick="enableChangesField()">Alterar dados</button>
+        @if (Model.Type.ToLower() != "residential")
+        {
+            <button type="button" class="cancel" onclick="removeAddress('@Model.Type', '@Model.CtmId', '@Model.Id')">Remover</button>
+        }
     </div>
     <form action="">
         <input type="number" id="addId" value="@Model.Id" hidden />
@@ -77,3 +81,4 @@
     </form>
 </div>
 <script src="~/js/customer/profile/address/detailed.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+<script src="~/js/customer/profile/address/listAddress.js?v=1.0.@(DateTime.Now.Ticks)"></script>

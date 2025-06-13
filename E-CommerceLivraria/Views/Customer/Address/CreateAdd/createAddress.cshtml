@@ -4,26 +4,37 @@
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
     ViewData["Title"] = "Adicionar endereço de entrega";
     ViewData["CSSFile"] = "~/css/customer/address/createAddress.css";
+
+    List<PublicplaceType> PptList = ViewBag.PptList;
+    List<ResidenceType> RstList = ViewBag.RstList;
 }
 <br>
 <button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
 <div class="bigBody">
     <div class="addressBody">
-        <h1>Cadastre o novo endereço de entrega</h1>
-        <form asp-controller="CtmPayment" asp-action="CreateAddress">
+        @if (Model.AddToList == "delivery")
+        {
+            <h1>Cadastre o novo endereço de entrega</h1>
+        }
+        else
+        {
+            <h1>Cadastre o novo endereço de cobrança</h1>
+        }
+        <form asp-controller="AddressPages" asp-action="CreateAddress">
             <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
             <input type="text" value="@Model.RedirectTo" asp-for="RedirectTo" hidden />
+            <input type="text" value="@Model.AddToList" asp-for="AddToList" hidden />
 
             <div class="addressData">
                 <div class="line r_gap">
                     <div class="rType">
                         <label for="rType">Tipo de Residência:</label>
-                        <select id="rsType" asp-for="Address.AddRstId" asp-items="@(new SelectList(Model.ResidenceTypes, "RstId", "RstName"))">
+                        <select id="rsType" asp-for="Address.AddRstId" asp-items="@(new SelectList(RstList, "RstId", "RstName"))">
                         </select>
                     </div>
                     <div class="ppType">
                         <label for="ppType">Tipo de Logradouro:</label>
-                        <select id="ppType" asp-for="Address.AddPptId" asp-items="@(new SelectList(Model.PublicplaceTypes, "PptId", "PptName"))">
+                        <select id="ppType" asp-for="Address.AddPptId" asp-items="@(new SelectList(PptList, "PptId", "PptName"))">
                         </select>
                     </div>
                     <div class="pp">
@@ -70,10 +81,17 @@
                     </div>
                 </div>
                 <div class="line associate">
-                    <div class="r_checkbox">
-                        <input type="checkbox" id="associateBtn" asp-for="AddToAccount">
-                        <label for="associateBtn">Associar a minha conta</label>
-                    </div>
+                    @if (Model.AddToAccount == true)
+                    {
+                        <input type="checkbox" id="associateBtn" asp-for="AddToAccount" hidden checked>
+                    }
+                    else
+                    {
+                        <div class="r_checkbox">
+                            <input type="checkbox" id="associateBtn" asp-for="AddToAccount">
+                            <label for="associateBtn">Associar a minha conta</label>
+                        </div>
+                    }
                 </div>
             </div>
             <br>

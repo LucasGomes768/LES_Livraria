@@ -1,3 +1,20 @@
+.addAddress {
+    font-weight: 350;
+    font-size: 1.5vw;
+    border-radius: 5px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    width: 22.5vw;
+
+    transition-duration: 0.2s;
+}
+
+    .addAddress:hover {
+        color: white;
+        background-color: black;
+    }
+
 .addressList {
     display: flex;
     justify-self: center;
@@ -5,7 +22,6 @@
     justify-content: center;
     flex-direction: column;
     gap: 5vh;
-
     width: 80vw;
     height: min-content;
     padding: 1.5%;

@@ -2,6 +2,8 @@
 {
     public enum ECtmAddressCreate
     {
-        PAYMENT
+        PAYMENT,
+        BILLING_PAGE,
+        DELIVERY_PAGE
     }
 }

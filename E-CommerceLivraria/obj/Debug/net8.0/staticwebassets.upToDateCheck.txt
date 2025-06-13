@@ -13,7 +13,6 @@ wwwroot\css\customer\home\home.css
 wwwroot\css\customer\home\product\product.css
 wwwroot\css\customer\home\store\store.css
 wwwroot\css\customer\layout.css
-wwwroot\css\customer\profile\address\profileAddressList.css
 wwwroot\css\customer\profile\exchanges\exchangeList.css
 wwwroot\css\customer\profile\exchanges\requestExchange\exchangeRequest.css
 wwwroot\css\customer\profile\info\info.css
@@ -34,6 +33,7 @@ wwwroot\js\customer\cart\cart.js
 wwwroot\js\customer\chatbot\chatbot.js
 wwwroot\js\customer\layout.js
 wwwroot\js\customer\profile\address\detailed.js
+wwwroot\js\customer\profile\address\listAddress.js
 wwwroot\js\customer\profile\exchanges\exchangeList.js
 wwwroot\js\customer\profile\exchanges\requestExchange\exchangeRequest.js
 wwwroot\js\customer\profile\info\info.js
@@ -113,4 +113,4 @@ wwwroot\resources\images\icons\icons8-carrinho-24.png
 wwwroot\resources\images\icons\icons8-sair-96.png
 wwwroot\resources\images\icons\send1.svg
 wwwroot\resources\images\icons\user1.svg
-wwwroot\js\customer\profile\address\listAddress.js
+wwwroot\css\customer\profile\address\profileAddressList.css

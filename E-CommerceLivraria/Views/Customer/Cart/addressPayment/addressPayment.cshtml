@@ -29,7 +29,7 @@
                     }
                 </select>
             </div>
-            <a asp-controller="CtmPayment" asp-action="CreateAddressPage" asp-route-ctmId="@Model.CtmId" asp-route-origin="@nameof(ECtmAddressCreate.PAYMENT)">
+            <a asp-controller="CtmPayment" asp-action="CreateAddressPage" asp-route-addToList="delivery" asp-route-ctmId="@Model.CtmId" asp-route-origin="@((int)ECtmAddressCreate.PAYMENT)">
                 <button type="button">Adicionar novo endereço</button>
             </a>
         </div>

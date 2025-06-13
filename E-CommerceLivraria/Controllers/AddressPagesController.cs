@@ -8,17 +8,16 @@ using E_CommerceLivraria.Enums.Customer;
 using Microsoft.AspNetCore.Mvc;
 using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 
-namespace E_CommerceLivraria.Controllers.CustomerCTR
+namespace E_CommerceLivraria.Controllers
 {
-    [Route("[controller]")]
-    public class CtmPaymentController : Controller
+    public class AddressPagesController : Controller
     {
         private ICustomerService _customerService;
         private IAddressService _addressService;
         private IResidenceTypeRepository _residenceTypeRepository;
         private IPublicPlaceTypeRepository _publicPlaceTypeRepository;
 
-        public CtmPaymentController(ICustomerService customerService,
+        public AddressPagesController(ICustomerService customerService,
             IAddressService addressService,
             IResidenceTypeRepository residenceTypeRepository,
             IPublicPlaceTypeRepository publicPlaceTypeRepository)
@@ -29,8 +28,8 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR
             _publicPlaceTypeRepository = publicPlaceTypeRepository;
         }
 
-        [HttpGet("AddressCreate/{origin}/{ctmId:decimal}")]
-        public IActionResult CreateAddressPage(decimal ctmId, string origin)
+        [HttpGet("Address/Create/{origin:int}/{addToList}/{ctmId:decimal}")]
+        public IActionResult CreateAddressPage([FromRoute] decimal ctmId, [FromRoute] int origin, [FromRoute] string addToList)
         {
             bool exists = _customerService.Exists(ctmId);
             if (!exists) return NotFound();
@@ -39,9 +38,12 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR
             {
                 CtmId = ctmId,
                 RedirectTo = origin,
-                PublicplaceTypes = _publicPlaceTypeRepository.GetAll(),
-                ResidenceTypes = _residenceTypeRepository.GetAll()
+                AddToList = addToList,
+                AddToAccount = !(origin == (int)ECtmAddressCreate.PAYMENT)
             };
+
+            ViewBag.PptList = _publicPlaceTypeRepository.GetAll();
+            ViewBag.RstList = _residenceTypeRepository.GetAll();
 
             return View("~/Views/Customer/Address/CreateAdd/createAddress.cshtml", cad);
         }
@@ -56,13 +58,22 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR
             var ctm = _customerService.Get(cad.CtmId);
             if (ctm == null) return NotFound();
 
+            ECtmAddressCreate pageRedirect = (ECtmAddressCreate)cad.RedirectTo;
+
             if (cad.AddToAccount)
             {
-                ctm.DadAdds.Add(add);
+                switch (cad.AddToList)
+                {
+                    case "delivery":
+                        ctm.DadAdds.Add(add);
+                        break;
+
+                    case "billing":
+                        ctm.BadAdds.Add(add);
+                        break;
+                }
                 ctm = _customerService.Update(ctm);
             }
-
-            ECtmAddressCreate pageRedirect = (ECtmAddressCreate)Enum.Parse(typeof(ECtmAddressCreate), cad.RedirectTo);
 
             switch (pageRedirect)
             {
@@ -79,6 +90,12 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR
                     };
 
                     return RedirectToAction("DeliveryAddressPage", "Payment", papd);
+
+                case ECtmAddressCreate.BILLING_PAGE:
+                    return RedirectToAction("AddressList", "ProfileAddress", new { Type = "billing", CtmId = ctm.CtmId });
+
+                case ECtmAddressCreate.DELIVERY_PAGE:
+                    return RedirectToAction("AddressList", "ProfileAddress", new { Type = "delivery", CtmId = ctm.CtmId });
 
                 default: return BadRequest();
             }
