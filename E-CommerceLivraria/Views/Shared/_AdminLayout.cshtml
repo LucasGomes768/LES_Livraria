@@ -13,7 +13,7 @@
     <header>
         <div id="headerContent" class="header1">
             <div>
-                <a href="/customer/home/home.html"><h1>NextPage (Adiministrador)</h1></a>
+                <h1>NextPage (Adiministrador)</h1>
             </div>
             <div class="logout">
                 <a asp-controller="Home" asp-action="homePage">
@@ -25,7 +25,7 @@
             <div class="menuItem">
                 <div class="trigger">Cliente</div>
                 <div class="hidden-links">
-                    <a href="/admin/crud/customer/readAll/admAllCustomers.html" class="link">Consultar</a>
+                    <a asp-controller="Customer" asp-action="Read" class="link">Consultar</a>
                     <a href="lol.html" class="link">Cadastrar</a>
                 </div>
             </div>
@@ -35,6 +35,11 @@
                     <a asp-controller="AdmPurchases" asp-action="PurchasesList" class="link">Compras</a>
                     <a href="lol.html" class="link">Trocas</a>
                 </div>
+            </div>
+            <div class="menuItem">
+                <a class="noDrop" asp-controller="Analysis" asp-action="AnalysisPage">
+                    <div class="trigger">Análise</div>
+                </a>
             </div>
         </div>
     </header>

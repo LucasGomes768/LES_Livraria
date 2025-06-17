@@ -1,22 +1,26 @@
-﻿using E_CommerceLivraria.DTO.ExchangesDTO;
+﻿using E_CommerceLivraria.DTO.AnalysisDTO;
+using E_CommerceLivraria.DTO.ExchangesDTO;
 using E_CommerceLivraria.DTO.PaymentDTO;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Repository.PurchaseR;
+using E_CommerceLivraria.Services.StockS;
 using static E_CommerceLivraria.DTO.PaymentDTO.FinishPurchaseRequestDTO;
 
 namespace E_CommerceLivraria.Services.PurchaseS
 {
     public class PurchaseService : IPurchaseService
     {
-        private IPurchaseRepository _purchaseRepository;
-        private IPurchaseItemService _purchaseItemService;
+        private readonly IPurchaseRepository _purchaseRepository;
+        private readonly IStockService _stockService;
+        private readonly IPurchaseItemService _purchaseItemService;
 
-        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService)
+        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService, IStockService stockService)
         {
             _purchaseRepository = purchaseRepository;
             _purchaseItemService = purchaseItemService;
+            _stockService = stockService;
         }
 
         public Purchase Add(PurchaseDataDTO purchaseData)
@@ -101,6 +105,92 @@ namespace E_CommerceLivraria.Services.PurchaseS
         public List<Purchase> GetAll()
         {
             return _purchaseRepository.GetAll();
+        }
+
+        public List<DataSalesDTO> GetSalesByCategories(DateTime start, DateTime end)
+        {
+            var allSales = _purchaseRepository.GetAll();
+            if (allSales.Count < 0) return new List<DataSalesDTO>();
+
+            var datas = new List<DataSalesDTO>();
+
+            foreach (var sale in allSales)
+            {
+                if (sale.PrcDate.Year < start.Year || sale.PrcDate.Year > end.Year)
+                    continue;
+
+                if (sale.PrcDate.Month < start.Month || sale.PrcDate.Month > end.Month)
+                    continue;
+
+                foreach (var item in sale.PurchaseItems)
+                {
+                    if (!(item.PciStatus > (int)EStatus.EM_PROCESSAMENTO && item.PciStatus < (int)EStatus.TROCA_SOLICITADA))
+                        continue;
+
+                    foreach (Category category in item.PciStc.StcBok.BcrBcts)
+                    {
+                        int index = datas.FindIndex(x => x.Name == category.BctName);
+                        if (index == -1)
+                        {
+                            datas.Add(new DataSalesDTO { Name = category.BctName });
+                            index = datas.Count() - 1;
+                        }
+
+                        int timeIndex = datas[index].GetYearDate(sale.PrcDate);
+                        if (timeIndex == -1)
+                        {
+                            DateTime newTime = new DateTime(sale.PrcDate.Year, sale.PrcDate.Month, 1);
+
+                            datas[index].MonthSales.Add(new MonthSales() { Time = newTime });
+                            timeIndex = datas[index].MonthSales.Count() - 1;
+                        }
+
+                        datas[index].MonthSales[timeIndex].TotalSales += item.PciQuantity;
+                        datas[index].MonthSales[timeIndex].TotalProfit += item.PciTotalPrice;
+                    }
+                }
+            }
+
+            return datas;
+        }
+
+        public List<DataSalesDTO> GetSalesByProduct(DateTime start, DateTime end)
+        {
+            var allSales = _purchaseRepository.GetAll();
+            if (allSales.Count() < 0) return new List<DataSalesDTO>();
+
+            var datas = new List<DataSalesDTO>();
+
+            foreach (var sale in allSales)
+            {
+                if (sale.PrcDate.Year < start.Year || sale.PrcDate.Year > end.Year)
+                    continue;
+
+                if (sale.PrcDate.Month < start.Month || sale.PrcDate.Month > end.Month)
+                    continue;
+
+                foreach (var item in sale.PurchaseItems)
+                {
+                    if (!(item.PciStatus > (int)EStatus.EM_PROCESSAMENTO && item.PciStatus < (int)EStatus.TROCA_SOLICITADA))
+                        continue;
+
+                    int index = datas.FindIndex(x => x.Id == item.PciStcId);
+                    if (index == -1)
+                    {
+                        datas.Add(new DataSalesDTO { Id = item.PciStcId, Name = item.PciStc.StcBok.BokTitle });
+                        index = datas.Count() - 1;
+                        datas[index].MonthSales.Add(new MonthSales()
+                        {
+                            Time = new DateTime(2000, 1, 1)
+                        });
+                    }
+
+                    datas[index].MonthSales[0].TotalSales += item.PciQuantity;
+                    datas[index].MonthSales[0].TotalProfit += item.PciTotalPrice;
+                }
+            }
+
+            return datas;
         }
 
         public Purchase Update(Purchase purchase)

@@ -65,6 +65,7 @@ namespace E_CommerceLivraria.Repository.PurchaseR
                 .Include(x => x.PurchaseItems)
                     .ThenInclude(x => x.PciStc)
                         .ThenInclude(x => x.StcBok)
+                            .ThenInclude(x => x.BcrBcts)
                 .Include(x => x.CreditCards)
                     .ThenInclude(x => x.CcpCrd)
                 .ToList();
