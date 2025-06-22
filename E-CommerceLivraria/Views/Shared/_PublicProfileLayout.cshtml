@@ -151,9 +151,10 @@
                     <div class="section">
                         <a href="/customer/profile/card/list/cardList.html"><h2>Cartões</h2></a>
                     </div>
-                    <!-- TODO: Cupons -->
                     <div class="section">
-                        <a href="/customer/profile/coupons/coupons.html"><h2>Cupons</h2></a>
+                        <a asp-controller="ProfileExchangeCoupons" asp-action="CouponsList" asp-route-CtmId="1">
+                            <h2>Cupons</h2>
+                        </a>
                     </div>
                     <div class="section">
                         <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1">

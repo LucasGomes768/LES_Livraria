@@ -1,0 +1,25 @@
+﻿@using E_CommerceLivraria.Enums
+@model Customer
+@{
+    Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
+    ViewData["Title"] = "Cupons de troca";
+    ViewData["CSSFile"] = "~/css/customer/profile/coupons/coupons.css";
+    var xCoupons = Model.ExchangeCoupons.ToList();
+}
+<div class="couponsList">
+    <h1>Cupons</h1>
+    @for (int i = 0; i < xCoupons.Count(); i += 3)
+    {
+        <div class="cpnRow">
+            @for (int y = i; y < i + 3 || y < xCoupons.Count(); y++)
+            {
+                <div class="cpnInstance">
+                    <div>
+                        <h2>R$@(xCoupons[y].Xcp.CpnValue.ToString("F2"))</h2>
+                        <h3>Gerado em @(xCoupons[y].Xcp.CpnDateGen.ToString("d"))</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

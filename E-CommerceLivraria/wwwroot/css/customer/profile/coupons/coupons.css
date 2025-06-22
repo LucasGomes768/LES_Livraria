@@ -1,0 +1,48 @@
+@import url('/customer/profile/profile.css');
+
+.couponsList {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vh;
+
+    width: 80vw;
+    height: min-content;
+    padding: 1.5%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+    .couponsList h1 {
+        text-align: center;
+        font-weight: 350;
+    }
+
+.cpnRow {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+}
+
+.cpnInstance {
+    padding: 1%;
+    padding-bottom: 0%;
+    width: 22.5%;
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .cpnInstance h2 {
+        font-weight: 350;
+        font-size: 1.65vw;
+    }
+
+    .cpnInstance h3 {
+        font-weight: 350;
+        font-size: 1.15vw;
+    }
