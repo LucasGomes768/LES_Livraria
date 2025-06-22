@@ -62,5 +62,18 @@ namespace E_CommerceLivraria.Services.StockS {
 
             return infos;
         }
+
+        public Stock AddToStock(Stock stock, decimal amountAdded, bool addBlocked = false)
+        {
+            if (!addBlocked)
+            {
+                stock.StcAvailableAmount += amountAdded;
+            } else
+            {
+                stock.StcBlockedAmount += amountAdded;
+            }
+
+            return _stockRepository.Update(stock);
+        }
     }
 }

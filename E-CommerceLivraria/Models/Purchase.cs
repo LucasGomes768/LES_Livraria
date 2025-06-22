@@ -34,7 +34,20 @@ public partial class Purchase
     {
         get
         {
-            return PurchaseItems.Sum(x => x.PciTotalPrice);
+            var result = PurchaseItems.Where(x => (x.PciStatus < (int)EStatus.EM_TROCA));
+
+            return result.Sum(x => x.PciTotalPrice);
+        }
+    }
+
+    [NotMapped]
+    public decimal PrcExchangeTotalValue
+    {
+        get
+        {
+            var result = PurchaseItems.Where(x => !(x.PciStatus >= (int)EStatus.COMPRA_REPROVADA && x.PciStatus < (int)EStatus.TROCA_SOLICITADA));
+
+            return result.Sum(x => x.PciTotalPrice);
         }
     }
 

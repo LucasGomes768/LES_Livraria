@@ -158,6 +158,33 @@ h1 {
         border-bottom: 1px solid var(--gray1);
     }
 
+.itemsSelect {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+    .itemsSelect button {
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: white;
+        color: black;
+        transition-duration: 0.2s;
+    }
+
+        .itemsSelect button:disabled {
+            border: 2px solid var(--darkourple);
+            border-radius: 5px;
+            background-color: var(--darkourple);
+            color: white;
+        }
+
+        .itemsSelect button:hover:not(:disabled) {
+            background-color: black;
+            color: white;
+        }
+
 .items {
     display: flex;
     justify-self: center;
@@ -257,3 +284,41 @@ h1 {
                     color: white;
                     background-color: black;
                 }
+
+.backgroundPopUp {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+.stockFate {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1%;
+    padding: 1%;
+    width: 33vw;
+    height: 25vh;
+    background-color: var(--gray2);
+    border: 5px solid var(--gray1);
+    border-radius: 10px;
+}
+
+    .stockFate h1 {
+        font-weight: 350;
+        font-size: 2vw;
+    }
+
+    .stockFate .returnOptions {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 2%;
+    }

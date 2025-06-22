@@ -42,26 +42,29 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
 
             var apl = new AdmPurchaseListData()
             {
-                Purchases = purchases.OrderByDescending(x => x.PrcDate).ToList(),
-                FilterOptions = filterOptions,
-                FilterAction = "PurchasesListFilter"
+                Purchases = purchases.OrderByDescending(x => x.PrcDate).ToList()
             };
+
+            ViewBag.FilterOptions = filterOptions;
+            ViewBag.FilterController = "AdmPurchases";
+            ViewBag.FilterAction = "PurchasesListFilter";
+            ViewBag.DetailedAction = "DetailedPurchase";
+
             return View("~/Views/Admin/ctmRequests/purchases/Purchases.cshtml", apl);
         }
 
-        [HttpGet]
         public IActionResult PurchasesListFilter(AdmPurchaseListData apl)
         {
             var purchases = _purchaseService.GetAll()
                 .Where(x => (
                     x.PrcStatus < (int)EStatus.TROCA_SOLICITADA)
                     && (x.PrcStatus >= (int)EStatus.EM_PROCESSAMENTO)
-                ).ToList();
+                );
 
             if (apl.StatusId != null)
             {
                 purchases = purchases.Where(x => x.PurchaseItems
-                    .Any(item => item.PciStatus == apl.StatusId.Value)).ToList();
+                    .Any(item => item.PciStatus == apl.StatusId.Value));
             }
 
 
@@ -80,28 +83,28 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
 
             var aplNew = new AdmPurchaseListData()
             {
-                Purchases = purchases,
-                FilterOptions = filterOptions,
-                StatusId = apl.StatusId,
-                FilterAction = "PurchasesListFilter"
+                Purchases = purchases.OrderByDescending(x => x.PrcDate).ToList(),
+                StatusId = apl.StatusId
             };
+
+            ViewBag.FilterOptions = filterOptions;
+            ViewBag.FilterController = "AdmPurchases";
+            ViewBag.FilterAction = "PurchasesListFilter";
+            ViewBag.DetailedAction = "DetailedPurchase";
 
             return View("~/Views/Admin/ctmRequests/purchases/Purchases.cshtml", aplNew);
         }
 
-        // PEDIDOS DE TROCA
-        //[HttpGet] IActionResult ExchangeList()
-        //{
-
-        //}
-
-        [HttpGet("AdmPurchases/DetailedPurchase/{id:decimal}")]
+        [HttpGet("Admin/Purchases/{id:decimal}")]
         public IActionResult DetailedPurchase([FromRoute] decimal id)
         {
             try
             {
                 var purchase = _purchaseService.Get(id);
                 if (purchase == null) throw new Exception("Compra não foi encontrada");
+
+                ViewBag.ExchangeItems = purchase.PurchaseItems.Where(x => !(x.PciStatus <= (int)EStatus.ENTREGUE)).ToList();
+                purchase.PurchaseItems = purchase.PurchaseItems.Where(x => x.PciStatus <= (int)EStatus.ENTREGUE).ToList();
 
                 return View("~/Views/Admin/ctmRequests/dtlPurchase/dtlPurchase.cshtml", purchase);
             }
@@ -117,9 +120,9 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             try
             {
                 var purchase = _purchaseService.Get(updateStatusDTO.PrcId);
-                if (purchase == null) throw new Exception("Compra não foi encontrada");
+                if (purchase == null) return NotFound("Compra não foi encontrada");
 
-                purchase = _purchaseService.UpdateStatus(purchase, (EStatus)updateStatusDTO.Status);
+                purchase = _purchaseService.UpdatePurchaseStatus(purchase, (EStatus)updateStatusDTO.Status);
 
                 return Ok(new
                 {

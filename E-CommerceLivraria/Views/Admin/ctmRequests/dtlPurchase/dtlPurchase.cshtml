@@ -7,6 +7,7 @@
     ViewData["CSSFile"] = "~/css/admin/ctmRequests/dtlPurchase/dtlPurchase.css";
 
     List<PurchaseItem> purchaseItems = Model.PurchaseItems.ToList();
+    List<PurchaseItem> exchangeItems = ViewBag.ExchangeItems;
     EStatus status = (EStatus)Model.PrcStatus;
 }
 <div class="purchaseBody">
@@ -18,13 +19,6 @@
             <div class="buttons">
                 <button class="btn btn-success" onclick="updateStatusAll(@Model.PrcId, @((int)EStatus.COMPRA_APROVADA))">Aprovar</button>
                 <button class="btn btn-danger" onclick="updateStatusAll(@Model.PrcId, @((int)EStatus.COMPRA_REPROVADA))">Recusar</button>
-            </div>
-        }
-        else if (status == EStatus.TROCA_SOLICITADA)
-        {
-            <div class="buttons">
-                <button class="btn btn-success" onclick="updateStatusAll(@Model.PrcId, @((int)EStatus.EM_TROCA))">Aprovar</button>
-                <button class="btn btn-danger" onclick="updateStatusAll(@Model.PrcId, @((int)EStatus.TROCA_REPROVADA))">Recusar</button>
             </div>
         }
         else if (status != EStatus.ENTREGUE && status != EStatus.TROCADO && status != EStatus.COMPRA_REPROVADA && status != EStatus.TROCA_REPROVADA)
@@ -49,7 +43,7 @@
                     <input type="text" value="@Model.PrcCtm.CtmName" style="width: 20vw;" readonly>
                 </div>
                 <div class="field">
-                    <label for="update">Última atualização:</label>
+                    <label for="update">Realizada em:</label>
                     <input type="date" id="update" value="@Model.PrcDate.ToString("yyyy-MM-dd")" readonly>
                 </div>
                 <div class="field">
@@ -183,7 +177,14 @@
     </div>
 </div>
 <br>
-<div class="items">
+@if (exchangeItems.Any() && exchangeItems.Count() > 0)
+{
+    <div class="itemsSelect">
+        <button class="itemsSelectBtn" disabled onclick="showItemSection('purchaseItems', this)">Itens da compra</button>
+        <button class="itemsSelectBtn" disabled onclick="showItemSection('exchangeItems', this)">Itens da troca</button>
+    </div>
+}
+<div class="items" id="purchaseItems">
     <h1>Itens da compra</h1>
     @for (int i = 0; i < purchaseItems.Count; i += 2)
     {
@@ -224,5 +225,43 @@
         </div>
     }
 </div>
+@if (exchangeItems.Any() && exchangeItems.Count > 0)
+{
+    <div class="items" id="exchangeItems">
+        <h1>Itens da troca</h1>
+        @for (int i = 0; i < exchangeItems.Count; i += 2)
+        {
+            <div class="itemsRow">
+                @for (int y = i; (y < i + 2) && (y < exchangeItems.Count); y++)
+                {
+                    EStatus itemStatus = (EStatus)exchangeItems[y].PciStatus;
+                    <div class="item">
+                        <div class="imgDiv">
+                            <img src="@Url.Content(exchangeItems[y].PciStc.StcBok.BokImgAddress)" alt="">
+                        </div>
+                        <div class="txtInfo">
+                            <div class="bookInfo">
+                                <div class="title">
+                                    <h1>@exchangeItems[y].PciStc.StcBok.BokTitle</h1>
+                                </div>
+                                <div class="quantity">
+                                    <h2>Unidades: @exchangeItems[y].PciQuantity</h2>
+                                </div>
+                                <div class="total">
+                                    <h2>Preço total: R$@exchangeItems[y].PciTotalPrice.ToString("F2")</h2>
+                                </div>
+                            </div>
+                            <div class="purchaseStatus">
+                                <div class="status" style="margin-top: 2%;">
+                                    <h2>Status: @(itemStatus.ToString().Replace('_', ' '))</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
 <br>
 <script src="~/js/admin/ctmRequests/dtlPurchase/dtlPurchase.js?v=1.0.@(DateTime.Now.Ticks)"></script>

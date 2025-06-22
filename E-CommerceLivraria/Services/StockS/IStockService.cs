@@ -6,6 +6,7 @@ namespace E_CommerceLivraria.Services.StockS {
         public Stock? Get(decimal id);
         public Stock? GetByBook(decimal id);
         public List<Stock> GetAll();
+        public Stock AddToStock(Stock stock, decimal amountAdded, bool addBlocked = false);
         public Stock BlockItems(Stock stock, decimal amountBlocked);
         public List<RelevantBookInfoAI> GetInfoForAI();
     }

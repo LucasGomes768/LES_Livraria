@@ -5,6 +5,8 @@ using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Repository.PurchaseR;
+using E_CommerceLivraria.Services.CouponS;
+using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.StockS;
 using static E_CommerceLivraria.DTO.PaymentDTO.FinishPurchaseRequestDTO;
 
@@ -15,12 +17,16 @@ namespace E_CommerceLivraria.Services.PurchaseS
         private readonly IPurchaseRepository _purchaseRepository;
         private readonly IStockService _stockService;
         private readonly IPurchaseItemService _purchaseItemService;
+        private readonly IExchangeCouponService _exchangeCouponService;
+        private readonly ICustomerService _customerService;
 
-        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService, IStockService stockService)
+        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService, IStockService stockService, IExchangeCouponService exchangeCouponService, ICustomerService customerService)
         {
             _purchaseRepository = purchaseRepository;
             _purchaseItemService = purchaseItemService;
             _stockService = stockService;
+            _exchangeCouponService = exchangeCouponService;
+            _customerService = customerService;
         }
 
         public Purchase Add(PurchaseDataDTO purchaseData)
@@ -198,13 +204,43 @@ namespace E_CommerceLivraria.Services.PurchaseS
             return _purchaseRepository.Update(purchase);
         }
 
-        public Purchase UpdateStatus(Purchase purchase, EStatus newStatus)
+        public Purchase UpdateExchangeStatus(Purchase purchase, EStatus newStatus, bool returnStock)
+        {
+            if ((EStatus)purchase.PrcStatusExchange == null) throw new Exception("Não há itens para troca");
+
+            if ((EStatus)purchase.PrcStatusExchange == EStatus.TROCA_REPROVADA) throw new Exception("Esse pedido de troca já foi recusado");
+
+            var tempList = purchase.PurchaseItems.Where(x => x.PciStatus > (int)EStatus.ENTREGUE && (x.PciStatus < (int)newStatus || newStatus == EStatus.TROCA_REPROVADA)).ToList();
+            if (tempList.Count < 1) throw new Exception("Nenhum item encontrado");
+
+            foreach (var item in tempList)
+            {
+                if (returnStock && newStatus == EStatus.EM_TROCA)
+                {
+                    var stock = _stockService.Get(item.PciStcId);
+                    _stockService.AddToStock(stock, item.PciQuantity);
+                }
+
+                _purchaseItemService.UpdateStatus(item, newStatus);
+            }
+
+            if (newStatus == EStatus.EM_TROCA)
+            {
+                var totalValue = tempList.Sum(x => x.PciTotalPrice);
+                _exchangeCouponService.AddToCtm(purchase.PrcCtm, totalValue);
+            }
+
+            return purchase;
+        }
+
+        public Purchase UpdatePurchaseStatus(Purchase purchase, EStatus newStatus)
         {
             if ((EStatus)purchase.PrcStatus == EStatus.COMPRA_REPROVADA) throw new Exception("Essa compra já foi recusada");
 
-            if ((EStatus)purchase.PrcStatus == EStatus.TROCA_REPROVADA) throw new Exception("Esse pedido de troca já foi reprovado");
+            if ((EStatus)purchase.PrcStatus >= EStatus.TROCA_SOLICITADA) throw new Exception("Isso não é um pedido de compra");
 
-            var tempList = purchase.PurchaseItems.ToList();
+            var tempList = purchase.PurchaseItems.Where(x => (x.PciStatus >= (int)EStatus.EM_PROCESSAMENTO && x.PciStatus <= (int)EStatus.ENTREGUE) && (x.PciStatus < (int)newStatus || newStatus == EStatus.COMPRA_REPROVADA)).ToList();
+            if (tempList.Count < 1) throw new Exception("Nenhum item encontrado");
 
             foreach (PurchaseItem item in tempList)
             {

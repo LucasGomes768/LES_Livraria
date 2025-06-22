@@ -1,0 +1,154 @@
+﻿@using E_CommerceLivraria.Models
+@using E_CommerceLivraria.Enums
+@model Purchase
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Pedido de troca";
+    ViewData["CSSFile"] = "~/css/admin/ctmRequests/dtlPurchase/dtlPurchase.css";
+
+    List<PurchaseItem> purchaseItems = Model.PurchaseItems.ToList();
+    List<PurchaseItem> exchangeItems = ViewBag.ExchangeItems;
+    EStatus status = (EStatus)Model.PrcStatusExchange;
+}
+<div class="purchaseBody">
+    <h1>Cadastro do pedido de troca</h1>
+    <div class="importantSection">
+        <h2>Status: @(status.ToString().Replace('_', ' '))</h2>
+        @if (status == EStatus.TROCA_SOLICITADA)
+        {
+            <div class="buttons">
+                <button class="btn btn-success" onclick="changeExcPopDisplay()">Aprovar</button>
+                <button class="btn btn-danger" onclick="updateStatusAll(@Model.PrcId, @((int)EStatus.TROCA_REPROVADA), false)">Recusar</button>
+            </div>
+        }
+        else if (status != EStatus.TROCADO && status != EStatus.TROCA_REPROVADA)
+        {
+            <div class="buttons">
+                <button class="btn btn-success" onclick="updateStatusAll(@Model.PrcId, @(((int)status + 1)), false)">Alterar status</button>
+            </div>
+        }
+    </div>
+    <br>
+    <div class="dataBts">
+        <button type="button" onclick="showOneSection('dadosGerais')">Dados gerais</button>
+        <button type="button" onclick="showOneSection('address')">Endereço</button>
+    </div>
+    <div class="dataSectionJs" id="dadosGerais">
+        <div class="section">
+            <h2>Dados gerais</h2>
+            <div class="line spaceEven">
+                <div class="field">
+                    <label for="name">Nome do cliente:</label>
+                    <input type="text" value="@Model.PrcCtm.CtmName" style="width: 20vw;" readonly>
+                </div>
+                <div class="field">
+                    <label for="update">Realizada em:</label>
+                    <input type="date" id="update" value="@Model.PrcDate.ToString("yyyy-MM-dd")" readonly>
+                </div>
+                <div class="field">
+                    <label for="price">Valor total dos itens:</label>
+                    <input type="text" id="price" value="R$@Model.PrcExchangeTotalValue" style="width: 8.5vw;" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dataSectionJs" id="address">
+        <div class="section">
+            <h2>Endereço de entrega</h2>
+            <div class="line spaceBet">
+                <div class="field">
+                    <label for="rsType">Tipo de residência:</label>
+                    <input type="text" value="@Model.PrcAdd.AddRst.RstName" style="width: 10vw;" readonly />
+                </div>
+                <div class="field">
+                    <label for="ppType">Tipo de logradouro:</label>
+                    <input type="text" value="@Model.PrcAdd.AddPpt.PptName" style="width: 10vw;" readonly />
+                </div>
+                <div class="field">
+                    <label for="publicPlace">Logradouro:</label>
+                    <input type="text" id="publicPlace" style="width: 20vw;" readonly value="@Model.PrcAdd.AddPublicPlace">
+                </div>
+                <div class="field">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" maxlength="9" style="width: 6vw;" value="@Model.PrcAdd.AddCepStyled" readonly>
+                </div>
+                <div class="field">
+                    <label for="num">Nº:</label>
+                    <input type="number" class="noStep" style="width: 3.2vw;" id="num" min="1" max="9999" readonly value="@Model.PrcAdd.AddNumber.ToString()">
+                </div>
+            </div>
+            <div class="line spaceBet">
+                <div class="field">
+                    <label for="neighborhood">Bairro:</label>
+                    <input type="text" id="neighborhood" readonly value="@Model.PrcAdd.AddNbh.NbhName">
+                </div>
+                <div class="field">
+                    <label for="city">Cidade:</label>
+                    <input type="text" id="city" readonly value="@Model.PrcAdd.AddNbh.NbhCty.CtyName">
+                </div>
+                <div class="field">
+                    <label for="state">Estado:</label>
+                    <input type="text" id="state" readonly value="@Model.PrcAdd.AddNbh.NbhCty.CtyStt.SttName">
+                </div>
+                <div class="field">
+                    <label for="country">País:</label>
+                    <input type="text" id="country" readonly value="@Model.PrcAdd.AddNbh.NbhCty.CtyStt.SttCtr.CtrName">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="items" id="exchangeItems">
+    <h1>Itens da troca</h1>
+    @for (int i = 0; i < exchangeItems.Count; i += 2)
+    {
+        <div class="itemsRow">
+            @for (int y = i; (y < i + 2) && (y < exchangeItems.Count); y++)
+            {
+                EStatus itemStatus = (EStatus)exchangeItems[y].PciStatus;
+                <div class="item">
+                    <div class="imgDiv">
+                        <img src="@Url.Content(exchangeItems[y].PciStc.StcBok.BokImgAddress)" alt="">
+                    </div>
+                    <div class="txtInfo">
+                        <div class="bookInfo">
+                            <div class="title">
+                                <h1>@exchangeItems[y].PciStc.StcBok.BokTitle</h1>
+                            </div>
+                            <div class="quantity">
+                                <h2>Unidades: @exchangeItems[y].PciQuantity</h2>
+                            </div>
+                            <div class="total">
+                                <h2>Preço total: R$@exchangeItems[y].PciTotalPrice.ToString("F2")</h2>
+                            </div>
+                        </div>
+                        <div class="purchaseStatus">
+                            <div class="status" style="margin-top: 2%;">
+                                <h2>Status: @(itemStatus.ToString().Replace('_', ' '))</h2>
+                            </div>
+                            @if (itemStatus != EStatus.ENTREGUE && itemStatus != EStatus.TROCADO && itemStatus != EStatus.COMPRA_REPROVADA && itemStatus != EStatus.TROCA_REPROVADA && itemStatus != EStatus.TROCA_SOLICITADA)
+                            {
+                                <div class="button">
+                                    <button type="button" onclick="updateItemStatus(@exchangeItems[y].PciPrcId, @exchangeItems[y].PciStcId, @(((int)exchangeItems[y].PciStatus) + 1))">Alterar status</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+<div class="backgroundPopUp" id="ExcPopUp">
+    <div class="stockFate">
+        <h1>Escolha o que será feito com os itens da troca:</h1>
+        <div class="returnOptions">
+            <button type="button" class="btn btn-success" onclick="updateStatusAll(@Model.PrcId, @((int)EStatus.EM_TROCA), true)">Retornar ao estoque</button>
+            <button class="btn btn-warning" onclick="updateStatusAll(@Model.PrcId, @((int)EStatus.EM_TROCA), false)">Descartar</button>
+            <button type="button" onclick="changeExcPopDisplay()" class="btn btn-danger">Cancelar troca</button>
+        </div>
+    </div>
+</div>
+<br>
+<script src="~/js/admin/ctmRequests/dtlExchange/dtlExchange.js?v=1.0.@(DateTime.Now.Ticks)"></script>

@@ -5,13 +5,18 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewData["Title"] = "Compras";
     ViewData["CSSFile"] = "~/css/admin/ctmRequests/purchases/purchases.css";
+
+    var filterOptions = ViewBag.FilterOptions;
+    string filterController = ViewBag.FilterController;
+    string filterAction = ViewBag.FilterAction;
+    string detailedAction = ViewBag.DetailedAction;
 }
 <div class="purchasesBody">
     <div class="filter">
         <div class="field">
-            <form method="get" asp-controller="AdmPurchases" asp-action="@Model.FilterAction" id="statusForm">
+            <form method="get" asp-controller="@filterController" asp-action="@filterAction" id="statusForm">
                 <label for="status">Status das compras</label>
-                <select id="status" asp-for="StatusId" onchange="this.form.submit()" asp-items="@Model.FilterOptions">
+                <select id="status" asp-for="StatusId" onchange="this.form.submit()" asp-items="@filterOptions">
                     <option value="" selected>Qualquer status</option>
                 </select>
             </form>
@@ -26,15 +31,25 @@
                     <th>Visualizar</th>
                     <th>Cliente</th>
                     <th>Preço</th>
-                    <th>Última vez atualizado:</th>
+                    <th>Realizado em:</th>
                 </tr>
                 @foreach (Purchase prc in Model.Purchases)
                 {
                     <tr>
-                        <td>@(((EStatus)(int)prc.PrcStatus).ToString().Replace('_',' '))</td>
-                        <td><a asp-controller="AdmPurchases" asp-action="DetailedPurchase" asp-route-id="@prc.PrcId"><button type="button">+</button></a></td>
+                        @if (filterController == "AdmPurchases")
+                        {
+                            <td>@(((EStatus)(int)prc.PrcStatus).ToString().Replace('_', ' '))</td>
+                        }else{
+                            <td>@(((EStatus)(int)prc.PrcStatusExchange).ToString().Replace('_', ' '))</td>
+                        }
+                        <td><a asp-controller="@filterController" asp-action="@detailedAction" asp-route-id="@prc.PrcId"><button type="button">+</button></a></td>
                         <td>@prc.PrcCtm.CtmName</td>
-                        <td>R$@prc.PrcTotalPrice</td>
+                        @if (filterController == "AdmPurchases")
+                        {
+                            <td>R$@prc.PrcTotalPrice</td>
+                        }else{
+                            <td>R$@prc.PrcExchangeTotalValue</td>
+                        }
                         <td>@prc.PrcDate.ToShortDateString()</td>
                     </tr>
                 }

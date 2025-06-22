@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTO\ExchangesDTO\ExchangeReturnedItemsDTO.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\js\customer\cart\addressPay\methodPay\cardsPayment.js" />
   </ItemGroup>
 

@@ -5,5 +5,6 @@
         public int PrcId { get; set; }
         public int? StcId { get; set; }
         public int Status { get; set; }
+        public bool ReturnStock { get; set; } = false;
     }
 }

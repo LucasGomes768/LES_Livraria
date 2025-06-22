@@ -3,6 +3,7 @@ using E_CommerceLivraria.Extra;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.AddressR.RegionsR;
 using E_CommerceLivraria.Repository.CustomerR;
+using E_CommerceLivraria.Repository.CustomerR.CouponR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
 using E_CommerceLivraria.Repository.CustomerR.TelephoneR;
 using E_CommerceLivraria.Repository.PurchaseR;
@@ -14,6 +15,7 @@ using E_CommerceLivraria.Repository.StockR.BookR.PricingGroupR;
 using E_CommerceLivraria.Repository.StockR.BookR.PublisherR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.AddressS.RegionsS;
+using E_CommerceLivraria.Services.CouponS;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
 using E_CommerceLivraria.Services.PurchaseS;
@@ -47,6 +49,9 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IGenderRepository, GenderRepository>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<ICartService, CartService>();
+
+builder.Services.AddScoped<IExchangeCouponRepository, ExchangeCouponRepository>();
+builder.Services.AddScoped<IExchangeCouponService, ExchangeCouponService>();
 
 builder.Services.AddScoped<ITelephoneRepository, TelephoneRepository>();
 builder.Services.AddScoped<ITelephoneService, TelephoneService>();

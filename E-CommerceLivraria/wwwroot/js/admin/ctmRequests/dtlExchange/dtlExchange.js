@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     showOneSection("dadosGerais");
-    showItemSection("purchaseItems", undefined);
+    /*showItemSection("exchangeItems", undefined);*/
 })
 
 function showOneSection(section) {
@@ -12,31 +12,38 @@ function showOneSection(section) {
 
     document.getElementById(section).style.display = "block"
 }
-function showItemSection(section, button) {
-    const sections = document.getElementsByClassName("items");
-    const buttons = document.getElementsByClassName("itemsSelectBtn");
 
-    for (let i = 0; i < sections.length; i++) {
-        sections.item(i).style.display = "none";
+//function showItemSection(section, button) {
+//    const sections = document.getElementsByClassName("items");
+//    const buttons = document.getElementsByClassName("itemsSelectBtn");
 
-        if (buttons.length < 1 || button == undefined) continue;
+//    for (let i = 0; i < sections.length; i++) {
+//        sections.item(i).style.display = "none";
 
-        buttons.item(i).disabled = false;
-    }
+//        if (buttons.length < 1 || button == undefined) continue;
 
-    document.getElementById(section).style.display = "flex";
-    button.disabled = true;
+//        buttons.item(i).disabled = false;
+//    }
+
+//    document.getElementById(section).style.display = "flex";
+//    button.disabled = true;
+//}
+
+function changeExcPopDisplay() {
+    const popUp = document.getElementById("ExcPopUp")
+    popUp.style.display = (popUp.style.display != "flex" ? "flex" : "none")
 }
 
-function updateStatusAll(id, newStatus) {
+function updateStatusAll(id, newStatus, returnStock = false) {
     const request = new XMLHttpRequest()
-    request.open('PUT', '/AdmPurchases/UpdatePurchaseStatus', false)
+    request.open('PUT', '/Admin/Exchanges/UpdateExchangeStatus', false)
     request.setRequestHeader('Content-Type', 'application/json')
 
     const data = {
         PrcId: id,
         StcId: null,
-        Status: newStatus
+        Status: newStatus,
+        ReturnStock: returnStock
     }
 
     try {
