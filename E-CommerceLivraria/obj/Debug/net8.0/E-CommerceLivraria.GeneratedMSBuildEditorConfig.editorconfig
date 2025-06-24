@@ -64,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ2FydFxDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/CreditCard/createCreditCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3JlZGl0Q2FyZFxjcmVhdGVDcmVkaXRDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Home/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSG9tZVxIb21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -86,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Profile/Coupons/CouponsList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUHJvZmlsZVxDb3Vwb25zXENvdXBvbnNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Profile/CreditCards/CreditCardsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUHJvZmlsZVxDcmVkaXRDYXJkc1xDcmVkaXRDYXJkc0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Customer/Profile/Exchanges/Detailed/DetailedExchange.cshtml]

@@ -13,6 +13,7 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public Customer UpdateBasicInfo(InfoDTO info);
         public Customer UpdatePassword(InfoDTO info);
         public bool Exists(decimal id);
+        public Customer addCreditCard(CreditCard creditCard, Customer customer);
         public void ClearCart(Customer customer);
         public RelevantCtmInfoAI GetInfoForChatbot(decimal id);
     }

@@ -10,12 +10,14 @@ wwwroot\css\customer\address\createAddress.css
 wwwroot\css\customer\cart\addressPay\addressPayment.css
 wwwroot\css\customer\cart\addressPay\methodPay\methodPayment.css
 wwwroot\css\customer\cart\cart.css
+wwwroot\css\customer\creditCards\addCard.css
 wwwroot\css\customer\home\home.css
 wwwroot\css\customer\home\product\product.css
 wwwroot\css\customer\home\store\store.css
 wwwroot\css\customer\layout.css
 wwwroot\css\customer\profile\address\profileAddressList.css
 wwwroot\css\customer\profile\coupons\coupons.css
+wwwroot\css\customer\profile\creditCards\cardList.css
 wwwroot\css\customer\profile\exchanges\exchangeList.css
 wwwroot\css\customer\profile\exchanges\requestExchange\exchangeRequest.css
 wwwroot\css\customer\profile\info\info.css
@@ -40,6 +42,7 @@ wwwroot\js\customer\layout.js
 wwwroot\js\customer\profile\address\detailed.js
 wwwroot\js\customer\profile\address\listAddress.js
 wwwroot\js\customer\profile\coupons\coupons.js
+wwwroot\js\customer\profile\creditCards\cardList.js
 wwwroot\js\customer\profile\exchanges\exchangeList.js
 wwwroot\js\customer\profile\exchanges\requestExchange\exchangeRequest.js
 wwwroot\js\customer\profile\info\info.js

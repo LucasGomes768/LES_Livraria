@@ -2,6 +2,7 @@ using E_CommerceLivraria.Data;
 using E_CommerceLivraria.Extra;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.AddressR.RegionsR;
+using E_CommerceLivraria.Repository.CreditCardR;
 using E_CommerceLivraria.Repository.CustomerR;
 using E_CommerceLivraria.Repository.CustomerR.CouponR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
@@ -16,6 +17,7 @@ using E_CommerceLivraria.Repository.StockR.BookR.PublisherR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.AddressS.RegionsS;
 using E_CommerceLivraria.Services.CouponS;
+using E_CommerceLivraria.Services.CreditCardS;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
 using E_CommerceLivraria.Services.PurchaseS;
@@ -89,6 +91,11 @@ builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 builder.Services.AddScoped<IPurchaseItemRepository, PurchaseItemRepository>();
 builder.Services.AddScoped<IPurchaseItemService, PurchaseItemService>();
+
+builder.Services.AddScoped<ICreditCardRepository, CreditCardRepository>();
+builder.Services.AddScoped<ICreditCardService, CreditCardService>();
+builder.Services.AddScoped<ICreditCardFlagsRepository, CreditCardFlagsRepository>();
+builder.Services.AddScoped<ICreditCardFlagService, CreditCardFlagService>();
 
 builder.Services.AddSession(options =>
 {

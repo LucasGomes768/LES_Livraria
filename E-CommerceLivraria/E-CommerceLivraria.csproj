@@ -38,6 +38,7 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="DTO\PaymentDTO\Method\" />
+    <Folder Include="Services\CustomerS\CreditCardS\" />
     <Folder Include="Services\CustomerS\GenderS\" />
     <Folder Include="Views\Admin\crud\customer\create\" />
     <Folder Include="wwwroot\css\customer\profile\info\" />

@@ -3,16 +3,19 @@ using E_CommerceLivraria.DTO.ProfileDTO.InfoDTO;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.CustomerR;
+using E_CommerceLivraria.Services.CreditCardS;
 using Microsoft.EntityFrameworkCore;
 
 namespace E_CommerceLivraria.Services.CustomerS {
     public class CustomerService : ICustomerService{
         private readonly ICustomerRepository _customerRepository;
         private readonly ICartService _cartService;
+        private readonly ICreditCardService _creditCardService;
 
-        public CustomerService(ICustomerRepository customerRepository, ICartService cartService) {
+        public CustomerService(ICustomerRepository customerRepository, ICartService cartService, ICreditCardService creditCardService) {
             _customerRepository = customerRepository;
             _cartService = cartService;
+            _creditCardService = creditCardService;
         }
 
         public Customer Create(Customer customer) {
@@ -126,6 +129,16 @@ namespace E_CommerceLivraria.Services.CustomerS {
             ctm.CtmPass = info.Pass;
 
             return _customerRepository.Update(ctm);
+        }
+
+        public Customer addCreditCard(CreditCard creditCard, Customer customer)
+        {
+            if (creditCard == null) throw new ArgumentNullException("Nenhum cartão foi enviado para ser registrado");
+
+            var crd = _creditCardService.Create(creditCard);
+            customer.CtcCrds.Add(crd);
+
+            return _customerRepository.Update(customer);
         }
     }
 }

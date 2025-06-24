@@ -20,10 +20,35 @@ public partial class CreditCard
     public string CrdNumberStyled {
         get {
             string cn = CrdNumber.ToString();
+
+            if (string.IsNullOrEmpty(cn))
+            {
+                return "";
+            }
+
+            if (cn.Length != 12)
+            {
+                return cn;
+            }
+
             return cn.Substring(0, 4) + "."
                 + cn.Substring(4, 4) + "."
                 + cn.Substring(8, 4) + "."
                 + cn.Substring(12);
+        }
+        set
+        {
+            string cn = value.Replace(".","");
+
+            if (string.IsNullOrEmpty(cn))
+            {
+                return;
+            }
+
+            if (cn.Length == 16)
+            {
+                CrdNumber = decimal.Parse(cn);
+            }
         }
     }
 
@@ -33,6 +58,12 @@ public partial class CreditCard
         get
         {
             string cn = CrdNumber.ToString();
+
+            if (string.IsNullOrEmpty(cn) || CrdCcf == null)
+            {
+                return "";
+            }
+
             return "****.****.****."
                 + cn.Substring(12)
                 + " (" + CrdCcf.CcfName + ")";

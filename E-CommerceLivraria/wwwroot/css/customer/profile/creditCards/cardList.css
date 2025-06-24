@@ -1,0 +1,95 @@
+@import url('/customer/profile/profile.css');
+
+.cardList {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vh;
+
+    width: 80vw;
+    height: min-content;
+    padding: 1.5%;
+    margin-bottom: 3vh;
+}
+
+    .cardList h1 {
+        text-align: center;
+        font-weight: 350;
+    }
+
+.addCrd {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0%;
+
+    transition-duration: 0.2s
+}
+
+    .addCrd:hover {
+        color: white;
+        background-color: black;
+    }
+
+.crdRow {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+}
+
+.crdInstance {
+    padding: 1%;
+    padding-bottom: 0%;
+    width: 30%;
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .crdInstance h2 {
+        font-weight: 350;
+        font-size: 1.65vw;
+    }
+
+    .crdInstance h3 {
+        font-weight: 350;
+        font-size: 1.15vw;
+    }
+
+    .crdInstance .crdOptions {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 1.2%;
+        border-top: 2px solid gray;
+    }
+
+        .crdInstance .crdOptions button {
+            font-weight: 350;
+            font-size: 1.25vw;
+            border-radius: 5px;
+            border: 2px solid black;
+            color: black;
+            background-color: white;
+
+            transition-duration: 0.2s;
+        }
+
+            .crdInstance .crdOptions button.remove {
+                color: red;
+                border-color: red;
+            }
+
+            .crdInstance .crdOptions button:hover {
+                color: white;
+                background-color: black;
+            }
+
+                .crdInstance .crdOptions button.remove:hover {
+                    color: white;
+                    background-color: red;
+                }

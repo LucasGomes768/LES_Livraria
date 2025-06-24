@@ -1,0 +1,55 @@
+﻿@using E_CommerceLivraria.DTO.CreditCardDTO
+@model CreateCreditCardDTO
+@{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewData["Title"] = "Adicionar endereço de entrega";
+    ViewData["CSSFile"] = "~/css/customer/creditCards/addCard.css";
+
+    List<CreditCardFlag> ccfs = ViewBag.Flags;
+}
+<br>
+<button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
+<div class="bigBody">
+    <div class="cardBody">
+        <h1>Cadastrar novo cartão de crédito</h1>
+        <div class="cardData">
+            <form method="post" asp-controller="CreditCardPages" asp-action="CreateCreditCard">
+                <input type="number" id="ctmId" hidden asp-for="CtmId" value="@Model.CtmId"/>
+                <input type="number" id="redirect" hidden asp-for="RedirectTo" value="@Model.RedirectTo" />
+                <div class="line r_gap">
+                    <div>
+                        <label for="num">Número:</label>
+                        <input type="text" id="num" onblur="styleCrdNum(this)" maxlength="19" required asp-for="creditCard.CrdNumberStyled">
+                    </div>
+                    <div>
+                        <label for="cs">Cód. de segurança:</label>
+                        <input type="text" id="cs" maxlength="3" class="noStep" required asp-for="creditCard.CrdSafetyCode">
+                    </div>
+                    <div>
+                        <label for="name">Nome impresso:</label>
+                        <input type="text" id="name" style="width: 20vw;" required asp-for="creditCard.CrdName">
+                    </div>
+                    <div>
+                        <label for="flag">Bandeira do cartão:</label>
+                        <select id="flag" asp-items='@new SelectList(ccfs, "CcfId", "CcfName")' asp-for="creditCard.CrdCcfId">
+                        </select>
+                    </div>
+                </div>
+                @if (Model.AddToAccount)
+                {
+                    <input type="checkbox" id="associate" checked hidden asp-for="AddToAccount">
+                }
+                else
+                {
+                    <div class="line r_checkbox">
+                        <input type="checkbox" id="associate" asp-for="AddToAccount">
+                        <label for="associate">Associar este cartão à minha conta</label>
+                    </div>
+                }
+                <br>
+                <button type="submit">Salvar cartão</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/js/extra/styleField.js?v=1.0.@(DateTime.Now.Ticks)"></script>

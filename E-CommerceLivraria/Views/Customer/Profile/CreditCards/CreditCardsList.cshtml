@@ -1,0 +1,33 @@
+﻿@using E_CommerceLivraria.Enums
+@using E_CommerceLivraria.Enums.Customer
+@model Customer
+@{
+    Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
+    ViewData["Title"] = "Cupons de troca";
+    ViewData["CSSFile"] = "~/css/customer/profile/creditCards/cardList.css";
+    var creditCards = Model.CtcCrds.ToList();
+}
+<div class="cardList">
+    <h1>Cartões de crédito</h1>
+    <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECtmCreditCardCreate.PROFILE)" asp-route-ctmId="@Model.CtmId">
+        <button type="button" class="addCrd">Adicionar um novo cartão</button>
+    </a>
+    @for (int i = 0; i < creditCards.Count(); i += 3)
+    {
+        <div class="crdRow">
+            @for(int y = i; y < i + 3 && y < creditCards.Count; y++)
+            {
+                <div class="crdInstance">
+                    <div>
+                        <h2>@creditCards[y].CrdNumberHidden.Substring(0, 19)</h2>
+                        <h3>@creditCards[y].CrdCcf.CcfName</h3>
+                        <h3>@creditCards[y].CrdName</h3>
+                    </div>
+                    <div class="crdOptions">
+                        <button class="remove">Remover</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

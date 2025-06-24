@@ -1,0 +1,130 @@
+.bigBody {
+    display: flex;
+    justify-content: center;
+
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+
+    background-color: lightgray;
+    border-radius: 10px;
+    width: 75vw;
+    min-height: 20vh;
+    padding: 1.5%;
+    border: 2px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .cardBody h1 {
+        font-size: 2.75vw;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 5vh;
+    }
+
+.cardBody .firstLine {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+    .cardBody .firstLine .cep {
+        width: 24%;
+    }
+
+        .cardBody .firstLine label {
+            font-size: 1.5vw;
+            font-weight: 300;
+        }
+
+        .cardBody .firstLine select {
+            font-size: 1.5vw;
+            font-weight: 300;
+            width: 80%;
+        }
+
+        .cardBody .firstLine option {
+            font-size: 1.5vw;
+            font-weight: 300;
+        }
+
+.cardBody .cardData {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+
+    margin-top: 2vh;
+}
+
+    .cardBody .cardData .line {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 2vh;
+    }
+
+        .cardBody .cardData .sp_between {
+            justify-content: space-between;
+        }
+
+        .cardBody .cardData .r_gap {
+            justify-content: left;
+            gap: 3%;
+        }
+
+        .cardBody .cardData .line div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+            .cardBody .cardData .line div.r_checkbox {
+                display: flex;
+                flex-direction: row;
+                gap: 2px;
+            }
+
+                input[type=checkbox] {
+                    transform: scale(2);
+                    padding: 10px;
+                    margin-right: 0.7vw;
+                    margin-left: 0.4vw;
+                }
+
+            .cardBody .cardData .observationsDiv {
+                width: 100%;
+            }
+
+                .observationsTxt {
+                    width: 72vw;
+                    resize: none;
+                }
+
+    .cardBody button {
+        border: 2px solid black;
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 1.3vw;
+
+        transition-duration: 0.2s;
+    }
+
+        .cardBody button:hover {
+            color: white;
+            background-color: black;
+        }
+    
+form select {
+    font-weight: 350;
+    font-size: 1.25vw;
+    height: 100%;
+}
+
+#shortPhrase {
+    width: 72vw;
+}
