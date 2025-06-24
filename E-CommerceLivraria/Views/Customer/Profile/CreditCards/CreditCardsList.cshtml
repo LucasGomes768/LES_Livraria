@@ -24,10 +24,11 @@
                         <h3>@creditCards[y].CrdName</h3>
                     </div>
                     <div class="crdOptions">
-                        <button class="remove">Remover</button>
+                        <button class="remove" onclick="removeCreditCard(@Model.CtmId, @creditCards[y].CrdId)">Remover</button>
                     </div>
                 </div>
             }
         </div>
     }
 </div>
+<script src="~/js/customer/profile/creditCards/cardList.js?v=1.0.@(DateTime.Now.Ticks)"></script>

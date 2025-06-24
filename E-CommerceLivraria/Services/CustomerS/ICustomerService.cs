@@ -9,6 +9,7 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public Customer? Get(decimal id);
         public List<Customer> GetAll();
         public bool Remove(decimal id);
+        public Customer RemoveCreditCard(Customer customer, CreditCard creditCard);
         public Customer Update(Customer customer);
         public Customer UpdateBasicInfo(InfoDTO info);
         public Customer UpdatePassword(InfoDTO info);

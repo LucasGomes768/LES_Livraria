@@ -140,5 +140,11 @@ namespace E_CommerceLivraria.Services.CustomerS {
 
             return _customerRepository.Update(customer);
         }
+
+        public Customer RemoveCreditCard(Customer customer, CreditCard creditCard)
+        {
+            customer.CtcCrds.Remove(creditCard);
+            return _customerRepository.Update(customer);
+        }
     }
 }

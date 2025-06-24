@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.Services.CustomerS;
+﻿using E_CommerceLivraria.Services.CreditCardS;
+using E_CommerceLivraria.Services.CustomerS;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
@@ -6,10 +7,12 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
     public class ProfileCreditCardsController : Controller
     {
         private readonly ICustomerService _customerService;
+        private readonly ICreditCardService _creditCardService;
 
-        public ProfileCreditCardsController(ICustomerService customerService)
+        public ProfileCreditCardsController(ICustomerService customerService, ICreditCardService creditCardService)
         {
             _customerService = customerService;
+            _creditCardService = creditCardService;
         }
 
         [HttpGet("CreditCardsProfile/{CtmId:decimal}")]
@@ -33,6 +36,14 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
         {
             try
             {
+                var ctm = _customerService.Get(ctmId);
+                if (ctm == null) return NotFound();
+
+                var crd = _creditCardService.Get(crdId);
+                if (crd == null) return NotFound();
+
+                _customerService.RemoveCreditCard(ctm, crd);
+
                 return Ok(new
                 {
                     Sucess = true
