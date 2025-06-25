@@ -50,7 +50,7 @@ export function salvarCartao() {
     let cardsUsing = sessionStorage.getItem("cartoesSelecionados")
 
     // Adicionando cartão
-    if (cardsUsing === null) {
+    if (!cardsUsing) {
         // Cartão não foi adicionado
         const newCardsArray = [card]
         const string = JSON.stringify(newCardsArray)
@@ -119,4 +119,8 @@ export function atualizarValor(id, newValue) {
     if (window.PaymentFunctions?.carregarCartoes) {
         window.PaymentFunctions.carregarCartoes();
     }
+}
+
+export function limparCartoes() {
+    sessionStorage.setItem("cartoesSelecionados", [])
 }

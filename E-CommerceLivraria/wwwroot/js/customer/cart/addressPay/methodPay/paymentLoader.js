@@ -7,8 +7,9 @@
         ...methodModule
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-        window.PaymentFunctions.carregarCartoes?.();
-        window.PaymentFunctions.calcularValores?.();
-    });
+    setTimeout(() => {
+        window.PaymentFunctions.limparCartoes();
+        window.PaymentFunctions.carregarCartoes();
+        window.PaymentFunctions.calcularValores();
+    }, 0);
 });

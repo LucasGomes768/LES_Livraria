@@ -7,6 +7,7 @@ export function calcularValores() {
     if (cards) {
         const cardsArray = JSON.parse(cards);
         totalCards = cardsArray.reduce((sum, card) => sum + parseFloat(card.value), 0);
+        totalCards = Number(totalCards.toFixed(2));
     }
 
     document.getElementById("cardsValue").innerHTML = `<b>R$</b>${("" + totalCards.toFixed(2)).replace('.',',')}`

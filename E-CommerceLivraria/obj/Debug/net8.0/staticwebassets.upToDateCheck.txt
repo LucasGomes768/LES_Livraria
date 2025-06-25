@@ -35,13 +35,13 @@ wwwroot\js\admin\customer\crud\AllCustomers.js
 wwwroot\js\admin\layout.js
 wwwroot\js\customer\cart\addressPay\addressPay.js
 wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
-wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
 wwwroot\js\customer\cart\cart.js
 wwwroot\js\customer\chatbot\chatbot.js
 wwwroot\js\customer\layout.js
 wwwroot\js\customer\profile\address\detailed.js
 wwwroot\js\customer\profile\address\listAddress.js
 wwwroot\js\customer\profile\coupons\coupons.js
+wwwroot\js\customer\profile\creditCards\cardList.js
 wwwroot\js\customer\profile\exchanges\exchangeList.js
 wwwroot\js\customer\profile\exchanges\requestExchange\exchangeRequest.js
 wwwroot\js\customer\profile\info\info.js
@@ -121,4 +121,4 @@ wwwroot\resources\images\icons\icons8-carrinho-24.png
 wwwroot\resources\images\icons\icons8-sair-96.png
 wwwroot\resources\images\icons\send1.svg
 wwwroot\resources\images\icons\user1.svg
-wwwroot\js\customer\profile\creditCards\cardList.js
+wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
