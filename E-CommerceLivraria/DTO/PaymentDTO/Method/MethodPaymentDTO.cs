@@ -1,6 +1,8 @@
-﻿namespace E_CommerceLivraria.Models.ModelsStructGroups.MethodPaymentSG
+﻿using E_CommerceLivraria.Models;
+
+namespace E_CommerceLivraria.DTO.PaymentDTO.Method
 {
-    public class MethodPaymentData
+    public class MethodPaymentDTO
     {
         public decimal CtmId { get; set; }
         public Address Address { get; set; }

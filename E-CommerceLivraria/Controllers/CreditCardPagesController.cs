@@ -1,9 +1,10 @@
 ﻿using E_CommerceLivraria.DTO.CreditCardDTO;
+using E_CommerceLivraria.DTO.PaymentDTO.Method;
 using E_CommerceLivraria.Enums.Customer;
-using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Services.CreditCardS;
 using E_CommerceLivraria.Services.CustomerS;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace E_CommerceLivraria.Controllers
 {
@@ -11,11 +12,13 @@ namespace E_CommerceLivraria.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly ICreditCardFlagService _creditCardFlagService;
+        private readonly ICreditCardService _creditCardService;
 
-        public CreditCardPagesController(ICustomerService customerService, ICreditCardFlagService creditCardFlagService)
+        public CreditCardPagesController(ICustomerService customerService, ICreditCardFlagService creditCardFlagService, ICreditCardService creditCardService)
         {
             _customerService = customerService;
             _creditCardFlagService = creditCardFlagService;
+            _creditCardService = creditCardService;
         }
 
         [HttpGet("CreditCard/Create/{origin:int}/{ctmId:decimal}")]
@@ -47,12 +50,31 @@ namespace E_CommerceLivraria.Controllers
                 var ctm = _customerService.Get(ccc.CtmId);
                 if (ctm == null) return NotFound();
 
-                _customerService.addCreditCard(crd, ctm);
+                if (!ccc.AddToAccount)
+                    crd = _creditCardService.Create(crd);
+                else
+                    crd = _creditCardService.Create(crd, ctm);
+
 
                 ECtmCreditCardCreate pageRedirect = (ECtmCreditCardCreate)ccc.RedirectTo;
 
                 switch (pageRedirect)
                 {
+                    case ECtmCreditCardCreate.PAYMENT:
+                        TempData["AddedCard"] = JsonSerializer.Serialize(new
+                        {
+                            id = crd.CrdId.ToString(),
+                            number = crd.CrdNumberHidden.Substring(0,19),
+                            flag = crd.CrdCcf.CcfName,
+                            value = 10
+                        }, new JsonSerializerOptions()
+                        {
+                            WriteIndented = true,
+                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                        });
+
+                        return RedirectToAction("PaymentMethodPage", "Payment", new { CtmId = ctm.CtmId });
+
                     case ECtmCreditCardCreate.PROFILE:
                         return RedirectToAction("CreditCardsList", "ProfileCreditCards", new {CtmId = ctm.CtmId});
 

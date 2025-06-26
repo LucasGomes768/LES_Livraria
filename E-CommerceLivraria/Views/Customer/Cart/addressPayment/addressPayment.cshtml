@@ -18,7 +18,7 @@
                 <label for="cep">CEP:</label>
                 <select id="cep" asp-for="ChoosenAddId"
                 asp-items="@(new SelectList(Model.Addresses, "AddId", "AddCepStyled"))"
-                onchange="getAddressData()">
+                onchange="getSelectId()">
                     @if (Model.tempAdded == false)
                     {
                         <option value="" selected>- Selecione -</option>
@@ -29,7 +29,7 @@
                     }
                 </select>
             </div>
-            <a asp-controller="CtmPayment" asp-action="CreateAddressPage" asp-route-addToList="delivery" asp-route-ctmId="@Model.CtmId" asp-route-origin="@((int)ECtmAddressCreate.PAYMENT)">
+            <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="delivery" asp-route-ctmId="@Model.CtmId" asp-route-origin="@((int)ECtmAddressCreate.PAYMENT)">
                 <button type="button">Adicionar novo endereço</button>
             </a>
         </div>
@@ -133,3 +133,10 @@
     </div>
 </div>
 <script src="~/js/customer/cart/addressPay/addressPay.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+<script type="text/javascript">
+    const newAddId = @ViewBag.NewAddId;
+
+    if (newAddId){
+        getAddressData(newAddId)
+    }
+</script>

@@ -16,7 +16,7 @@ export function carregarCartoes() {
                 `<td>${card.flag}</td>` +
                 "<td>" +
                 "R$" +
-                `<input type="number" min="10.00" max="9999.99" step="0.01" value="${card.value.toFixed(2)}" onblur="window.PaymentFunctions.atualizarValor('${card.id}', this.value)" required>` +
+                `<input type="number" min="10.00" max="9999.99" step="0.01" value="${card.value.toFixed(2)}" data-card-id="${card.id}" class="card-value-input" required>` +
                 "</td>" +
                 "<td>" +
                 `<button onclick="window.PaymentFunctions.removerCartao('${card.id}')">X</button>` +
@@ -27,12 +27,29 @@ export function carregarCartoes() {
 
     table.innerHTML = html;
 
+    document.querySelectorAll('.card-value-input').forEach(input => {
+        input.addEventListener('blur', function () {
+            const cardId = this.getAttribute('data-card-id');
+            const newValue = this.value;
+            window.PaymentFunctions.atualizarValor(cardId, newValue);
+        });
+    });
+
     if (window.PaymentFunctions?.calcularValores) {
         window.PaymentFunctions.calcularValores();
     }
 }
 
-export function salvarCartao() {
+export function salvarCartaoAdicionado(addedCard) {
+    const card = JSON.parse(addedCard);
+
+    if (window.PaymentFunctions?.salvarCartao) {
+        window.PaymentFunctions.salvarCartao(card);
+        window.PaymentFunctions.carregarCartoes();
+    }
+}
+
+export function salvarCartaoSelecionado() {
     const select = document.getElementById("userCards");
     const id = select.value;
     if (id === "N") {
@@ -41,18 +58,26 @@ export function salvarCartao() {
     const number = select.options[select.selectedIndex].text;
 
     const card = {
-        "id": id,
-        "number": number.slice(0, 19),
-        "flag": number.slice(21).replace(/[()]/g,""),
-        "value": 10
+        id: id,
+        number: number.slice(0, 19),
+        flag: number.slice(21).replace(/[()]/g, ""),
+        value: 10
     }
 
+    select.value = "N"
+
+    if (window.PaymentFunctions?.salvarCartao) {
+        window.PaymentFunctions.salvarCartao(card);
+    }
+}
+
+export function salvarCartao(addedCard) {
     let cardsUsing = sessionStorage.getItem("cartoesSelecionados")
 
     // Adicionando cartão
     if (!cardsUsing) {
         // Cartão não foi adicionado
-        const newCardsArray = [card]
+        const newCardsArray = [addedCard]
         const string = JSON.stringify(newCardsArray)
 
         sessionStorage.setItem("cartoesSelecionados", string)
@@ -60,19 +85,16 @@ export function salvarCartao() {
         let cardsArray = JSON.parse(cardsUsing)
 
         // Cartão já foi adicionado
-        if (cardsArray.some(x => x.id === card.id)) {
-            select.value = "N"
+        if (cardsArray.some(x => x.id === addedCard.id)) {
             alert('Esse cartao de credito ja foi adicionado!')
             return
         }
 
-        cardsArray.push(card)
+        cardsArray.push(addedCard)
         const string = JSON.stringify(cardsArray)
 
         sessionStorage.setItem("cartoesSelecionados", string)
     }
-
-    select.value = "N"
 
     if (window.PaymentFunctions?.carregarCartoes) {
         window.PaymentFunctions.carregarCartoes();
@@ -119,8 +141,4 @@ export function atualizarValor(id, newValue) {
     if (window.PaymentFunctions?.carregarCartoes) {
         window.PaymentFunctions.carregarCartoes();
     }
-}
-
-export function limparCartoes() {
-    sessionStorage.setItem("cartoesSelecionados", [])
 }

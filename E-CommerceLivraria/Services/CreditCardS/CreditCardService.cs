@@ -14,6 +14,17 @@ namespace E_CommerceLivraria.Services.CreditCardS
 
         public CreditCard Create(CreditCard creditCard)
         {
+            if (creditCard == null) throw new ArgumentNullException("Nenhum cartão de crédito foi enviado");
+
+            return _creditCardRepository.Create(creditCard);
+        }
+
+        public CreditCard Create(CreditCard creditCard, Customer customer)
+        {
+            if (creditCard == null) throw new ArgumentNullException("Nenhum cartão de crédito foi enviado");
+            if (customer == null) throw new ArgumentNullException("Nenhum cliente foi enviado");
+            creditCard.CtcCtms.Add(customer);
+
             return _creditCardRepository.Create(creditCard);
         }
 

@@ -18,15 +18,13 @@ namespace E_CommerceLivraria.Services.PurchaseS
         private readonly IStockService _stockService;
         private readonly IPurchaseItemService _purchaseItemService;
         private readonly IExchangeCouponService _exchangeCouponService;
-        private readonly ICustomerService _customerService;
 
-        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService, IStockService stockService, IExchangeCouponService exchangeCouponService, ICustomerService customerService)
+        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService, IStockService stockService, IExchangeCouponService exchangeCouponService)
         {
             _purchaseRepository = purchaseRepository;
             _purchaseItemService = purchaseItemService;
             _stockService = stockService;
             _exchangeCouponService = exchangeCouponService;
-            _customerService = customerService;
         }
 
         public Purchase Add(PurchaseDataDTO purchaseData)
@@ -62,8 +60,10 @@ namespace E_CommerceLivraria.Services.PurchaseS
             }
 
             purchase.PrcDate = DateTime.Now;
-            purchase.PrcCtm = purchaseData.Customer;
             purchase.PrcAdd = purchaseData.DeliveryAddress;
+
+            purchaseData.Customer.Cart.CartItems.Clear();
+            purchase.PrcCtm = purchaseData.Customer;
 
             return _purchaseRepository.Add(purchase);
         }

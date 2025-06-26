@@ -5,11 +5,12 @@ using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.AddressS;
-using E_CommerceLivraria.Models.ModelsStructGroups.MethodPaymentSG;
+using E_CommerceLivraria.DTO.PaymentDTO.Method;
 using E_CommerceLivraria.DTO.PaymentDTO;
 using E_CommerceLivraria.Services.PurchaseS;
 using System.Text.Json;
 using E_CommerceLivraria.DTO.PaymentDTO.ChoosenAddress;
+using Newtonsoft.Json.Serialization;
 
 namespace E_CommerceLivraria.Controllers
 {
@@ -65,6 +66,8 @@ namespace E_CommerceLivraria.Controllers
                 papdNew.ChoosenAdd = _addressService.Get((decimal)papd.ChoosenAddId);
             }
 
+            ViewBag.NewAddId = papd.ChoosenAddId;
+
             return View("~/Views/Customer/Cart/addressPayment/addressPayment.cshtml", papdNew);
         }
 
@@ -109,11 +112,40 @@ namespace E_CommerceLivraria.Controllers
             var add = _addressService.Get((decimal)papd.ChoosenAddId);
             if (add == null) return BadRequest();
 
-            var mpd = new MethodPaymentData()
+            var mpd = new MethodPaymentDTO()
             {
                 CtmId = ctm.CtmId,
                 Total = ctm.CtmCrt.CartItems.Sum(x => x.CriTotalprice),
                 Address = add,
+                CreditCards = ctm.CtcCrds.ToList(),
+                ExchangeCoupons = ctm.ExchangeCoupons.ToList(),
+            };
+
+            ViewBag.AddedCard = null;
+
+            return View("~/Views/Customer/Cart/addressPayment/methodPayment/methodPayment.cshtml", mpd);
+        }
+
+        [HttpGet]
+        public IActionResult PaymentMethodPage(decimal ctmId)
+        {
+            var addedCard = TempData["AddedCard"];
+
+            if (addedCard is string)
+            {
+                ViewBag.AddedCard = addedCard;
+            } else
+            {
+                ViewBag.AddedCard = null;
+            }
+
+            var ctm = _customerService.Get(ctmId);
+            if (ctm == null) return NotFound();
+
+            var mpd = new MethodPaymentDTO()
+            {
+                CtmId = ctm.CtmId,
+                Total = ctm.CtmCrt.CartItems.Sum(x => x.CriTotalprice),
                 CreditCards = ctm.CtcCrds.ToList(),
                 ExchangeCoupons = ctm.ExchangeCoupons.ToList(),
             };
@@ -138,11 +170,8 @@ namespace E_CommerceLivraria.Controllers
                     DeliveryAddress = deliveryAdd,
                     Customer = ctm
                 };
-                var addedPurchase = _purchaseService.Add(purchaseData);
 
-                ctm.Purchases.Add(addedPurchase);
-                ctm.Cart.CartItems.Clear();
-                _customerService.Update(ctm);
+                _purchaseService.Add(purchaseData);
 
                 return Ok(new {
                     Sucess = true,

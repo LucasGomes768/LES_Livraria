@@ -1,13 +1,19 @@
-﻿@using E_CommerceLivraria.Models.ModelsStructGroups.MethodPaymentSG
-@using System.Globalization
-@model MethodPaymentData
+﻿@using System.Globalization
+@using E_CommerceLivraria.Enums.Customer
+@using E_CommerceLivraria.DTO.PaymentDTO.Method
+@model MethodPaymentDTO
 @{
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
     ViewData["Title"] = "Método de pagamento";
     ViewData["CSSFile"] = "~/css/customer/cart/addressPay/methodPay/methodPayment.css";
+
+    string addedCard = ViewBag.AddedCard;
 }
 <br>
 <button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
+<div class="extra">
+    <input type="text" id="recentAddedCard" value="@(addedCard)" hidden />
+</div>
 <div class="paymentBody">
     <div class="bigPayBody">
         <div class="payTitle">
@@ -33,7 +39,7 @@
                 <div class="choosenCards">
                     <div class="title">
                         <h2>Cartões</h2>
-                        <select id="userCards" asp-items="@(new SelectList(Model.CreditCards, "CrdId", "CrdNumberHidden"))" onchange="window.PaymentFunctions.salvarCartao()">
+                        <select id="userCards" asp-items="@(new SelectList(Model.CreditCards, "CrdId", "CrdNumberHidden"))" onchange="window.PaymentFunctions.salvarCartaoSelecionado()">
                             <option value="N" selected>- Selecione -</option>
                         </select>
                     </div>
@@ -43,7 +49,9 @@
                         </table>
                     </div>
                 </div>
-                <button class="addCard">Adicionar novo cartão de crédito</button>
+                <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECtmCreditCardCreate.PAYMENT)" asp-route-ctmId="@Model.CtmId">
+                    <button type="button" class="addCard">Adicionar novo cartão de crédito</button>
+                </a>
             </div>
             <div class="choosenCoupons choosenData">
                 <div class="title">
@@ -72,13 +80,13 @@
         </div>
         <div>
             <h2>Frete:</h2>
-            <input type="number" id="shipping" value="@((Model.Address.AddShipping).ToString("F2", CultureInfo.InvariantCulture))" hidden />
-            <h1><b>R$</b>@Model.Address.AddShipping</h1>
+            <input type="number" id="shipping" value="0" hidden />
+            <h1 id="shipText"><b>R$</b></h1>
         </div>
         <div>
             <h2>Preço total:</h2>
-            <input type="number" id="totalPrice" value="@((Model.Total + Model.Address.AddShipping).ToString("F2", CultureInfo.InvariantCulture))" hidden />
-            <h1><b>R$</b>@((Model.Total + Model.Address.AddShipping).ToString("F2"))</h1>
+            <input type="number" id="totalPrice" value="0" hidden />
+            <h1 id="totalText"><b>R$</b></h1>
         </div>
         <div>
             <h2>Cupons:</h2>
@@ -90,7 +98,7 @@
         </div>
         <form>
             <input type="number" id="ctmId" value="@Model.CtmId" hidden />
-            <input type="number" value="@Model.Address.AddId" id="deliveryAddress" hidden />
+            <input type="number" value="" id="deliveryAddress" hidden />
             <div id="finishButton">
             </div>
         </form>

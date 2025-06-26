@@ -1,4 +1,4 @@
-﻿function getAddressData() {
+﻿function getSelectId() {
     const selectField = document.getElementById('cep')
 
     if (!selectField) {
@@ -21,8 +21,12 @@
         return
     }
 
+    getAddressData(addId)
+}
+
+function getAddressData(addId) {
     const request = new XMLHttpRequest()
-    request.open('GET', `/Payment/GetDeliveryAddress/${selectField.value}`, false)
+    request.open('GET', `/Payment/GetDeliveryAddress/${addId}`, false)
     request.setRequestHeader('Content-Type', 'application/json')
 
     try {
@@ -52,7 +56,6 @@
         }
 
         const addData = response.data
-        console.log('Dados do endereço:', addData)
 
         document.getElementById('choosenAddId').value = addData.addId
         document.getElementById('num').value = addData.addNumber
@@ -71,6 +74,7 @@
         document.getElementById('shipText').innerHTML = `<b>R$</b>${addData.addShipping.toFixed(2).replace('.', ',')}`
 
         updateTotalPrice()
+        saveChoosenAddress()
     } catch (error) {
         alert('Falha na comunicação: ' + error.message)
     }
@@ -83,5 +87,17 @@ function updateTotalPrice() {
     const totalPrice = parseFloat(itemsPrice.value) + parseFloat(shippingPri.value)
 
     document.getElementById('totalPriceValue').innerHTML = `<h1><b>R$</b>${totalPrice.toFixed(2).replace('.', ',')}</h1>`
+}
+
+function saveChoosenAddress() {
+    const addId = document.getElementById('choosenAddId').value;
+    const shpPrice = document.getElementById('shippingPrice').value;
+
+    const add = {
+        id: addId,
+        ship: Number(shpPrice)
+    };
+
+    sessionStorage.setItem("enderecoSelec", JSON.stringify(add));
 }
 

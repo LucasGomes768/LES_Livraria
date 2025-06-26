@@ -24,7 +24,7 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 var customer = _customerService.Get(CtmId);
                 if (customer == null) throw new Exception("Cliente não encontrado");
 
-                customer.Purchases = customer.Purchases.Where(x => x.PrcStatus < (int)EStatus.TROCA_SOLICITADA && x.PrcStatus != (int)EStatus.TROCA_REPROVADA).ToList();
+                customer.Purchases = customer.Purchases.Where(x => x.PrcStatus < (int)EStatus.TROCA_SOLICITADA && x.PrcStatus != (int)EStatus.TROCA_REPROVADA).OrderByDescending(x => x.PrcDate).ToList();
 
                 return View("~/Views/Customer/Profile/Purchases/PurchasesList.cshtml", customer);
             }
