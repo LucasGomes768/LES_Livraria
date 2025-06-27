@@ -126,7 +126,14 @@
                 transition-duration: 0.2s;
             }
 
-                .choosenInfo .addCard:hover {
+                .choosenInfo .addCard:disabled {
+                    border-style: revert;
+                    border-color: gray;
+                    background-color: gray;
+                    color: white;
+                }
+
+                .choosenInfo .addCard:hover:not(:disabled) {
                     background-color: white;
                     color: black;
                 }
@@ -167,7 +174,7 @@
         }
 
         .choosenInfo tr:nth-child(even) {
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255)
         }
 
         .choosenInfo tr:nth-child(odd) {

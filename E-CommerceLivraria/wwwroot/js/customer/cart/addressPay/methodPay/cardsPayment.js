@@ -1,5 +1,6 @@
 export function carregarCartoes() {
     const table = document.getElementById("cardsUsedTable");
+    let totalCardsValue = 0;
     let html = "<tr>" +
         "<th>Numero</th>" +
         "<th>Bandeira</th>" +
@@ -22,6 +23,8 @@ export function carregarCartoes() {
                 `<button onclick="window.PaymentFunctions.removerCartao('${card.id}')">X</button>` +
                 "</td>" +
                 "</tr>";
+
+            totalCardsValue += card.value;
         });
     }
 
@@ -34,6 +37,8 @@ export function carregarCartoes() {
             window.PaymentFunctions.atualizarValor(cardId, newValue);
         });
     });
+
+    const totalPrice = document.getElementById('totalPrice').value.trim();
 
     if (window.PaymentFunctions?.calcularValores) {
         window.PaymentFunctions.calcularValores();
@@ -72,6 +77,11 @@ export function salvarCartaoSelecionado() {
 }
 
 export function salvarCartao(addedCard) {
+    if (!window.PaymentFunctions.verifyNecessity()) {
+        alert('Cartão adicionado desnecessariamente.');
+        return
+    }
+
     let cardsUsing = sessionStorage.getItem("cartoesSelecionados")
 
     // Adicionando cartão

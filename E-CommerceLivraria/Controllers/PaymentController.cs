@@ -112,6 +112,8 @@ namespace E_CommerceLivraria.Controllers
             var add = _addressService.Get((decimal)papd.ChoosenAddId);
             if (add == null) return BadRequest();
 
+            if (ctm.Cart.CartItems.Count == 0) return RedirectToAction("homePage", "Home");
+
             var mpd = new MethodPaymentDTO()
             {
                 CtmId = ctm.CtmId,
@@ -141,6 +143,8 @@ namespace E_CommerceLivraria.Controllers
 
             var ctm = _customerService.Get(ctmId);
             if (ctm == null) return NotFound();
+
+            if (ctm.Cart.CartItems.Count == 0) return RedirectToAction("homePage", "Home");
 
             var mpd = new MethodPaymentDTO()
             {

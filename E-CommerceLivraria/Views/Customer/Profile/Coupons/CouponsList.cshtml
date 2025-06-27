@@ -10,7 +10,7 @@
     @for (int i = 0; i < xCoupons.Count(); i += 3)
     {
         <div class="cpnRow">
-            @for (int y = i; y < i + 3 || y < xCoupons.Count(); y++)
+            @for (int y = i; y < i + 3 && y < xCoupons.Count(); y++)
             {
                 <div class="cpnInstance">
                     <div>

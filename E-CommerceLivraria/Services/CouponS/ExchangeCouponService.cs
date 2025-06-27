@@ -38,19 +38,30 @@ namespace E_CommerceLivraria.Services.CouponS
             return Xcoupon;
         }
 
-        public ExchangeCoupon Get(decimal id)
+        public ExchangeCoupon? Get(decimal id)
         {
-            throw new NotImplementedException();
+            return _exchangeCouponRepository.Get(id);
         }
 
         public List<ExchangeCoupon> GetAllByCtm(Customer customer)
         {
-            throw new NotImplementedException();
+            return _exchangeCouponRepository.GetAll().Where(x => x.XcpCtmId == customer.CtmId).ToList();
         }
 
-        public ExchangeCoupon Remove(ExchangeCoupon coupon)
+        public void RemoveFromCtm(Customer customer, ExchangeCoupon coupon)
         {
-            throw new NotImplementedException();
+            customer.ExchangeCoupons.Remove(coupon);
+            _customerService.Update(customer);
+        }
+
+        public void RemoveFromCtm(Customer customer, List<ExchangeCoupon> coupons)
+        {
+            foreach (ExchangeCoupon coupon in coupons)
+            {
+                customer.ExchangeCoupons.Remove(coupon);
+            }
+
+            _customerService.Update(customer);
         }
     }
 }

@@ -1,7 +1,8 @@
 export function calcularValores() {
+    const buttonDiv = document.getElementById("finishButton");
+
     // Cartões de crédito
     const cards = sessionStorage.getItem("cartoesSelecionados");
-    const buttonDiv = document.getElementById("finishButton");
     let totalCards = 0;
 
     if (cards) {
@@ -12,13 +13,29 @@ export function calcularValores() {
 
     document.getElementById("cardsValue").innerHTML = `<b>R$</b>${("" + totalCards.toFixed(2)).replace('.',',')}`
 
+    // Cupons
+    const coupons = sessionStorage.getItem("cuponsSelecionados");
+    let totalCoupons = 0;
+
+    const promoValue = Number(document.getElementById('promoCpnValue').value);
+    if (promoValue) totalCoupons += promoValue
+
+    if (coupons) {
+        const couponsArray = JSON.parse(coupons);
+        totalCoupons = couponsArray.reduce((sum, cpn) => sum + parseFloat(cpn.value), 0);
+        totalCoupons = Number(totalCoupons.toFixed(2));
+    }
+
+    document.getElementById("couponsValue").innerHTML = `<b>R$</b>${("" + totalCoupons.toFixed(2)).replace('.', ',')}`
+
+    // Valor final
     const priceElement = document.getElementById("totalPrice");
     let priceValue = 0;
 
     if (priceElement)
         priceValue = parseFloat(priceElement.value.trim());
 
-    const totalValuePayed = totalCards
+    const totalValuePayed = totalCards + totalCoupons
 
     if (totalCards > priceValue) {
         alert("O valor gasto com cartoes de credito excede o preco da compra.")
@@ -39,6 +56,7 @@ export function finalizarCompra() {
     btn.textContent = 'Processando...'
 
     const cartoes = JSON.parse(sessionStorage.getItem("cartoesSelecionados") || "[]");
+    const exCupons = JSON.parse(sessionStorage.getItem("cuponsSelecionados") || "[]");
     const totalCompra = parseFloat(document.getElementById('totalPrice').value);
 
     const request = new XMLHttpRequest();
@@ -48,11 +66,13 @@ export function finalizarCompra() {
     const data = {
         FinalPrice: totalCompra,
         CreditCards: cartoes.map(cartao => ({
-            id: parseFloat(cartao?.id || 0),
-            value: parseFloat(cartao?.value || 0)
+            id: parseFloat(cartao.id),
+            value: parseFloat(cartao.value)
         })),
         PromotionalCode: "",
-        ExchangeIds: [],
+        ExchangeIds: exCupons.map(function(cupom) {
+            return parseFloat(cupom.id)
+        }),
         AddressId: parseFloat(document.getElementById("deliveryAddress").value),
         CtmId: parseFloat(document.getElementById("ctmId").value)
     }
@@ -62,6 +82,7 @@ export function finalizarCompra() {
 
         if (request.status === 200) {
             sessionStorage.removeItem("cartoesSelecionados");
+            sessionStorage.removeItem("cuponsSelecionados");
             alert("Compra realizada com sucesso!")
         } else {
             alert('Erro ao processar compra: ' + request.statusText);
@@ -72,5 +93,28 @@ export function finalizarCompra() {
     } finally {
         btn.disabled = false
         btn.textContent = 'Finalizar Compra'
+    }
+}
+export function verifyNecessity() {
+    let coupons = sessionStorage.getItem("cuponsSelecionados");
+    let totalCpns = 0;
+    if (coupons) {
+        coupons = JSON.parse(coupons);
+        totalCpns = Number(coupons.reduce((sum, cpn) => sum + parseFloat(cpn.value), 0).toFixed(2));
+    }
+
+    let cards = sessionStorage.getItem("cartoesSelecionados");
+    let totalCards = 0;
+    if (cards) {
+        cards = JSON.parse(cards);
+        totalCards = Number(cards.reduce((sum, card) => sum + parseFloat(card.value), 0).toFixed(2));
+    }
+
+    const totalPrice = Number(document.getElementById('totalPrice').value);
+
+    if (totalPrice <= (totalCards + totalCpns)) {
+        return false;
+    } else {
+        return true;
     }
 }

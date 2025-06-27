@@ -1,15 +1,16 @@
 ﻿Promise.all([
     import(`./cardsPayment.js?t=${Date.now()}`),
+    import(`./exCouponsPayment.js?t=${Date.now()}`),
     import(`./methodPayment.js?t=${Date.now()}`)
-]).then(([cardsModule, methodModule]) => {
+]).then(([cardsModule, exCpnsModule, methodModule]) => {
     window.PaymentFunctions = {
         ...cardsModule,
+        ...exCpnsModule,
         ...methodModule
     };
 
     setTimeout(() => {
         const add = JSON.parse(sessionStorage.getItem("enderecoSelec"));
-        console.log(add);
 
         document.getElementById('deliveryAddress').value = add["id"];
         document.getElementById('shipping').value = add["ship"];
@@ -27,6 +28,6 @@
             window.PaymentFunctions.carregarCartoes();
         }
 
-        window.PaymentFunctions.calcularValores();
+        window.PaymentFunctions.carregarCupons();
     }, 0);
 });

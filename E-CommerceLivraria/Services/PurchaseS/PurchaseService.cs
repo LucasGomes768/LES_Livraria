@@ -6,9 +6,7 @@ using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Repository.PurchaseR;
 using E_CommerceLivraria.Services.CouponS;
-using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.StockS;
-using static E_CommerceLivraria.DTO.PaymentDTO.FinishPurchaseRequestDTO;
 
 namespace E_CommerceLivraria.Services.PurchaseS
 {
@@ -29,10 +27,38 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
         public Purchase Add(PurchaseDataDTO purchaseData)
         {
-            decimal valuePayed = purchaseData.Request.CreditCards.Sum(x => x.value);
+            decimal totalCardsValue = 0;
+            decimal totalCouponsValue = 0;
+            PromotionalCoupon promoCoupon;
+            List<ExchangeCoupon> exCoupons = new List<ExchangeCoupon>();
+
+            if (purchaseData.Request.CreditCards.Count > 0)
+            {
+                totalCardsValue = purchaseData.Request.CreditCards.Sum(x => x.value);
+            }
+
+            if (purchaseData.Request.ExchangeIds.Count > 0)
+            {
+                foreach (decimal id in purchaseData.Request.ExchangeIds)
+                {
+                    var coupon = _exchangeCouponService.Get(id);
+                    totalCouponsValue += coupon.Xcp.CpnValue;
+                    exCoupons.Add(coupon);
+                }
+            }
+
+            if (purchaseData.Request.PromotionalCode != "")
+            {
+                // promoCoupon = _promoRepository.GetByCode();
+            }
+
+            decimal valuePayed = totalCardsValue + totalCouponsValue;
 
             if (valuePayed < purchaseData.Request.FinalPrice)
-                throw new Exception("Saldo insuficiente para realizar pagamento");
+                throw new Exception("Saldo insuficiente para realizar o pagamento");
+
+            if (totalCardsValue > purchaseData.Request.FinalPrice)
+                throw new Exception("Saldo pago com cartões excede valor da compra");
 
             var purchase = new Purchase();
 
@@ -57,6 +83,19 @@ namespace E_CommerceLivraria.Services.PurchaseS
                 };
 
                 purchase.PurchaseItems.Add(purchaseItem);
+            }
+
+            purchase.PxcCpns = exCoupons;
+
+            decimal change = valuePayed - purchaseData.Request.FinalPrice;
+            if (change > 0)
+            {
+                _exchangeCouponService.AddToCtm(purchaseData.Customer, change);
+            }
+
+            if (exCoupons.Count > 0)
+            {
+                _exchangeCouponService.RemoveFromCtm(purchaseData.Customer, exCoupons);
             }
 
             purchase.PrcDate = DateTime.Now;
@@ -244,6 +283,11 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
             foreach (PurchaseItem item in tempList)
             {
+                if (newStatus == EStatus.COMPRA_APROVADA)
+                {
+                    _stockService.RemoveFromBlocked(item.PciStc, item.PciQuantity);
+                }
+
                 _purchaseItemService.UpdateStatus(item, newStatus);
             }
 

@@ -678,12 +678,13 @@ public partial class ECommerceDbContext : DbContext
                 .HasColumnName("xcp_id");
             entity.Property(e => e.XcpCtmId)
                 .HasPrecision(5)
+                .IsRequired(false)
                 .HasComment("Represents the ID of a customer which a exchange coupon belongs to.")
                 .HasColumnName("xcp_ctm_id");
 
             entity.HasOne(d => d.XcpCtm).WithMany(p => p.ExchangeCoupons)
                 .HasForeignKey(d => d.XcpCtmId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("exchange_coupon_customer_fk");
 
             entity.HasOne(d => d.Xcp).WithOne(p => p.ExchangeCoupon)

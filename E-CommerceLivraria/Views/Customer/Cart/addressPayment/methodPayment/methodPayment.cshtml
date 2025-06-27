@@ -25,6 +25,7 @@
                 <input type="text" id="promoCoupon">
             </div>
             <div>
+                <input type="number" id="promoCpnValue" value="" hidden />
                 <table>
                     <tr>
                         <th>Valor:</th>
@@ -50,23 +51,19 @@
                     </div>
                 </div>
                 <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECtmCreditCardCreate.PAYMENT)" asp-route-ctmId="@Model.CtmId">
-                    <button type="button" class="addCard">Adicionar novo cartão de crédito</button>
+                    <button type="button" class="addCard" id="addNewCard" >Adicionar novo cartão de crédito</button>
                 </a>
             </div>
             <div class="choosenCoupons choosenData">
                 <div class="title">
                     <h2>Cupons</h2>
-                    <select id="userCoupons">
-                        <option value="">- Selecione -</option>
+                    <select id="userCoupons" asp-items="@(new SelectList(Model.ExchangeCoupons, "XcpId", "XcpValueDate"))" onchange="window.PaymentFunctions.salvarCupomSelecionado()">
+                        <option value="N">- Selecione -</option>
                     </select>
                 </div>
                 <div class="table">
-                    <table>
-                        <tr>
-                            <th>Código</th>
-                            <th>Data de Geração</th>
-                            <th>Valor</th>
-                        </tr>
+                    <table id="exCouponsTable">
+                        
                     </table>
                 </div>
             </div>
@@ -90,7 +87,7 @@
         </div>
         <div>
             <h2>Cupons:</h2>
-            <h1><b>R$</b>0,00</h1>
+            <h1 id="couponsValue"><b>R$</b>0,00</h1>
         </div>
         <div>
             <h2>Cartões:</h2>

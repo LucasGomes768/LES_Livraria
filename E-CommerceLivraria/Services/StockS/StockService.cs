@@ -75,5 +75,14 @@ namespace E_CommerceLivraria.Services.StockS {
 
             return _stockRepository.Update(stock);
         }
+
+        public Stock RemoveFromBlocked(Stock stock, decimal amountRemoved)
+        {
+            if (stock.StcBlockedAmount < amountRemoved) throw new Exception("A quantidade tentando ser removida dos itens bloqueados é maior que a quantidade bloqueada");
+
+            stock.StcBlockedAmount -= amountRemoved;
+
+            return _stockRepository.Update(stock);
+        }
     }
 }

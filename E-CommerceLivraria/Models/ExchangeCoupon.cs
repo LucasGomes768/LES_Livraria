@@ -13,11 +13,19 @@ public partial class ExchangeCoupon
     /// <summary>
     /// Represents the ID of a customer which a exchange coupon belongs to.
     /// </summary>
-    public decimal XcpCtmId { get; set; }
+    public decimal? XcpCtmId { get; set; }
+
+    public string XcpValueDate
+    {
+        get
+        {
+            return $"R${Xcp.CpnValue} ({Xcp.CpnDateGen.ToString("d")})";
+        }
+    }
 
     public virtual Coupon Xcp { get; set; } = null!;
 
-    public virtual Customer XcpCtm { get; set; } = null!;
+    public virtual Customer? XcpCtm { get; set; } = null!;
 
     public virtual ICollection<Purchase> PxcPrcs { get; set; } = new List<Purchase>();
 }

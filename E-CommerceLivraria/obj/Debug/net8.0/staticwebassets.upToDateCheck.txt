@@ -7,7 +7,7 @@ wwwroot\css\admin\customer\crud\AllCustomers.css
 wwwroot\css\admin\layout.css
 wwwroot\css\customer\address\createAddress.css
 wwwroot\css\customer\cart\addressPay\addressPayment.css
-wwwroot\css\customer\cart\addressPay\methodPay\methodPayment.css
+wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
 wwwroot\css\customer\cart\cart.css
 wwwroot\css\customer\home\home.css
 wwwroot\css\customer\home\product\product.css
@@ -26,7 +26,7 @@ wwwroot\js\admin\ctmRequests\purchases\purchases.js
 wwwroot\js\admin\customer\crud\AllCustomers.js
 wwwroot\js\extra\verifyPassword.js
 wwwroot\js\admin\layout.js
-wwwroot\js\customer\cart\addressPay\methodPay\paymentLoader.js
+wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
 wwwroot\js\customer\chatbot\chatbot.js
 wwwroot\js\customer\cart\addressPay\addressPay.js
 wwwroot\js\customer\cart\cart.js
@@ -114,7 +114,7 @@ wwwroot\js\customer\profile\info\info.js
 wwwroot\js\customer\profile\address\detailed.js
 wwwroot\css\customer\profile\address\profileAddressList.css
 wwwroot\js\customer\profile\address\listAddress.js
-wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
+wwwroot\css\customer\cart\addressPay\methodPay\methodPayment.css
 wwwroot\css\admin\analysis\analysis.css
 wwwroot\css\admin\ctmRequests\dtlPurchase\dtlPurchase.css
 wwwroot\css\customer\profile\coupons\coupons.css
