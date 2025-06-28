@@ -1,5 +1,5 @@
-﻿namespace E_CommerceLivraria.Models.ModelsStructGroups {
-    public class CustomerFilterData {
+﻿namespace E_CommerceLivraria.DTO.AdmCustomerDTO {
+    public class CustomerFilterDTO {
         public decimal? Id { get; set; }
         public string? Name { get; set; }
         public decimal? Cpf { get; set; }

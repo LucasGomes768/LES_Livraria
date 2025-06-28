@@ -1,12 +1,13 @@
-﻿using System.Runtime.InteropServices;
+﻿using E_CommerceLivraria.DTO.AdmCustomerDTO;
 using E_CommerceLivraria.DTO.ChatbotDTO;
 using E_CommerceLivraria.DTO.PaymentDTO;
 using E_CommerceLivraria.DTO.ProfileDTO.InfoDTO;
 using E_CommerceLivraria.Models;
+using System.Runtime.InteropServices;
 
 namespace E_CommerceLivraria.Services.CustomerS {
     public interface ICustomerService {
-        public Customer Create(Customer customer);
+        public Customer Create(CreateCustomerDTO createData);
         public Customer? Get(decimal id);
         public List<Customer> GetAll();
         public bool Remove(decimal id);

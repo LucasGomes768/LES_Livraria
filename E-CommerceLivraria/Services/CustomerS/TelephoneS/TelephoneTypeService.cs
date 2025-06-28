@@ -10,20 +10,7 @@ namespace E_CommerceLivraria.Services.CustomerS.TelephoneS {
             _telephoneTypeRepository = telephoneTypeRepository;
         }
 
-        public TelephoneType CreateIfNew(TelephoneType telephoneType) {
-            var query = GetAll();
-            var result = query.FirstOrDefault(x => x.TptName.ToLower() == telephoneType.TptName.ToLower());
-
-            if (result == null) {
-                return _telephoneTypeRepository.Add(telephoneType);
-            }
-            else {
-                telephoneType = result;
-                return telephoneType;
-            }
-        }
-
-        public TelephoneType? Get(decimal id) {
+        public TelephoneType Get(decimal id) {
             return _telephoneTypeRepository.Get(id);
         }
 

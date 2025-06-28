@@ -7,6 +7,5 @@ namespace E_CommerceLivraria.Repository.CustomerR {
         public Customer Update(Customer customer);
         public Customer? Get(decimal id);
         public List<Customer> GetAll();
-        public bool Exists(decimal id);
     }
 }

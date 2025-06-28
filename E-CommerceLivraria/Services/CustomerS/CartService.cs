@@ -18,7 +18,6 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public Cart Create(Customer ctm) {
             Cart cart = new Cart();
 
-            cart.CrtCtm = ctm;
             cart.CrtCtmId = ctm.CtmId;
 
             return _cartRepository.Add(cart);

@@ -1,0 +1,117 @@
+.createBody form {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    flex-direction: column;
+    width: 70vw;
+}
+
+.infoSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-self: center;
+    flex-direction: column;
+    gap: 2vh;
+    
+    background-color: lightgray;
+    padding: 1%;
+    width: 100%;
+}
+
+    .infoSection h1 {
+        font-weight: 350;
+        text-align: center;
+    }
+
+    .infoSection .dataRow {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+    }
+
+        .infoSection .dataRow.spc_even {
+            justify-content: space-evenly;
+        }
+
+        .infoSection .dataRow.spc_bet {
+            justify-content: space-between;
+        }
+
+        .infoSection .dataRow.left {
+            justify-content: left;
+        }
+
+        .infoSection .dataRow.center {
+            justify-content: center;
+        }
+
+        .infoSection .dataRow div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .infoSection .dataRow label {
+            font-weight: 350;
+            font-size: 1.25vw;
+        }
+
+        .infoSection .dataRow input {
+            font-weight: 350;
+            font-size: 1.15vw;
+            height: 100%;
+        }
+
+            .infoSection .dataRow input:disabled {
+                background-color: rgb(240, 240, 240);
+                border: 1px solid black;
+                color: black;
+            }
+
+        .infoSection .dataRow select {
+            font-weight: 350;
+            font-size: 1.25vw;
+            height: 100%;
+        }
+
+            .infoSection .dataRow select:disabled {
+                background-color: rgb(240, 240, 240);
+                border: 1px solid black;
+                color: black;
+            }
+
+        .infoSection .dataRow .observationsDiv {
+                width: 100%;
+            }
+
+                .observationsTxt {
+                    width: 61.75vw;
+                    resize: none;
+                }
+
+        .infoSection .dataRow .inputBtn {
+            display: flex;
+            flex-direction: row;
+        }
+
+            .infoSection .dataRow .inputBtn button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .infoSection .dataRow button {
+            border: 2px solid black;
+            color: black;
+            background-color: white;
+            border-radius: 5px;
+            font-size: 1.3vw;
+
+            transition-duration: 0.2s;
+        }
+
+            .infoSection .dataRow button:hover {
+                background-color: black;
+                color: white;
+            }

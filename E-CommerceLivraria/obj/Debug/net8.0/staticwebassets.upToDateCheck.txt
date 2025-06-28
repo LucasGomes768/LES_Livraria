@@ -26,7 +26,6 @@ wwwroot\js\admin\ctmRequests\purchases\purchases.js
 wwwroot\js\admin\customer\crud\AllCustomers.js
 wwwroot\js\extra\verifyPassword.js
 wwwroot\js\admin\layout.js
-wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
 wwwroot\js\customer\chatbot\chatbot.js
 wwwroot\js\customer\cart\addressPay\addressPay.js
 wwwroot\js\customer\cart\cart.js
@@ -36,7 +35,7 @@ wwwroot\js\customer\profile\exchanges\exchangeList.js
 wwwroot\js\customer\profile\exchanges\requestExchange\exchangeRequest.js
 wwwroot\js\admin\analysis\analysis.js
 wwwroot\js\customer\profile\purchases\purchaseDtl.js
-wwwroot\js\extra\styleField.js
+wwwroot\js\admin\customer\crud\createCustomer.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -122,4 +121,6 @@ wwwroot\js\customer\profile\coupons\coupons.js
 wwwroot\css\customer\profile\creditCards\cardList.css
 wwwroot\js\customer\profile\creditCards\cardList.js
 wwwroot\css\customer\creditCards\addCard.css
-wwwroot\js\extra\test.js
+wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
+wwwroot\css\admin\customer\crud\createCustomer.css
+wwwroot\js\extra\styleField.js

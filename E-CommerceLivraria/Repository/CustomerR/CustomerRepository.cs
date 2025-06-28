@@ -18,16 +18,6 @@ namespace E_CommerceLivraria.Repository.CustomerR {
             return customer;
         }
 
-        public bool Exists(decimal id) {
-            var ctm = _dbContext.Customers.AsNoTracking().FirstOrDefault(x => x.CtmId == id);
-
-            if (ctm == null) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-
         public Customer? Get(decimal id) {
             return _dbContext.Customers
                 .Include(x => x.CtmGnd)

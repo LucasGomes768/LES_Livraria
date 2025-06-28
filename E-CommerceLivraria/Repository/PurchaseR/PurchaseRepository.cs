@@ -52,6 +52,10 @@ namespace E_CommerceLivraria.Repository.PurchaseR
                         .ThenInclude(x => x.StcBok)
                 .Include(x => x.CreditCards)
                     .ThenInclude(x => x.CcpCrd)
+                .Include(x => x.PxcCpns)
+                    .ThenInclude(x => x.Xcp)
+                .Include(x => x.PrcCpp)
+                    .ThenInclude(x => x.Pcp)
                 .FirstOrDefault(x => x.PrcId == id);
         }
 

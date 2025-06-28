@@ -96,7 +96,7 @@
                     </a>
                 </div>
                 <div class="logout profileSection">
-                    <a asp-controller="Customer" asp-action="Read">
+                    <a asp-controller="AdmCustomer" asp-action="Read">
                         <h2>Administrador</h2>
                     </a>
                 </div>
@@ -147,9 +147,10 @@
                             <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="billing" asp-route-CtmId="1"><h3>Cobrança</h3></a>
                         </div>
                     </div>
-                    <!-- TODO: Cartões -->
                     <div class="section">
-                        <a href="/customer/profile/card/list/cardList.html"><h2>Cartões</h2></a>
+                        <a asp-controller="ProfileCreditCards" asp-action="CreditCardsList" asp-route-CtmId="1">
+                            <h2>Cartões</h2>
+                        </a>
                     </div>
                     <div class="section">
                         <a asp-controller="ProfileExchangeCoupons" asp-action="CouponsList" asp-route-CtmId="1">

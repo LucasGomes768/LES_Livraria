@@ -1,27 +1,56 @@
-﻿using E_CommerceLivraria.DTO.ChatbotDTO;
+﻿using E_CommerceLivraria.DTO.AdmCustomerDTO;
+using E_CommerceLivraria.DTO.ChatbotDTO;
 using E_CommerceLivraria.DTO.ProfileDTO.InfoDTO;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.CustomerR;
-using E_CommerceLivraria.Services.CreditCardS;
-using Microsoft.EntityFrameworkCore;
+using E_CommerceLivraria.Repository.CustomerR.GenderR;
+using E_CommerceLivraria.Services.AddressS;
+using E_CommerceLivraria.Services.CustomerS.TelephoneS;
 
 namespace E_CommerceLivraria.Services.CustomerS {
     public class CustomerService : ICustomerService{
         private readonly ICustomerRepository _customerRepository;
         private readonly ICartService _cartService;
+        private readonly IAddressService _addressService;
+        private readonly IGenderRepository _genderRepository;
+        private readonly ITelephoneService _telephoneService;
 
-        public CustomerService(ICustomerRepository customerRepository, ICartService cartService) {
+        public CustomerService(ICustomerRepository customerRepository, ICartService cartService, IAddressService addressService, IGenderRepository genderRepository, ITelephoneService telephoneService) {
             _customerRepository = customerRepository;
             _cartService = cartService;
+            _addressService = addressService;
+            _genderRepository = genderRepository;
+            _telephoneService = telephoneService;
         }
 
-        public Customer Create(Customer customer) {
-            return _customerRepository.Add(customer);
+        public Customer Create(CreateCustomerDTO createData) {
+            Customer newCtm = createData.Ctm;
+            newCtm.CtmCrtId = null;
+
+            newCtm.CtmAdd = _addressService.Create(newCtm.CtmAdd);
+            newCtm.DadAdds.Add(_addressService.Create(createData.Delivery));
+            newCtm.BadAdds.Add(_addressService.Create(createData.Billing));
+
+            Gender? tempGnd = _genderRepository.Get(newCtm.CtmGndId);
+            if (tempGnd == null) throw new Exception("O gênero não foi encontrado");
+            else newCtm.CtmGnd = tempGnd;
+
+            newCtm.CtmTlp = _telephoneService.Create(newCtm.CtmTlp);
+            newCtm.CtmBirthdate = DateTime.Parse(createData.Birthdate);
+
+            newCtm = _customerRepository.Add(newCtm);
+
+            newCtm.CtmCrt = _cartService.Create(newCtm);
+            newCtm.CtmCrtId = newCtm.CtmCrt.CrtId;
+
+            return _customerRepository.Update(newCtm);
         }
 
         public bool Exists(decimal id) {
-            return _customerRepository.Exists(id);
+            var ctm = _customerRepository.Get(id);
+
+            return (ctm != null);
         }
 
         public Customer? Get(decimal id) {

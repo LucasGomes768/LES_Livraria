@@ -14,11 +14,7 @@ namespace E_CommerceLivraria.Repository.AddressR {
             _dbContext.Addresses.Add(address);
             _dbContext.SaveChanges();
 
-            var add = Get(address.AddId);
-            _dbContext.Entry(add).State = EntityState.Detached;
-            _dbContext.Entry(add).State = EntityState.Detached;
-
-            return add;
+            return address;
         }
 
         public Address? Get(decimal id) {

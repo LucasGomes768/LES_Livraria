@@ -1,4 +1,5 @@
-﻿using E_CommerceLivraria.Models;
+﻿using E_CommerceLivraria.DTO.AdmCustomerDTO;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
@@ -40,7 +41,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
 
         public IActionResult Read()
         {
-            ReadData rdg = new ReadData {
+            ReadAllCustomerDTO rdg = new ReadAllCustomerDTO {
                 Customers = _customerService.GetAll(),
                 Genders = _genderRepository.GetAll(),
                 TlpTypes = _telephoneTypeService.GetAll()
@@ -49,10 +50,10 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             return View("~/Views/Admin/crud/customer/readAll/AllCustomers.cshtml", rdg);
         }
 
-        public IActionResult FilterRead(ReadData rdg) {
+        public IActionResult FilterRead(ReadAllCustomerDTO rdg) {
             IEnumerable<Customer> query = _customerService.GetAll();
 
-            CustomerFilterData filter = rdg.FilterData;
+            CustomerFilterDTO filter = rdg.FilterData;
 
             // Nome
             if (filter.Name != null && query.Count() != 0) {
@@ -91,7 +92,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                 query = query.Where(x => x.CtmRanking == filter.Ranking);
             }
 
-            ReadData newRdg = new ReadData {
+            ReadAllCustomerDTO newRdg = new ReadAllCustomerDTO {
                 Customers = query.ToList(),
                 Genders = _genderRepository.GetAll(),
                 TlpTypes = _telephoneTypeService.GetAll()
@@ -100,15 +101,15 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             return View("~/Views/Admin/Customer/Read.cshtml", newRdg);
         }
 
-        public IActionResult Create() {
-            CreateData cdg = new CreateData {
-                Genders = _genderRepository.GetAll(),
-                PublicplaceTypes = _publicPlaceTypeRepository.GetAll(),
-                ResidenceTypes = _residenceTypeRepository.GetAll()
-            };
+        //public IActionResult Create() {
+        //    CreateCustomerDTO cdg = new CreateCustomerDTO {
+        //        Genders = _genderRepository.GetAll(),
+        //        PublicplaceTypes = _publicPlaceTypeRepository.GetAll(),
+        //        ResidenceTypes = _residenceTypeRepository.GetAll()
+        //    };
 
-            return View("~/Views/Admin/Customer/Create.cshtml", cdg);
-        }
+        //    return View("~/Views/Admin/Customer/Create.cshtml", cdg);
+        //}
 
         [Route("Customer/Alter/{id:decimal}")]
         public IActionResult Alter(decimal id) {
@@ -149,61 +150,61 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             return Read();
         }
 
-        [HttpPost]
-        public IActionResult Create(CreateData createDataGroup) {
+        //[HttpPost]
+        //public IActionResult Create(CreateCustomerDTO createDataGroup) {
 
-            Customer newCtm = createDataGroup.Ctm;
+        //    Customer newCtm = createDataGroup.Ctm;
 
-            newCtm.CtmBirthdate = DateTime.Parse(createDataGroup.Birthdate);
+        //    newCtm.CtmBirthdate = DateTime.Parse(createDataGroup.Birthdate);
 
-            newCtm.CtmAdd = _addressService.Create(newCtm.CtmAdd);
+        //    newCtm.CtmAdd = _addressService.Create(newCtm.CtmAdd);
 
-            var gndTemp = _genderRepository.Get(newCtm.CtmGndId);
-            if(gndTemp == null) {
-                return View("~/Views/Admin/Customer/Create.cshtml", createDataGroup);
-            }
+        //    var gndTemp = _genderRepository.Get(newCtm.CtmGndId);
+        //    if(gndTemp == null) {
+        //        return View("~/Views/Admin/Customer/Create.cshtml", createDataGroup);
+        //    }
 
-            Address newDelAdd = _addressService.Create(createDataGroup.Delivery);
-            newCtm.DadAdds.Add(newDelAdd);
-            newDelAdd.DadCtms.Add(newCtm);
+        //    Address newDelAdd = _addressService.Create(createDataGroup.Delivery);
+        //    newCtm.DadAdds.Add(newDelAdd);
+        //    newDelAdd.DadCtms.Add(newCtm);
 
-            Address newBilAdd = _addressService.Create(createDataGroup.Shipping);
-            newCtm.BadAdds.Add(newBilAdd);
-            newBilAdd.BadCtms.Add(newCtm);
+        //    Address newBilAdd = _addressService.Create(createDataGroup.Shipping);
+        //    newCtm.BadAdds.Add(newBilAdd);
+        //    newBilAdd.BadCtms.Add(newCtm);
 
-            newCtm.CtmTlp = _telephoneService.Create(newCtm.CtmTlp);
+        //    newCtm.CtmTlp = _telephoneService.Create(newCtm.CtmTlp);
 
-            _customerService.Create(newCtm);
+        //    _customerService.Create(newCtm);
 
-            newCtm.Cart = _cartService.Create(newCtm);
+        //    newCtm.Cart = _cartService.Create(newCtm);
 
-            return RedirectToAction("Create");
-        }
+        //    return RedirectToAction("Create");
+        //}
 
-        [HttpPost]
-        public IActionResult Update(UpdateData udg) {
-            Customer ctm = udg.Ctm;
+        //[HttpPost]
+        //public IActionResult Update(UpdateData udg) {
+        //    Customer ctm = udg.Ctm;
 
-            ctm.CtmBirthdate = DateTime.Parse(udg.Birthdate);
+        //    ctm.CtmBirthdate = DateTime.Parse(udg.Birthdate);
 
-            _customerService.Update(ctm);
+        //    _customerService.Update(ctm);
 
-            return Detailed(ctm.CtmId);
-        }
+        //    return Detailed(ctm.CtmId);
+        //}
 
-        public IActionResult UpdatePassword(Customer data) {
-            var ctm = _customerService.Get(data.CtmId);
+        //public IActionResult UpdatePassword(Customer data) {
+        //    var ctm = _customerService.Get(data.CtmId);
 
-            if (ctm == null) throw new Exception("Um cliente com esse ID não foi encontrado");
-            ctm.CtmPass = data.CtmPass;
+        //    if (ctm == null) throw new Exception("Um cliente com esse ID não foi encontrado");
+        //    ctm.CtmPass = data.CtmPass;
 
-            UpdateData udg = new UpdateData {
-                Ctm = ctm,
-                Birthdate = ctm.CtmBirthdate.ToString("yyyy-MM-dd")
-            };
+        //    UpdateData udg = new UpdateData {
+        //        Ctm = ctm,
+        //        Birthdate = ctm.CtmBirthdate.ToString("yyyy-MM-dd")
+        //    };
 
-            return Update(udg);
-        }
+        //    return Update(udg);
+        //}
 
 
     }

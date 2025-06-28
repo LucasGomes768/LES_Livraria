@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     showOneSection("dadosGerais");
-    showItemSection("purchaseItems", undefined);
+    showItemSection("purchaseItems");
 })
 
 function showOneSection(section) {
@@ -12,20 +12,15 @@ function showOneSection(section) {
 
     document.getElementById(section).style.display = "block"
 }
-function showItemSection(section, button) {
+function showItemSection(section) {
     const sections = document.getElementsByClassName("items");
     const buttons = document.getElementsByClassName("itemsSelectBtn");
 
     for (let i = 0; i < sections.length; i++) {
         sections.item(i).style.display = "none";
-
-        if (buttons.length < 1 || button == undefined) continue;
-
-        buttons.item(i).disabled = false;
     }
 
     document.getElementById(section).style.display = "flex";
-    button.disabled = true;
 }
 
 function updateStatusAll(id, newStatus) {
@@ -51,6 +46,7 @@ function updateStatusAll(id, newStatus) {
 
     } catch (error) {
         alert('Falha na comunicação: ' + error.message)
+        console.error(error)
     }
 }
 

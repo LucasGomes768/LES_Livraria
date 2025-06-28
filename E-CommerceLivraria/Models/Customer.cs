@@ -23,6 +23,19 @@ public partial class Customer
 
     [NotMapped]
     public string? CtmCpfStyled {
+        set
+        {
+            string? text = value;
+            if (text == null) return;
+
+            decimal cpfTemp;
+            text = text.Trim().Replace(".","").Replace("-","");
+
+            if (text.Length != 11) return;
+            if (!decimal.TryParse(text, out cpfTemp)) return;
+
+            CtmCpf = cpfTemp;
+        }
         get {
             if (CtmCpf == 0) return null;
 
@@ -76,13 +89,13 @@ public partial class Customer
 
     public decimal CtmTlpId { get; set; }
 
-    public decimal CtmCrtId { get; set; }
+    public decimal? CtmCrtId { get; set; }
 
     public virtual Cart? Cart { get; set; }
 
     public virtual Address CtmAdd { get; set; } = null!;
 
-    public virtual Cart CtmCrt { get; set; } = null!;
+    public virtual Cart? CtmCrt { get; set; } = null!;
 
     public virtual Gender CtmGnd { get; set; } = null!;
 

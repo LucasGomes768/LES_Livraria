@@ -15,7 +15,7 @@ namespace E_CommerceLivraria.Services.CustomerS.TelephoneS {
         }
 
         public Telephone Create(Telephone telephone) {
-            telephone.TlpTpt = _telephoneTypeService.CreateIfNew(telephone.TlpTpt);
+            telephone.TlpTpt = _telephoneTypeService.Get(telephone.TlpTptId);
             return _telephoneRepository.Add(telephone);
         }
     }

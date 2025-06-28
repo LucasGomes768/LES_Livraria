@@ -601,7 +601,8 @@ public partial class ECommerceDbContext : DbContext
 
             entity.HasOne(d => d.CtmCrt).WithOne(p => p.Customer)
                 .HasForeignKey<Customer>(d => d.CtmCrtId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false)
                 .HasConstraintName("customer_cart_fk");
 
             entity.HasOne(d => d.CtmGnd).WithMany(p => p.Customers)

@@ -149,7 +149,7 @@
                             @foreach (ExchangeCoupon xcp in Model.PxcCpns)
                             {
                                 <tr>
-                                    <td>@xcp.Xcp.CpnDateGen</td>
+                                    <td>@xcp.Xcp.CpnDateGen.ToString("d")</td>
                                     <td>R$@xcp.Xcp.CpnValue</td>
                                 </tr>
                             }
@@ -180,8 +180,8 @@
 @if (exchangeItems.Any() && exchangeItems.Count() > 0)
 {
     <div class="itemsSelect">
-        <button class="itemsSelectBtn" disabled onclick="showItemSection('purchaseItems', this)">Itens da compra</button>
-        <button class="itemsSelectBtn" disabled onclick="showItemSection('exchangeItems', this)">Itens da troca</button>
+        <button class="itemsSelectBtn" onclick="showItemSection('purchaseItems')">Itens da compra</button>
+        <button class="itemsSelectBtn" onclick="showItemSection('exchangeItems')">Itens da troca</button>
     </div>
 }
 <div class="items" id="purchaseItems">

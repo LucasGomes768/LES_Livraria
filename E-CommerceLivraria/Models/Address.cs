@@ -41,10 +41,16 @@ public partial class Address
         }
         set
         {
-            string cep = value;
+            string? cep = value;
+            if (cep == null) return;
+
+            decimal numCep;
             cep = cep.Trim().Replace("-","");
 
-            AddCep = decimal.Parse(cep);
+            if (cep.Length != 8) return;
+            if (!decimal.TryParse(cep, out numCep)) return;
+
+            AddCep = numCep;
         }
     }
 

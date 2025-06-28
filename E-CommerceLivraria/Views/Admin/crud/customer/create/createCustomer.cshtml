@@ -1,0 +1,292 @@
+﻿@using E_CommerceLivraria.DTO.AdmCustomerDTO
+@model CreateCustomerDTO
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Cadastrar Cliente";
+    ViewData["CSSFile"] = "~/css/admin/customer/crud/createCustomer.css";
+    List<Gender> genders = ViewBag.Genders;
+    List<TelephoneType> telephoneTypes = ViewBag.TelTypes;
+    List<PublicplaceType> ppTypes = ViewBag.PpTypes;
+    List<ResidenceType> residenceTypes = ViewBag.ResTypes;
+}
+<br />
+<div class="createBody">
+    <form asp-controller="AdmCustomer" asp-action="RegisterCustomer" method="post" id="createCtmForm">
+        <div class="basicInfo" id="basic">
+            <div class="infoSection">
+                <h1>Informações da conta</h1>
+                <div class="dataRow spc_bet">
+                    <div>
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" asp-for="Ctm.CtmName" style="width: 20vw;" required>
+                    </div>
+                    <div>
+                        <label for="dtNasc">Data de nascimento:</label>
+                        <input type="date" id="dtNasc" asp-for="Birthdate" max="@DateTime.Now.ToString("yyyy-MM-dd")" required>
+                    </div>
+                    <div>
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" asp-for="Ctm.CtmCpfStyled" onblur="styleCpf(this)" maxlength="14" style="width: 8vw;">
+                    </div>
+                    <div>
+                        <label for="gender">Gênero:</label>
+                        <select id="gender" asp-for="Ctm.CtmGndId" asp-items="@(new SelectList(genders, "GndId", "GndName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dataRow left" style="gap: 3vw;">
+                    <div>
+                        <label for="telType">Tipo de telefone:</label>
+                        <select id="telType" asp-for="Ctm.CtmTlp.TlpTptId" asp-items="@(new SelectList(telephoneTypes, "TptId", "TptName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="telDDD">DDD:</label>
+                        <input type="number" class="noStep" id="telDDD" asp-for="Ctm.CtmTlp.TlpDdd" style="width: 3vw;" max="999" min="0" required>
+                    </div>
+                    <div>
+                        <label for="telNum">Nº de telefone:</label>
+                        <input type="text" id="telNum" asp-for="Ctm.CtmTlp.TlpNumber" maxlength="10" style="width: 8vw;">
+                    </div>
+                    <div>
+                        <label for="active">Ativo:</label>
+                        <input type="checkbox" id="active" asp-for="Ctm.CtmActive" checked>
+                    </div>
+                </div>
+                <div class="dataRow spc_bet">
+                    <div>
+                        <label for="email">E-Mail:</label>
+                        <input type="email" id="email" asp-for="Ctm.CtmEmail" style="width: 20vw;" required>
+                    </div>
+                    <div>
+                        <label for="pass">Senha:</label>
+                        <div class="inputBtn">
+                            <input type="password" id="pass" asp-for="Ctm.CtmPass" required>
+                            <button type="button" id="passShowBtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="confPass">Redigite a senha:</label>
+                        <div class="inputBtn">
+                            <input type="password" id="confPass" required>
+                            <button type="button" id="confPassShowBtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataRow">
+                    <button type="button" id="basicNextBtn" style="height: fit-content;" class="progress">Avançar para o endereço de residencial</button>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="resAddInfo" id="res" style="display: none;">
+            <div class="infoSection">
+                <h1>Endereço residencial</h1>
+                <div class="dataRow spc_bet">
+                    <div>
+                        <label for="resRsType">Tipo de Residência:</label>
+                        <select id="resRsType" asp-for="Ctm.CtmAdd.AddRstId" asp-items="@(new SelectList(residenceTypes, "RstId", "RstName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="resPpType">Tipo de Logradouro:</label>
+                        <select id="resPpType" asp-for="Ctm.CtmAdd.AddPptId" asp-items="@(new SelectList(ppTypes, "PptId", "PptName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="resPp">Logradouro:</label>
+                        <input type="text" id="resPp" asp-for="Ctm.CtmAdd.AddPublicPlace" required style="width: 20vw;">
+                    </div>
+                    <div>
+                        <label for="resCep">CEP:</label>
+                        <input type="text" id="resCep" asp-for="Ctm.CtmAdd.AddCepStyled" maxlength="9" style="width: 6vw;" required>
+                    </div>
+                    <div>
+                        <label for="resNum">Nº:</label>
+                        <input type="number" class="noStep" id="resNum" asp-for="Ctm.CtmAdd.AddNumber" min="1" max="9999" style="width: 3.5vw;" required>
+                    </div>
+                </div>
+                <div class="dataRow spc_bet" style="gap: 3vw;">
+                    <div>
+                        <label for="resNbh">Bairro:</label>
+                        <input type="text" id="resNbh" asp-for="Ctm.CtmAdd.AddNbh.NbhName" required>
+                    </div>
+                    <div>
+                        <label for="resCity">Cidade:</label>
+                        <input type="text" id="resCity" asp-for="Ctm.CtmAdd.AddNbh.NbhCty.CtyName" required>
+                    </div>
+                    <div>
+                        <label for="resState">Estado:</label>
+                        <input type="text" id="resState" asp-for="Ctm.CtmAdd.AddNbh.NbhCty.CtyStt.SttName" required>
+                    </div>
+                    <div>
+                        <label for="resCountry">País:</label>
+                        <input type="text" id="resCountry" asp-for="Ctm.CtmAdd.AddNbh.NbhCty.CtyStt.SttCtr.CtrName" required>
+                    </div>
+                </div>
+                <div class="dataRow">
+                    <div>
+                        <label for="resShortPhrase">Frase curta:</label>
+                        <input type="text" id="resShortPhrase" asp-for="Ctm.CtmAdd.AddShortPhrase" style="width: 61.75vw;" required>
+                    </div>
+                </div>
+                <div class="dataRow observationsDiv">
+                    <div>
+                        <label for="resObs">Observações:</label>
+                        <textarea id="resObs" asp-for="Ctm.CtmAdd.AddObservations" class="observationsTxt"></textarea>
+                    </div>
+                </div>
+                <div class="dataRow" style="gap: 10px;">
+                    <button type="button" id="resBackBtn" style="height: fit-content;">Voltar</button>
+                    <button type="button" id="resNextBtn" style="height: fit-content;" class="progress">Avançar para o endereço de entrega</button>
+                </div>
+            </div>
+        </div>
+        <div class="delAddInfo" id="del" style="display: none;">
+            <div class="infoSection">
+                <h1>Endereço de entrega</h1>
+                <div class="dataRow spc_bet">
+                    <div>
+                        <label for="delRsType">Tipo de Residência:</label>
+                        <select id="delRsType" asp-for="Delivery.AddRstId" asp-items="@(new SelectList(residenceTypes, "RstId", "RstName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="delPpType">Tipo de Logradouro:</label>
+                        <select id="delPpType" asp-for="Delivery.AddPptId" asp-items="@(new SelectList(ppTypes, "PptId", "PptName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="delPp">Logradouro:</label>
+                        <input type="text" id="delPp" asp-for="Delivery.AddPublicPlace" required style="width: 20vw;">
+                    </div>
+                    <div>
+                        <label for="delCep">CEP:</label>
+                        <input type="text" id="delCep" asp-for="Delivery.AddCepStyled" maxlength="9" style="width: 6vw;" required>
+                    </div>
+                    <div>
+                        <label for="delNum">Nº:</label>
+                        <input type="number" class="noStep" asp-for="Delivery.AddNumber" id="delNum" min="1" max="9999" style="width: 3.5vw;" required>
+                    </div>
+                </div>
+                <div class="dataRow spc_bet" style="gap: 3vw;">
+                    <div>
+                        <label for="delNbh">Bairro:</label>
+                        <input type="text" id="delNbh" asp-for="Delivery.AddNbh.NbhName" required>
+                    </div>
+                    <div>
+                        <label for="delCity">Cidade:</label>
+                        <input type="text" id="delCity" asp-for="Delivery.AddNbh.NbhCty.CtyName" required>
+                    </div>
+                    <div>
+                        <label for="delState">Estado:</label>
+                        <input type="text" id="delState" asp-for="Delivery.AddNbh.NbhCty.CtyStt.SttName" required>
+                    </div>
+                    <div>
+                        <label for="delCountry">País:</label>
+                        <input type="text" id="delCountry" asp-for="Delivery.AddNbh.NbhCty.CtyStt.SttCtr.CtrName" required>
+                    </div>
+                </div>
+                <div class="dataRow">
+                    <div>
+                        <label for="delShortPhrase">Frase curta:</label>
+                        <input type="text" id="delShortPhrase" asp-for="Delivery.AddShortPhrase" style="width: 61.75vw;">
+                    </div>
+                </div>
+                <div class="dataRow observationsDiv">
+                    <div>
+                        <label for="delObs">Observações:</label>
+                        <textarea id="delObs" asp-for="Delivery.AddObservations" class="observationsTxt"></textarea>
+                    </div>
+                </div>
+                <div class="dataRow" style="gap: 10px;">
+                    <button type="button" id="delBackBtn" style="height: fit-content;">Voltar</button>
+                    <button type="button" id="delNextBtn" style="height: fit-content;" class="progress">Avançar para o endereço de cobrança</button>
+                </div>
+            </div>
+        </div>
+        <div class="bilAddInfo" id="bil" style="display: none;">
+            <div class="infoSection">
+                <h1>Endereço de cobrança</h1>
+                <div class="dataRow spc_bet">
+                    <div>
+                        <label for="bilRsType">Tipo de Residência:</label>
+                        <select id="bilRsType" asp-for="Billing.AddRstId" asp-items="@(new SelectList(residenceTypes, "RstId", "RstName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="bilPpType">Tipo de Logradouro:</label>
+                        <select id="bilPpType" asp-for="Billing.AddPptId" asp-items="@(new SelectList(ppTypes, "PptId", "PptName"))">
+                            <option value="" selected>- Selecione -</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="bilPp">Logradouro:</label>
+                        <input type="text" id="bilPp" asp-for="Billing.AddPublicPlace" required style="width: 20vw;">
+                    </div>
+                    <div>
+                        <label for="bilCep">CEP:</label>
+                        <input type="text" id="bilCep" asp-for="Billing.AddCepStyled" maxlength="9" style="width: 6vw;" required>
+                    </div>
+                    <div>
+                        <label for="bilNum">Nº:</label>
+                        <input type="number" class="noStep" id="bilNum" asp-for="Billing.AddNumber" min="1" max="9999" style="width: 3.5vw;" required>
+                    </div>
+                </div>
+                <div class="dataRow spc_bet" style="gap: 3vw;">
+                    <div>
+                        <label for="bilNbh">Bairro:</label>
+                        <input type="text" id="bilNbh" asp-for="Billing.AddNbh.NbhName" required>
+                    </div>
+                    <div>
+                        <label for="bilCity">Cidade:</label>
+                        <input type="text" id="bilCity" asp-for="Billing.AddNbh.NbhCty.CtyName" required>
+                    </div>
+                    <div>
+                        <label for="bilState">Estado:</label>
+                        <input type="text" id="bilState" asp-for="Billing.AddNbh.NbhCty.CtyStt.SttName" required>
+                    </div>
+                    <div>
+                        <label for="bilCountry">País:</label>
+                        <input type="text" id="bilCountry" asp-for="Billing.AddNbh.NbhCty.CtyStt.SttCtr.CtrName" required>
+                    </div>
+                </div>
+                <div class="dataRow">
+                    <div>
+                        <label for="bilShortPhrase">Frase curta:</label>
+                        <input type="text" id="bilShortPhrase" asp-for="Billing.AddShortPhrase" style="width: 61.75vw;">
+                    </div>
+                </div>
+                <div class="dataRow observationsDiv">
+                    <div>
+                        <label for="bilObs">Observações:</label>
+                        <textarea id="bilObs" asp-for="Billing.AddObservations" class="observationsTxt"></textarea>
+                    </div>
+                </div>
+                <div class="dataRow" style="gap: 10px;">
+                    <button type="button" id="bilBackBtn" style="height: fit-content;">Voltar</button>
+                    <button type="button" id="finishRegisterBtn" style="height: fit-content;">Finalizar cadastro</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/extra/styleField.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+<script src="~/js/admin/customer/crud/createCustomer.js?v=1.0.@(DateTime.Now.Ticks)" type="module"></script>
