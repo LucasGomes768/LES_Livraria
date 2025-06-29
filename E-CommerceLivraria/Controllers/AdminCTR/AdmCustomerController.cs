@@ -132,5 +132,30 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                 });
             }
         }
+
+        [HttpDelete("AdmCustomer/Remove/{id:int}")]
+        public IActionResult DeleteCustomer([FromRoute] int id)
+        {
+            try
+            {
+                bool exists = _customerService.Exists(id);
+                if (!exists) return NotFound("Cliente não foi encontrado");
+
+                _customerService.Remove(id);
+
+                return Ok(new
+                {
+                    Sucess = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Sucess = false,
+                    ex.Message
+                });
+            }
+        }
     }
 }

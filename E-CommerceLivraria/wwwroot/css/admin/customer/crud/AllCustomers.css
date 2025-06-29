@@ -113,3 +113,29 @@
             border: 3px solid var(--blue1);
             text-align: center;
         }
+
+            .customerTable table td.viewBtnTd button {
+                background-color: white;
+                border: 1px solid blue;
+                border-radius: 5px;
+                color: blue;
+                transition-duration: 0.2s;
+            }
+
+                .customerTable table td.viewBtnTd button:hover {
+                    background-color: blue;
+                    color: white;
+                }
+
+            .customerTable table td.removeBtnTd button {
+                background-color: white;
+                border: 1px solid red;
+                border-radius: 5px;
+                color: red;
+                transition-duration: 0.2s;
+            }
+
+                .customerTable table td.removeBtnTd button:hover {
+                    background-color: red;
+                    color: white;
+                }
