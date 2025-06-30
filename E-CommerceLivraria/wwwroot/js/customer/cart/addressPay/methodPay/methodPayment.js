@@ -17,14 +17,14 @@ export function calcularValores() {
     const coupons = sessionStorage.getItem("cuponsSelecionados");
     let totalCoupons = 0;
 
-    const promoValue = Number(document.getElementById('promoCpnValue').value);
-    if (promoValue) totalCoupons += promoValue
-
     if (coupons) {
         const couponsArray = JSON.parse(coupons);
         totalCoupons = couponsArray.reduce((sum, cpn) => sum + parseFloat(cpn.value), 0);
         totalCoupons = Number(totalCoupons.toFixed(2));
     }
+
+    const promoValue = Number(document.getElementById('promoCpnValue').value);
+    if (promoValue) totalCoupons += promoValue
 
     document.getElementById("couponsValue").innerHTML = `<b>R$</b>${("" + totalCoupons.toFixed(2)).replace('.', ',')}`
 
@@ -44,7 +44,7 @@ export function calcularValores() {
     }
 
     if (totalValuePayed >= priceValue) {
-        buttonDiv.innerHTML = '<button id="btnFinalizar" onclick="window.PaymentFunctions.finalizarCompra()">Finalizar compra</button>';
+        buttonDiv.innerHTML = '<button id="btnFinalizar" type="button" onclick="window.PaymentFunctions.finalizarCompra()">Finalizar compra</button>';
     } else {
         buttonDiv.innerHTML = '<button type="button" disabled>Finalizar compra</button>';
     }
@@ -69,7 +69,7 @@ export function finalizarCompra() {
             id: parseFloat(cartao.id),
             value: parseFloat(cartao.value)
         })),
-        PromotionalCode: "",
+        PromotionalCode: document.getElementById('promoCpnCode').value,
         ExchangeIds: exCupons.map(function(cupom) {
             return parseFloat(cupom.id)
         }),
@@ -83,9 +83,11 @@ export function finalizarCompra() {
         if (request.status === 200) {
             sessionStorage.removeItem("cartoesSelecionados");
             sessionStorage.removeItem("cuponsSelecionados");
-            alert("Compra realizada com sucesso!")
+            alert("Compra realizada com sucesso!");
+            window.location.href = '/Home/HomePage'
         } else {
-            alert('Erro ao processar compra: ' + request.statusText);
+            const response = JSON.parse(request.responseText);
+            alert(response.message);
         }
 
     } catch (error) {

@@ -56,6 +56,7 @@ builder.Services.AddScoped<IExchangeCouponRepository, ExchangeCouponRepository>(
 builder.Services.AddScoped<IExchangeCouponService, ExchangeCouponService>();
 builder.Services.AddScoped<IPromotionalCouponRepository, PromotionalCouponRepository>();
 builder.Services.AddScoped<IPromotionalCouponService, PromotionalCouponService>();
+builder.Services.AddScoped<IPromoCouponAssignmentService, PromoCouponAssignmentService>();
 
 builder.Services.AddScoped<ITelephoneRepository, TelephoneRepository>();
 builder.Services.AddScoped<ITelephoneService, TelephoneService>();

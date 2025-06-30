@@ -16,20 +16,22 @@ namespace E_CommerceLivraria.Services.PurchaseS
         private readonly IStockService _stockService;
         private readonly IPurchaseItemService _purchaseItemService;
         private readonly IExchangeCouponService _exchangeCouponService;
+        private readonly IPromotionalCouponService _promotionalCouponService;
 
-        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService, IStockService stockService, IExchangeCouponService exchangeCouponService)
+        public PurchaseService(IPurchaseRepository purchaseRepository, IPurchaseItemService purchaseItemService, IStockService stockService, IExchangeCouponService exchangeCouponService, IPromotionalCouponService promotionalCouponService)
         {
             _purchaseRepository = purchaseRepository;
             _purchaseItemService = purchaseItemService;
             _stockService = stockService;
             _exchangeCouponService = exchangeCouponService;
+            _promotionalCouponService = promotionalCouponService;
         }
 
         public Purchase Add(PurchaseDataDTO purchaseData)
         {
             decimal totalCardsValue = 0;
             decimal totalCouponsValue = 0;
-            PromotionalCoupon promoCoupon;
+            PromotionalCoupon? promoCoupon = null;
             List<ExchangeCoupon> exCoupons = new List<ExchangeCoupon>();
 
             if (purchaseData.Request.CreditCards.Count > 0)
@@ -49,16 +51,20 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
             if (purchaseData.Request.PromotionalCode != "")
             {
-                // promoCoupon = _promoRepository.GetByCode();
+                var cpn = _promotionalCouponService.GetByCode(purchaseData.Request.PromotionalCode);
+                if (cpn == null) throw new Exception("O cupom promocional selecionado não foi encontrado.");
+
+                promoCoupon = cpn;
+                totalCouponsValue += promoCoupon.Pcp.CpnValue;
             }
 
             decimal valuePayed = totalCardsValue + totalCouponsValue;
 
             if (valuePayed < purchaseData.Request.FinalPrice)
-                throw new Exception("Saldo insuficiente para realizar o pagamento");
+                throw new Exception("Saldo insuficiente para realizar o pagamento.");
 
             if (totalCardsValue > purchaseData.Request.FinalPrice)
-                throw new Exception("Saldo pago com cartões excede valor da compra");
+                throw new Exception("Saldo pago com cartões excede valor da compra.");
 
             var purchase = new Purchase();
 
@@ -85,10 +91,15 @@ namespace E_CommerceLivraria.Services.PurchaseS
                 purchase.PurchaseItems.Add(purchaseItem);
             }
 
+            if (promoCoupon != null)
+            {
+                purchase.PrcCpp = promoCoupon;
+            }
+
             purchase.PxcCpns = exCoupons;
 
             decimal change = valuePayed - purchaseData.Request.FinalPrice;
-            if (change > 0)
+            if (change > 0.10m)
             {
                 _exchangeCouponService.AddToCtm(purchaseData.Customer, change);
             }

@@ -1,20 +1,16 @@
 ﻿using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.CustomerR.CouponR;
 using E_CommerceLivraria.Services.CustomerS;
-using Newtonsoft.Json.Linq;
-using System.Runtime.CompilerServices;
 
 namespace E_CommerceLivraria.Services.CouponS
 {
     public class PromotionalCouponService : IPromotionalCouponService
     {
         private readonly IPromotionalCouponRepository _promotionalCouponRepository;
-        private readonly ICustomerService _customerService;
         
-        public PromotionalCouponService(IPromotionalCouponRepository promotionalCouponRepository,  ICustomerService customerService)
+        public PromotionalCouponService(IPromotionalCouponRepository promotionalCouponRepository)
         {
             _promotionalCouponRepository = promotionalCouponRepository;
-            _customerService = customerService;
         }
 
         public PromotionalCoupon Create(decimal value, string? code = null) {
@@ -31,14 +27,26 @@ namespace E_CommerceLivraria.Services.CouponS
                     CpnValue = value
                 },
                 PcpActive = true,
-                PcpCode = code,
-                PcmCtms = _customerService.GetAll()
+                PcpCode = code.ToUpper()
             };
         
             return _promotionalCouponRepository.Create(coupon);
         }
+
+        public PromotionalCoupon? GetIfCtmHas(Customer ctm, string code)
+        {
+            var cpn = GetByCode(code);
+            if (cpn == null) return null;
+
+            if (cpn.PcmCtms.Contains(ctm)) return cpn;
+            else throw new Exception("O cupom promocional já foi usado pelo cliente");
+        }
+
         public PromotionalCoupon? GetByCode(string code) {
-            var cpns = _promotionalCouponRepository.GetAll();
+            if (code == null || code == string.Empty) throw new Exception("Nenhum código foi fornecido");
+            if (code.Length != 10) throw new Exception("O código de um cupom promocional deve ter 10 caracteres");
+
+            var cpns = GetAllActive();
 
             return cpns.FirstOrDefault(x => x.PcpCode == code);
         }
@@ -69,12 +77,6 @@ namespace E_CommerceLivraria.Services.CouponS
             cpn.PcpDeactivatedAt = DateTime.Now;
 
             return _promotionalCouponRepository.Update(cpn);
-        }
-
-        public PromotionalCoupon RemoveFromAccount(Customer customer, PromotionalCoupon coupon)
-        {
-            coupon.PcmCtms.Remove(customer);
-            return _promotionalCouponRepository.Update(coupon);
         }
 
         private string generateRndCode()

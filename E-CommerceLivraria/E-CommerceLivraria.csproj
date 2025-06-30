@@ -14,6 +14,7 @@
   <ItemGroup>
     <Content Remove="wwwroot\js\customer\cart\addressPay\methodPay\cardsPayment.js" />
     <Content Remove="wwwroot\js\customer\cart\addressPay\methodPay\exCouponsPayment.js" />
+    <Content Remove="wwwroot\js\customer\cart\addressPay\methodPay\promoCouponPayment.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +50,7 @@
     <None Include="wwwroot\css\admin\customer\crud\AllCustomers.css" />
     <None Include="wwwroot\css\customer\address\createAddress.css" />
     <None Include="wwwroot\js\admin\customer\crud\AllCustomers.js" />
+    <None Include="wwwroot\js\customer\cart\addressPay\methodPay\promoCouponPayment.js" />
     <None Include="wwwroot\js\customer\cart\addressPay\methodPay\exCouponsPayment.js" />
     <None Include="wwwroot\js\customer\cart\addressPay\methodPay\cardsPayment.js" />
     <None Include="wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js" />

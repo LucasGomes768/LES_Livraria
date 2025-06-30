@@ -1,29 +1,62 @@
 ﻿using E_CommerceLivraria.DTO.CouponsDTO;
 using E_CommerceLivraria.Services.CouponS;
+using E_CommerceLivraria.Services.CustomerS;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace E_CommerceLivraria.Controllers.CrudCTR
 {
     public class PromoCouponCRUDController : Controller
     {
         private readonly IPromotionalCouponService _promotionalCouponService;
+        private readonly IPromoCouponAssignmentService _promoCouponAssignmentService;
+        private readonly ICustomerService _customerService;
 
-        public PromoCouponCRUDController(IPromotionalCouponService promotionalCouponService)
+        public PromoCouponCRUDController(IPromotionalCouponService promotionalCouponService, IPromoCouponAssignmentService promoCouponAssignmentService, ICustomerService customerService)
         {
             _promotionalCouponService = promotionalCouponService;
+            _promoCouponAssignmentService = promoCouponAssignmentService;
+            _customerService = customerService;
         }
 
-        [HttpGet("CRUD/PromoCoupons/All")]
-        public IActionResult GetAllPromoCoupons()
+        [HttpGet("CRUD/PromoCoupons/{ctmId:int}/{code}")]
+        public IActionResult GetPromoCouponByCode([FromRoute] int ctmId, [FromRoute] string code)
         {
             try
             {
-                var cpns = _promotionalCouponService.GetAll();
+                var ctm = _customerService.Get(ctmId);
+                if (ctm == null) return NotFound(new
+                {
+                    Sucess = false,
+                    Message = "Cliente não foi encontrado"
+                });
+
+                var cpn = _promotionalCouponService.GetIfCtmHas(ctm, code);
+
+                if (cpn == null) return NotFound(new {
+                    Sucess = false,
+                    Message = "O cupom promocional não foi encontrado ou não existe."
+                });
+
+                var cpnDTO = new PaymentPromoCouponDTO()
+                {
+                    Id = cpn.PcpId,
+                    Code = cpn.PcpCode,
+                    Value = cpn.Pcp.CpnValue
+                };
+
+                var jsonString = JsonSerializer.Serialize(cpnDTO, new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    ReferenceHandler = ReferenceHandler.IgnoreCycles
+                });
 
                 return Ok(new
                 {
                     Sucess = true,
-                    cpns
+                    JsonString = jsonString
                 });
             }
             catch (Exception ex)
@@ -44,6 +77,7 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
                 if (cpc == null) return BadRequest("Nenhum valor foi recebido");
 
                 var cpn = _promotionalCouponService.Create(cpc.Value, cpc.Code);
+                _promoCouponAssignmentService.AddPromoCouponToAllCtms(cpn);
 
                 return Ok(new
                 {

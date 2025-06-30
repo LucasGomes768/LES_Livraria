@@ -1,11 +1,13 @@
 ﻿Promise.all([
     import(`./cardsPayment.js?t=${Date.now()}`),
     import(`./exCouponsPayment.js?t=${Date.now()}`),
+    import(`./promoCouponPayment.js?t=${Date.now()}`),
     import(`./methodPayment.js?t=${Date.now()}`)
-]).then(([cardsModule, exCpnsModule, methodModule]) => {
+]).then(([cardsModule, exCpnsModule, promoCpnModule, methodModule]) => {
     window.PaymentFunctions = {
         ...cardsModule,
         ...exCpnsModule,
+        ...promoCpnModule,
         ...methodModule
     };
 

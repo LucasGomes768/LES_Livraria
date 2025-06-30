@@ -3,6 +3,7 @@ using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Models.ModelsStructGroups;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
+using E_CommerceLivraria.Services.CouponS;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
 using Microsoft.AspNetCore.Mvc;
@@ -16,14 +17,16 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         private readonly ITelephoneTypeService _telephoneTypeService;
         private readonly IPublicPlaceTypeRepository _publicPlaceTypeRepository;
         private readonly IResidenceTypeRepository _residenceTypeRepository;
+        private readonly IPromoCouponAssignmentService _promoCouponAssignmentService;
 
-        public AdmCustomerController(ICustomerService customerService, IGenderRepository genderRepository, ITelephoneTypeService telephoneTypeService, IPublicPlaceTypeRepository publicPlaceTypeRepository, IResidenceTypeRepository residenceTypeRepository)
+        public AdmCustomerController(ICustomerService customerService, IGenderRepository genderRepository, ITelephoneTypeService telephoneTypeService, IPublicPlaceTypeRepository publicPlaceTypeRepository, IResidenceTypeRepository residenceTypeRepository, IPromoCouponAssignmentService promoCouponAssignmentService)
         {
             _customerService = customerService;
             _genderRepository = genderRepository;
             _telephoneTypeService = telephoneTypeService;
             _publicPlaceTypeRepository = publicPlaceTypeRepository;
             _residenceTypeRepository = residenceTypeRepository;
+            _promoCouponAssignmentService = promoCouponAssignmentService;
         }
 
         [HttpGet("AdmCustomer/ReadAll")]
@@ -139,7 +142,8 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             {
                 if (createCustomerDTO == null) return BadRequest("Nenhum dado enviado");
 
-                _customerService.Create(createCustomerDTO);
+                var ctm = _customerService.Create(createCustomerDTO);
+                _promoCouponAssignmentService.AddAllPromoCouponToCtm(ctm);
 
                 return RedirectToAction("CreateCustomerPage", "AdmCustomer");
             }

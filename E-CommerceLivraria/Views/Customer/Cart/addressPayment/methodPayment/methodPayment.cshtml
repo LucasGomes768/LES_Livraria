@@ -21,16 +21,17 @@
         </div>
         <div class="promoCoupon">
             <div>
+                <input type="number" value="" id="promoCpnId" hidden />
                 <label>Código do cupom promocional:</label>
-                <input type="text" id="promoCoupon">
+                <input type="text" id="promoCpnCode" maxlength="10" onblur="window.PaymentFunctions.adicionarCupomPromo(this)">
             </div>
             <div>
                 <input type="number" id="promoCpnValue" value="" hidden />
                 <table>
                     <tr>
                         <th>Valor:</th>
-                        <td>-</td>
-                        <td class="rm"><button>X</button></td>
+                        <td id="promoCpnValueTxt">-</td>
+                        <td class="rm" onclick="window.PaymentFunctions.removerCupomPromo()"><button>X</button></td>
                     </tr>
                 </table>
             </div>
@@ -93,12 +94,10 @@
             <h2>Cartões:</h2>
             <h1 id="cardsValue"><b>R$</b>0,00</h1>
         </div>
-        <form>
-            <input type="number" id="ctmId" value="@Model.CtmId" hidden />
-            <input type="number" value="" id="deliveryAddress" hidden />
-            <div id="finishButton">
-            </div>
-        </form>
+        <input type="number" id="ctmId" value="@Model.CtmId" hidden />
+        <input type="number" value="" id="deliveryAddress" hidden />
+        <div id="finishButton">
+        </div>
     </div>
 </div>
 <script type="module" src="~/js/customer/cart/addressPay/methodPay/paymentLoader.js?v=1.0.@(DateTime.Now.Ticks)"></script>

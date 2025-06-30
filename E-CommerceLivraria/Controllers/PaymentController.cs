@@ -11,6 +11,7 @@ using E_CommerceLivraria.Services.PurchaseS;
 using System.Text.Json;
 using E_CommerceLivraria.DTO.PaymentDTO.ChoosenAddress;
 using Newtonsoft.Json.Serialization;
+using E_CommerceLivraria.Services.CouponS;
 
 namespace E_CommerceLivraria.Controllers
 {
@@ -19,14 +20,17 @@ namespace E_CommerceLivraria.Controllers
         private ICustomerService _customerService;
         private IAddressService _addressService;
         private IPurchaseService _purchaseService;
+        private IPromoCouponAssignmentService _promoCouponAssignmentService;
 
         public PaymentController(ICustomerService customerService,
             IAddressService addressService,
-            IPurchaseService purchaseService)
+            IPurchaseService purchaseService,
+            IPromoCouponAssignmentService promoCouponAssignmentService)
         {
             _customerService = customerService;
             _addressService = addressService;
             _purchaseService = purchaseService;
+            _promoCouponAssignmentService = promoCouponAssignmentService;
         }
 
         // ENDEREÇO
@@ -107,12 +111,12 @@ namespace E_CommerceLivraria.Controllers
             var ctm = _customerService.Get(papd.CtmId);
             if (ctm == null) return BadRequest();
 
+            if (ctm.Cart.CartItems.Count == 0) return RedirectToAction("homePage", "Home");
+
             if (papd.ChoosenAddId == null) return BadRequest();
 
             var add = _addressService.Get((decimal)papd.ChoosenAddId);
             if (add == null) return BadRequest();
-
-            if (ctm.Cart.CartItems.Count == 0) return RedirectToAction("homePage", "Home");
 
             var mpd = new MethodPaymentDTO()
             {
@@ -167,6 +171,9 @@ namespace E_CommerceLivraria.Controllers
 
                 var deliveryAdd = _addressService.Get(request.AddressId);
                 if (deliveryAdd == null) return BadRequest("O endereço de entrega não foi encontrado");
+
+                if (request.PromotionalCode != null && request.PromotionalCode != "")
+                    ctm = _promoCouponAssignmentService.RemovePromoCouponFromCtm(ctm, request.PromotionalCode);
 
                 var purchaseData = new PurchaseDataDTO
                 {
