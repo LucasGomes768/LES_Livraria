@@ -106,7 +106,7 @@
     .noDrop .trigger:hover {
         background-color: white;
         color: var(--ourple);
-    } 
+    }
 
 .hidden-links {
     display: none;
@@ -133,6 +133,12 @@
     }
 
     .trigger:hover + .hidden-links, .hidden-links:hover {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .trigger.fakeHover + .hidden-links, .hidden-links.fakeHover {
         display: flex;
         flex-direction: column;
         gap: 5px;

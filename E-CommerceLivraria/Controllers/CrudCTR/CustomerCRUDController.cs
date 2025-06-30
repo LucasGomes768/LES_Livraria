@@ -21,9 +21,12 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
             {
                 if (info == null) return BadRequest("Cadastro do cliente nulo");
 
-                _customerService.UpdateBasicInfo(info);
+                var ctm = _customerService.UpdateBasicInfo(info);
+                if (!info.Active) _customerService.Deactivate(ctm);
+                else _customerService.Activate(ctm);
 
-                return Ok(new {
+                return Ok(new
+                {
                     Sucess = true
                 });
             }

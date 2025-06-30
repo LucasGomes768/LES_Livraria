@@ -92,5 +92,18 @@ namespace E_CommerceLivraria.Services.CustomerS {
 
             return _cartRepository.Update(cart);
         }
+
+        public Cart ClearCart(Cart cart)
+        {
+            if (cart.CartItems.Any())
+            {
+                cart.CartItems.Clear();
+                return _cartRepository.Update(cart);
+            } else
+            {
+                return cart;
+            }
+                
+        }
     }
 }

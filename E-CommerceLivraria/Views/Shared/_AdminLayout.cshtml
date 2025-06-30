@@ -23,26 +23,26 @@
         </div>
         <div class="navbarOptions">
             <div class="menuItem">
-                <div class="trigger">Cliente</div>
+                <div class="trigger" id="customerNavOpts">Cliente</div>
                 <div class="hidden-links">
-                    <a asp-controller="AdmCustomer" asp-action="Read" class="link">Consultar</a>
-                    <a asp-controller="AdmCustomer" asp-action="CreateCustomerPage" class="link">Cadastrar</a>
+                    <a asp-controller="AdmCustomer" asp-action="Read" id="readCtmNavOpts" class="link">Consultar</a>
+                    <a asp-controller="AdmCustomer" asp-action="CreateCustomerPage" id="registerCtmNavOpts" class="link">Cadastrar</a>
                 </div>
             </div>
             <div class="menuItem">
-                <div class="trigger">Pedidos</div>
+                <div class="trigger" id="requestsNavOpt">Pedidos</div>
                 <div class="hidden-links">
-                    <a asp-controller="AdmPurchases" asp-action="PurchasesList" class="link">Compras</a>
-                    <a asp-controller="AdmExchanges" asp-action="ExchangesList" class="link">Trocas</a>
+                    <a asp-controller="AdmPurchases" asp-action="PurchasesList" id="purchasesNavOpt" class="link">Compras</a>
+                    <a asp-controller="AdmExchanges" asp-action="ExchangesList" id="exchangesNavOpt" class="link">Trocas</a>
                 </div>
             </div>
             <div class="menuItem">
-                <a class="noDrop" asp-controller="Analysis" asp-action="AnalysisPage">
+                <a class="noDrop" asp-controller="Analysis" asp-action="AnalysisPage" id="analysisNavOpt">
                     <div class="trigger">Análise</div>
                 </a>
             </div>
             <div class="menuItem">
-                <a class="noDrop" asp-controller="AdmPromotionalCoupons" asp-action="PromoCouponsPage">
+                <a class="noDrop" asp-controller="AdmPromotionalCoupons" asp-action="PromoCouponsPage" id="couponsNavOpt">
                     <div class="trigger">Cupons</div>
                 </a>
             </div>

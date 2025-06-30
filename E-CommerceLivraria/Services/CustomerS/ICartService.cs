@@ -9,5 +9,6 @@ namespace E_CommerceLivraria.Services.CustomerS {
         public Cart UpdateItemAmount(Cart cart, Stock itemStock, decimal newAmount);
         public Cart AddItem(Cart cart, Stock stock, decimal quantity);
         public Cart RemoveItem(Cart cart, Stock stock);
+        public Cart ClearCart(Cart cart);
     }
 }

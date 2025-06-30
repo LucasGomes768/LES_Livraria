@@ -61,31 +61,27 @@ namespace E_CommerceLivraria.Services.CustomerS {
             return _customerRepository.GetAll();
         }
 
-        public bool Remove(decimal id) {
-            var ctm = Get(id);
+        public Customer Deactivate(Customer ctm)
+        {
+            if (!ctm.CtmActive) return ctm;
 
-            if (ctm == null) throw new System.Exception("Um cliente com esse ID não foi encontrado.");
+            if (ctm.CtmCrt != null) _cartService.ClearCart(_cartService.Get((decimal)ctm.CtmCrtId));
+            ctm.CtmActive = false;
 
-            ctm.BadAdds.Clear();
-            ctm.DadAdds.Clear();
-            ctm.ExchangeCoupons.Clear();
+            return _customerRepository.Update(ctm);
+        }
 
-            if (ctm.Cart != null) _cartService.Remove(ctm.Cart);
+        public Customer Activate(Customer ctm)
+        {
+            if (ctm.CtmActive) return ctm;
 
-            return _customerRepository.Remove(ctm);
+            ctm.CtmActive = true;
+
+            return _customerRepository.Update(ctm);
         }
 
         public Customer Update(Customer customer) {
             return _customerRepository.Update(customer);
-        }
-
-        public void ClearCart(Customer customer)
-        {
-            if (Exists(customer.CtmId)) return;
-            if (customer.Cart.CartItems.Count < 1 || !customer.Cart.CartItems.Any()) return;
-
-            customer.Cart.CartItems.Clear();
-            Update(customer);
         }
 
         public RelevantCtmInfoAI GetInfoForChatbot(decimal id)
@@ -136,7 +132,6 @@ namespace E_CommerceLivraria.Services.CustomerS {
             ctm.CtmEmail = info.Email;
             ctm.CtmPass = info.Pass ?? ctm.CtmPass;
             ctm.CtmCpf = info.Cpf != null ? decimal.Parse(info.Cpf.Replace("-","").Replace(".","").Trim()) : ctm.CtmCpf;
-            ctm.CtmActive = info.Active;
             ctm.CtmBirthdate = info.BirthDate;
             ctm.CtmGndId = info.Gender;
             ctm.CtmTlp.TlpDdd = info.Ddd;

@@ -157,15 +157,40 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             }
         }
 
-        [HttpDelete("AdmCustomer/Remove/{id:int}")]
-        public IActionResult DeleteCustomer([FromRoute] int id)
+        [HttpPost("AdmCustomer/Deactivate/{id:int}")]
+        public IActionResult DeactivateCustomer([FromRoute] int id)
         {
             try
             {
-                bool exists = _customerService.Exists(id);
-                if (!exists) return NotFound("Cliente não foi encontrado");
+                var ctm = _customerService.Get(id);
+                if (ctm == null) return NotFound("Cliente não foi encontrado");
 
-                _customerService.Remove(id);
+                _customerService.Deactivate(ctm);
+
+                return Ok(new
+                {
+                    Sucess = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Sucess = false,
+                    ex.Message
+                });
+            }
+        }
+
+        [HttpPost("AdmCustomer/Activate/{id:int}")]
+        public IActionResult ActivateCustomer([FromRoute] int id)
+        {
+            try
+            {
+                var ctm = _customerService.Get(id);
+                if (ctm == null) return NotFound("Cliente não foi encontrado");
+
+                _customerService.Activate(ctm);
 
                 return Ok(new
                 {

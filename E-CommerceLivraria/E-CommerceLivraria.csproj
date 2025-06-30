@@ -42,7 +42,6 @@
     <Folder Include="Enums\Customer\" />
     <Folder Include="Services\CustomerS\CreditCardS\" />
     <Folder Include="Services\CustomerS\GenderS\" />
-    <Folder Include="Views\Admin\crud\address\update\" />
     <Folder Include="wwwroot\css\customer\profile\info\" />
   </ItemGroup>
 
