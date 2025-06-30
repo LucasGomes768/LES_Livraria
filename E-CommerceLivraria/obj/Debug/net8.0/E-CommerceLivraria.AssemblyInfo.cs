@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("E-CommerceLivraria")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a3dbadb7092d6ca6345e84f3a6ac10990d03404")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bbbbe82284ab5628c5e4af97fac1d6c388198ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("E-CommerceLivraria")]
 [assembly: System.Reflection.AssemblyTitleAttribute("E-CommerceLivraria")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

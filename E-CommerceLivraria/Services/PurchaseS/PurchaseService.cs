@@ -207,6 +207,11 @@ namespace E_CommerceLivraria.Services.PurchaseS
                 }
             }
 
+            for (int i = 0; i < datas.Count(); i++)
+            {
+                datas[i].MonthSales = datas[i].MonthSales.OrderBy(x => x.Time).ToList();
+            }
+
             return datas;
         }
 
@@ -244,6 +249,11 @@ namespace E_CommerceLivraria.Services.PurchaseS
                     datas[index].MonthSales[0].TotalSales += item.PciQuantity;
                     datas[index].MonthSales[0].TotalProfit += item.PciTotalPrice;
                 }
+            }
+
+            for (int i = 0; i < datas.Count(); i++)
+            {
+                datas[i].MonthSales = datas[i].MonthSales.OrderBy(x => x.TotalSales).ToList();
             }
 
             return datas;
