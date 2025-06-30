@@ -9,6 +9,11 @@ function renderGraph() {
         return;
     }
 
+    if (startDate > endDate) {
+        alert('O data de início do período analisado é maior que a data final');
+        return;
+    }
+
     const data = getData(choosenDt.value, startDate, endDate);
     console.log(data);
 

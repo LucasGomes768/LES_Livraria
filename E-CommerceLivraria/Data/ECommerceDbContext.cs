@@ -799,6 +799,11 @@ public partial class ECommerceDbContext : DbContext
                 .HasMaxLength(10)
                 .HasComment("Represents the code of a promotional coupon.")
                 .HasColumnName("pcp_code");
+            entity.Property(e => e.PcpActive)
+                .HasColumnName("pcp_active");
+            entity.Property(e => e.PcpDeactivatedAt)
+                .HasColumnType("timestamp(0) without time zone")
+                .HasColumnName("pcp_deactivated_at");
 
             entity.HasOne(d => d.Pcp).WithOne(p => p.PromotionalCoupon)
                 .HasForeignKey<PromotionalCoupon>(d => d.PcpId)

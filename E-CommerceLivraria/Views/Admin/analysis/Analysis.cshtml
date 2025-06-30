@@ -18,11 +18,11 @@
                 </div>
                 <div class="inputGrp" style="width: 10.5vw;">
                     <label for="start">Início:</label>
-                    <input type="date" id="start" required>
+                    <input type="date" id="start" max="@DateTime.Now.ToString("yyyy-MM-dd")" required>
                 </div>
                 <div class="inputGrp" style="width: 10.5vw;">
                     <label for="end">Fim:</label>
-                    <input type="date" S id="end" required>
+                    <input type="date" id="end" max="@DateTime.Now.ToString("yyyy-MM-dd")" required>
                 </div>
             </div>
             <div>

@@ -1,0 +1,50 @@
+﻿@model List<PromotionalCoupon>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Cupons promocionais";
+    ViewData["CSSFile"] = "~/css/admin/coupons/promoCoupons.css";
+}
+<div class="couponsBody">
+    <div class="couponsOptions">
+        <div class="createFields">
+            <h2>Cadastrar cupom</h2>
+            <div class="createData">
+                <div>
+                    <label for="value">Valor:</label>
+                    <input type="number" required class="noStep" id="value" style="width: 4vw;" min="1.00" max="999.99" step="0.01">
+                </div>
+                <div>
+                    <label for="code">Código:</label>
+                    <input type="text" id="code" style="width: 7.5vw;" maxlength="10">
+                </div>
+            </div>
+            <div>
+                <button type="button" onclick="createCoupon()">Criar</button>
+            </div>
+        </div>
+    </div>
+    <div class="promoCouponsList" id="cpnsList">
+        @if (Model.Any())
+        {
+            @for (int i = 0; i < Model.Count(); i += 4)
+            {
+                <div class="cpnRow">
+                    @for (int j = i; j < i + 4 && j < Model.Count(); j++)
+                    {
+                        <div class="cpnInstance">
+                            <div>
+                                <h2>R$@Model[j].Pcp.CpnValue.ToString("F2")</h2>
+                                <h3>@Model[j].PcpCode</h3>
+                                <h3>@Model[j].Pcp.CpnDateGen.ToString("d")</h3>
+                            </div>
+                            <div class="cpnOptions">
+                                <button class="remove" onclick="deactivateCoupon(@Model[j].PcpId, '@(Model[j].PcpCode)')">Desativar</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>
+<script src="~/js/admin/coupons/promoCoupons.js?v=1.0.@(DateTime.Now.Ticks)"></script>
