@@ -46,47 +46,47 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             CustomerFilterDTO filter = rdg.FilterData;
 
             // Nome
-            if (filter.Name != null && query.Count() != 0)
+            if (filter.Name != null && query.Any())
             {
                 query = query.Where(x => x.CtmName == filter.Name);
             }
             // CPF
-            if (filter.Cpf != null && query.Count() != 0)
+            if (filter.Cpf != null && query.Any())
             {
                 query = query.Where(x => x.CtmCpf == filter.Cpf);
             }
             // Tipo do Telefone
-            if (filter.TelephoneTypeId != null && query.Count() != 0)
+            if (filter.TelephoneTypeId != null && query.Any())
             {
                 query = query.Where(x => x.CtmTlp.TlpTptId == filter.TelephoneTypeId);
             }
             // E-Mail
-            if (filter.Email != null && query.Count() != 0)
+            if (filter.Email != null && query.Any())
             {
                 query = query.Where(x => x.CtmEmail == filter.Email);
             }
             // Gênero
-            if (filter.GndId != null && query.Count() != 0)
+            if (filter.GndId != null && query.Any())
             {
                 query = query.Where(x => x.CtmGndId == filter.GndId);
             }
             // Telefone
-            if (filter.Active != null && query.Count() != 0)
+            if (filter.Active != null && query.Any())
             {
                 query = query.Where(x => x.CtmActive == filter.Active);
             }
             // Idade Mínima
-            if ((filter.MinAge != null || filter.MinAge > 0) && query.Count() != 0)
+            if ((filter.MinAge != null || filter.MinAge > 0) && query.Any())
             {
                 query = query.Where(x => filter.MinAge <= DateTime.Now.Year - x.CtmBirthdate.Year);
             }
             // Idade Máxima
-            if ((filter.MaxAge != null || filter.MaxAge > 0) && query.Count() != 0)
+            if ((filter.MaxAge != null || filter.MaxAge > 0) && query.Any())
             {
                 query = query.Where(x => DateTime.Now.Year - x.CtmBirthdate.Year <= filter.MaxAge);
             }
             // Ranking
-            if ((filter.Ranking != null || filter.Ranking > 0) && query.Count() != 0)
+            if ((filter.Ranking != null || filter.Ranking > 0) && query.Any())
             {
                 query = query.Where(x => x.CtmRanking == filter.Ranking);
             }
@@ -99,6 +99,26 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             };
 
             return View("~/Views/Admin/Customer/Read.cshtml", newRdg);
+        }
+
+        [HttpGet("AdmCustomer/{id:int}")]
+        public IActionResult DetailedCustomerPage([FromRoute] int id)
+        {
+            try
+            {
+                var ctm = _customerService.Get(id);
+                if (ctm == null) throw new Exception("Cliente não foi encontrado");
+
+                ViewBag.Genders = _genderRepository.GetAll();
+                ViewBag.TlpTypes = _telephoneTypeService.GetAll();
+                ViewBag.RstList = _residenceTypeRepository.GetAll();
+                ViewBag.PptList = _publicPlaceTypeRepository.GetAll();
+
+                return View("~/Views/Admin/crud/customer/detailed/DetailedCustomer.cshtml", ctm);
+
+            } catch (Exception ex) {
+                return RedirectToAction("Read");
+            }
         }
 
         [HttpGet("AdmCustomer/Register")]

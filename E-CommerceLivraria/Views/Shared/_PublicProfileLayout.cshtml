@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using E_CommerceLivraria.Enums
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -65,23 +66,23 @@
                         </a>
                     </div>
                     <div class="subsection">
-                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="delivery" asp-route-CtmId="1">
+                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.DELIVERY)" asp-route-CtmId="1">
                             <h3>Entrega</h3>
                         </a>
                     </div>
                     <div class="subsection">
-                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="billing" asp-route-CtmId="1">
+                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.BILLING)" asp-route-CtmId="1">
                             <h3>Cobrança</h3>
                         </a>
                     </div>
                 </div>
                 <div class="profileSection">
-                    <a href="/customer/profile/card/list/cardList.html">
+                    <a asp-controller="ProfileCreditCards" asp-action="CreditCardsList" asp-route-CtmId="1">
                         <h2>Cartões</h2>
                     </a>
                 </div>
                 <div class="profileSection">
-                    <a href="/customer/profile/coupons/coupons.html">
+                    <a asp-controller="ProfileExchangeCoupons" asp-action="CouponsList" asp-route-CtmId="1">
                         <h2>Cupons</h2>
                     </a>
                 </div>
@@ -141,10 +142,10 @@
                             <a asp-controller="ProfileAddress" asp-action="ResidentialAddress" asp-route-CtmId="1"><h3>Residencial</h3></a>
                         </div>
                         <div class="subsection">
-                            <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="delivery" asp-route-CtmId="1"><h3>Entrega</h3></a>
+                            <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.DELIVERY)" asp-route-CtmId="1"><h3>Entrega</h3></a>
                         </div>
                         <div class="subsection">
-                            <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="billing" asp-route-CtmId="1"><h3>Cobrança</h3></a>
+                            <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.BILLING)" asp-route-CtmId="1"><h3>Cobrança</h3></a>
                         </div>
                     </div>
                     <div class="section">

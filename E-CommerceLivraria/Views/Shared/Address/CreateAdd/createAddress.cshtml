@@ -1,8 +1,11 @@
-﻿@using E_CommerceLivraria.Models.ModelsStructGroups.AddressSG
-@model CreateCtmAddressData
+﻿@using E_CommerceLivraria.DTO.AddressDTO
+@using E_CommerceLivraria.Enums
+@model CreateAddressDTO
 @{
-    Layout = "~/Views/Shared/_PublicLayout.cshtml";
-    ViewData["Title"] = "Adicionar endereço de entrega";
+    string addType = Model.AddToList == (int)EAddressType.DELIVERY? "entrega" : "cobrança";
+
+    Layout = ViewBag.Layout;
+    ViewData["Title"] = $"Adicionar endereço de {addType}";
     ViewData["CSSFile"] = "~/css/customer/address/createAddress.css";
 
     List<PublicplaceType> PptList = ViewBag.PptList;
@@ -12,14 +15,7 @@
 <button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
 <div class="bigBody">
     <div class="addressBody">
-        @if (Model.AddToList == "delivery")
-        {
-            <h1>Cadastre o novo endereço de entrega</h1>
-        }
-        else
-        {
-            <h1>Cadastre o novo endereço de cobrança</h1>
-        }
+        <h1>Cadastre o novo endereço de @addType</h1>
         <form asp-controller="AddressPages" asp-action="CreateAddress">
             <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
             <input type="text" value="@Model.RedirectTo" asp-for="RedirectTo" hidden />
@@ -49,7 +45,7 @@
                 <div class="line sp_between">
                     <div class="number">
                         <label for="num">Nº:</label>
-                        <input type="number" id="num" min="1" max="9999" asp-for="Address.AddNumber" required>
+                        <input type="number" class="noStep" id="num" min="1" max="9999" asp-for="Address.AddNumber" required>
                     </div>
                     <div class="neighborhood">
                         <label for="neigh">Bairro:</label>

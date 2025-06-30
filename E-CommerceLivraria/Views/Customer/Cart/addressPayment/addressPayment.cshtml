@@ -1,6 +1,5 @@
 ﻿@using System.Globalization
-@using E_CommerceLivraria.Enums.Customer
-@using System.Globalization
+@using E_CommerceLivraria.Enums
 @model E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG.PayAddressPageData
 @{
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
@@ -29,7 +28,7 @@
                     }
                 </select>
             </div>
-            <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="delivery" asp-route-ctmId="@Model.CtmId" asp-route-origin="@((int)ECtmAddressCreate.PAYMENT)">
+            <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="@((int)EAddressType.DELIVERY)" asp-route-ctmId="@Model.CtmId" asp-route-origin="@((int)EAddressCreate.PAYMENT)">
                 <button type="button">Adicionar novo endereço</button>
             </a>
         </div>

@@ -1,4 +1,5 @@
 ﻿@using E_CommerceLivraria.DTO.ProfileDTO.AddressDTO
+@using E_CommerceLivraria.Enums
 @model DetailedAddDTO
 @{
     Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
@@ -12,7 +13,7 @@
     <h1>Cadastro do endereço</h1>
     <div class="updateOpts">
         <button id="updateBtn" class="beginUpdate" type="button" onclick="enableChangesField()">Alterar dados</button>
-        @if (Model.Type.ToLower() != "residential")
+        @if (Model.Type != (int)EAddressType.RESIDENTIAL)
         {
             <button type="button" class="cancel" onclick="removeAddress('@Model.Type', '@Model.CtmId', '@Model.Id')">Remover</button>
         }

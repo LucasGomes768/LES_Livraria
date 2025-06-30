@@ -30,33 +30,5 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 return BadRequest(ex.Message);
             }
         }
-
-        [HttpPut("CreditCardsProfile/Remove/{ctmId:int}/{crdId:int}")]
-        public IActionResult RemoveCreditCardFromAccount([FromRoute] int ctmId, [FromRoute] int crdId)
-        {
-            try
-            {
-                var ctm = _customerService.Get(ctmId);
-                if (ctm == null) return NotFound();
-
-                var crd = _creditCardService.Get(crdId);
-                if (crd == null) return NotFound();
-
-                _customerService.RemoveCreditCard(ctm, crd);
-
-                return Ok(new
-                {
-                    Sucess = true
-                });
-
-            } catch (Exception ex)
-            {
-                return StatusCode(500, new
-                {
-                    Sucess = false,
-                    ex.Message
-                });
-            }
-        }
     }
 }

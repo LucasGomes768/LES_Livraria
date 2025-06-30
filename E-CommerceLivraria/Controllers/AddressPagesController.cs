@@ -1,12 +1,12 @@
 ﻿using E_CommerceLivraria.Models;
-using E_CommerceLivraria.Models.ModelsStructGroups.AddressSG;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.CustomerR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.CustomerS;
-using E_CommerceLivraria.Enums.Customer;
 using Microsoft.AspNetCore.Mvc;
 using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
+using E_CommerceLivraria.Enums;
+using E_CommerceLivraria.DTO.AddressDTO;
 
 namespace E_CommerceLivraria.Controllers
 {
@@ -28,28 +28,29 @@ namespace E_CommerceLivraria.Controllers
             _publicPlaceTypeRepository = publicPlaceTypeRepository;
         }
 
-        [HttpGet("Address/Create/{origin:int}/{addToList}/{ctmId:decimal}")]
-        public IActionResult CreateAddressPage([FromRoute] decimal ctmId, [FromRoute] int origin, [FromRoute] string addToList)
+        [HttpGet("Address/Create/{origin:int}/{addToList:int}/{ctmId:decimal}")]
+        public IActionResult CreateAddressPage([FromRoute] decimal ctmId, [FromRoute] int origin, [FromRoute] int addToList)
         {
             bool exists = _customerService.Exists(ctmId);
             if (!exists) return NotFound();
 
-            var cad = new CreateCtmAddressData()
+            var cad = new CreateAddressDTO()
             {
                 CtmId = ctmId,
                 RedirectTo = origin,
                 AddToList = addToList,
-                AddToAccount = !(origin == (int)ECtmAddressCreate.PAYMENT)
+                AddToAccount = !(origin == (int)EAddressCreate.PAYMENT)
             };
 
             ViewBag.PptList = _publicPlaceTypeRepository.GetAll();
             ViewBag.RstList = _residenceTypeRepository.GetAll();
+            ViewBag.Layout = (origin < (int)EAddressCreate.DETAILED_CTM_PAGE) ? "~/Views/Shared/_PublicLayout.cshtml" : "~/Views/Shared/_AdminLayout.cshtml";
 
-            return View("~/Views/Customer/Address/CreateAdd/createAddress.cshtml", cad);
+            return View("~/Views/Shared/Address/CreateAdd/createAddress.cshtml", cad);
         }
 
         [HttpPost]
-        public IActionResult CreateAddress(CreateCtmAddressData cad)
+        public IActionResult CreateAddress(CreateAddressDTO cad)
         {
             var add = cad.Address;
             if (add == null) return BadRequest();
@@ -58,17 +59,19 @@ namespace E_CommerceLivraria.Controllers
             var ctm = _customerService.Get(cad.CtmId);
             if (ctm == null) return NotFound();
 
-            ECtmAddressCreate pageRedirect = (ECtmAddressCreate)cad.RedirectTo;
+            EAddressCreate pageRedirect = (EAddressCreate)cad.RedirectTo;
 
             if (cad.AddToAccount)
             {
-                switch (cad.AddToList)
+                var addTo = (EAddressType)cad.AddToList;
+
+                switch (addTo)
                 {
-                    case "delivery":
+                    case EAddressType.DELIVERY:
                         ctm.DadAdds.Add(add);
                         break;
 
-                    case "billing":
+                    case EAddressType.BILLING:
                         ctm.BadAdds.Add(add);
                         break;
                 }
@@ -77,7 +80,7 @@ namespace E_CommerceLivraria.Controllers
 
             switch (pageRedirect)
             {
-                case ECtmAddressCreate.PAYMENT:
+                case EAddressCreate.PAYMENT:
                     PayAddressPageData papd = new PayAddressPageData()
                     {
                         CtmId = ctm.CtmId,
@@ -91,11 +94,14 @@ namespace E_CommerceLivraria.Controllers
 
                     return RedirectToAction("DeliveryAddressPage", "Payment", papd);
 
-                case ECtmAddressCreate.BILLING_PAGE:
+                case EAddressCreate.BILLING_PAGE:
                     return RedirectToAction("AddressList", "ProfileAddress", new { Type = "billing", CtmId = ctm.CtmId });
 
-                case ECtmAddressCreate.DELIVERY_PAGE:
+                case EAddressCreate.DELIVERY_PAGE:
                     return RedirectToAction("AddressList", "ProfileAddress", new { Type = "delivery", CtmId = ctm.CtmId });
+
+                case EAddressCreate.DETAILED_CTM_PAGE:
+                    return RedirectToAction("DetailedCustomerPage", "AdmCustomer", new {id = ctm.CtmId});
 
                 default: return BadRequest();
             }

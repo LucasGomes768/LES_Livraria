@@ -1,6 +1,9 @@
-﻿using E_CommerceLivraria.Models;
+﻿using E_CommerceLivraria.DTO.ProfileDTO.AddressDTO;
+using E_CommerceLivraria.Enums;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Services.AddressS.RegionsS;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace E_CommerceLivraria.Services.AddressS {
     public class AddressService : IAddressService{
@@ -51,16 +54,16 @@ namespace E_CommerceLivraria.Services.AddressS {
             return _addressRepository.Add(address);
         }
 
-        public Address? Get(decimal id) {
-            return _addressRepository.Get(id);
+        public Address? Get(decimal id, bool tracked = true) {
+            return _addressRepository.Get(id, tracked);
         }
 
         public List<Address> GetAll() {
             return _addressRepository.GetAll();
         }
 
-        public bool AccountRemove(Address add, Customer ctm, string list) {
-            if (list == "billing")
+        public bool AccountRemove(Address add, Customer ctm, EAddressType list) {
+            if (list == EAddressType.BILLING)
             {
                 var ctmHas = add.BadCtms.FirstOrDefault(x => x.CtmId == ctm.CtmId);
                 if (ctmHas == null) return false;
@@ -77,6 +80,41 @@ namespace E_CommerceLivraria.Services.AddressS {
             }
 
             return true;
+        }
+
+        public Address Update(DetailedAddDTO dto)
+        {
+            var address = _addressRepository.Get(dto.Id, true);
+            if (address == null) throw new Exception("O endereço não foi encontrado");
+
+            UpdateAddressProperties(address, dto);
+            UpdateLocationHierarchy(address, dto);
+
+            return _addressRepository.Update(address);
+        }
+
+        private void UpdateAddressProperties(Address address, DetailedAddDTO dto)
+        {
+            if (dto.PublicPlace != null) address.AddPublicPlace = dto.PublicPlace;
+            if (dto.Number != null) address.AddNumber = (decimal)dto.Number;
+            if (dto.Cep != null) address.AddCepStyled = dto.Cep;
+            if (dto.ShortPhrase != null) address.AddShortPhrase = dto.ShortPhrase;
+            if (dto.PublicPlaceType != null) address.AddPptId = dto.PublicPlaceType.Value;
+            if (dto.ResidenceType != null) address.AddRstId = dto.ResidenceType.Value;
+            if (dto.Observations != null) address.AddObservations = dto.Observations;
+        }
+
+        private void UpdateLocationHierarchy(Address address, DetailedAddDTO dto)
+        {
+            address.AddNbh ??= new Neighborhood();
+            address.AddNbh.NbhCty ??= new City();
+            address.AddNbh.NbhCty.CtyStt ??= new State();
+            address.AddNbh.NbhCty.CtyStt.SttCtr ??= new Country();
+
+            if (dto.Neighborhood != null) address.AddNbh.NbhName = dto.Neighborhood;
+            if (dto.City != null) address.AddNbh.NbhCty.CtyName = dto.City;
+            if (dto.State != null) address.AddNbh.NbhCty.CtyStt.SttName = dto.State;
+            if (dto.Country != null) address.AddNbh.NbhCty.CtyStt.SttCtr.CtrName = dto.Country;
         }
 
         public Address Update(Address address) {

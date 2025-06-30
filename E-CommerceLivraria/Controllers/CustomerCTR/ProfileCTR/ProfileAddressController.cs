@@ -1,4 +1,5 @@
 ﻿using E_CommerceLivraria.DTO.ProfileDTO.AddressDTO;
+using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Services.AddressS;
@@ -34,7 +35,7 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 if (ctm == null) return NotFound("O cliente não foi encontrado");
 
                 return RedirectToAction("DetailedAddressPage", "ProfileAddress",
-                    new { Type = "Residential", CtmId = ctm.CtmId, AddId = ctm.CtmAddId});
+                    new { Type = (int)EAddressType.RESIDENTIAL, CtmId = ctm.CtmId, AddId = ctm.CtmAddId});
             }
             catch (Exception ex)
             {
@@ -46,8 +47,8 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
             }
         }
 
-        [HttpGet("Profile/Addresses/{Type}/{CtmId:decimal}/{AddId:decimal}")]
-        public IActionResult DetailedAddressPage([FromRoute] decimal CtmId, [FromRoute] decimal AddId, [FromRoute] string Type)
+        [HttpGet("Profile/Addresses/{Type:int}/{CtmId:decimal}/{AddId:decimal}")]
+        public IActionResult DetailedAddressPage([FromRoute] decimal CtmId, [FromRoute] decimal AddId, [FromRoute] int Type)
         {
             try
             {
@@ -87,8 +88,8 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
             }
         }
 
-        [HttpGet("Profile/Addresses/{Type}/{CtmId:decimal}")]
-        public IActionResult AddressList([FromRoute] string Type, [FromRoute] decimal CtmId)
+        [HttpGet("Profile/Addresses/{Type:int}/{CtmId:decimal}")]
+        public IActionResult AddressList([FromRoute] int Type, [FromRoute] decimal CtmId)
         {
             try
             {
@@ -97,13 +98,17 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
 
                 List<Address> addresses = new List<Address>();
 
-                if (Type.ToLower() == "delivery")
+                var type = (EAddressType)Type;
+
+                switch (type)
                 {
-                    addresses = ctm.DadAdds.ToList();
-                }
-                else
-                {
-                    addresses = ctm.BadAdds.ToList();
+                    case EAddressType.DELIVERY:
+                        addresses = ctm.DadAdds.ToList();
+                    break;
+
+                    case EAddressType.BILLING:
+                        addresses = ctm.BadAdds.ToList();
+                    break;
                 }
 
                 ViewBag.Type = Type;

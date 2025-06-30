@@ -1,5 +1,4 @@
 ﻿@using E_CommerceLivraria.Enums
-@using E_CommerceLivraria.Enums.Customer
 @model Customer
 @{
     Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
@@ -9,7 +8,7 @@
 }
 <div class="cardList">
     <h1>Cartões de crédito</h1>
-    <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECtmCreditCardCreate.PROFILE)" asp-route-ctmId="@Model.CtmId">
+    <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECreditCardCreate.PROFILE)" asp-route-ctmId="@Model.CtmId">
         <button type="button" class="addCrd">Adicionar um novo cartão</button>
     </a>
     @for (int i = 0; i < creditCards.Count(); i += 3)

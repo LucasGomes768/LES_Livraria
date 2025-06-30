@@ -1,0 +1,547 @@
+.infoBody {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    flex-direction: column;
+    width: 70vw;
+}
+
+.updateOpts {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1.5vw;
+}
+
+.updateOpts button {
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 1.3vw;
+
+    transition-duration: 0.2s;
+}
+
+    .updateOpts button:disabled {
+        border-style: revert;
+        border-color: gray;
+        background-color: gray;
+        color: white;
+    }
+
+    .updateOpts button.cancel {
+        border: 2px solid rgb(184, 0, 0);
+        color: rgb(184, 0, 0);
+    }
+
+        .updateOpts button.cancel:disabled {
+            border-style: revert;
+            border-color: darkred;
+            background-color: darkred;
+            color: white;
+        }
+
+    .updateOpts button:hover:not(:disabled) {
+        background-color: black;
+        color: white;
+    }
+
+    .updateOpts button.cancel:hover:not(:disabled) {
+        background-color: rgb(184, 0, 0);
+        color: white;
+    }
+
+.infoSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-self: center;
+    flex-direction: column;
+    gap: 2vh;
+    
+    background-color: lightgray;
+    padding: 1%;
+    width: 100%;
+}
+
+    .infoSection h1 {
+        font-weight: 350;
+        text-align: center;
+    }
+
+    .infoSection.redAddressData h1 {
+        font-weight: 350;
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    .infoSection .dataRow {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+    }
+
+        .infoSection .dataRow.spc_even {
+            justify-content: space-evenly;
+        }
+
+        .infoSection .dataRow.spc_bet {
+            justify-content: space-between;
+        }
+
+        .infoSection .dataRow.left {
+            justify-content: left;
+        }
+
+        .infoSection .dataRow.center {
+            justify-content: center;
+        }
+
+        .infoSection .dataRow div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .infoSection .dataRow label {
+            font-weight: 350;
+            font-size: 1.25vw;
+        }
+
+        .infoSection .dataRow input {
+            font-weight: 350;
+            font-size: 1.15vw;
+            height: 100%;
+        }
+
+            .infoSection .dataRow input:disabled {
+                background-color: rgb(240, 240, 240);
+                border: 1px solid black;
+                color: black;
+            }
+
+        .infoSection .dataRow select {
+            font-weight: 350;
+            font-size: 1.25vw;
+            height: 100%;
+        }
+
+            .infoSection .dataRow select:disabled {
+                background-color: rgb(240, 240, 240);
+                border: 1px solid black;
+                color: black;
+            }
+
+            .infoSection .dataRow .obs {
+                width: 100%;
+            }
+
+                .infoSection .dataRow .obs textarea {
+                    font-weight: 350;
+                    font-size: 1.25vw;
+                    width: 100%;
+                    resize: none;
+                }
+
+                    .infoSection .dataRow .obs textarea:disabled {
+                        background-color: rgb(240, 240, 240);
+                        border: 1px solid black;
+                        color: black;
+                    }
+
+            .infoSection .dataRow .observationsDiv {
+                width: 100%;
+            }
+
+                .observationsTxt {
+                    width: 61.75vw;
+                    resize: none;
+                }
+
+        .infoSection .dataRow .inputBtn {
+            display: flex;
+            flex-direction: row;
+        }
+
+            .infoSection .dataRow .inputBtn button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .infoSection .dataRow button {
+            border: 2px solid black;
+            color: black;
+            background-color: white;
+            border-radius: 5px;
+            font-size: 1.3vw;
+
+            transition-duration: 0.2s;
+        }
+
+            .infoSection .dataRow button:hover {
+                background-color: black;
+                color: white;
+            }
+
+.dataDivOpts {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1%;
+}
+
+    .dataDivOpts button {
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 7px;
+        color: black;
+        font-weight: 350;
+        font-size: 1.5vw;
+        padding: 0.5%;
+
+        transition-duration: 0.2s;
+    }
+
+    .dataDivOpts button:disabled {
+        background-color: gray;
+        border-color: gray;
+        border-style: revert;
+        color: white;
+    }
+
+        .dataDivOpts button:hover:not(:disabled) {
+            background-color: black;
+            color: white;
+        }
+
+.extraInfoSections {
+    display: none;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+    width: 70vw;
+    padding: 1%;
+    background-color: lightgray;
+}
+
+    .extraInfoSections table {
+        width: 60vw;
+        border: 2px solid var(--darkourple);
+    }
+
+        .extraInfoSections table tr:nth-child(odd) {
+            background-color: var(--blue2);
+        }
+
+        .extraInfoSections table tr:nth-child(even) {
+            background-color: white;
+        }
+
+        .extraInfoSections table th {
+            background-color: var(--blue1);
+            padding: 0.25%;
+            font-weight: 500;
+        }
+
+        .extraInfoSections table td {
+            padding: 0.25%;
+        }
+
+            .extraInfoSections table td.removeBtnTd button {
+                background-color: white;
+                border: 1px solid red;
+                border-radius: 5px;
+                color: red;
+
+                transition-duration: 0.2s;
+            }
+
+                .extraInfoSections table td.removeBtnTd button:hover {
+                    background-color: red;
+                    color: white;
+                }
+
+            .extraInfoSections table td.editBtnTd button {
+                background-color: white;
+                border: 1px solid green;
+                border-radius: 5px;
+                color: green;
+
+                transition-duration: 0.2s;
+            }
+
+                .extraInfoSections table td.editBtnTd button:hover {
+                    background-color: green;
+                    color: white;
+                }
+
+            .extraInfoSections table td.viewBtnTd button {
+                background-color: white;
+                border: 1px solid blue;
+                border-radius: 5px;
+                color: blue;
+                transition-duration: 0.2s;
+            }
+
+                .extraInfoSections table td.viewBtnTd button:hover {
+                    background-color: blue;
+                    color: white;
+                }
+
+    .extraInfoSections#addDiv .addSection {
+        display: none;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 1%;
+    }
+
+        .extraInfoSections#addDiv .addSection button.addNewAddressBtn {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+            border-radius: 5px;
+
+            transition-duration: 0.2s;
+        }
+
+            .extraInfoSections#addDiv .addSection button.addNewAddressBtn:hover {
+                background-color: black;
+                color: white;
+            }
+
+    .extraInfoSections#addDiv .addressOptions {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        background-color: rgb(241, 241, 241);
+        width: 30%;
+        padding: 1%;
+        border: 2px solid rgb(97, 97, 97);
+        border-radius: 5px;
+        gap: 3%;
+    }
+
+    .extraInfoSections#addDiv .addressOptions button {
+        border: 2px solid black;
+        border-radius: 5px;
+        font-size: 1.2vw;
+        padding: 1%;
+        transition-duration: 0.2s;
+    }
+
+            .extraInfoSections#addDiv .addressOptions button:disabled {
+                background-color: gray;
+                border-color: gray;
+                border-style: revert;
+                color: white;
+            }
+
+            .extraInfoSections#addDiv .addressOptions button:hover:not(:disabled) {
+                background-color: black;
+                color: white;
+            }
+
+    .extraInfoSections#crdDiv{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+    }
+
+        .extraInfoSections#crdDiv button.addCardBtn {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+            border-radius: 5px;
+        
+            transition-duration: 0.2s
+        }
+
+            .extraInfoSections#crdDiv button.addCardBtn:hover {
+                background-color: black;
+                color: white;
+            }
+
+        .extraInfoSections#crdDiv div {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            width: 100%;
+        }
+
+            .extraInfoSections#crdDiv div #cardsTable {
+                width: 60%;
+            }
+
+            .extraInfoSections#crdDiv div #couponsTable {
+                width: 30%;
+            }
+
+    .extraInfoSections#prcDiv table{
+        width: 50vw;
+    }
+
+.popUpBackground {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(39, 39, 39, 0.404);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.passwordDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+    border: 4px solid rgb(78, 78, 78);
+    border-radius: 10px;
+    background-color: lightgray;
+
+    padding-top: 0vh;
+    padding: 1vw;
+    height: 42vh;
+    width: 40vw;
+    z-index: 1001;
+}
+
+    .passwordDiv h1{
+        text-align: center;
+        font-weight: 350;    
+    }
+
+    .passwordDiv form .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .passwordDiv form .inputs div{
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+    }
+
+    .passwordDiv .passUpdateBtns {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        gap: 7px;
+        margin-top: 1%;
+    }
+
+    .passwordDiv button {
+        border: 2px solid black;
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 1.3vw;
+
+        transition-duration: 0.2s;
+    }
+
+        .passwordDiv button:disabled {
+            border-style: revert;
+            border-color: gray;
+            background-color: gray;
+            color: white;
+        }
+
+        .passwordDiv button.cancel {
+            border: 2px solid rgb(184, 0, 0);
+            color: rgb(184, 0, 0);
+        }
+
+            .passwordDiv button.cancel:disabled {
+                border-style: revert;
+                border-color: darkred;
+                background-color: darkred;
+                color: white;
+            }
+
+        .passwordDiv button:hover:not(:disabled) {
+            background-color: black;
+            color: white;
+        }
+
+        .passwordDiv button.cancel:hover:not(:disabled) {
+            background-color: rgb(184, 0, 0);
+            color: white;
+        }
+
+.addressUpdDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    border: 4px solid rgb(78, 78, 78);
+    border-radius: 10px;
+    background-color: lightgray;
+    padding-top: 0vh;
+    padding: 1vw;
+    height: 62vh;
+    width: 75vw;
+    z-index: 1001;
+}
+
+    .addressUpdDiv button {
+        border: 2px solid black;
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 1.3vw;
+        transition-duration: 0.2s;
+    }
+
+        .addressUpdDiv button:disabled {
+            border-style: revert;
+            border-color: gray;
+            background-color: gray;
+            color: white;
+        }
+
+        .addressUpdDiv button.cancel {
+            border: 2px solid rgb(184, 0, 0);
+            color: rgb(184, 0, 0);
+        }
+
+            .addressUpdDiv button.cancel:disabled {
+                border-style: revert;
+                border-color: darkred;
+                background-color: darkred;
+                color: white;
+            }
+
+        .addressUpdDiv button:hover:not(:disabled) {
+            background-color: black;
+            color: white;
+        }
+
+        .addressUpdDiv button.cancel:hover:not(:disabled) {
+            background-color: rgb(184, 0, 0);
+            color: white;
+        }
+
+    .addressUpdDiv #updAddForm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .addressUpdDiv input#updShortPhrase {
+        width: 65.2vw;
+    }

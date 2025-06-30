@@ -1,5 +1,5 @@
-﻿@using E_CommerceLivraria.Models
-@using E_CommerceLivraria.Enums.Customer
+﻿@using E_CommerceLivraria.Enums
+@using E_CommerceLivraria.Models
 @model List<Address>
 @{
     Layout = "~/Views/Shared/_PublicProfileLayout.cshtml";
@@ -7,7 +7,7 @@
     ViewData["CSSFile"] = "~/css/customer/profile/address/profileAddressList.css";
 }
 <div class="addressList">
-    @if (ViewBag.Type == "billing")
+    @if (ViewBag.Type == (int)EAddressType.BILLING)
     {
         <h1>Endereços de cobrança</h1>
     }
@@ -15,15 +15,15 @@
     {
         <h1>Endereços de entrega</h1>
     }
-    @if (ViewBag.Type == "billing")
+    @if (ViewBag.Type == (int)EAddressType.BILLING)
     {
-        <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="billing" asp-route-ctmId="@ViewBag.CtmId" asp-route-origin="@((int)ECtmAddressCreate.BILLING_PAGE)">
+        <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="@ViewBag.Type" asp-route-ctmId="@ViewBag.CtmId" asp-route-origin="@((int)EAddressCreate.BILLING_PAGE)">
             <button type="button" class="addAddress">Adicionar novo endereço</button>
         </a>
     }
     else
     {
-        <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="delivery" asp-route-ctmId="@ViewBag.CtmId" asp-route-origin="@((int)ECtmAddressCreate.DELIVERY_PAGE)">
+        <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="@ViewBag.Type" asp-route-ctmId="@ViewBag.CtmId" asp-route-origin="@((int)EAddressCreate.DELIVERY_PAGE)">
             <button type="button" class="addAddress">Adicionar novo endereço</button>
         </a>
     }

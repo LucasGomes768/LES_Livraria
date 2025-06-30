@@ -1,8 +1,11 @@
 ﻿using E_CommerceLivraria.DTO.ProfileDTO.AddressDTO;
+using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.CustomerS;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace E_CommerceLivraria.Controllers.CrudCTR
 {
@@ -17,56 +20,47 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
             _addressService = addressService;
         }
 
+        [HttpGet("CRUD/Address/Get/{id:int}")]
+        public IActionResult GetAddress([FromRoute] int id)
+        {
+            try
+            {
+                var add = _addressService.Get(id);
+                if (add == null) return NotFound(new
+                {
+                    Sucess = false,
+                    Message = "Endereço não foi encontrado"
+                });
+
+                var jsonString = JsonSerializer.Serialize(add, new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    ReferenceHandler = ReferenceHandler.IgnoreCycles
+                });
+
+                return Ok(new
+                {
+                    Sucess = true,
+                    AddressJson = jsonString
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Sucess = true,
+                    ex.Message
+                });
+            }
+        }
+
         [HttpPost("CRUD/Address/Update")]
         public IActionResult UpdateAddress([FromBody] DetailedAddDTO dto)
         {
             try
             {
-                var add = _addressService.Get(dto.Id);
-                if (add == null) return NotFound("Endereço não foi encontrado");
-
-                Country newCtr = new Country()
-                {
-                    CtrName = dto.Country ?? add.AddNbh.NbhCty.CtyStt.SttCtr.CtrName
-                };
-
-                State newStt = new State()
-                {
-                    SttName = dto.State ?? add.AddNbh.NbhCty.CtyStt.SttName,
-                    SttCtr = newCtr
-                };
-
-                City newCty = new City()
-                {
-                    CtyName = dto.City ?? add.AddNbh.NbhCty.CtyName,
-                    CtyStt = newStt
-                };
-
-                Neighborhood newNbh = new Neighborhood()
-                {
-                    NbhName = dto.Neighborhood ?? add.AddNbh.NbhName,
-                    NbhCty = newCty
-                };
-
-                Address newAdd = new Address()
-                {
-                    AddId = add.AddId,
-                    AddPublicPlace = dto.PublicPlace ?? add.AddPublicPlace,
-                    AddNumber = dto.Number ?? add.AddNumber,
-                    AddCep = dto.Cep != null ? decimal.Parse(dto.Cep.Trim().Replace("-","")) : add.AddCep,
-                    AddShortPhrase = dto.ShortPhrase ?? add.AddShortPhrase,
-                    AddShipping = add.AddShipping,
-                    AddPptId = dto.PublicPlaceType ?? add.AddPptId,
-                    AddRstId = dto.ResidenceType ?? add.AddRstId,
-                    AddObservations = dto.Observations ?? add.AddObservations,
-                    AddNbh = newNbh,
-                    Customers = add.Customers,
-                    Purchases = add.Purchases,
-                    BadCtms = add.BadCtms,
-                    DadCtms = add.DadCtms
-                };
-
-                _addressService.Update(newAdd);
+                _addressService.Update(dto);
 
                 return Ok(new
                 {
@@ -83,8 +77,8 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
             }
         }
 
-        [HttpDelete("CRUD/Address/RemoveFromAccount/{Type}/{CtmId:decimal}/{AddId:decimal}")]
-        public IActionResult deleteAddress([FromRoute] string Type, [FromRoute] decimal CtmId,[FromRoute] decimal AddId)
+        [HttpDelete("CRUD/Address/RemoveFromAccount/{Type:int}/{CtmId:decimal}/{AddId:decimal}")]
+        public IActionResult deleteAddress([FromRoute] int Type, [FromRoute] decimal CtmId,[FromRoute] decimal AddId)
         {
             try
             {
@@ -94,7 +88,7 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
                 var ctm = _customerService.Get(CtmId);
                 if (ctm == null) return NotFound("Cliente não foi encontrado");
 
-                bool result = _addressService.AccountRemove(add, ctm, Type);
+                bool result = _addressService.AccountRemove(add, ctm, (EAddressType)Type);
 
                 if (!result)
                     return NotFound("O endereço não foi encontrado na conta");

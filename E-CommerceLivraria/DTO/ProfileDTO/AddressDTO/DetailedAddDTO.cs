@@ -4,7 +4,7 @@
     {
         public decimal Id { get; set; }
         public decimal CtmId { get; set; }
-        public string Type { get; set; }
+        public int Type { get; set; }
         public string PublicPlace { get; set; }
         public decimal? PublicPlaceType { get; set; }
         public decimal? ResidenceType { get; set; }

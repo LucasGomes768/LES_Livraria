@@ -1,8 +1,8 @@
 ﻿@using E_CommerceLivraria.DTO.CreditCardDTO
 @model CreateCreditCardDTO
 @{
-    Layout = "~/Views/Shared/_PublicLayout.cshtml";
-    ViewData["Title"] = "Adicionar endereço de entrega";
+    Layout = ViewBag.Layout;
+    ViewData["Title"] = "Adicionar cartão de crédito";
     ViewData["CSSFile"] = "~/css/customer/creditCards/addCard.css";
 
     List<CreditCardFlag> ccfs = ViewBag.Flags;
@@ -47,7 +47,7 @@
                     </div>
                 }
                 <br>
-                <button type="submit" onclick="test()">Salvar cartão</button>
+                <button type="submit">Salvar cartão</button>
             </form>
         </div>
     </div>

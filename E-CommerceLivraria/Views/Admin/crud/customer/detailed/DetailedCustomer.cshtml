@@ -1,0 +1,437 @@
+﻿@using E_CommerceLivraria.Enums
+@model Customer
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = $"Cadastro de {Model.CtmName.Split(' ')[0]}";
+    ViewData["CSSFile"] = "~/css/admin/customer/crud/detailedCustomer.css";
+
+    List<Gender> genders = ViewBag.Genders;
+    List<TelephoneType> tlpTypes = ViewBag.TlpTypes;
+    List<ResidenceType> rstList = ViewBag.RstList;
+    List<PublicplaceType> pptList = ViewBag.PptList;
+
+    List<Address> delAdds = Model.DadAdds.ToList();
+    List<Address> bilAdds = Model.BadAdds.ToList();
+    List<CreditCard> crds = Model.CtcCrds.ToList();
+    List<ExchangeCoupon> cpns = Model.ExchangeCoupons.ToList();
+    List<Purchase> prcs = Model.Purchases.Where(x => x.PrcStatus >= (int)EStatus.EM_PROCESSAMENTO && x.PrcStatus <= (int)EStatus.ENTREGUE).OrderByDescending(x => x.PrcDate).ToList();
+}
+<br>
+<div class="infoBody">
+    <div class="basicInfo" id="basic">
+        <div class="infoSection">
+            <h1>Informações da conta</h1>
+            <div class="updateOpts">
+                <button class="beginUpdate" id="updatePasswordBtn">Alterar senha</button>
+                <button type="button" id="updateDataBtn" class="beginUpdate">Alterar dados</button>
+            </div>
+            <input type="text" id="pass" value="@Model.CtmPass" required hidden />
+            <div class="dataRow spc_bet">
+                <div>
+                    <label for="ctmId">ID:</label>
+                    <input type="number" class="noStep" id="ctmId" style="width: 3.75vw;" value="@Model.CtmId" required readonly>
+                </div>
+                <div>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" style="width: 20vw;" value="@Model.CtmName" required disabled>
+                </div>
+                <div>
+                    <label for="dtNasc">Data de nascimento:</label>
+                    <input type="date" id="dtNasc" max="@DateTime.Now.ToString("yyyy-MM-dd")" value="@Model.CtmBirthdate.ToString("yyyy-MM-dd")" required disabled>
+                </div>
+                <div>
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" maxlength="14" value="@Model.CtmCpfStyled" style="width: 8vw;" disabled>
+                </div>
+                <div>
+                    <label for="gender">Gênero:</label>
+                    <select id="gender" asp-items="@(new SelectList(genders, "GndId", "GndName", Model.CtmGndId))" disabled>
+                    </select>
+                </div>
+            </div>
+            <div class="dataRow spc_bet">
+                <div>
+                    <label for="email">E-Mail:</label>
+                    <input type="email" disabled id="email" value="@Model.CtmEmail" style="width: 20vw;" required>
+                </div>
+                <div>
+                    <label for="telType">Tipo de telefone:</label>
+                    <select id="telType" asp-items="@(new SelectList(tlpTypes, "TptId", "TptName", Model.CtmTlp.TlpTptId))" disabled>
+                    </select>
+                </div>
+                <div>
+                    <label for="telDDD">DDD:</label>
+                    <input type="number" disabled value="@Model.CtmTlp.TlpDdd" class="noStep" id="telDDD" style="width: 3vw;" max="999" min="0" required>
+                </div>
+                <div>
+                    <label for="telNum">Nº de telefone:</label>
+                    <input type="text" disabled id="telNum" value="@Model.CtmTlp.TlpNumber" maxlength="10" style="width: 8vw;">
+                </div>
+                @if (Model.CtmActive)
+                {
+                    <div>
+                        <label for="active">Ativo?</label>
+                        <input type="checkbox" id="active" required checked disabled>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <label for="active">Ativo?</label>
+                        <input type="checkbox" id="active" required disabled>
+                    </div>
+                }
+            </div>
+            <div class="updateOpts">
+                <button class="doUpdate" id="updateGeneralInfo" type="button" disabled>Salvar mudanças</button>
+                <button class="cancel doUpdate" type="button" id="cancelInfoUpdt" disabled>Cancelar</button>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<div class="dataDivOpts">
+    <button type="button" value="addDiv" onclick="showDataSection(this)" class="dataSectionBtns">Endereços</button>
+    <button type="button" value="crdDiv" onclick="showDataSection(this)" class="dataSectionBtns">Cartões e Cupons</button>
+    <button type="button" value="prcDiv" onclick="showDataSection(this)" class="dataSectionBtns">Compras</button>
+</div>
+<br>
+<div id="addDiv" class="extraInfoSections">
+    <div class="addressOptions">
+        <button value="addResDiv" class="addSectionBtn" onclick="showAddSection(this)" type="button">Residencial</button>
+        <button value="addDelDiv" class="addSectionBtn" onclick="showAddSection(this)" type="button">Entrega</button>
+        <button value="addBilDiv" class="addSectionBtn" onclick="showAddSection(this)" type="button">Cobrança</button>
+    </div>
+    <div class="redAddressData infoSection addSection" id="addResDiv">
+        <h1>Endereço residencial</h1>
+        <div class="updateOpts">
+            <button type="button" id="updateDataBtn" class="beginResAddUpdate" onclick="updateAddDiv(@Model.CtmAdd.AddId)">Alterar dados</button>
+        </div>
+        <div class="dataRow spc_bet">
+            <div>
+                <label for="rsType">Tipo de residência:</label>
+                <select id="rsType" disabled asp-items='new SelectList(rstList, "RstId", "RstName", Model.CtmAdd.AddRstId)'>
+                </select>
+            </div>
+            <div>
+                <label for="ppType">Tipo de logradouro:</label>
+                <select id="ppType" disabled asp-items='new SelectList(pptList, "PptId", "PptName", Model.CtmAdd.AddPptId)'>
+                </select>
+            </div>
+            <div>
+                <label for="publicPlace">Logradouro:</label>
+                <input type="text" id="publicPlace" style="width: 20vw;" required disabled value="@Model.CtmAdd.AddPublicPlace">
+            </div>
+            <div>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" maxlength="9" style="width: 5.8vw;" value="@Model.CtmAdd.AddCep" required disabled>
+            </div>
+            <div>
+                <label for="num">Nº:</label>
+                <input type="number" class="noStep" style="width: 3vw;" id="num" min="1" max="9999" required disabled value="@Model.CtmAdd.AddNumber">
+            </div>
+        </div>
+        <div class="dataRow spc_bet">
+            <div>
+                <label for="neighborhood">Bairro:</label>
+                <input type="text" id="neighborhood" required disabled value="@Model.CtmAdd.AddNbh.NbhName">
+            </div>
+            <div>
+                <label for="city">Cidade:</label>
+                <input type="text" id="city" required disabled value="@Model.CtmAdd.AddCty.CtyName">
+            </div>
+            <div>
+                <label for="state">Estado:</label>
+                <input type="text" id="state" required disabled value="@Model.CtmAdd.AddStt.SttName">
+            </div>
+            <div>
+                <label for="country">País:</label>
+                <input type="text" id="country" required disabled value="@Model.CtmAdd.AddCtr.CtrName">
+            </div>
+        </div>
+        <div class="dataRow">
+            <div>
+                <label for="shortPhrase">Frase curta:</label>
+                <input type="text" id="shortPhrase" style="width: 60vw;" required disabled value="@Model.CtmAdd.AddShortPhrase" />
+            </div>
+        </div>
+        <div class="dataRow">
+            <div class="obs">
+                <label for="obs">Observações:</label>
+                <textarea id="obs" rows="3" disabled>@(Model.CtmAdd.AddObservations ?? "")</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="delAddressList addSection" id="addDelDiv">
+        <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-origin="@((int)EAddressCreate.DETAILED_CTM_PAGE)" asp-route-addToList="@((int)EAddressType.DELIVERY)" asp-route-ctmId="@Model.CtmId">
+            <button type="button" class="addNewAddressBtn">Adicionar novo endereço</button>
+        </a>
+        <table>
+            <tr>
+                <th>CEP</th>
+                <th>Nº</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>País</th>
+                <th></th>
+                <th></th>
+            </tr>
+            @if (delAdds.Any())
+            {
+                foreach (Address add in delAdds)
+                {
+                    <tr>
+                        <td>@add.AddCepStyled</td>
+                        <td>@add.AddNumber</td>
+                        <td>@add.AddCty.CtyName</td>
+                        <td>@add.AddStt.SttName</td>
+                        <td>@add.AddCtr.CtrName</td>
+                        <td class="removeBtnTd">
+                            <button type="button" class="removeAddBtn" onclick="removeAddress(@((int)EAddressType.DELIVERY), @Model.CtmId, @add.AddId)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                </svg>
+                            </button>
+                        </td>
+                        <td class="editBtnTd">
+                            <button type="button" class="editAddBtn" onclick="updateAddDiv(@add.AddId)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="bilAddressList addSection" id="addBilDiv">
+        <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-origin="@((int)EAddressCreate.DETAILED_CTM_PAGE)" asp-route-addToList="@((int)EAddressType.BILLING)" asp-route-ctmId="@Model.CtmId">
+            <button type="button">Adicionar novo endereço</button>
+        </a>
+        <table>
+            <tr>
+                <th>CEP</th>
+                <th>Nº</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>País</th>
+                <th></th>
+                <th></th>
+            </tr>
+            @if (bilAdds.Any())
+            {
+                foreach (Address add in bilAdds)
+                {
+                    <tr>
+                        <td>@add.AddCepStyled</td>
+                        <td>@add.AddNumber</td>
+                        <td>@add.AddCty.CtyName</td>
+                        <td>@add.AddStt.SttName</td>
+                        <td>@add.AddCtr.CtrName</td>
+                        <td class="removeBtnTd">
+                            <button type="button" class="removeAddBtn" onclick="removeAddress(@((int)EAddressType.BILLING), @Model.CtmId, @add.AddId)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                </svg>
+                            </button>
+                        </td>
+                        <td class="editBtnTd">
+                            <button type="button" class="editAddBtn" onclick="updateAddDiv(@add.AddId)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+<div id="crdDiv" class="extraInfoSections">
+    <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECreditCardCreate.DETAILED_CTM_PAGE)" asp-route-ctmId="@Model.CtmId">
+        <button type="button" class="addCardBtn">Adicionar um novo cartão</button>
+    </a>
+    <br />
+    <div>
+        <table id="cardsTable">
+            <tr>
+                <th>Número</th>
+                <th>Bandeira</th>
+                <th>Nome</th>
+                <th></th>
+            </tr>
+            @if (crds.Any())
+            {
+                foreach (CreditCard crd in crds)
+                {
+                    <tr>
+                        <td>@crd.CrdNumberHidden</td>
+                        <td>@crd.CrdCcf.CcfName</td>
+                        <td>@crd.CrdName</td>
+                        <td class="removeBtnTd">
+                            <button type="button" onclick="removeCreditCard(@Model.CtmId, @crd.CrdId)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <table id="couponsTable">
+            <tr>
+                <th>Data de geração</th>
+                <th>Valor</th>
+            </tr>
+            @if (cpns.Any())
+            {
+                foreach (ExchangeCoupon cpn in cpns)
+                {
+                    <tr>
+                        <td>@cpn.Xcp.CpnDateGen.ToString("d")</td>
+                        <td>R$@cpn.Xcp.CpnValue</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+<div id="prcDiv" class="extraInfoSections">
+    <table id="cardsTable">
+        <tr>
+            <th>Feita em</th>
+            <th>Preço</th>
+            <th>CEP</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        @if (prcs.Any())
+        {
+            foreach (Purchase prc in prcs)
+            {
+                <tr>
+                    <td>@prc.PrcDate.ToString("d")</td>
+                    <td>R$@prc.PrcTotalPrice.ToString("F2")</td>
+                    <td>@prc.PrcAdd.AddCepStyled</td>
+                    <td>@(((EStatus)prc.PrcStatus).ToString().Replace("_", " "))</td>
+                    <td class="viewBtnTd">
+                        <a asp-controller="AdmPurchases" asp-action="DetailedPurchase" asp-route-id="@prc.PrcId">
+                            <button type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                                </svg>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+<br>
+<!-- SENHA -->
+<div class="popUpBackground" id="passwordDiv">
+    <div class="passwordDiv">
+        <h1>Alterar senha</h1>
+        <form action="">
+            <div class="inputs">
+                <div>
+                    <label for="passCur">Digite sua senha atual:</label>
+                    <input type="password" id="passCur" required>
+                </div>
+                <div>
+                    <label for="passNew">Digite a senha nova:</label>
+                    <input type="password" id="passNew" required>
+                </div>
+                <div>
+                    <label for="passConf">Confirme sua senha nova:</label>
+                    <input type="password" id="passConf" required>
+                </div>
+            </div>
+        </form>
+        <div class="passUpdateBtns">
+            <button type="button" class="doUpdate" id="beginPassUpdt">Atualizar</button>
+            <button type="button" class="cancel doUpdate" id="cancelPassUpdt">Cancelar</button>
+        </div>
+    </div>
+</div>
+<!-- ATUALIZAR ENDEREÇO -->
+<div class="popUpBackground" id="addressUpdDiv">
+    <div class="addressUpdDiv infoSection">
+        <h1>Atualizar endereço</h1>
+        <form id="updAddForm">
+            <input type="number" id="updId" hidden readonly />
+            <input type="number" id="updCtmId" value="@Model.CtmId" hidden readonly />
+            <div class="dataRow spc_bet">
+                <div>
+                    <label for="updRsType">Tipo de residência:</label>
+                    <select id="updRsType" asp-items='new SelectList(rstList, "RstId", "RstName")'>
+                    </select>
+                </div>
+                <div>
+                    <label for="updPpType">Tipo de logradouro:</label>
+                    <select id="updPpType" asp-items='new SelectList(pptList, "PptId", "PptName")'>
+                    </select>
+                </div>
+                <div>
+                    <label for="updPublicPlace">Logradouro:</label>
+                    <input type="text" id="updPublicPlace" style="width: 20vw;" required>
+                </div>
+                <div>
+                    <label for="updCep">CEP:</label>
+                    <input type="text" id="updCep" maxlength="9" style="width: 5.8vw;" value="@Model.CtmAdd.AddCep" required>
+                </div>
+                <div>
+                    <label for="updNum">Nº:</label>
+                    <input type="number" class="noStep" style="width: 3vw;" id="updNum" min="1" max="9999" required>
+                </div>
+            </div>
+            <div class="dataRow spc_bet">
+                <div>
+                    <label for="updNeighborhood">Bairro:</label>
+                    <input type="text" id="updNeighborhood" required>
+                </div>
+                <div>
+                    <label for="updCity">Cidade:</label>
+                    <input type="text" id="updCity" required>
+                </div>
+                <div>
+                    <label for="updState">Estado:</label>
+                    <input type="text" id="updState" required>
+                </div>
+                <div>
+                    <label for="updCountry">País:</label>
+                    <input type="text" id="updCountry" required>
+                </div>
+            </div>
+            <div class="dataRow">
+                <div>
+                    <label for="updShortPhrase">Frase curta:</label>
+                    <input type="text" id="updShortPhrase" required>
+                </div>
+            </div>
+            <div class="dataRow">
+                <div class="obs">
+                    <label for="updObs">Observações:</label>
+                    <textarea id="updObs" rows="3"></textarea>
+                </div>
+            </div>
+            <br />
+            <div class="passUpdateBtns">
+                <button type="button" class="doUpdate" onclick="updateAdd()">Atualizar</button>
+                <button type="button" class="cancel doUpdate" onclick="hideUpdAddDiv()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/js/admin/customer/crud/detailedCustomer.js?v=1.0.@(DateTime.Now.Ticks)" type="module"></script>
+<script src="~/js/admin/customer/crud/dtlSections.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+<script src="~/js/admin/customer/crud/dtlRUAddress.js?v=1.0.@(DateTime.Now.Ticks)"></script>
+<script src="~/js/admin/customer/crud/dtlRemCreditCard.js?v=1.0.@(DateTime.Now.Ticks)"></script>

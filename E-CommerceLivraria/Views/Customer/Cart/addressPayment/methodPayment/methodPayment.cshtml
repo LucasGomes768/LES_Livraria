@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@using E_CommerceLivraria.Enums.Customer
+@using E_CommerceLivraria.Enums
 @using E_CommerceLivraria.DTO.PaymentDTO.Method
 @model MethodPaymentDTO
 @{
@@ -50,7 +50,7 @@
                         </table>
                     </div>
                 </div>
-                <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECtmCreditCardCreate.PAYMENT)" asp-route-ctmId="@Model.CtmId">
+                <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECreditCardCreate.PAYMENT)" asp-route-ctmId="@Model.CtmId">
                     <button type="button" class="addCard" id="addNewCard" >Adicionar novo cartão de crédito</button>
                 </a>
             </div>

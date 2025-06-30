@@ -245,7 +245,7 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
         public Purchase UpdateExchangeStatus(Purchase purchase, EStatus newStatus, bool returnStock)
         {
-            if ((EStatus)purchase.PrcStatusExchange == null) throw new Exception("Não há itens para troca");
+            if ((EStatus?)purchase.PrcStatusExchange == null) throw new Exception("Não há itens para troca");
 
             if ((EStatus)purchase.PrcStatusExchange == EStatus.TROCA_REPROVADA) throw new Exception("Esse pedido de troca já foi recusado");
 

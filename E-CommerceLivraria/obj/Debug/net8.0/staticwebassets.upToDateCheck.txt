@@ -6,6 +6,7 @@ wwwroot\css\admin\ctmRequests\dtlPurchase\dtlPurchase.css
 wwwroot\css\admin\ctmRequests\purchases\purchases.css
 wwwroot\css\admin\customer\crud\AllCustomers.css
 wwwroot\css\admin\customer\crud\createCustomer.css
+wwwroot\css\admin\customer\crud\detailedCustomer.css
 wwwroot\css\admin\layout.css
 wwwroot\css\customer\address\createAddress.css
 wwwroot\css\customer\cart\addressPay\addressPayment.css
@@ -32,7 +33,12 @@ wwwroot\js\admin\analysis\analysis.js
 wwwroot\js\admin\ctmRequests\dtlExchange\dtlExchange.js
 wwwroot\js\admin\ctmRequests\dtlPurchase\dtlPurchase.js
 wwwroot\js\admin\ctmRequests\purchases\purchases.js
+wwwroot\js\admin\customer\crud\AllCustomers.js
 wwwroot\js\admin\customer\crud\createCustomer.js
+wwwroot\js\admin\customer\crud\detailedCustomer.js
+wwwroot\js\admin\customer\crud\dtlRemCreditCard.js
+wwwroot\js\admin\customer\crud\dtlRUAddress.js
+wwwroot\js\admin\customer\crud\dtlSections.js
 wwwroot\js\admin\layout.js
 wwwroot\js\customer\cart\addressPay\addressPay.js
 wwwroot\js\customer\cart\addressPay\methodPay\methodPayment.js
@@ -123,4 +129,3 @@ wwwroot\resources\images\icons\icons8-carrinho-24.png
 wwwroot\resources\images\icons\icons8-sair-96.png
 wwwroot\resources\images\icons\send1.svg
 wwwroot\resources\images\icons\user1.svg
-wwwroot\js\admin\customer\crud\AllCustomers.js

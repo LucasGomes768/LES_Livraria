@@ -17,15 +17,33 @@ namespace E_CommerceLivraria.Repository.AddressR {
             return address;
         }
 
-        public Address? Get(decimal id) {
-            return _dbContext.Addresses
-                .Include(x => x.AddRst)
-                .Include(x => x.AddPpt)
-                .Include(x => x.AddNbh)
-                    .ThenInclude(x => x.NbhCty)
-                        .ThenInclude(x => x.CtyStt)
-                            .ThenInclude(x => x.SttCtr)
-                .FirstOrDefault(x => x.AddId == id);
+        public Address? Get(decimal id, bool tracked = true) {
+            if (tracked)
+            {
+                return _dbContext.Addresses
+                    .Include(x => x.AddRst)
+                    .Include(x => x.AddPpt)
+                    .Include(x => x.AddNbh)
+                        .ThenInclude(x => x.NbhCty)
+                            .ThenInclude(x => x.CtyStt)
+                                .ThenInclude(x => x.SttCtr)
+                    .Include(x => x.BadCtms)
+                    .Include(x => x.DadCtms)
+                    .FirstOrDefault(x => x.AddId == id);
+            } else
+            {
+                return _dbContext.Addresses
+                    .AsNoTracking()
+                    .Include(x => x.AddRst)
+                    .Include(x => x.AddPpt)
+                    .Include(x => x.AddNbh)
+                        .ThenInclude(x => x.NbhCty)
+                            .ThenInclude(x => x.CtyStt)
+                                .ThenInclude(x => x.SttCtr)
+                    .Include(x => x.BadCtms)
+                    .Include(x => x.DadCtms)
+                    .FirstOrDefault(x => x.AddId == id);
+            }
         }
 
         public List<Address> GetAll() {

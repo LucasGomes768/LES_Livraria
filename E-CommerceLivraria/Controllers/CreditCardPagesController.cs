@@ -1,6 +1,5 @@
 ﻿using E_CommerceLivraria.DTO.CreditCardDTO;
-using E_CommerceLivraria.DTO.PaymentDTO.Method;
-using E_CommerceLivraria.Enums.Customer;
+using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Services.CreditCardS;
 using E_CommerceLivraria.Services.CustomerS;
 using Microsoft.AspNetCore.Mvc;
@@ -31,12 +30,13 @@ namespace E_CommerceLivraria.Controllers
             {
                 CtmId = ctmId,
                 RedirectTo = origin,
-                AddToAccount = !(origin == (int)ECtmCreditCardCreate.PAYMENT)
+                AddToAccount = !(origin == (int)ECreditCardCreate.PAYMENT)
             };
 
+            ViewBag.Layout = (origin < (int)ECreditCardCreate.DETAILED_CTM_PAGE) ? "~/Views/Shared/_PublicLayout.cshtml" : "~/Views/Shared/_AdminLayout.cshtml";
             ViewBag.Flags = _creditCardFlagService.GetAll();
 
-            return View("~/Views/Customer/CreditCard/createCreditCard.cshtml", ccc);
+            return View("~/Views/Shared/CreditCard/createCreditCard.cshtml", ccc);
         }
 
         [HttpPost]
@@ -56,11 +56,11 @@ namespace E_CommerceLivraria.Controllers
                     crd = _creditCardService.Create(crd, ctm);
 
 
-                ECtmCreditCardCreate pageRedirect = (ECtmCreditCardCreate)ccc.RedirectTo;
+                ECreditCardCreate pageRedirect = (ECreditCardCreate)ccc.RedirectTo;
 
                 switch (pageRedirect)
                 {
-                    case ECtmCreditCardCreate.PAYMENT:
+                    case ECreditCardCreate.PAYMENT:
                         TempData["AddedCard"] = JsonSerializer.Serialize(new
                         {
                             id = crd.CrdId.ToString(),
@@ -75,8 +75,11 @@ namespace E_CommerceLivraria.Controllers
 
                         return RedirectToAction("PaymentMethodPage", "Payment", new { CtmId = ctm.CtmId });
 
-                    case ECtmCreditCardCreate.PROFILE:
+                    case ECreditCardCreate.PROFILE:
                         return RedirectToAction("CreditCardsList", "ProfileCreditCards", new {CtmId = ctm.CtmId});
+
+                    case ECreditCardCreate.DETAILED_CTM_PAGE:
+                        return RedirectToAction("DetailedCustomerPage", "AdmCustomer", new { id = ctm.CtmId });
 
                     default: return BadRequest();
                 }
