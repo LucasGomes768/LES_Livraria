@@ -3,7 +3,7 @@ using E_CommerceLivraria.Models;
 
 namespace E_CommerceLivraria.Repository.StockR.BookR.PublisherR {
     public class PublisherRepository : IPublisherRepository {
-        private ECommerceDbContext _dbContext;
+        private readonly ECommerceDbContext _dbContext;
 
         public PublisherRepository(ECommerceDbContext dbContext) {
             _dbContext = dbContext;

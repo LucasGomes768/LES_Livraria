@@ -7,7 +7,7 @@ namespace E_CommerceLivraria.Repository.PurchaseR
 {
     public class PurchaseItemRepository : IPurchaseItemRepository
     {
-        private ECommerceDbContext _dbContext;
+        private readonly ECommerceDbContext _dbContext;
 
         public PurchaseItemRepository(ECommerceDbContext dbContext)
         {

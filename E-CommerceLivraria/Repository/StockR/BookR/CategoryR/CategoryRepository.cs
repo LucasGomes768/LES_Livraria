@@ -3,7 +3,7 @@ using E_CommerceLivraria.Models;
 
 namespace E_CommerceLivraria.Repository.StockR.BookR.CategoryR {
     public class CategoryRepository : ICategoryRepository {
-        private ECommerceDbContext _dbContext;
+        private readonly ECommerceDbContext _dbContext;
 
         public CategoryRepository(ECommerceDbContext dbContext) {
             _dbContext = dbContext;

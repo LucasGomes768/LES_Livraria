@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E_CommerceLivraria.Repository.StockR.BookR {
     public class BookRepository : IBookRepository {
-        private ECommerceDbContext _dbContext;
+        private readonly ECommerceDbContext _dbContext;
 
         public BookRepository(ECommerceDbContext dbContext) {
             _dbContext = dbContext;
