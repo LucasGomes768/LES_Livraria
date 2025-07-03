@@ -27,7 +27,7 @@
                 </form>
             </div>
             <div class="cart">
-                <a asp-controller="Cart" asp-action="cartPage">
+                <a asp-controller="Cart" asp-action="CartPage">
                     <button>
                         <img src="~/resources/images/icons/icons8-carrinho-24.png">
                     </button>
@@ -51,7 +51,7 @@
                     <h1>Meu Perfil</h1>
                 </div>
                 <div class="profileSection">
-                    <a asp-controller="ProfileInfo" asp-action="ProfileInfo" asp-route-CtmId="1">
+                    <a asp-controller="ProfileInfo" asp-action="ProfileInfo">
                         <h2>Informações</h2>
                     </a>
                 </div>
@@ -60,44 +60,44 @@
                 </div>
                 <div id="addresses">
                     <div class="subsection">
-                        <a asp-controller="ProfileAddress" asp-action="ResidentialAddress" asp-route-CtmId="1">
+                        <a asp-controller="ProfileAddress" asp-action="ResidentialAddress">
                             <h3>Residencial</h3>
                         </a>
                     </div>
                     <div class="subsection">
-                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.DELIVERY)" asp-route-CtmId="1">
+                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.DELIVERY)">
                             <h3>Entrega</h3>
                         </a>
                     </div>
                     <div class="subsection">
-                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.BILLING)" asp-route-CtmId="1">
+                        <a asp-controller="ProfileAddress" asp-action="AddressList" asp-route-Type="@((int)EAddressType.BILLING)">
                             <h3>Cobrança</h3>
                         </a>
                     </div>
                 </div>
                 <div class="profileSection">
-                    <a asp-controller="ProfileCreditCards" asp-action="CreditCardsList" asp-route-CtmId="1">
+                    <a asp-controller="ProfileCreditCards" asp-action="CreditCardsList">
                         <h2>Cartões</h2>
                     </a>
                 </div>
                 <div class="profileSection">
-                    <a asp-controller="ProfileExchangeCoupons" asp-action="CouponsList" asp-route-CtmId="1">
+                    <a asp-controller="ProfileExchangeCoupons" asp-action="CouponsList">
                         <h2>Cupons</h2>
                     </a>
                 </div>
                 <div class="profileSection">
-                    <a asp-controller="ProfilePurchase" asp-action="PurchasesList" asp-route-CtmId="1">
+                    <a asp-controller="ProfilePurchase" asp-action="PurchasesList">
                         <h2>Compras</h2>
                     </a>
                 </div>
                 <div class="profileSection">
-                    <a asp-controller="ProfileExchange" asp-action="ExchangesList" asp-route-CtmId="1">
+                    <a asp-controller="ProfileExchange" asp-action="ExchangesList">
                         <h2>Trocas</h2>
                     </a>
                 </div>
                 <div class="logout profileSection">
-                    <a asp-controller="AdmCustomer" asp-action="Read">
-                        <h2>Administrador</h2>
+                    <a asp-controller="Login" asp-action="LoginPage">
+                        <h2>Sair</h2>
                     </a>
                 </div>
             </div>

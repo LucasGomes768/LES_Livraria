@@ -1,0 +1,96 @@
+header div {
+    border-bottom: 15px solid rgb(123, 132, 219);
+    background-color: rgb(100, 109, 197);
+    min-height: 8vh;
+    width: 100vw;
+}
+
+footer div {
+    position:absolute;
+    border-top: 15px solid rgb(123, 132, 219);
+    background-color: rgb(100, 109, 197);
+    min-height: 8vh;
+    width: 100vw;
+    bottom: 0;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.loginBody {
+    display: flex;
+    padding-top: 9vh;
+    align-items: center;
+    flex-direction: column;
+    
+    width: 100vw;
+    height: 45.5vw;
+}
+
+    .loginBody h1 {
+        font-weight: 350;
+    }
+
+    .loginBody b {
+        font-weight: 500;
+    }
+
+    .loginBody h2 {
+        text-align: center;
+        font-weight: 425;
+        margin-bottom: 3vh;
+    }
+
+    .loginBody .loginPanel {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+
+        padding: 1.5% 2%;
+        background-color: rgb(236, 236, 236);
+        border: 5px solid rgb(211, 211, 211);
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+        min-width: 50vw;
+    }
+
+    .loginBody .loginOptDiv {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+        .loginBody .loginOptDiv .loginOption {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: gainsboro;
+            padding: 3%;
+            border-radius: 10px;
+            min-width: 15vw;
+        }
+
+            .loginBody .loginOptDiv .loginOption img {
+                width: 7.5vw;
+                margin-bottom: 1vh;
+            }
+
+            .loginBody .loginOptDiv .loginOption .loginBtn {
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 5px;
+                color: black;
+                margin-top: 1vh;
+
+                transition-duration: 0.2s;
+            }
+
+                .loginBody .loginOptDiv .loginBody .loginBtn#customerLoginBtn {   
+                    margin-top: 1vh;
+                }
+
+                .loginBody .loginOptDiv .loginOption .loginBtn:hover {
+                    background-color: black;
+                    color: white;
+                }
+

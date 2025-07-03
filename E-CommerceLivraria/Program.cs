@@ -20,6 +20,7 @@ using E_CommerceLivraria.Services.CouponS;
 using E_CommerceLivraria.Services.CreditCardS;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
+using E_CommerceLivraria.Services.LoginS;
 using E_CommerceLivraria.Services.PurchaseS;
 using E_CommerceLivraria.Services.StockS;
 using E_CommerceLivraria.Services.StockS.BookS;
@@ -100,6 +101,8 @@ builder.Services.AddScoped<ICreditCardService, CreditCardService>();
 builder.Services.AddScoped<ICreditCardFlagsRepository, CreditCardFlagsRepository>();
 builder.Services.AddScoped<ICreditCardFlagService, CreditCardFlagService>();
 
+builder.Services.AddSingleton<LoginSingleton>();
+
 builder.Services.AddSession(options =>
 {
     options.Cookie.HttpOnly = true;
@@ -122,6 +125,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=searchbar}/");
+    pattern: "{controller=Login}/{action=LoginPage}/");
 
 app.Run();

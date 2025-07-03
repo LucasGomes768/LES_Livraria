@@ -1,13 +1,14 @@
 ﻿@using System.Globalization
-@model E_CommerceLivraria.Models.ModelsStructGroups.CartSG.CartDataGroup
+@using E_CommerceLivraria.DTO.CartDTO
+@model CartItemsDTO
 @{
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
     ViewData["Title"] = "Carrinho";
     ViewData["CSSFile"] = "~/css/customer/cart/cart.css";
 }
-<input type="number" id="CtmId" value="@Model.CtmId" hidden />
 <div class="cartBody">
     <div class="items">
+        <input type="number" id="CtmId" value="@Model.CtmId" hidden readonly />
         @for (int i = 0; i < Model.Items.Count; i++)
         {
             <div class="item">
@@ -31,7 +32,6 @@
                         <div class="remove">
                             <form asp-controller="Cart" asp-action="removeItemFromCart">
                                 <input type="number" value="@Model.Items[i].CriStcId" asp-for="removedStockId" hidden />
-                                <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
                                 <button>Remover</button>
                             </form>
                         </div>
@@ -43,7 +43,6 @@
     <div class="priceData">
         <div>
             <form method="get" asp-controller="Payment" asp-action="DeliveryAddressPageRedirect">
-                <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
                 <h2>Total:</h2>
                 <input type="hidden" class="totalPriceInp" value="@Model.Items.Sum(x => x.CriTotalprice)" />
                 <h1 id="totalPriceTxt"><b>R$</b>@Model.Items.Sum(x => x.CriTotalprice)</h1>

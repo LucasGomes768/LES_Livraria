@@ -69,7 +69,6 @@ namespace E_CommerceLivraria.Services.CustomerS {
 
             CartItem newItem = new CartItem()
             {
-                CriCrt = cart,
                 CriCrtId = cart.CrtId,
                 CriStc = stock,
                 CriStcId = stock.StcId,

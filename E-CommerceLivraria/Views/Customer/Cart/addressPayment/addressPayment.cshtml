@@ -1,6 +1,8 @@
 ﻿@using System.Globalization
+@using E_CommerceLivraria.DTO.PaymentDTO
+@using E_CommerceLivraria.DTO.PaymentDTO.ChoosenAddress
 @using E_CommerceLivraria.Enums
-@model E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG.PayAddressPageData
+@model PayAddressPageDTO
 @{
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
     ViewData["Title"] = "Endereço de entrega";
@@ -13,7 +15,6 @@
         <h1>Selecione o endereço de entrega</h1>
         <div class="firstLine">
             <div class="cep">
-                <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
                 <label for="cep">CEP:</label>
                 <select id="cep" asp-for="ChoosenAddId"
                 asp-items="@(new SelectList(Model.Addresses, "AddId", "AddCepStyled"))"
@@ -28,12 +29,11 @@
                     }
                 </select>
             </div>
-            <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="@((int)EAddressType.DELIVERY)" asp-route-ctmId="@Model.CtmId" asp-route-origin="@((int)EAddressCreate.PAYMENT)">
+            <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-addToList="@((int)EAddressType.DELIVERY)" asp-route-origin="@((int)EAddressCreate.PAYMENT)">
                 <button type="button">Adicionar novo endereço</button>
             </a>
         </div>
         <form id="formAddData" asp-controller="Payment" asp-action="RedirectPaymentMethodPage">
-            <input type="number" value="@Model.CtmId" asp-for="CtmId" hidden />
             <input type="number" id="choosenAddId" value="" asp-for="ChoosenAddId" hidden />
             <div class="addressData">
                 <div class="line sp_between">

@@ -1,6 +1,10 @@
 ﻿using E_CommerceLivraria.DTO.CouponsDTO;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.CouponS;
 using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Services.LoginS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs.Coupons;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,12 +16,14 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
         private readonly IPromotionalCouponService _promotionalCouponService;
         private readonly IPromoCouponAssignmentService _promoCouponAssignmentService;
         private readonly ICustomerService _customerService;
+        private readonly LoginSingleton _loginSingleton;
 
-        public PromoCouponCRUDController(IPromotionalCouponService promotionalCouponService, IPromoCouponAssignmentService promoCouponAssignmentService, ICustomerService customerService)
+        public PromoCouponCRUDController(IPromotionalCouponService promotionalCouponService, IPromoCouponAssignmentService promoCouponAssignmentService, ICustomerService customerService, LoginSingleton loginSingleton)
         {
             _promotionalCouponService = promotionalCouponService;
             _promoCouponAssignmentService = promoCouponAssignmentService;
             _customerService = customerService;
+            _loginSingleton = loginSingleton;
         }
 
         [HttpGet("CRUD/PromoCoupons/{ctmId:int}/{code}")]
@@ -25,7 +31,11 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
         {
             try
             {
-                var ctm = _customerService.Get(ctmId);
+                int id = (int?)_loginSingleton.CtmId ?? ctmId;
+
+                ISpecification <Customer> spec = new GetCtmsPromoCoupons(ctmId);
+
+                var ctm = _customerService.Get(spec);
                 if (ctm == null) return NotFound(new
                 {
                     Sucess = false,

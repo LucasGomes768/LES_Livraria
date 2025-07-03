@@ -1,49 +1,59 @@
 ﻿using E_CommerceLivraria.DTO.ProfileDTO.InfoDTO;
+using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
+using E_CommerceLivraria.Services.LoginS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs;
+using E_CommerceLivraria.Specifications.CustomerSpecs.Purchases;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
 {
     public class ProfileInfoController : Controller
     {
-        private ICustomerService _customerService;
-        private ITelephoneTypeService _telephoneTypeService;
-        private IGenderRepository _genderRepository;
+        private readonly ICustomerService _customerService;
+        private readonly ITelephoneTypeService _telephoneTypeService;
+        private readonly IGenderRepository _genderRepository;
+        private readonly LoginSingleton _loginSingleton;
 
-        public ProfileInfoController(ICustomerService customerService,
-            ITelephoneTypeService telephoneTypeService,
-            IGenderRepository genderRepository)
+        public ProfileInfoController(ICustomerService customerService, ITelephoneTypeService telephoneTypeService, IGenderRepository genderRepository, LoginSingleton loginSingleton)
         {
             _customerService = customerService;
             _telephoneTypeService = telephoneTypeService;
             _genderRepository = genderRepository;
+            _loginSingleton = loginSingleton;
         }
 
-        [HttpGet("InfoProfile/{CtmId:decimal}")]
-        public IActionResult ProfileInfo([FromRoute] decimal CtmId)
+        [HttpGet("InfoProfile")]
+        public IActionResult ProfileInfo()
         {
             try
             {
-                var customer = _customerService.Get(CtmId);
-                if (customer == null) throw new Exception("Cliente não foi encontrado");
+                if (_loginSingleton.CtmId == null || _loginSingleton.CtmId == 0) return RedirectToAction("LoginPage", "Login");
+
+                int id = (int)_loginSingleton.CtmId;
+                ISpecification<Customer> spec = new GetCtmsBasicInfo(id);
+
+                var ctm = _customerService.Get(spec);
+                if (ctm == null) return NotFound("Cliente não foi encontrado ou não existe");
 
                 ViewBag.TlpTypes = _telephoneTypeService.GetAll();
                 ViewBag.Genders = _genderRepository.GetAll();
 
                 InfoDTO info = new InfoDTO()
                 {
-                    Id = customer.CtmId,
-                    Name = customer.CtmName,
-                    Pass = customer.CtmPass,
-                    Email = customer.CtmEmail,
-                    Cpf = customer.CtmCpfStyled,
-                    Ddd = customer.CtmTlp.TlpDdd,
-                    TlpNum = customer.CtmTlp.TlpNumber,
-                    Tpt = customer.CtmTlp.TlpTpt.TptId,
-                    Gender = customer.CtmGndId,
-                    BirthDate = customer.CtmBirthdate
+                    Id = ctm.CtmId,
+                    Name = ctm.CtmName,
+                    Pass = ctm.CtmPass,
+                    Email = ctm.CtmEmail,
+                    Cpf = ctm.CtmCpfStyled,
+                    Ddd = ctm.CtmTlp.TlpDdd,
+                    TlpNum = ctm.CtmTlp.TlpNumber,
+                    Tpt = ctm.CtmTlp.TlpTpt.TptId,
+                    Gender = ctm.CtmGndId,
+                    BirthDate = ctm.CtmBirthdate
                 };
 
                 return View("~/Views/Customer/Profile/Info/Info.cshtml", info);

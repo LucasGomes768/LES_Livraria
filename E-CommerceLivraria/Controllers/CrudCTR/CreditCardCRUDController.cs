@@ -1,5 +1,8 @@
-﻿using E_CommerceLivraria.Services.CreditCardS;
+﻿using E_CommerceLivraria.Models;
+using E_CommerceLivraria.Services.CreditCardS;
 using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs.CreditCards;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_CommerceLivraria.Controllers.CrudCTR
@@ -20,7 +23,9 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
         {
             try
             {
-                var ctm = _customerService.Get(ctmId);
+                ISpecification<Customer> spec = new GetCtmsCreditCards(ctmId);
+
+                var ctm = _customerService.Get(spec);
                 if (ctm == null) return NotFound();
 
                 var crd = _creditCardService.Get(crdId);

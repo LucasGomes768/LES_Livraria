@@ -143,7 +143,7 @@
                                 @foreach (ExchangeCoupon xcp in Model.PxcCpns)
                                 {
                                     <tr>
-                                        <td>@xcp.Xcp.CpnDateGen</td>
+                                        <td>@xcp.Xcp.CpnDateGen.ToString("d")</td>
                                         <td>R$@xcp.Xcp.CpnValue</td>
                                     </tr>
                                 }

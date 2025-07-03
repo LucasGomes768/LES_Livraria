@@ -1,0 +1,29 @@
+﻿@using E_CommerceLivraria.DTO.LoginDTO
+@model List<LoginDTO>
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div class="loginBody">
+    <h1>Bem vindo a <b>NextPage</b></h1>
+    <div class="loginPanel">
+        <h2>Escolha a conta que deseja usar</h2>
+        <div class="loginOptDiv">
+            <div class="customerLogin loginOption">
+                <h3>Cliente</h3>
+                <img src="~/resources/images/icons/store.png" alt="">
+                <select id="customerLoginOpt" asp-items="@(new SelectList(Model, "CtmId", "CtmName"))">
+                    <option value="">Selecione um cliente</option>
+                </select>
+                <button class="loginBtn" id="customerLoginBtn" onclick="loginAsCtm()">Entrar</button>
+            </div>
+            <div class="adminLogin loginOption">
+                <h3>Administrador</h3>
+                <img src="~/resources/images/icons/configuration.png" alt="">
+                <a asp-controller="AdmCustomer" asp-action="Read">
+                    <button type="button" class="loginBtn" id="adminLoginBtn">Entrar</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/login/login.js?v=1.0.@(DateTime.Now.Ticks)"></script>

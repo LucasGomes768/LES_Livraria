@@ -3,6 +3,8 @@ using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs.Addresses;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -85,7 +87,9 @@ namespace E_CommerceLivraria.Controllers.CrudCTR
                 var add = _addressService.Get(AddId);
                 if (add == null) return NotFound("Endereço não foi encontrado");
 
-                var ctm = _customerService.Get(CtmId);
+                ISpecification<Customer> spec = Type == (int)EAddressType.DELIVERY ? new GetCtmsDelAddresses(CtmId) : new GetCtmBilAddresses(CtmId);
+
+                var ctm = _customerService.Get(spec);
                 if (ctm == null) return NotFound("Cliente não foi encontrado");
 
                 bool result = _addressService.AccountRemove(add, ctm, (EAddressType)Type);

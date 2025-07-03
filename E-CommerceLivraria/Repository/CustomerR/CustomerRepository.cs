@@ -1,5 +1,6 @@
 ﻿using E_CommerceLivraria.Data;
 using E_CommerceLivraria.Models;
+using E_CommerceLivraria.Specifications;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 
@@ -18,6 +19,11 @@ namespace E_CommerceLivraria.Repository.CustomerR {
             return customer;
         }
 
+        public Customer? Get(ISpecification<Customer> specification)
+        {
+            return SpecificationEvaluator.GetQuery(_dbContext.Customers, specification).FirstOrDefault();
+        }
+
         public Customer? Get(decimal id) {
             return _dbContext.Customers
                 .Include(x => x.CtmGnd)
@@ -25,8 +31,6 @@ namespace E_CommerceLivraria.Repository.CustomerR {
                     .ThenInclude(x => x.CrdCcf)
                 .Include(x => x.ExchangeCoupons)
                     .ThenInclude(x => x.Xcp)
-                .Include(x => x.CtcCrds)
-                    .ThenInclude(x => x.CrdCcf)
                 .Include(x => x.Purchases)
                     .ThenInclude(x => x.PurchaseItems)
                         .ThenInclude(x => x.PciStc)
@@ -68,6 +72,11 @@ namespace E_CommerceLivraria.Repository.CustomerR {
                 .FirstOrDefault(x => x.CtmId == id);
         }
 
+        public List<Customer> GetAll(ISpecification<Customer> specification)
+        {
+            return SpecificationEvaluator.GetQuery(_dbContext.Customers, specification).ToList();
+        }
+
         public List<Customer> GetAll() {
              return _dbContext.Customers
                 .Include(x => x.CtmGnd)
@@ -75,8 +84,6 @@ namespace E_CommerceLivraria.Repository.CustomerR {
                     .ThenInclude(x => x.CrdCcf)
                 .Include(x => x.ExchangeCoupons)
                     .ThenInclude(x => x.Xcp)
-                .Include(x => x.CtcCrds)
-                    .ThenInclude(x => x.CrdCcf)
                 .Include(x => x.Purchases)
                 .Include(x => x.CtmTlp)
                     .ThenInclude(x => x.TlpTpt)
@@ -120,12 +127,9 @@ namespace E_CommerceLivraria.Repository.CustomerR {
         }
 
         public Customer Update(Customer customer) {
-            var ctm = Get(customer.CtmId);
-
-            if (ctm == null) throw new System.Exception("Um cliente com esse ID não foi encontrado.");
-            _dbContext.Entry(ctm).State = EntityState.Detached;
-            _dbContext.Entry(customer.CtmAdd).State = EntityState.Detached;
-
+            bool exists = _dbContext.Customers.Any(x => x.CtmId == customer.CtmId);
+            if (!exists) throw new System.Exception("Um cliente com esse ID não foi encontrado.");
+            
             _dbContext.Customers.Update(customer);
             _dbContext.SaveChanges();
 

@@ -1,9 +1,9 @@
 ﻿using E_CommerceLivraria.DTO.AnalysisDTO;
 using E_CommerceLivraria.DTO.ExchangesDTO;
 using E_CommerceLivraria.DTO.PaymentDTO;
+using E_CommerceLivraria.DTO.PaymentDTO.Method;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
-using E_CommerceLivraria.Models.ModelsStructGroups.PaymentSG;
 using E_CommerceLivraria.Repository.PurchaseR;
 using E_CommerceLivraria.Services.CouponS;
 using E_CommerceLivraria.Services.StockS;
@@ -36,7 +36,7 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
             if (purchaseData.Request.CreditCards.Count > 0)
             {
-                totalCardsValue = purchaseData.Request.CreditCards.Sum(x => x.value);
+                totalCardsValue = purchaseData.Request.CreditCards.Sum(x => x.Value);
             }
 
             if (purchaseData.Request.ExchangeIds.Count > 0)
@@ -68,12 +68,12 @@ namespace E_CommerceLivraria.Services.PurchaseS
 
             var purchase = new Purchase();
 
-            foreach (CreditCardPaymentData data in purchaseData.Request.CreditCards)
+            foreach (CreditCardPaymentDTO data in purchaseData.Request.CreditCards)
             {
                 var ccp = new CreditCardsPurchase
                 {
-                    CcpCrdId = data.id,
-                    CcpAmount = data.value
+                    CcpCrdId = data.Id,
+                    CcpAmount = data.Value
                 };
                 purchase.CreditCards.Add(ccp);
             }

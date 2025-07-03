@@ -1,6 +1,6 @@
 ﻿using E_CommerceLivraria.DTO;
+using E_CommerceLivraria.DTO.AdmPurchasesDTO;
 using E_CommerceLivraria.Enums;
-using E_CommerceLivraria.Models.ModelsStructGroups.PurchasesSG;
 using E_CommerceLivraria.Services.PurchaseS;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -40,7 +40,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                                     .OrderBy(x => x.Value)
                                     .ToList();
 
-            var apl = new AdmPurchaseListData()
+            var apl = new AdmPurchaseListDTO()
             {
                 Purchases = purchases.OrderByDescending(x => x.PrcDate).ToList()
             };
@@ -53,7 +53,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             return View("~/Views/Admin/ctmRequests/purchases/Purchases.cshtml", apl);
         }
 
-        public IActionResult PurchasesListFilter(AdmPurchaseListData apl)
+        public IActionResult PurchasesListFilter(AdmPurchaseListDTO apl)
         {
             var purchases = _purchaseService.GetAll()
                 .Where(x => (
@@ -81,7 +81,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                                     .OrderBy(x => x.Value)
                                     .ToList();
 
-            var aplNew = new AdmPurchaseListData()
+            var aplNew = new AdmPurchaseListDTO()
             {
                 Purchases = purchases.OrderByDescending(x => x.PrcDate).ToList(),
                 StatusId = apl.StatusId

@@ -7,6 +7,8 @@ using E_CommerceLivraria.Repository.CustomerR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
 using E_CommerceLivraria.Services.AddressS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs;
 
 namespace E_CommerceLivraria.Services.CustomerS {
     public class CustomerService : ICustomerService{
@@ -57,8 +59,23 @@ namespace E_CommerceLivraria.Services.CustomerS {
             return _customerRepository.Get(id);
         }
 
+        public Customer? Get(ISpecification<Customer> specification)
+        {
+            return _customerRepository.Get(specification);
+        }
+
         public List<Customer> GetAll() {
             return _customerRepository.GetAll();
+        }
+
+        public List<Customer> GetAll(ISpecification<Customer> specification)
+        {
+            return _customerRepository.GetAll(specification);
+        }
+
+        public List<Customer> GetAllActive()
+        {
+            return _customerRepository.GetAll().Where(x => x.CtmActive == true).ToList();
         }
 
         public Customer Deactivate(Customer ctm)
@@ -86,8 +103,10 @@ namespace E_CommerceLivraria.Services.CustomerS {
 
         public RelevantCtmInfoAI GetInfoForChatbot(decimal id)
         {
-            var ctm = _customerRepository.Get(id);
-            if (ctm == null) throw new Exception("Cliente não foi encontrado");
+            ISpecification<Customer> spec = new GetCtmsBasicInfo(id);
+
+            var ctm = _customerRepository.Get(spec);
+            if (ctm == null) throw new Exception("Cliente não foi encontrado ou não existe");
 
             RelevantCtmInfoAI info = new RelevantCtmInfoAI()
             {
@@ -125,8 +144,10 @@ namespace E_CommerceLivraria.Services.CustomerS {
 
         public Customer UpdateBasicInfo(InfoDTO info)
         {
-            Customer? ctm = _customerRepository.Get(info.Id);
-            if (ctm == null) throw new Exception("Cliente não foi encontrado");
+            ISpecification<Customer> spec = new GetCtmsBasicInfo(info.Id);
+
+            var ctm = _customerRepository.Get(spec);
+            if (ctm == null) throw new Exception("Cliente não foi encontrado ou não existe");
 
             ctm.CtmName = info.Name;
             ctm.CtmEmail = info.Email;
@@ -143,8 +164,10 @@ namespace E_CommerceLivraria.Services.CustomerS {
 
         public Customer UpdatePassword(InfoDTO info)
         {
-            Customer? ctm = _customerRepository.Get(info.Id);
-            if (ctm == null) throw new Exception("Cliente não foi encontrado");
+            ISpecification<Customer> spec = new GetCtmsBasicInfo(info.Id);
+
+            var ctm = _customerRepository.Get(spec);
+            if (ctm == null) throw new Exception("Cliente não foi encontrado ou não existe");
 
             if (info.Pass == null) throw new Exception("Senha nova não foi enviada");
 

@@ -1,4 +1,5 @@
-﻿@model E_CommerceLivraria.Models.ModelsStructGroups.StockSG.ProductDataGroup
+﻿@using E_CommerceLivraria.DTO.StoreDTO
+@model ProductPageDTO
 @{
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
     ViewData["Title"] = "Tela Inicial";
@@ -30,7 +31,6 @@
             } else
             {
             <form asp-controller="Cart" asp-action="addItemToCart">
-                <input type="number" asp-for="CtmId" value="@Model.CtmId" hidden/>
                 <input type="number" asp-for="StockId" value="@Model.Stock.StcId" hidden />
                 <p><b>Preço: </b>R$@Model.Stock.StcSalePrice.ToString("F2")</p>
                 <div class="quantity">

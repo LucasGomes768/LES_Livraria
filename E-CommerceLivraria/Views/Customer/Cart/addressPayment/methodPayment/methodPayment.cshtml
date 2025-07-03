@@ -12,6 +12,7 @@
 <br>
 <button class="backBtn" onclick="history.go(-1); return false;">Voltar</button>
 <div class="extra">
+    <input type="number" id="ctmId" value="@(Model.CtmId)" hidden />
     <input type="text" id="recentAddedCard" value="@(addedCard)" hidden />
 </div>
 <div class="paymentBody">
@@ -51,7 +52,7 @@
                         </table>
                     </div>
                 </div>
-                <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECreditCardCreate.PAYMENT)" asp-route-ctmId="@Model.CtmId">
+                <a asp-controller="CreditCardPages" asp-action="CreateCreditCardPage" asp-route-origin="@((int)ECreditCardCreate.PAYMENT)">
                     <button type="button" class="addCard" id="addNewCard" >Adicionar novo cartão de crédito</button>
                 </a>
             </div>
@@ -94,7 +95,6 @@
             <h2>Cartões:</h2>
             <h1 id="cardsValue"><b>R$</b>0,00</h1>
         </div>
-        <input type="number" id="ctmId" value="@Model.CtmId" hidden />
         <input type="number" value="" id="deliveryAddress" hidden />
         <div id="finishButton">
         </div>

@@ -1,11 +1,17 @@
 ﻿using E_CommerceLivraria.DTO.AdmCustomerDTO;
+using E_CommerceLivraria.Extensions.Specifications;
 using E_CommerceLivraria.Models;
-using E_CommerceLivraria.Models.ModelsStructGroups;
 using E_CommerceLivraria.Repository.AddressR;
 using E_CommerceLivraria.Repository.CustomerR.GenderR;
 using E_CommerceLivraria.Services.CouponS;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.CustomerS.TelephoneS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs;
+using E_CommerceLivraria.Specifications.CustomerSpecs.Addresses;
+using E_CommerceLivraria.Specifications.CustomerSpecs.Coupons;
+using E_CommerceLivraria.Specifications.CustomerSpecs.CreditCards;
+using E_CommerceLivraria.Specifications.CustomerSpecs.Purchases;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_CommerceLivraria.Controllers.AdminCTR
@@ -32,9 +38,11 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         [HttpGet("AdmCustomer/ReadAll")]
         public IActionResult Read()
         {
+            var specs = new GetCtmsBasicInfo();
+
             ReadAllCustomerDTO rdg = new ReadAllCustomerDTO
             {
-                Customers = _customerService.GetAll(),
+                Customers = _customerService.GetAll(specs),
                 Genders = _genderRepository.GetAll(),
                 TlpTypes = _telephoneTypeService.GetAll()
             };
@@ -109,8 +117,22 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         {
             try
             {
-                var ctm = _customerService.Get(id);
-                if (ctm == null) throw new Exception("Cliente não foi encontrado");
+                ISpecification<Customer> specBsc = new GetCtmsBasicInfo(id);
+                ISpecification<Customer> specBil = new GetCtmBilAddresses(id);
+                ISpecification<Customer> specDel = new GetCtmsDelAddresses(id);
+                ISpecification<Customer> specCrd = new GetCtmsCreditCards(id);
+                ISpecification<Customer> specXcp = new GetCtmsExchangeCoupons(id);
+                ISpecification<Customer> specPrc = new GetCtmsPurchases(id);
+
+                var combinedSpecs = specBsc
+                    .And(specBil)
+                    .And(specPrc)
+                    .And(specXcp)
+                    .And(specCrd)
+                    .And(specDel);
+
+                var ctm = _customerService.Get(combinedSpecs);
+                if (ctm == null) throw new Exception("Cliente não foi encontrado ou não existe");
 
                 ViewBag.Genders = _genderRepository.GetAll();
                 ViewBag.TlpTypes = _telephoneTypeService.GetAll();

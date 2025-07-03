@@ -124,6 +124,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUHJvZmlsZVxQdXJjaGFzZXNcUHVyY2hhc2VzTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Shared/Address/CreateAdd/createAddress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFkZHJlc3NcQ3JlYXRlQWRkXGNyZWF0ZUFkZHJlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -151,6 +155,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-nsju261jx7
+
+[C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-amd0jaxd9w
 
 [C:/Users/Lucas/Documents/5º Semestre/5º Semestre/LES/e-commerce/E-CommerceLivraria/E-CommerceLivraria/Views/Shared/_PublicLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QdWJsaWNMYXlvdXQuY3NodG1s

@@ -3,7 +3,10 @@ using E_CommerceLivraria.DTO.ExchangesDTO;
 using E_CommerceLivraria.Enums;
 using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.CustomerS;
+using E_CommerceLivraria.Services.LoginS;
 using E_CommerceLivraria.Services.PurchaseS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs.Purchases;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
@@ -12,24 +15,29 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
     {
         private ICustomerService _customerService;
         private IPurchaseService _purchaseService;
-        private IPurchaseItemService _purchaseItemService;
+        private LoginSingleton _loginSingleton;
 
-        public ProfileExchangeController(ICustomerService customerService, IPurchaseService purchaseService, IPurchaseItemService purchaseItemService)
+        public ProfileExchangeController(ICustomerService customerService, IPurchaseService purchaseService, LoginSingleton loginSingleton)
         {
             _customerService = customerService;
             _purchaseService = purchaseService;
-            _purchaseItemService = purchaseItemService;
+            _loginSingleton = loginSingleton;
         }
 
-        [HttpGet("ExchangeProfile/{CtmId:decimal}")]
-        public IActionResult ExchangesList([FromRoute] decimal CtmId)
+        [HttpGet("ExchangeProfile")]
+        public IActionResult ExchangesList()
         {
             try
             {
-                var customer = _customerService.Get(CtmId);
-                if (customer == null) throw new Exception("Cliente não foi encontrado");
+                if (_loginSingleton.CtmId == null || _loginSingleton.CtmId == 0) return RedirectToAction("LoginPage", "Login");
 
-                return View("~/Views/Customer/Profile/Exchanges/ExchangesList.cshtml", customer);
+                int id = (int)_loginSingleton.CtmId;
+                ISpecification<Customer> spec = new GetCtmsPurchases(id);
+
+                var ctm = _customerService.Get(spec);
+                if (ctm == null) return NotFound("Cliente não foi encontrado ou não existe");
+
+                return View("~/Views/Customer/Profile/Exchanges/ExchangesList.cshtml", ctm);
             }
             catch (Exception ex)
             {
@@ -37,15 +45,19 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
             }
         }
 
-        [HttpGet("ExchangeProfile/{CtmId:decimal}/{PrcId:decimal}")]
-        public IActionResult DetailedExchange([FromRoute] decimal CtmId, [FromRoute] decimal PrcId)
+        [HttpGet("ExchangeProfile/{PrcId:decimal}")]
+        public IActionResult DetailedExchange([FromRoute] decimal PrcId)
         {
             try
             {
+                if (_loginSingleton.CtmId == null || _loginSingleton.CtmId == 0) return RedirectToAction("LoginPage", "Login");
+
+                int ctmId = (int)_loginSingleton.CtmId;
+
                 var purchase = _purchaseService.Get(PrcId);
                 if (purchase == null) throw new Exception("Compra não foi encontrada");
 
-                if (purchase.PrcCtmId != CtmId) throw new Exception("Tentativa de acesso de compra de outro usuário");
+                if (purchase.PrcCtmId != ctmId) throw new Exception("Tentativa de acesso de compra de outro usuário");
 
                 purchase.PurchaseItems = purchase.PurchaseItems.Where(x => (x.PciStatus >= (int)EStatus.TROCA_SOLICITADA) || (x.PciStatus == (int)EStatus.TROCA_REPROVADA)).ToList();
 
@@ -57,11 +69,15 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
             }
         }
 
-        [HttpGet("RequestExchange/{CtmId:decimal}/{PrcId:decimal}")]
-        public IActionResult RequestExchangePage([FromRoute] decimal CtmId, [FromRoute] decimal PrcId)
+        [HttpGet("RequestExchange/{PrcId:decimal}")]
+        public IActionResult RequestExchangePage([FromRoute] decimal PrcId)
         {
             try
             {
+                if (_loginSingleton.CtmId == null || _loginSingleton.CtmId == 0) return RedirectToAction("LoginPage", "Login");
+
+                int ctmId = (int)_loginSingleton.CtmId;
+
                 var purchase = _purchaseService.Get(PrcId);
                 if (purchase == null) throw new Exception("Compra não foi encontrada");
 
@@ -70,7 +86,7 @@ namespace E_CommerceLivraria.Controllers.CustomerCTR.ProfileCTR
                 EStatus status = (EStatus)purchase.PrcStatus;
                 if (status != EStatus.ENTREGUE) throw new Exception("A compra deve ter o status \"ENTREGUE\" para efetuação de troca");
 
-                if (purchase.PrcCtmId != CtmId) throw new Exception("Tentativa de acesso de compra de outro usuário");
+                if (purchase.PrcCtmId != ctmId) throw new Exception("Tentativa de acesso de compra de outro usuário");
 
                 return View("~/Views/Customer/Profile/Exchanges/RequestExchange/RequestExchange.cshtml", purchase);
             }

@@ -27,6 +27,7 @@ wwwroot\css\customer\profile\info\info.css
 wwwroot\css\customer\profile\profile.css
 wwwroot\css\customer\profile\purchases\purchaseDtl.css
 wwwroot\css\customer\profile\purchases\purchaseList.css
+wwwroot\css\login\login.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\admin\address\removeAddress.js
@@ -58,6 +59,7 @@ wwwroot\js\customer\profile\info\info.js
 wwwroot\js\customer\profile\purchases\purchaseDtl.js
 wwwroot\js\extra\styleField.js
 wwwroot\js\extra\verifyPassword.js
+wwwroot\js\login\login.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -127,7 +129,9 @@ wwwroot\resources\images\books_covers\o_iluminado.jpg
 wwwroot\resources\images\books_covers\o_rei_de_amarelo_darkside.jpg
 wwwroot\resources\images\books_covers\pai_rico_pai_pobre.jpg
 wwwroot\resources\images\icons\chatbot1.svg
+wwwroot\resources\images\icons\configuration.png
 wwwroot\resources\images\icons\icons8-carrinho-24.png
 wwwroot\resources\images\icons\icons8-sair-96.png
 wwwroot\resources\images\icons\send1.svg
+wwwroot\resources\images\icons\store.png
 wwwroot\resources\images\icons\user1.svg

@@ -73,8 +73,9 @@ function UpdateInfo() {
         if (request.status === 200) {
             alert('Dados atualizados com sucesso!')
         } else {
-            alert('Ocorreu um erro na atualização:' + request.statusText)
-            console.error(`Erro ${request.status}: ${request.responseText}`)
+            const response = JSON.parse(request.responseText)
+            alert('Ocorreu um erro na atualização:' + response)
+            console.error(`Erro ${request.status}: ${response}`)
         }
     } catch (ex) {
         alert('Falha na comunicação:' + ex.error);

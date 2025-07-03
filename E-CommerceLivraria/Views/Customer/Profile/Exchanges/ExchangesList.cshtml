@@ -8,15 +8,6 @@
 }
 <div class="purchasesList">
     <h1>Compras</h1>
-    <div class="filters">
-        <label for="time">Período:</label>
-        <select id="time">
-            <option value="" selected>Qualquer</option>
-            <option value="thisMonth">Este mês</option>
-            <option value="lastMonth">Mês passado</option>
-            <option value="thisYear">Esse ano</option>
-        </select>
-    </div>
     @for (int i = 0; i < purchases.Count; i += 2)
     {
         <div class="pchRow">
@@ -35,7 +26,7 @@
                             <h3>Última atualização: @purchase.PrcDate.ToShortDateString()</h3>
                         </div>
                         <div class="actions">
-                            <a asp-controller="ProfileExchange" asp-action="DetailedExchange" asp-route-CtmId="@Model.CtmId" asp-route-PrcId="@purchase.PrcId">
+                            <a asp-controller="ProfileExchange" asp-action="DetailedExchange" asp-route-PrcId="@purchase.PrcId">
                                 <button>Visualizar Troca</button>
                             </a>
                         </div>
