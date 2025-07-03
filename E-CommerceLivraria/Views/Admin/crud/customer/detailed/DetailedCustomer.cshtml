@@ -208,7 +208,7 @@
     </div>
     <div class="bilAddressList addSection" id="addBilDiv">
         <a asp-controller="AddressPages" asp-action="CreateAddressPage" asp-route-origin="@((int)EAddressCreate.DETAILED_CTM_PAGE)" asp-route-addToList="@((int)EAddressType.BILLING)" asp-route-ctmId="@Model.CtmId">
-            <button type="button">Adicionar novo endereço</button>
+            <button type="button" class="addNewAddressBtn">Adicionar novo endereço</button>
         </a>
         <table>
             <tr>

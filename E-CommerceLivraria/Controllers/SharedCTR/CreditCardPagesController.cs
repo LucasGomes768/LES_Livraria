@@ -4,6 +4,8 @@ using E_CommerceLivraria.Models;
 using E_CommerceLivraria.Services.CreditCardS;
 using E_CommerceLivraria.Services.CustomerS;
 using E_CommerceLivraria.Services.LoginS;
+using E_CommerceLivraria.Specifications;
+using E_CommerceLivraria.Specifications.CustomerSpecs.CreditCards;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -59,17 +61,9 @@ namespace E_CommerceLivraria.Controllers.SharedCTR
                 if (crd == null) return BadRequest();
 
                 Customer? ctm;
-
-                if (_loginSingleton?.CtmId == null)
-                {
-                    ctm = _customerService.Get(ccc.CtmId);
-                    if (ctm == null) return NotFound();
-                }
-                else
-                {
-                    ctm = _customerService.Get((decimal)_loginSingleton.CtmId);
-                    if (ctm == null) return NotFound();
-                }
+                ISpecification<Customer> spec = new GetCtmsCreditCards(_loginSingleton.CtmId ?? ccc.CtmId);
+                ctm = _customerService.Get(spec);
+                if (ctm == null) return NotFound("O cliente não foi encontrado ou não existe");
 
 
                 if (!ccc.AddToAccount)
@@ -95,10 +89,10 @@ namespace E_CommerceLivraria.Controllers.SharedCTR
                             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                         });
 
-                        return RedirectToAction("PaymentMethodPage", "Payment", new { ctm.CtmId });
+                        return RedirectToAction("PaymentMethodPage", "Payment");
 
                     case ECreditCardCreate.PROFILE:
-                        return RedirectToAction("CreditCardsList", "ProfileCreditCards", new {ctm.CtmId});
+                        return RedirectToAction("CreditCardsList", "ProfileCreditCards");
 
                     case ECreditCardCreate.DETAILED_CTM_PAGE:
                         return RedirectToAction("DetailedCustomerPage", "AdmCustomer", new { id = ctm.CtmId });

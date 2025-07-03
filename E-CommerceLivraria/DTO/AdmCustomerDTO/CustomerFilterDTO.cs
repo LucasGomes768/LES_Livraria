@@ -2,7 +2,7 @@
     public class CustomerFilterDTO {
         public decimal? Id { get; set; }
         public string? Name { get; set; }
-        public decimal? Cpf { get; set; }
+        public string? Cpf { get; set; }
         public decimal? TelephoneTypeId { get; set; }
         public string? Email { get; set; }
         public decimal? GndId { get; set; }

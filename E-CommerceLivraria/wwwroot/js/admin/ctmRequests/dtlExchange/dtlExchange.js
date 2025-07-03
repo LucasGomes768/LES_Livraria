@@ -13,22 +13,6 @@ function showOneSection(section) {
     document.getElementById(section).style.display = "block"
 }
 
-//function showItemSection(section, button) {
-//    const sections = document.getElementsByClassName("items");
-//    const buttons = document.getElementsByClassName("itemsSelectBtn");
-
-//    for (let i = 0; i < sections.length; i++) {
-//        sections.item(i).style.display = "none";
-
-//        if (buttons.length < 1 || button == undefined) continue;
-
-//        buttons.item(i).disabled = false;
-//    }
-
-//    document.getElementById(section).style.display = "flex";
-//    button.disabled = true;
-//}
-
 function changeExcPopDisplay() {
     const popUp = document.getElementById("ExcPopUp")
     popUp.style.display = (popUp.style.display != "flex" ? "flex" : "none")
@@ -50,10 +34,10 @@ function updateStatusAll(id, newStatus, returnStock = false) {
         request.send(JSON.stringify(data));
 
         if (request.status === 200) {
-            alert("Status da compra atualizado")
+            alert("Status do pedido de troca atualizado")
             window.location.reload()
         } else {
-            alert('Erro ao atualizar a compra: ' + request.statusText)
+            alert('Erro ao atualizar o pedido: ' + request.statusText)
         }
 
     } catch (error) {
@@ -79,7 +63,7 @@ function updateItemStatus(prcId, stcId, newStatus) {
             alert("Status do item atualizado")
             window.location.reload()
         } else {
-            alert('Erro ao atualizar a compra: ' + request.statusText)
+            alert('Erro ao atualizar o pedido: ' + request.statusText)
         }
 
     } catch (error) {

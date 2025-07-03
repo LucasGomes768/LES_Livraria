@@ -52,19 +52,21 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
 
         public IActionResult FilterRead(ReadAllCustomerDTO rdg)
         {
-            IEnumerable<Customer> query = _customerService.GetAll();
+            ISpecification<Customer> spec = new GetCtmsBasicInfo();
+
+            IEnumerable<Customer> query = _customerService.GetAll(spec);
 
             CustomerFilterDTO filter = rdg.FilterData;
 
             // Nome
             if (filter.Name != null && query.Any())
             {
-                query = query.Where(x => x.CtmName == filter.Name);
+                query = query.Where(x => x.CtmName.Contains(filter.Name));
             }
             // CPF
             if (filter.Cpf != null && query.Any())
             {
-                query = query.Where(x => x.CtmCpf == filter.Cpf);
+                query = query.Where(x => x.CtmCpf == decimal.Parse(filter.Cpf.Replace(".","").Replace("-","")));
             }
             // Tipo do Telefone
             if (filter.TelephoneTypeId != null && query.Any())
@@ -74,7 +76,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
             // E-Mail
             if (filter.Email != null && query.Any())
             {
-                query = query.Where(x => x.CtmEmail == filter.Email);
+                query = query.Where(x => x.CtmEmail.Contains(filter.Email));
             }
             // Gênero
             if (filter.GndId != null && query.Any())
@@ -87,17 +89,17 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                 query = query.Where(x => x.CtmActive == filter.Active);
             }
             // Idade Mínima
-            if ((filter.MinAge != null || filter.MinAge > 0) && query.Any())
+            if ((filter.MinAge != null && filter.MinAge > 0) && query.Any())
             {
                 query = query.Where(x => filter.MinAge <= DateTime.Now.Year - x.CtmBirthdate.Year);
             }
             // Idade Máxima
-            if ((filter.MaxAge != null || filter.MaxAge > 0) && query.Any())
+            if ((filter.MaxAge != null && filter.MaxAge > 0) && query.Any())
             {
                 query = query.Where(x => DateTime.Now.Year - x.CtmBirthdate.Year <= filter.MaxAge);
             }
             // Ranking
-            if ((filter.Ranking != null || filter.Ranking > 0) && query.Any())
+            if ((filter.Ranking != null && filter.Ranking > 0) && query.Any())
             {
                 query = query.Where(x => x.CtmRanking == filter.Ranking);
             }
@@ -109,7 +111,7 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
                 TlpTypes = _telephoneTypeService.GetAll()
             };
 
-            return View("~/Views/Admin/Customer/Read.cshtml", newRdg);
+            return View("~/Views/Admin/crud/customer/readAll/AllCustomers.cshtml", newRdg);
         }
 
         [HttpGet("AdmCustomer/{id:int}")]
@@ -184,8 +186,10 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         {
             try
             {
-                var ctm = _customerService.Get(id);
-                if (ctm == null) return NotFound("Cliente não foi encontrado");
+                ISpecification<Customer> spec = new GetCtmsBasicInfo(id);
+
+                var ctm = _customerService.Get(spec);
+                if (ctm == null) return NotFound("Cliente não foi encontrado ou não existe");
 
                 _customerService.Deactivate(ctm);
 
@@ -209,8 +213,10 @@ namespace E_CommerceLivraria.Controllers.AdminCTR
         {
             try
             {
-                var ctm = _customerService.Get(id);
-                if (ctm == null) return NotFound("Cliente não foi encontrado");
+                ISpecification<Customer> spec = new GetCtmsBasicInfo(id);
+
+                var ctm = _customerService.Get(spec);
+                if (ctm == null) return NotFound("Cliente não foi encontrado ou não existe");
 
                 _customerService.Activate(ctm);
 

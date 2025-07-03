@@ -8,31 +8,45 @@
 <div class="readAllBody">
     <div class="filter">
         <h1>Filtro</h1>
-        <form action="" method="get">
+        <form asp-controller="AdmCustomer" asp-action="FilterRead" method="get">
             <div class="line spaceBet">
                 <div class="field">
                     <label for="name">Nome:</label>
-                    <input type="text" id="name" style="width: 22.5vw;">
+                    <input type="text" id="name" asp-for="FilterData.Name" style="width: 22.5vw;">
+                </div>
+                <div class="field">
+                    <label for="name">E-Mail:</label>
+                    <input type="text" id="email" asp-for="FilterData.Email" style="width: 20vw;">
                 </div>
                 <div class="field">
                     <label for="cpf">CPF:</label>
-                    <input type="text" id="cpf" maxlength="14" style="width: 8.2vw">
+                    <input type="text" id="cpf" asp-for="FilterData.Cpf" maxlength="14" style="width: 8.2vw">
                 </div>
                 <div class="field">
                     <label for="telType">Tipo de telefone:</label>
-                    <select id="telType">
+                    <select id="telType" asp-for="FilterData.TelephoneTypeId" asp-items="@(new SelectList(Model.TlpTypes, "TptId", "TptName"))">
                         <option value="">Não Filtrar</option>
                     </select>
                 </div>
                 <div class="field">
                     <label for="gender">Gênero:</label>
-                    <select id="gender">
+                    <select id="gender" asp-for="FilterData.GndId" asp-items="@(new SelectList(Model.Genders, "GndId", "GndName"))">
                         <option value="">Não filtrar</option>
                     </select>
                 </div>
+            </div>
+            <div class="line rGap">
+                <div class="field">
+                    <label for="age">Idade mín.:</label>
+                    <input type="number" id="age" asp-for="FilterData.MinAge" max="999" style="width: 8vw;">
+                </div>
+                <div class="field">
+                    <label for="age">Idade máx.:</label>
+                    <input type="number" id="age" asp-for="FilterData.MaxAge" max="999" style="width: 8vw;">
+                </div>
                 <div class="field">
                     <label for="rank">Ranking:</label>
-                    <select id="rank">
+                    <select id="rank" asp-for="FilterData.Ranking">
                         <option value="">Não filtrar</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -43,25 +57,15 @@
                 </div>
                 <div class="field">
                     <label for="active">Ativo?:</label>
-                    <select id="active">
+                    <select id="active" asp-for="FilterData.Active">
                         <option value="">Não filtrar</option>
                         <option value="true">Sim</option>
                         <option value="false">Não</option>
                     </select>
                 </div>
             </div>
-            <div class="line rGap">
-                <div class="field">
-                    <label for="age">Idade mín.:</label>
-                    <input type="number" id="age" max="999" style="width: 8vw;">
-                </div>
-                <div class="field">
-                    <label for="age">Idade máx.:</label>
-                    <input type="number" id="age" max="999" style="width: 8vw;">
-                </div>
-            </div>
             <div>
-                <button type="button">Filtrar</button>
+                <button>Filtrar</button>
             </div>
         </form>
     </div>
